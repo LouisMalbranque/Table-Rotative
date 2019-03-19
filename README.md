@@ -1,1 +1,1 @@
-Table Rotative
+Table Rotative (patché)
