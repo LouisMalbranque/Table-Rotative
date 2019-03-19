@@ -6,7 +6,7 @@
 Lcd screen;
 Relays relays;
 Bluetooth bluetooth;
-int values[9] = {9,8,7,6,5,4,3,2,1};
+int values[8] = {8,7,6,5,4,3,2,1};
 void setup() {
   screen.begin();
   bluetooth.begin();
@@ -16,7 +16,8 @@ void loop() {
 
   //relays.triggerAll();
   bluetooth.receive();
-  screen.setValues(bluetooth.decode());
-
+  values[8]=bluetooth.decode();
+  screen.setValues(values);
+  relays.setValues(values);
   screen.display();
 }

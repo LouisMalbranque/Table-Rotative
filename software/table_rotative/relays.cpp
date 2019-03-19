@@ -32,3 +32,15 @@ void Relays::triggerSimultaneous(){
 void Relays::setDelay(int totalDelay){
   delayBetweenTriggersMs = totalDelay - PULSE_DURATION;
 }
+
+void Relays::setValues(int *values){
+  for (int i=0; i<MAXIMUM_NUMBER_OF_VALUES; i++){
+    this->values[i] = values[i];
+  }
+  if(values[0]==0){
+    relays_number = values[4];
+    //quels relais avec appareils branchés
+    setDelays(values[5]);
+  }
+  //Que faire en temps réel ? 
+}
