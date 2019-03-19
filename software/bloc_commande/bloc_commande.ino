@@ -25,13 +25,16 @@ void loop() {
   
   lcd.setValues(bluetooth.getValues());
   lcd.display();
-  
+  /*
   nrf.send(bluetooth.getValues());
 
   for (int i=0; i<bluetooth.getValue(FRAME); i++){
     while (nrf.getValue(0) != 1){
       nrf.receive();
+      bluetooth.print(i);
     }
     relays.triggerSimultaneous();
-  }  
+    
+  }*/
+  //bluetooth.reset();  
 }

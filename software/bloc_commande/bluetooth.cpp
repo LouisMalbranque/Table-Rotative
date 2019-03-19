@@ -50,3 +50,9 @@ int Bluetooth::getValue(int i){
 void Bluetooth::print(String data){
   hc05.println(data);
 }
+
+void Bluetooth::reset(){
+  for(int i=0;i<8;i++){
+    values[i]=0;
+  }
+}

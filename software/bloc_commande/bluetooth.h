@@ -24,4 +24,5 @@ class Bluetooth
     int getValue(int i);
     int* getValues();
     void print(String data);
+    void reset();
 };

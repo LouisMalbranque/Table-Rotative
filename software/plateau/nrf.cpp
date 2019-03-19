@@ -13,8 +13,8 @@ void Nrf::begin(){
   Mirf.payload = sizeof(int) * 8; // Taille d'un message (maximum 32 octets)
   Mirf.config(); // Sauvegarde la configuration dans le module radio
 
-  Mirf.setTADDR((byte *) "nrf01"); // Adresse de transmission
-  Mirf.setRADDR((byte *) "nrf02"); // Adresse de réception
+  Mirf.setTADDR((byte *) "nrf02"); // Adresse de transmission
+  Mirf.setRADDR((byte *) "nrf01"); // Adresse de réception
 }
 
 void Nrf::send(int data[8]){
@@ -25,7 +25,6 @@ void Nrf::send(int data[8]){
 }
 
 void Nrf::receive(){
-  
    if (Mirf.dataReady()) {
       Mirf.getData((byte *) &data);
    }
@@ -35,4 +34,11 @@ int Nrf::getValue(int i){
   int r = data[i];
   data[i] = 0;
   return r;
+}
+
+boolean Nrf::isEmpty(){
+  for (int i=0; i<8; i++){
+    if (data[i] != 0) return false;
+  }
+  return true;
 }
