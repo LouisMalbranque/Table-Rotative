@@ -17,6 +17,7 @@ class Relays
     void triggerAll();
     void triggerSimultaneous();
     void setDelay(int totalDelay);
+    void setValues(int *values);
 };
 /*
 relayEnCours = 0;

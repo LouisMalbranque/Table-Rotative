@@ -15,4 +15,6 @@ class Lcd
     void symboleBluetooth();
     void display();
     void setValues(int *values);
+    void flecheDroite();
+    void flecheGauche();
 };

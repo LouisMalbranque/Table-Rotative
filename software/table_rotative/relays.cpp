@@ -11,7 +11,7 @@ void Relays::begin(){
 }
 
 void Relays::triggerAll(){
-  for (int i=0; i<RELAYS_NUMBER; i++){
+  for (int i=0; i<relays_number; i++){
     digitalWrite(pinRelay[i], HIGH);
     delay(PULSE_DURATION);
     digitalWrite(pinRelay[i], LOW);
@@ -20,11 +20,11 @@ void Relays::triggerAll(){
 }
 
 void Relays::triggerSimultaneous(){
-  for (int i=0; i<RELAYS_NUMBER; i++){
+  for (int i=0; i<relays_number; i++){
     digitalWrite(pinRelay[i], HIGH);
   }
   delay(PULSE_DURATION);
-  for (int i=0; i<RELAYS_NUMBER; i++){
+  for (int i=0; i<relays_number; i++){
     digitalWrite(pinRelay[i], LOW);
   }
 }
@@ -40,7 +40,7 @@ void Relays::setValues(int *values){
   if(values[0]==0){
     relays_number = values[4];
     //quels relais avec appareils branchés
-    setDelays(values[5]);
+    setDelay(values[5]);
   }
   //Que faire en temps réel ? 
 }
