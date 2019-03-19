@@ -16,7 +16,7 @@ void loop() {
 
   //relays.triggerAll();
   bluetooth.receive();
-  int *values=bluetooth.decode();
+  values[8]=bluetooth.decode();
   screen.setValues(values);
   relays.setValues(values);
   screen.display();

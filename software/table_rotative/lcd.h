@@ -1,6 +1,6 @@
 #include <Wire.h>
 #include <Adafruit_SSD1306.h>
-#include "arduino.h"
+#include "Arduino.h"
 #define OLED_RESET 4
 #define MAXIMUM_NUMBER_OF_VALUES 16
 

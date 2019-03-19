@@ -1,4 +1,6 @@
-#include "arduino.h"
+#include "Arduino.h"
+
+#define RELAYS_NUMBER 9
 
 #define PULSE_DURATION 1500
 
