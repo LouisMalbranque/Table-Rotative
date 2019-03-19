@@ -15,13 +15,4 @@ class Relays
     void triggerSimultaneous();
     void setDelay(int totalDelay);
 };
-/*
-relayEnCours = 0;
-
-trigger{
-  if (millis() > 1000){
-   relayEnCours ++; 
-  }
-  digitalWrite( 00 );
-}*/
  

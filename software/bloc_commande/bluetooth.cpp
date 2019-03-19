@@ -22,7 +22,7 @@ int Bluetooth::getDataLength(){
   return (int)(data.length());
 }
 
-int* Bluetooth::decode(){
+void Bluetooth::decode(){
   char* valuesent;
   int i=0;
   if (data != "") {
@@ -37,5 +37,16 @@ int* Bluetooth::decode(){
     }
     data = "";
   }
+}
+
+int* Bluetooth::getValues(){
   return values;
+}
+
+int Bluetooth::getValue(int i){
+  return values[i];
+}
+
+void Bluetooth::print(String data){
+  hc05.println(data);
 }

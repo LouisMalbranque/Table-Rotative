@@ -1,6 +1,14 @@
 #include "arduino.h"
 #include <SoftwareSerial.h>
 
+#define ACCELERATION 0
+#define SPEED 1
+#define FRAME 2
+#define STEP 3
+#define DEGRES 4
+#define PAUSE 5
+
+
 class Bluetooth
 {
   private:
@@ -12,5 +20,8 @@ class Bluetooth
     void receive();
     void begin();
     int getDataLength();
-    int* decode();
+    void decode();
+    int getValue(int i);
+    int* getValues();
+    void print(String data);
 };
