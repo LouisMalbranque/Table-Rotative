@@ -17,24 +17,16 @@ void Lcd::symboleBluetooth() {
   screen.drawLine( 118, 12 , 120, 10, WHITE );
 }
 
-void Lcd::flecheDroite() {
-  screen.drawLine( 117, 4, 117, 12, WHITE );
-  screen.drawLine( 117, 8 , 115, 10, WHITE );
-  screen.drawLine( 117, 8 , 115, 6, WHITE );
-  screen.drawLine( 118, 4 , 120, 6, WHITE );
-  screen.drawLine( 118, 8 , 120, 10, WHITE );
-  screen.drawLine( 118, 8 , 120, 6, WHITE );
-  screen.drawLine( 118, 12 , 120, 10, WHITE );
+void Lcd::flecheDroite(int absG,int ordB, int absD,int ordH) {
+  screen.drawLine( absG, ordB, absD, ordH, WHITE );
+  screen.drawLine( absD,ordB,absD-4,ordB+2, WHITE);
+  screen.drawLine( absD,ordB,absD-4,ordB-2, WHITE);
 }
 
-void Lcd::flecheGauche() {
-  screen.drawLine( 117, 4, 117, 12, WHITE );
-  screen.drawLine( 117, 8 , 115, 10, WHITE );
-  screen.drawLine( 117, 8 , 115, 6, WHITE );
-  screen.drawLine( 118, 4 , 120, 6, WHITE );
-  screen.drawLine( 118, 8 , 120, 10, WHITE );
-  screen.drawLine( 118, 8 , 120, 6, WHITE );
-  screen.drawLine( 118, 12 , 120, 10, WHITE );
+void Lcd::flecheGauche(int absG,int ordB, int absD,int ordH) {
+  screen.drawLine( absG, ordB, absD, ordH, WHITE );
+  screen.drawLine( absG,ordB,absD-8,ordH+2, WHITE);
+  screen.drawLine( absG,ordB,absD-8,ordH-2, WHITE);
 }
 
 void Lcd::display() {
@@ -59,11 +51,17 @@ void Lcd::display() {
   screen.setCursor( 2, 36 );
   screen.println( "Frame=" + (String) values[2] );
 
-  screen.setCursor( 64, 36 );
+  screen.setCursor( 2, 50 );
   screen.println( "NbApp=" + (String) values[3] );
 
-  screen.setCursor( 2, 50 );
-  screen.println( "Sens=" + (String) values[1] );
+  screen.setCursor( 64, 36 );
+  screen.println( "Sens:" );
+  if(values[1]==0){
+    flecheDroite(98, 39, 110, 39);
+  }
+  else{
+    flecheGauche(98, 39, 110, 39);
+  }
 
   screen.setCursor( 64, 50 );
   screen.println( "Pause=" + (String) values[5] );
@@ -75,22 +73,28 @@ void Lcd::display() {
 
   
   screen.setTextSize( 1 );
-  screen.setCursor( 2, 22 );
+  screen.setCursor( 2, 30 );
   screen.println( "Accel=" + (String) values[2] );
 
-  screen.setCursor( 64, 22 );
+  screen.setCursor( 64, 30 );
   screen.println( "Speed=" + (String) values[3] );
 
   if(values[4]!=0){
-  screen.setCursor( 2, 36 );
+  screen.setCursor( 2, 46 );
   screen.println( "Duree=" + (String) values[4] );}
   else{
-    screen.setCursor( 2, 36 );
+    screen.setCursor( 2, 46 );
   screen.println( "NbTours=" + (String) values[5] );
   }
 
-  screen.setCursor( 64, 36 );
-  screen.println( "Sens=" + (String) values[1] );
+  screen.setCursor( 64, 46 );
+  screen.println( "Sens:");
+  if(values[1]==0){
+    flecheDroite(98, 49, 110, 49);
+  }
+  else{
+    flecheGauche(98, 49, 110, 49);
+  }
 
 
 
