@@ -25,13 +25,4 @@ class Relays
     void setDelay(int totalDelay);
     void setValues(int *values);
 };
-/*
-relayEnCours = 0;
-
-trigger{
-  if (millis() > 1000){
-   relayEnCours ++; 
-  }
-  digitalWrite( 00 );
-}*/
  
