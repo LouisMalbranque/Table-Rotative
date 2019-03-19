@@ -10,14 +10,19 @@ int values[8] = {8,7,6,5,4,3,2,1};
 void setup() {
   screen.begin();
   bluetooth.begin();
+   pinMode(3, OUTPUT);
+   digitalWrite(3,LOW);
+ pinMode(2, OUTPUT);
+   digitalWrite(2,LOW);
 }
 
 void loop() {
 
-  //relays.triggerAll();
+  
   bluetooth.receive();
   int *values=bluetooth.decode();
   screen.setValues(values);
   relays.setValues(values);
   screen.display();
+  relays.triggerAll();
 }

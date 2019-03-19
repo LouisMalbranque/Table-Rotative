@@ -52,7 +52,7 @@ void Lcd::display() {
   screen.println( "Frame=" + (String) values[2] );
 
   screen.setCursor( 2, 50 );
-  screen.println( "NbApp=" + (String) values[3] );
+  screen.println( "NbApp=" + (String) values[4] );
 
   screen.setCursor( 64, 36 );
   screen.println( "Sens:" );
@@ -64,7 +64,7 @@ void Lcd::display() {
   }
 
   screen.setCursor( 64, 50 );
-  screen.println( "Pause=" + (String) values[5] );
+  screen.println( "Pause=" + (String) values[3] );
   }
   
   else if (values[0]==1){

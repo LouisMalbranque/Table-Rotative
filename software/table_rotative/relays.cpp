@@ -1,4 +1,5 @@
 #include "relays.h"
+#include "bluetooth.h"
 
 Relays::Relays(){
   
@@ -12,11 +13,21 @@ void Relays::begin(){
 
 void Relays::triggerAll(){
   for (int i=0; i<relays_number; i++){
+      
     digitalWrite(pinRelay[i], HIGH);
+    digitalWrite(3, HIGH);
+
+
     delay(PULSE_DURATION);
+    digitalWrite(3, LOW);
     digitalWrite(pinRelay[i], LOW);
     delay(delayBetweenTriggersMs);
   }
+  digitalWrite(2, HIGH);
+
+
+    delay(PULSE_DURATION);
+    digitalWrite(2, LOW);
 }
 
 void Relays::triggerSimultaneous(){
