@@ -69,9 +69,9 @@ void Lcd::display() {
   screen.println( "Pause=" + (String) values[5] );
   }
   
-  else if (values[1]==1){
+  else if (values[0]==1){
     screen.setCursor( 0, 0 );
-  screen.println( "Temps Réel" );
+  screen.println( "Temps Reel" );
 
   
   screen.setTextSize( 1 );
