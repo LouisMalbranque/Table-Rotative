@@ -8,7 +8,8 @@ void Bluetooth::begin(){
   hc05.begin(9600);
 }
 
-void Bluetooth::receive(){
+boolean Bluetooth::receive(){
+  if (!hc05.available()) return false;
    while (hc05.available()) {
     if (hc05.available() > 0) {
       char c = hc05.read();  //gets one byte from serial buffer
@@ -17,6 +18,7 @@ void Bluetooth::receive(){
     }
   }
   hc05.flush();
+  return true;
 }
 int Bluetooth::getDataLength(){
   return (int)(data.length());

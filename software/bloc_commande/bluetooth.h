@@ -17,7 +17,7 @@ class Bluetooth
     int values[8];
   public:
     Bluetooth();
-    void receive();
+    boolean receive();
     void begin();
     int getDataLength();
     void decode();

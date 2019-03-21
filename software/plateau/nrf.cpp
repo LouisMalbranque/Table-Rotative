@@ -42,3 +42,17 @@ boolean Nrf::isEmpty(){
   }
   return true;
 }
+
+void Nrf::printData(){
+  for (int i=0; i<8; i++){
+    Serial.print(data[i]);
+    Serial.print("\t");
+  }  
+  Serial.println();
+}
+
+void Nrf::clear(){
+  for (int i=0; i<8; i++){
+    data[i]=0;
+  }  
+}

@@ -15,39 +15,26 @@ void setup() {
 }
 
 void loop() {
-  nrf.receive();
-
-  if (!nrf.isEmpty()){
-      int type = nrf.getValue(0);
-      int direction = nrf.getValue(1);
-      int frame = nrf.getValue(2);
-      int pause = nrf.getValue(3);
-      int acceleration = nrf.getValue(4);
-      int speed = nrf.getValue(5);
-
-      Serial.print(type);
-      Serial.print("\t");
-      Serial.print(direction);
-      Serial.print("\t");
-      Serial.print(frame);
-      Serial.print("\t");
-      Serial.print(pause);
-      Serial.print("\t");
-      Serial.print(acceleration);
-      Serial.print("\t");
-      Serial.println(speed);
-      
-      motor.setParams(speed, acceleration);
-
-      if (speed > 0){
-        for (int i=0; i<frame; i++){
-          motor.rotate((int)(STEPS/frame));
-          while (motor.isRotating()) motor.run();
-          int data[] = {1};
-          nrf.send(data);
-          delay(pause);
-        }
-        
-      }
+  if (nrf.isEmpty()){
+    Serial.println("Waiting data");
+    nrf.receive();
+  }
+  else{
+    nrf.printData();
+    int acceleration = nrf.getValue(0);
+    int speed = nrf.getValue(1);
+    int steps = nrf.getValue(2);
+    nrf.clear();
+    
+    motor.setParams(speed, acceleration);
+    motor.setZero();
+    motor.rotate(steps);
+    
+    while (motor.isRotating()){
+      Serial.println(motor.getCurrentPosition());
+      motor.run();
+    }
+    int data[] = {1};
+    nrf.send(data);
   }
 }

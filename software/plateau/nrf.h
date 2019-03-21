@@ -19,4 +19,6 @@ class Nrf
     void receive();
     int getValue(int i);
     boolean isEmpty();
+    void printData();
+    void clear();
 };
