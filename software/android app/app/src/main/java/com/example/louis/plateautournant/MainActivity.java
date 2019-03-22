@@ -1,0 +1,173 @@
+package com.example.louis.plateautournant;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Set;
+
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private final static int REQUEST_CODE_ENABLE_BLUETOOTH = 0;
+    private Set<BluetoothDevice> devices;
+    private BluetoothAdapter adaptateurBluetooth;
+    private BroadcastReceiver bluetoothReceiver;
+    private ArrayList<Peripherique> peripheriques;
+    private Peripherique peripherique;
+    private ArrayList<String> noms;
+    private Handler handler;
+
+    private Button btnConnecter;
+    private Button btnDeconnecter;
+    private Spinner spinnerListePeripheriques;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.commande);
+        btnConnecter = findViewById(R.id.btnConnecter);
+        btnDeconnecter = findViewById(R.id.btnDeconnecter);
+        spinnerListePeripheriques = findViewById(R.id.spinnerListePeripheriques);
+
+        btnConnecter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("click sur connecter");
+                peripherique.connecter();
+            }
+        });
+
+
+
+
+
+        adaptateurBluetooth = BluetoothAdapter.getDefaultAdapter();
+        if (adaptateurBluetooth == null)
+        {
+            btnConnecter.setEnabled(false);
+            btnDeconnecter.setEnabled(false);
+            Toast.makeText(getApplicationContext(), "Bluetooth non activé !", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            if (!adaptateurBluetooth.isEnabled())
+            {
+                Toast.makeText(getApplicationContext(), "Bluetooth non activé !", Toast.LENGTH_SHORT).show();
+                Intent activeBlueTooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(activeBlueTooth, REQUEST_CODE_ENABLE_BLUETOOTH);
+                //bluetoothAdapter.enable();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Bluetooth activé", Toast.LENGTH_SHORT).show();
+
+                // Recherche des périphériques connus
+                peripheriques = new ArrayList<Peripherique>();
+                noms = new ArrayList<String>();
+                devices = adaptateurBluetooth.getBondedDevices();
+                for (BluetoothDevice blueDevice : devices)
+                {
+                    //Toast.makeText(getApplicationContext(), "Périphérique = " + blueDevice.getName(), Toast.LENGTH_SHORT).show();
+                    peripheriques.add(new Peripherique(blueDevice, handler));
+                    noms.add(blueDevice.getName());
+                    btnConnecter.setEnabled(true);
+                    btnDeconnecter.setEnabled(false);
+                }
+
+                if(peripheriques.size() == 0)
+                    peripheriques.add(new Peripherique(null, handler));
+
+                if(noms.size() == 0)
+                    noms.add("Aucun");
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, noms);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerListePeripheriques.setAdapter(adapter);
+                adapter.setNotifyOnChange(true);
+
+                spinnerListePeripheriques.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+                {
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id)
+                    {
+                        //Toast.makeText(getBaseContext(), noms.get(position), Toast.LENGTH_SHORT).show();
+                        peripherique = peripheriques.get(position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0)
+                    {
+                        // TODO Auto-generated method stub
+                    }
+                });
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode != REQUEST_CODE_ENABLE_BLUETOOTH)
+            return;
+        if (resultCode == RESULT_OK)
+        {
+            Toast.makeText(getApplicationContext(), "Bluetooth activé", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Bluetooth non activé !", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        if(v.getId() == R.id.btnConnecter)
+        {
+            System.out.println("click sur connecter");
+            peripherique.connecter();
+        }
+
+        if(v.getId() == R.id.btnDeconnecter)
+        {
+            if(peripherique.deconnecter())
+            {
+                btnConnecter.setEnabled(true);
+                btnDeconnecter.setEnabled(false);
+            }
+        }
+
+        //gererBoutons(v);
+    }
+
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        if (adaptateurBluetooth != null)
+        {
+            adaptateurBluetooth.cancelDiscovery();
+            unregisterReceiver(bluetoothReceiver);
+            //unregisterReceiver(bluetoothReceiver);
+        }
+    }
+}
+
