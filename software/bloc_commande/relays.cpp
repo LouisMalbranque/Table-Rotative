@@ -9,25 +9,25 @@ void Relays::begin(){
   for (int i=0; i<PULSE_DURATION; i++){
     digitalWrite(pinRelay[i], LOW);
   }
+  pinMode(GREEN,OUTPUT);
+  pinMode(RED,OUTPUT);
 }
 
 void Relays::triggerAll(){
   for (int i=0; i<relays_number; i++){
       
     digitalWrite(pinRelay[i], HIGH);
-    digitalWrite(3, HIGH);
+    digitalWrite(GREEN, HIGH);
 
 
     delay(PULSE_DURATION);
-    digitalWrite(3, LOW);
+    digitalWrite(GREEN, LOW);
     digitalWrite(pinRelay[i], LOW);
-    delay(delayBetweenTriggersMs);
+    delay(values[PAUSE]);
   }
-  digitalWrite(2, HIGH);
-
-
+    digitalWrite(RED, HIGH);
     delay(PULSE_DURATION);
-    digitalWrite(2, LOW);
+    digitalWrite(RED, LOW);
 }
 
 void Relays::triggerSimultaneous(){

@@ -1,4 +1,5 @@
 #include "arduino.h"
+#include "constantes.h"
 
 class Instruction
 {

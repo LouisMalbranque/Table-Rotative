@@ -1,4 +1,5 @@
 #include "nrf.h"
+#include "constantes.h"
 
 Nrf::Nrf(){
   

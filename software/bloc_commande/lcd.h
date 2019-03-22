@@ -1,8 +1,8 @@
 #include <Wire.h>
 #include <Adafruit_SSD1306.h>
 #include "arduino.h"
-#define OLED_RESET 4
-#define MAXIMUM_NUMBER_OF_VALUES 16
+#include "constantes.h"
+
 
 class Lcd
 {
@@ -12,6 +12,7 @@ class Lcd
   public:
     Lcd();
     void begin();
+    void resetValues();
     void symboleBluetooth();
     void display();
     void setValues(int *values);

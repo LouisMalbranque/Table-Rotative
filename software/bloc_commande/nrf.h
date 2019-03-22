@@ -1,4 +1,5 @@
 #include "arduino.h"
+#include "constantes.h"
 
 #include <SPI.h>      // Pour la communication via le port SPI
 #include <Mirf.h>     // Pour la gestion de la communication
@@ -9,11 +10,11 @@
 class Nrf
 {
   private:
-    int data[8];
+    int data[3];
   public:
     Nrf();
     void begin();
-    void send(int data[8]);
+    void send(int data[3]);
     void receive();
     int getValue(int i);
 };

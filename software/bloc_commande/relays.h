@@ -1,14 +1,7 @@
-
-
-
-
-
-
 #include "arduino.h"
+#include "constantes.h"
 
-#define PULSE_DURATION 1500
 
-#define MAXIMUM_NUMBER_OF_VALUES 16
 
 class Relays
 {
