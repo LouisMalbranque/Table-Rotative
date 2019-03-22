@@ -16,10 +16,10 @@ void setup() {
 
 void loop() {
   if (nrf.isEmpty()){
-    Serial.println("Waiting data");
     nrf.receive();
   }
   else{
+    Serial.println("Data received");
     nrf.printData();
     int acceleration = nrf.getValue(0);
     int speed = nrf.getValue(1);
@@ -34,6 +34,7 @@ void loop() {
       Serial.println(motor.getCurrentPosition());
       motor.run();
     }
+    Serial.println("Rotation finished");
     int data[] = {1};
     nrf.send(data);
   }

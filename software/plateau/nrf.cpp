@@ -15,6 +15,8 @@ void Nrf::begin(){
 
   Mirf.setTADDR((byte *) "nrf02"); // Adresse de transmission
   Mirf.setRADDR((byte *) "nrf01"); // Adresse de réception
+
+  for (int i=0; i<38; i++) data[i]=0;
 }
 
 void Nrf::send(int data[8]){
