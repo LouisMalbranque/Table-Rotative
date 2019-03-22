@@ -6,7 +6,7 @@ Relays::Relays(){
 }
 
 void Relays::begin(){
-  for (int i=0; i<PULSE_DURATION; i++){
+  for (int i=0; i<CAMERA_NUMBER; i++){
     digitalWrite(pinRelay[i], LOW);
   }
   pinMode(GREEN,OUTPUT);
@@ -18,15 +18,18 @@ void Relays::triggerAll(){
       
     digitalWrite(pinRelay[i], HIGH);
     digitalWrite(GREEN, HIGH);
-
-
+    
     delay(PULSE_DURATION);
+    
     digitalWrite(GREEN, LOW);
     digitalWrite(pinRelay[i], LOW);
-    delay(values[PAUSE]);
+    
+    delay(values[PAUSE_BETWEEN_CAMERA]);
   }
     digitalWrite(RED, HIGH);
+    
     delay(PULSE_DURATION);
+    
     digitalWrite(RED, LOW);
 }
 
@@ -49,7 +52,7 @@ void Relays::setValues(int *values){
     this->values[i] = values[i];
   }
   if(values[0]==0){
-    relays_number = values[4];
+    relays_number = values[CAMERA_NUMBER];
     //quels relais avec appareils branchés
     setDelay(values[5]);
   }

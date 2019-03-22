@@ -10,11 +10,12 @@
 class Nrf
 {
   private:
-    int data[3];
+    int data[NRF_DATA_LENGTH];
   public:
     Nrf();
     void begin();
-    void send(int data[3]);
+    void send(int data[NRF_DATA_LENGTH]);
     void receive();
     int getValue(int i);
+    void clear();
 };

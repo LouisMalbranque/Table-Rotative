@@ -76,33 +76,33 @@ void Lcd::display() {
 
     screen.setCursor( 64, 50 );
     screen.print( "Pause=");
-    screen.println(values[PAUSE]);
+    screen.println(values[PAUSE_BETWEEN_CAMERA]);
   }
 
-  else if (values[0] == 1) {
+  else if (values[MODE] == 1) {
     screen.setCursor( 0, 0 );
     screen.println( "Temps Reel" );
 
 
     screen.setTextSize( 1 );
     screen.setCursor( 2, 30 );
-    screen.println( "Accel=" + (String) values[2] );
+    screen.println( "Accel=" + (String) values[ACCELERATION] );
 
     screen.setCursor( 64, 30 );
-    screen.println( "Speed=" + (String) values[3] );
+    screen.println( "Speed=" + (String) values[SPEED] );
 
-    if (values[4] != 0) {
+    if (values[ROTATION_TIME] >= 0) {
       screen.setCursor( 2, 46 );
-      screen.println( "Duree=" + (String) values[4] );
+      screen.println( "Duree=" + (String) values[ROTATION_TIME] );
     }
     else {
       screen.setCursor( 2, 46 );
-      screen.println( "NbTours=" + (String) values[5] );
+      screen.println( "NbTours=" + (String) values[ROTATION_NUMBER] );
     }
 
     screen.setCursor( 64, 46 );
     screen.println( "Sens:");
-    if (values[1] == 0) {
+    if (values[DIRECTION] == 0) {
       flecheDroite(98, 49, 110, 49);
     }
     else {
