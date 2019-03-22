@@ -1,8 +1,6 @@
 #include "arduino.h"
 #include <AccelStepper.h>
 
-#define STEPS 3600
-
 class Motor
 {
   private:
@@ -11,7 +9,7 @@ class Motor
     Motor();
     void begin();
     void rotate(int steps);
-    void setParams(int speed, int acceleration);
+    void setParams(int speed, int acceleration, int direction);
     boolean isRotating();
     void run();
     int getCurrentPosition();

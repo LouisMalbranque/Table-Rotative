@@ -13,7 +13,7 @@ void Motor::setZero(){
   stepper.setCurrentPosition(0);
 }
   
-void Motor::setParams(int speed, int acceleration){
+void Motor::setParams(int speed, int acceleration, int direction){
   stepper.setAcceleration(acceleration);
   stepper.setSpeed(speed);
 }

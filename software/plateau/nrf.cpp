@@ -1,5 +1,7 @@
 #include "nrf.h"
 
+
+
 Nrf::Nrf(){
   
 }
@@ -9,17 +11,17 @@ void Nrf::begin(){
   Mirf.spi = &MirfHardwareSpi; // On veut utiliser le port SPI hardware
   Mirf.init(); // Initialise la bibliothéque
 
-  Mirf.channel = 1; // Choix du cannal de communication (128 canaux disponible, de 0 à 127)
-  Mirf.payload = sizeof(int) * 8; // Taille d'un message (maximum 32 octets)
+  Mirf.channel = 1; // Choix du cannal de communication (12DATA_LENGTH canaux disponible, de 0 à 127)
+  Mirf.payload = sizeof(int) * DATA_LENGTH; // Taille d'un message (maximum 32 octets)
   Mirf.config(); // Sauvegarde la configuration dans le module radio
 
   Mirf.setTADDR((byte *) "nrf02"); // Adresse de transmission
   Mirf.setRADDR((byte *) "nrf01"); // Adresse de réception
 
-  for (int i=0; i<38; i++) data[i]=0;
+  for (int i=0; i<DATA_LENGTH; i++) data[i]=0;
 }
 
-void Nrf::send(int data[8]){
+void Nrf::send(int data[DATA_LENGTH]){
   Mirf.send((byte *) data);
   // On attend la fin de l'envoi
   while (Mirf.isSending());
@@ -33,20 +35,18 @@ void Nrf::receive(){
 }
 
 int Nrf::getValue(int i){
-  int r = data[i];
-  data[i] = 0;
-  return r;
+  return data[i];
 }
 
 boolean Nrf::isEmpty(){
-  for (int i=0; i<8; i++){
+  for (int i=0; i<DATA_LENGTH; i++){
     if (data[i] != 0) return false;
   }
   return true;
 }
 
 void Nrf::printData(){
-  for (int i=0; i<8; i++){
+  for (int i=0; i<DATA_LENGTH; i++){
     Serial.print(data[i]);
     Serial.print("\t");
   }  
@@ -54,7 +54,7 @@ void Nrf::printData(){
 }
 
 void Nrf::clear(){
-  for (int i=0; i<8; i++){
+  for (int i=0; i<DATA_LENGTH; i++){
     data[i]=0;
   }  
 }
