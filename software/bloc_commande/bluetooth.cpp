@@ -8,8 +8,7 @@ void Bluetooth::begin(){
   hc05.begin(9600);
 }
 
-boolean Bluetooth::receive(){
-  if (!hc05.available()) return false;
+void Bluetooth::receive(){
    while (hc05.available()) {
     if (hc05.available() > 0) {
       char c = hc05.read();  //gets one byte from serial buffer
@@ -18,7 +17,6 @@ boolean Bluetooth::receive(){
     }
   }
   hc05.flush();
-  return true;
 }
 int Bluetooth::getDataLength(){
   return (int)(data.length());
@@ -53,8 +51,16 @@ void Bluetooth::print(String data){
   hc05.println(data);
 }
 
-void Bluetooth::reset(){
-  for(int i=0;i<8;i++){
+boolean Bluetooth::isFull(){
+  for (int i=0;i<MAXIMUM_NUMBER_OF_VALUES;i++){
+    if (values[i]!=0) return true;
+  }
+  return false;
+}
+
+void Bluetooth::resetValues(){
+  for (int i=0;i<MAXIMUM_NUMBER_OF_VALUES;i++){
     values[i]=0;
   }
 }
+
