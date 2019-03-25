@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 
-public class MainActivity extends AppCompatActivity {
+public class Connexion extends AppCompatActivity {
     private final static int REQUEST_CODE_ENABLE_BLUETOOTH = 0;
     private Set<BluetoothDevice> devices;
     private BluetoothAdapter adaptateurBluetooth;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.commande);
+        setContentView(R.layout.connexion);
         btnConnecter = findViewById(R.id.btnConnecter);
         btnDeconnecter = findViewById(R.id.btnDeconnecter);
         btnSend = findViewById(R.id.btnSend);
@@ -64,14 +64,7 @@ public class MainActivity extends AppCompatActivity {
         btnDeconnecter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (peripherique.deconnecter()){
-                    if (adaptateurBluetooth != null){
-                        adaptateurBluetooth.cancelDiscovery();
-                    }
-                    if (bluetoothReceiver != null){
-                        unregisterReceiver(bluetoothReceiver);
-                    }
-                }
+                peripherique.deconnecter();
             }
         });
 
