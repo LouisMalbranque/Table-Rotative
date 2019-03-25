@@ -25,6 +25,7 @@ public class Peripherique
     public final static int CODE_CONNEXION = 0;
     public final static int CODE_RECEPTION = 1;
     public final static int CODE_DECONNEXION = 2;
+    public boolean isConnected = false;
 
 
     public Peripherique(BluetoothDevice device, Handler handler)
@@ -128,7 +129,7 @@ public class Peripherique
                     tReception.start();
 
 
-
+                    isConnected=true;
                     System.out.println("Connexion établie");
 
                 }

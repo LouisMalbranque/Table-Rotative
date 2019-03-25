@@ -52,7 +52,9 @@ public class Connexion extends AppCompatActivity {
             public void onClick(View v) {
                 System.out.println("click sur connecter");
                 peripherique.connecter();
-
+                while(!peripherique.isConnected);
+                Intent intent = new Intent(Connexion.this, MainActivity.class);
+                startActivity(intent);
             }
         });
         btnSend.setOnClickListener(new View.OnClickListener() {
