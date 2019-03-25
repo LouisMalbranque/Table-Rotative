@@ -1,0 +1,19 @@
+#define MODE 0
+#define DIRECTION 1
+#define FRAME 2
+#define PAUSE_BETWEEN_CAMERA 3
+#define CAMERA_NUMBER 4
+#define ACCELERATION 5
+#define SPEED 6
+#define STEPS 7
+#define ROTATION_NUMBER 8
+#define ROTATION_TIME 9
+
+#define PULSE_DURATION 1500
+
+#define OLED_RESET 4
+#define MAXIMUM_NUMBER_OF_VALUES 10
+#define NRF_DATA_LENGTH 5
+
+#define GREEN 3
+#define RED 2
