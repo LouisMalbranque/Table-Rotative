@@ -13,6 +13,8 @@ import android.widget.SpinnerAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.louis.plateautournant.Fragment.RealTimeRotation;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     TextView dataText;
 
     ArrayList<String> spinnerModeItems = new ArrayList<String>();
+
+    RealTimeRotation realTimeRotation = new RealTimeRotation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,29 +60,34 @@ public class MainActivity extends AppCompatActivity {
         spinnerMode.setAdapter(adapter);
         adapter.setNotifyOnChange(true);
 
-        spinnerMode.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinnerMode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        RealTimeRotation realTimeRotation = new RealTimeRotation();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, realTimeRotation).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment, realTimeRotation).commit();
                     case 1:
                         //realTimeRotation = new RealTimeRotation();
-                        getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.fragment)).commit();
+                        //getFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.fragment)).commit();
                     default:
                         break;
 
                 }
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
+
 
 
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 
