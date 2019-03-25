@@ -9,13 +9,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 
 public class Peripherique
 {
     private String nom;
     private String adresse;
-    private Handler handler = null;
+    private Handler handler = new Handler();
     private BluetoothDevice device = null;
     private BluetoothSocket socket = null;
     private InputStream receiveStream = null;
@@ -110,16 +111,23 @@ public class Peripherique
         {
             @Override public void run()
             {
+                deconnecter();
                 System.out.println("Connexion en cours");
                 try
                 {
+                    try {
+                        socket = device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
+                        tReception = new TReception(handler);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        return;
+                    }
                     socket.connect();
-
-                    Message msg = Message.obtain();
-                    msg.arg1 = CODE_CONNEXION;
-                    handler.sendMessage(msg);
-
+                    sendStream = socket.getOutputStream();
+                    receiveStream = socket.getInputStream();
                     tReception.start();
+
+
 
                     System.out.println("Connexion établie");
 
@@ -135,19 +143,31 @@ public class Peripherique
 
     public boolean deconnecter()
     {
-        try
-        {
-            tReception.arreter();
+        System.out.println("déconnexion");
 
-            socket.close();
-            return true;
-        }
-        catch (IOException e)
-        {
-            System.out.println("<Socket> error close");
+        try {
+            tReception.arreter();
+        }catch (Exception e){
             e.printStackTrace();
-            return false;
         }
+        if (receiveStream != null) {
+            try {receiveStream.close();} catch (Exception e) {}
+            receiveStream = null;
+        }
+
+        if (sendStream != null) {
+            try {sendStream.close();} catch (Exception e) {}
+            sendStream = null;
+        }
+
+        if (socket != null) {
+            try {socket.close();} catch (Exception e) {}
+            socket = null;
+        }
+
+        System.out.println("déconnexion réussie");
+        return true;
+
     }
 
 
@@ -163,6 +183,7 @@ public class Peripherique
 
         @Override
         public void run() {
+
             while (!fini) {
                 try {
                     if (receiveStream.available() > 0) {

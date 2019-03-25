@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_ENABLE_BLUETOOTH = 0;
     private Set<BluetoothDevice> devices;
     private BluetoothAdapter adaptateurBluetooth;
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button btnConnecter;
     private Button btnDeconnecter;
+    private Button btnSend;
     private Spinner spinnerListePeripheriques;
 
 
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.commande);
         btnConnecter = findViewById(R.id.btnConnecter);
         btnDeconnecter = findViewById(R.id.btnDeconnecter);
+        btnSend = findViewById(R.id.btnSend);
         spinnerListePeripheriques = findViewById(R.id.spinnerListePeripheriques);
 
         btnConnecter.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +52,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 System.out.println("click sur connecter");
                 peripherique.connecter();
+
+            }
+        });
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                peripherique.envoyer("1,0,-1,-1,-1,3000,400,360,-1,5000");
+            }
+        });
+        btnDeconnecter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (peripherique.deconnecter()){
+                    if (adaptateurBluetooth != null){
+                        adaptateurBluetooth.cancelDiscovery();
+                    }
+                    if (bluetoothReceiver != null){
+                        unregisterReceiver(bluetoothReceiver);
+                    }
+                }
             }
         });
 
@@ -60,8 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         adaptateurBluetooth = BluetoothAdapter.getDefaultAdapter();
         if (adaptateurBluetooth == null)
         {
-            btnConnecter.setEnabled(false);
-            btnDeconnecter.setEnabled(false);
             Toast.makeText(getApplicationContext(), "Bluetooth non activé !", Toast.LENGTH_SHORT).show();
         }
         else
@@ -86,8 +106,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //Toast.makeText(getApplicationContext(), "Périphérique = " + blueDevice.getName(), Toast.LENGTH_SHORT).show();
                     peripheriques.add(new Peripherique(blueDevice, handler));
                     noms.add(blueDevice.getName());
-                    btnConnecter.setEnabled(true);
-                    btnDeconnecter.setEnabled(false);
                 }
 
                 if(peripheriques.size() == 0)
@@ -137,36 +155,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v)
-    {
-        if(v.getId() == R.id.btnConnecter)
-        {
-            System.out.println("click sur connecter");
-            peripherique.connecter();
-        }
-
-        if(v.getId() == R.id.btnDeconnecter)
-        {
-            if(peripherique.deconnecter())
-            {
-                btnConnecter.setEnabled(true);
-                btnDeconnecter.setEnabled(false);
-            }
-        }
-
-        //gererBoutons(v);
-    }
-
-
-    @Override
     protected void onDestroy()
     {
         super.onDestroy();
-        if (adaptateurBluetooth != null)
-        {
+        if (adaptateurBluetooth != null){
             adaptateurBluetooth.cancelDiscovery();
+        }
+        if (bluetoothReceiver != null){
             unregisterReceiver(bluetoothReceiver);
-            //unregisterReceiver(bluetoothReceiver);
         }
     }
 }
