@@ -1,9 +1,11 @@
-package com.example.louis.plateautournant;
+package com.example.louis.plateautournant.Fragment;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.example.louis.plateautournant.R;
 
 import org.w3c.dom.Text;
 
@@ -43,7 +47,33 @@ public class RealTimeRotation extends Fragment {
         switchModeTurnTime = v.findViewById(R.id.switchTimeTurn);
         numberText = v.findViewById(R.id.numberTurnTime);
         seekNumber = v.findViewById(R.id.seekBarTimeTurn);
+        seekNumber.setMax(10);
         text = v.findViewById(R.id.timeTurnText);
+        numberText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try{
+                    int position=numberText.length();
+                    numberText.setSelection(position);
+                    seekNumber.setProgress(Integer.parseInt(s.toString()));
+                    if (numberText.length()==0){
+                        seekNumber.setProgress(0);
+                        numberText.setText(0);
+                    }
+                } catch(Exception ex) {}
+
+            }
+        });
 
         switchModeTurnTime.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

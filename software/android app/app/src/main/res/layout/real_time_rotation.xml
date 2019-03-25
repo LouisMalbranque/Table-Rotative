@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RealTimeRotation">
+    tools:context=".Fragment.RealTimeRotation">
 
     <TextView
         android:id="@+id/timeText"
@@ -53,14 +53,19 @@
     <EditText
         android:id="@+id/numberTurnTime"
         android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:ems="10"
         android:inputType="numberDecimal"
+        android:singleLine="false"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColorLink="@android:color/background_dark"
+        android:textDirection="inherit"
+        android:textIsSelectable="false"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switchTimeTurn" />
+        app:layout_constraintTop_toBottomOf="@+id/turnText" />
 
     <SeekBar
         android:id="@+id/seekBarTimeTurn"
@@ -70,6 +75,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeTurnText" />
+        app:layout_constraintTop_toBottomOf="@+id/numberTurnTime" />
 </android.support.constraint.ConstraintLayout>
