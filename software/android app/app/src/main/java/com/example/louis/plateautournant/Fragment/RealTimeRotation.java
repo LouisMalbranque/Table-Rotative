@@ -77,7 +77,7 @@ public class RealTimeRotation extends android.app.Fragment {
                         seekNumber.setProgress(0);
                         numberText.setText(0);
                     }
-                } catch(Exception ex) {}
+                } catch(Exception ex) {ex.printStackTrace();}
 
             }
         });

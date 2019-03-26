@@ -13,6 +13,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.louis.plateautournant.Bluetooth.Peripherique;
+import com.example.louis.plateautournant.Fragment.ProgrammedRotation;
 import com.example.louis.plateautournant.Fragment.RealTimeRotation;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> spinnerModeItems = new ArrayList<String>();
 
     RealTimeRotation realTimeRotation = new RealTimeRotation();
+    ProgrammedRotation programmedRotation = new ProgrammedRotation();
 
     private int mode;
     private int direction;
@@ -67,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
         dataText = findViewById(R.id.data);
 
-        spinnerModeItems.add("Mode Temps Réel");
         spinnerModeItems.add("Mode Programmé");
+        spinnerModeItems.add("Mode Temps Réel");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerModeItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -81,13 +83,13 @@ public class MainActivity extends AppCompatActivity {
                 switch (position){
                     case 0:
                         mode=0;
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, realTimeRotation).commit();
-
+                        getFragmentManager().beginTransaction().replace(R.id.fragment, programmedRotation).commit();
+                        break;
                     case 1:
                         //realTimeRotation = new RealTimeRotation();
                         mode=1;
-                        getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.fragment)).commit();
-
+                        getFragmentManager().beginTransaction().replace(R.id.fragment, realTimeRotation).commit();
+                        break;
                     default:
                         break;
 
@@ -103,26 +105,36 @@ public class MainActivity extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                direction=1;
+                acceleration = Integer.parseInt(accelerationNumber.getText().toString());
+                speed = Integer.parseInt(speedNumber.getText().toString());
+                steps=3600;
+
                 switch(mode){
-                    case 0:
-                        direction=1;
-                        acceleration=Integer.parseInt(accelerationNumber.getText().toString());
-                        speed=Integer.parseInt(speedNumber.getText().toString());
+                    case 1:
                         if (realTimeRotation.isModeTime()){
                             rotation_number=-1;
-                            rotation_time=Integer.parseInt(realTimeRotation.getNumberText().toString());
+                            rotation_time=Integer.parseInt(realTimeRotation.getNumberText().getText().toString());
                         }else{
-                            rotation_number=Integer.parseInt(realTimeRotation.getNumberText().toString());
+                            rotation_number=Integer.parseInt(realTimeRotation.getNumberText().getText().toString());
                             rotation_time=-1;
                         }
                         frame=-1;
                         camera_number=-1;
                         pause_between_camera=-1;
-                        steps=3600;
                         break;
-
+                    case 0:
+                        rotation_number = -1;
+                        rotation_time = -1;
+                        frame = Integer.parseInt(programmedRotation.getFrameNumber().getText().toString());
+                        camera_number = Integer.parseInt(programmedRotation.getCameraNumber().getText().toString());
+                        pause_between_camera = Integer.parseInt(programmedRotation.getTimeBetweenPhotosNumber().getText().toString());
+                        break;
                 }
-
+                
+                data="";
                 data +=Integer.toString(mode)+",";
                 data +=Integer.toString(direction)+",";
                 data +=Integer.toString(acceleration)+",";

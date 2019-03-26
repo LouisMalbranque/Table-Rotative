@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.example.louis.plateautournant.Fragment.RealTimeRotation"
+        android:name="com.example.louis.plateautournant.Fragment.BlankFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -84,6 +84,7 @@
             android:layout_marginEnd="8dp"
             android:ems="10"
             android:inputType="number"
+            android:text="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekbarAcceleration" />
 
@@ -117,6 +118,7 @@
             android:layout_marginEnd="8dp"
             android:ems="10"
             android:inputType="number"
+            android:text="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
