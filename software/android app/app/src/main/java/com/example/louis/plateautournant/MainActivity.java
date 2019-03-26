@@ -218,9 +218,9 @@ public class MainActivity extends AppCompatActivity {
                 
                 data="";
                 data +=Integer.toString(mode)+",";
-                data +=Integer.toString(direction)+",";
                 data +=Integer.toString(acceleration)+",";
                 data +=Integer.toString(speed)+",";
+                data +=Integer.toString(direction)+",";
                 data +=Integer.toString(rotation_number)+",";
                 data +=Integer.toString(rotation_time)+",";
                 data +=Integer.toString(frame)+",";
