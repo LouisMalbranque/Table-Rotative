@@ -73,14 +73,12 @@ public class RealTimeRotation extends android.app.Fragment {
                     int position=numberText.length();
                     numberText.setSelection(position);
                     seekNumber.setProgress(Integer.parseInt(s.toString()));
-                    if (numberText.length()==0){
-                        seekNumber.setProgress(0);
-                        numberText.setText(0);
-                    }
                 } catch(Exception ex) {}
 
             }
         });
+
+
 
         switchModeTurnTime.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -115,6 +113,7 @@ public class RealTimeRotation extends android.app.Fragment {
 
             }
         });
+
 
         return v;
     }

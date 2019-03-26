@@ -2,6 +2,8 @@ package com.example.louis.plateautournant;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         accelerationNumber = findViewById(R.id.numberAcceleration);
         accelerationSeekBar = findViewById(R.id.seekbarAcceleration);
 
+
         speedNumber = findViewById(R.id.numberSpeed);
         speedSeekBar = findViewById(R.id.seekbarSpeed);
 
@@ -67,8 +70,87 @@ public class MainActivity extends AppCompatActivity {
 
         dataText = findViewById(R.id.data);
 
-        spinnerModeItems.add("Mode Temps Réel");
+        accelerationNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try{
+                    int position=accelerationNumber.length();
+                    accelerationNumber.setSelection(position);
+                    accelerationSeekBar.setProgress(Integer.parseInt(s.toString()));
+                } catch(Exception ex) {}
+
+            }
+        });
+        accelerationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                accelerationNumber.setText(Integer.toString(accelerationSeekBar.getProgress()));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        accelerationNumber.clearFocus();
+
+        speedNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try{
+                    int position=speedNumber.length();
+                    speedNumber.setSelection(position);
+                    speedSeekBar.setProgress(Integer.parseInt(s.toString()));
+                } catch(Exception ex) {}
+
+            }
+        });
+        speedSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                speedNumber.setText(Integer.toString(speedSeekBar.getProgress()));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        speedNumber.clearFocus();
+
         spinnerModeItems.add("Mode Programmé");
+        spinnerModeItems.add("Mode Temps Réel");
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerModeItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -80,13 +162,16 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        mode=0;
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, realTimeRotation).commit();
-
-                    case 1:
                         //realTimeRotation = new RealTimeRotation();
+                        mode=0;
+                        //getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.fragment)).commit();
+                        break;
+                    case 1:
                         mode=1;
-                        getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.fragment)).commit();
+                        System.out.println(mode);
+                        getFragmentManager().beginTransaction().replace(R.id.fragment, realTimeRotation).commit();
+                        break;
+
 
                     default:
                         break;
@@ -105,14 +190,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch(mode){
                     case 0:
+                        break;
+                    case 1:
                         direction=1;
                         acceleration=Integer.parseInt(accelerationNumber.getText().toString());
                         speed=Integer.parseInt(speedNumber.getText().toString());
                         if (realTimeRotation.isModeTime()){
                             rotation_number=-1;
-                            rotation_time=Integer.parseInt(realTimeRotation.getNumberText().toString());
+                            rotation_time=Integer.parseInt(realTimeRotation.getNumberText().getText().toString());
                         }else{
-                            rotation_number=Integer.parseInt(realTimeRotation.getNumberText().toString());
+                            rotation_number=Integer.parseInt(realTimeRotation.getNumberText().getText().toString());
                             rotation_time=-1;
                         }
                         frame=-1;
@@ -120,19 +207,20 @@ public class MainActivity extends AppCompatActivity {
                         pause_between_camera=-1;
                         steps=3600;
                         break;
-
+                    default:
+                        break;
                 }
 
-                data +=Integer.toString(mode)+",";
-                data +=Integer.toString(direction)+",";
-                data +=Integer.toString(acceleration)+",";
-                data +=Integer.toString(speed)+",";
-                data +=Integer.toString(rotation_number)+",";
-                data +=Integer.toString(rotation_time)+",";
-                data +=Integer.toString(frame)+",";
-                data +=Integer.toString(camera_number)+",";
-                data +=Integer.toString(pause_between_camera)+",";
-                data +=Integer.toString(steps);
+                data += Integer.toString(mode)+",";
+                data += Integer.toString(acceleration)+",";
+                data += Integer.toString(speed)+",";
+                data += Integer.toString(direction)+",";
+                data += Integer.toString(rotation_number)+",";
+                data += Integer.toString(rotation_time)+",";
+                data += Integer.toString(frame)+",";
+                data += Integer.toString(camera_number)+",";
+                data += Integer.toString(pause_between_camera)+",";
+                data += Integer.toString(steps);
 
                 dataText.setText(data);
             }
