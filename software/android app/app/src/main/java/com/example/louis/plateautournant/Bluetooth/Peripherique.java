@@ -14,6 +14,8 @@ import java.util.UUID;
 
 
 public class Peripherique {
+    public static Peripherique peripherique;
+
     private String nom;
     private String adresse;
     private Handler handler = new Handler();

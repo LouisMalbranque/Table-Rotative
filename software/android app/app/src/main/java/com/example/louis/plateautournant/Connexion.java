@@ -5,19 +5,29 @@ import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.louis.plateautournant.Adapter.PeripheriqueAdapter;
 import com.example.louis.plateautournant.Bluetooth.Peripherique;
+import com.example.louis.plateautournant.Recycler.RecyclerTouch;
 
 import java.util.ArrayList;
 import java.util.Set;
+
+import static java.security.AccessController.getContext;
 
 
 public class Connexion extends AppCompatActivity {
@@ -31,21 +41,19 @@ public class Connexion extends AppCompatActivity {
     private Handler handler;
 
     private Button btnConnecter;
-    private Button btnDeconnecter;
-    private Button btnSend;
-    private Spinner spinnerListePeripheriques;
+    private RecyclerView listePeripheriques;
+
+    private TextView peripheriqueText;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.connexion);
+
+        peripheriqueText = findViewById(R.id.textPeripheriqueName);
         btnConnecter = findViewById(R.id.btnConnecter);
-        btnDeconnecter = findViewById(R.id.btnDeconnecter);
-        btnSend = findViewById(R.id.btnSend);
-        spinnerListePeripheriques = findViewById(R.id.spinnerListePeripheriques);
 
         btnConnecter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,26 +61,11 @@ public class Connexion extends AppCompatActivity {
                 System.out.println("click sur connecter");
                 peripherique.connecter();
                 while(!peripherique.isConnected);
+                Peripherique.peripherique = peripherique;
                 Intent intent = new Intent(Connexion.this, MainActivity.class);
                 startActivity(intent);
             }
         });
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                peripherique.envoyer("1,0,-1,-1,-1,3000,400,360,-1,5000");
-            }
-        });
-        btnDeconnecter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                peripherique.deconnecter();
-            }
-        });
-
-
-
-
 
         adaptateurBluetooth = BluetoothAdapter.getDefaultAdapter();
         if (adaptateurBluetooth == null)
@@ -93,8 +86,8 @@ public class Connexion extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Bluetooth activé", Toast.LENGTH_SHORT).show();
 
                 // Recherche des périphériques connus
-                peripheriques = new ArrayList<Peripherique>();
-                noms = new ArrayList<String>();
+                peripheriques = new ArrayList<>();
+                noms = new ArrayList<>();
                 devices = adaptateurBluetooth.getBondedDevices();
                 for (BluetoothDevice blueDevice : devices)
                 {
@@ -105,30 +98,31 @@ public class Connexion extends AppCompatActivity {
 
                 if(peripheriques.size() == 0)
                     peripheriques.add(new Peripherique(null, handler));
-
                 if(noms.size() == 0)
                     noms.add("Aucun");
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, noms);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerListePeripheriques.setAdapter(adapter);
-                adapter.setNotifyOnChange(true);
 
-                spinnerListePeripheriques.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-                {
+                System.out.println(peripheriques.size());
+
+                listePeripheriques = (RecyclerView) findViewById(R.id.bluetoothList);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+                listePeripheriques.setLayoutManager(layoutManager);
+                listePeripheriques.setItemAnimator( new DefaultItemAnimator());
+                final PeripheriqueAdapter peripheriqueAdapter = new PeripheriqueAdapter(this, peripheriques);
+                listePeripheriques.setAdapter(peripheriqueAdapter);
+
+                listePeripheriques.addOnItemTouchListener(new RecyclerTouch(this, listePeripheriques, new RecyclerTouch.ClickListener() {
                     @Override
-                    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id)
-                    {
-                        //Toast.makeText(getBaseContext(), noms.get(position), Toast.LENGTH_SHORT).show();
+                    public void onClick(View view, int position) {
                         peripherique = peripheriques.get(position);
+                        peripheriqueText.setText(peripherique.getNom());
                     }
-
                     @Override
-                    public void onNothingSelected(AdapterView<?> arg0)
-                    {
-                        // TODO Auto-generated method stub
+                    public void onLongClick(View view, int position) {
+                        peripherique = peripheriques.get(position);
+                        peripheriqueText.setText(peripherique.getNom());
                     }
-                });
+                }));
             }
         }
     }

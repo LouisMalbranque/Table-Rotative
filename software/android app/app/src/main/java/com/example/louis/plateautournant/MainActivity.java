@@ -33,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private Button sendButton;
     private TextView dataText;
 
-    ArrayList<String> spinnerModeItems = new ArrayList<String>();
+    private ArrayList<String> spinnerModeItems = new ArrayList<String>();
 
-    RealTimeRotation realTimeRotation = new RealTimeRotation();
-    ProgrammedRotation programmedRotation = new ProgrammedRotation();
+    private RealTimeRotation realTimeRotation = new RealTimeRotation();
+    private ProgrammedRotation programmedRotation = new ProgrammedRotation();
+
+    private Peripherique peripherique;
 
     private int mode;
     private int direction;
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        peripherique = Peripherique.peripherique;
 
         spinnerMode = findViewById(R.id.spinnerMode);
 
@@ -229,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
                 data +=Integer.toString(steps);
 
                 dataText.setText(data);
+                peripherique.envoyer(data);
             }
         });
     }
