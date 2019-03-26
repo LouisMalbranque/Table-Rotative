@@ -146,6 +146,8 @@ public class Peripherique {
     {
         System.out.println("déconnexion");
 
+        isConnected=false;
+
         try {
             tReception.arreter();
         }catch (Exception e){
@@ -165,7 +167,6 @@ public class Peripherique {
             try {socket.close();} catch (Exception e) {}
             socket = null;
         }
-
         System.out.println("déconnexion réussie");
         return true;
 
