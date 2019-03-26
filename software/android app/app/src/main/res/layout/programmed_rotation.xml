@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.ProgrammedRotation"    >
+    android:background="@android:color/background_dark"
+    tools:context=".Fragment.ProgrammedRotation">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -12,68 +13,76 @@
         android:id="@+id/timeBetweenPhotosNumber"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="number"
         android:text="0"
+        android:textColor="@android:color/background_light"
         android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameNumber" />
+        app:layout_constraintBottom_toTopOf="@+id/timeBetweenPhotosSeekbar"
+        app:layout_constraintEnd_toEndOf="@+id/frameNumber"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/frameNumber" />
 
     <EditText
         android:id="@+id/cameraNumber"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
         android:text="0"
+        android:textColor="@android:color/background_light"
         android:textSize="14dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCameraNumber" />
+        app:layout_constraintBottom_toBottomOf="@+id/frameNumber"
+        app:layout_constraintEnd_toEndOf="@+id/textCameraNumber"
+        app:layout_constraintStart_toStartOf="@+id/textCameraNumber" />
 
     <EditText
         android:id="@+id/frameNumber"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="number"
         android:text="0"
+        android:textColor="@android:color/background_light"
         android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFrameNumber" />
+        app:layout_constraintBottom_toTopOf="@+id/timeBetweenPhotosNumber"
+        app:layout_constraintEnd_toEndOf="@+id/textFrameNumber"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="@+id/textFrameNumber" />
 
     <TextView
         android:id="@+id/textCameraNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="12dp"
         android:text="Nombre de caméra"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textFrameNumber"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textFrameNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Nombre de photos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/frameNumber"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textTimeBetweenPhotos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="12dp"
         android:text="Temps entre photos"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/timeBetweenPhotosSeekbar"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -82,9 +91,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeBetweenPhotosNumber" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

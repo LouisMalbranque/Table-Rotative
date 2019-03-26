@@ -25,13 +25,18 @@ public class MainActivity extends AppCompatActivity {
     private String data ="";
 
     private Spinner spinnerMode;
+
     private EditText accelerationNumber;
     private EditText speedNumber;
+    private EditText stepsmotorNumber;
+    private EditText stepstableNumber;
+
     private SeekBar accelerationSeekBar;
     private SeekBar speedSeekBar;
+
     private Switch directionSwitch;
+
     private Button sendButton;
-    private TextView dataText;
 
     private ArrayList<String> spinnerModeItems = new ArrayList<String>();
 
@@ -64,15 +69,16 @@ public class MainActivity extends AppCompatActivity {
         accelerationNumber = findViewById(R.id.numberAcceleration);
         accelerationSeekBar = findViewById(R.id.seekbarAcceleration);
 
-
         speedNumber = findViewById(R.id.numberSpeed);
         speedSeekBar = findViewById(R.id.seekbarSpeed);
+
+
+
 
         directionSwitch = findViewById(R.id.directionSwitch);
 
         sendButton = findViewById(R.id.buttonSend);
 
-        dataText = findViewById(R.id.data);
 
         accelerationNumber.addTextChangedListener(new TextWatcher() {
             @Override
@@ -156,8 +162,8 @@ public class MainActivity extends AppCompatActivity {
         spinnerModeItems.add("Mode Temps Réel");
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerModeItems);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_spinner, spinnerModeItems);
+        adapter.setDropDownViewResource(R.layout.custom_spinner);
         spinnerMode.setAdapter(adapter);
         adapter.setNotifyOnChange(true);
 
@@ -230,7 +236,6 @@ public class MainActivity extends AppCompatActivity {
                 data +=Integer.toString(pause_between_camera)+",";
                 data +=Integer.toString(steps);
 
-                dataText.setText(data);
                 peripherique.envoyer(data);
             }
         });
