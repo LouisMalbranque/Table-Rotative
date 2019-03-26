@@ -7,6 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.RealTimeRotation">
 
+    <EditText
+        android:id="@+id/numberTurnTime"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/turnText" />
+
     <TextView
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
@@ -38,7 +51,7 @@
         android:text="Turns Mode"
         android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/switchTimeTurn"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/timeTurnText"
@@ -49,23 +62,6 @@
         android:text="Rotation Time"
         app:layout_constraintBottom_toTopOf="@+id/seekBarTimeTurn"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/numberTurnTime"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:inputType="numberDecimal"
-        android:singleLine="false"
-        android:text="0"
-        android:textAlignment="center"
-        android:textColorLink="@android:color/background_dark"
-        android:textDirection="inherit"
-        android:textIsSelectable="false"
-        android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/turnText" />
 
     <SeekBar
         android:id="@+id/seekBarTimeTurn"
@@ -78,4 +74,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberTurnTime" />
+
+
 </android.support.constraint.ConstraintLayout>

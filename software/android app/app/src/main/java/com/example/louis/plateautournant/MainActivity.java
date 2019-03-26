@@ -2,6 +2,8 @@ package com.example.louis.plateautournant;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         accelerationNumber = findViewById(R.id.numberAcceleration);
         accelerationSeekBar = findViewById(R.id.seekbarAcceleration);
 
+
         speedNumber = findViewById(R.id.numberSpeed);
         speedSeekBar = findViewById(R.id.seekbarSpeed);
 
@@ -69,8 +72,87 @@ public class MainActivity extends AppCompatActivity {
 
         dataText = findViewById(R.id.data);
 
+        accelerationNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try{
+                    int position=accelerationNumber.length();
+                    accelerationNumber.setSelection(position);
+                    accelerationSeekBar.setProgress(Integer.parseInt(s.toString()));
+                } catch(Exception ex) {}
+
+            }
+        });
+        accelerationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                accelerationNumber.setText(Integer.toString(accelerationSeekBar.getProgress()));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        accelerationNumber.clearFocus();
+
+        speedNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try{
+                    int position=speedNumber.length();
+                    speedNumber.setSelection(position);
+                    speedSeekBar.setProgress(Integer.parseInt(s.toString()));
+                } catch(Exception ex) {}
+
+            }
+        });
+        speedSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                speedNumber.setText(Integer.toString(speedSeekBar.getProgress()));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        speedNumber.clearFocus();
+
         spinnerModeItems.add("Mode Programmé");
         spinnerModeItems.add("Mode Temps Réel");
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerModeItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -82,11 +164,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
+                        //realTimeRotation = new RealTimeRotation();
                         mode=0;
                         getFragmentManager().beginTransaction().replace(R.id.fragment, programmedRotation).commit();
                         break;
                     case 1:
-                        //realTimeRotation = new RealTimeRotation();
                         mode=1;
                         getFragmentManager().beginTransaction().replace(R.id.fragment, realTimeRotation).commit();
                         break;
