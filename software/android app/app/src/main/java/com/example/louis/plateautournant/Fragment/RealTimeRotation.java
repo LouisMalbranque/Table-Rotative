@@ -38,6 +38,13 @@ public class RealTimeRotation extends Fragment {
         // Required empty public constructor
     }
 
+    public EditText getNumberText() {
+        return numberText;
+    }
+
+    public boolean isModeTime() {
+        return modeTime;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

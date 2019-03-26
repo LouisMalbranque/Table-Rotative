@@ -8,11 +8,12 @@ import android.os.Message;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
+import java.io.SerializablePermission;
 import java.util.UUID;
 
 
-public class Peripherique
-{
+public class Peripherique {
     private String nom;
     private String adresse;
     private Handler handler = new Handler();
