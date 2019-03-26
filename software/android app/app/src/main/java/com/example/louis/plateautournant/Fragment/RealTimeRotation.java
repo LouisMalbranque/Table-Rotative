@@ -21,7 +21,7 @@ import org.w3c.dom.Text;
 
 import java.util.zip.Inflater;
 
-public class RealTimeRotation extends Fragment {
+public class RealTimeRotation extends android.app.Fragment {
 
 
     private String timeText = "Time Mode";

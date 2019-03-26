@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
         spinnerMode.setAdapter(adapter);
         adapter.setNotifyOnChange(true);
 
-        spinnerMode.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinnerMode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
                         mode=0;
@@ -92,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                 }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
