@@ -4,7 +4,7 @@ Motor::Motor(){
   
 }
 void Motor::begin(){
-  stepper.setMaxSpeed(400);
+  stepper.setMaxSpeed(4000);
 }
 void Motor::rotate(int steps){
   stepper.moveTo(steps);

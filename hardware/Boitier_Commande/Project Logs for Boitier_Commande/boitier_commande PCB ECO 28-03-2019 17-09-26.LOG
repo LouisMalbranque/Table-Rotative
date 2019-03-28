@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=TOUCH3 Pin=ESP32-17
+Removed Pin From Net: NetName=TOUCH2 Pin=ESP32-18
+Removed Pin From Net: NetName=TOUCH1 Pin=ESP32-19
+Added Pin To Net: NetName=TOUCH9 Pin=ESP32-17
+Added Pin To Net: NetName=TOUCH8 Pin=ESP32-18
+Added Pin To Net: NetName=TOUCH7 Pin=ESP32-19
+Added Room: Name=boitier_commande

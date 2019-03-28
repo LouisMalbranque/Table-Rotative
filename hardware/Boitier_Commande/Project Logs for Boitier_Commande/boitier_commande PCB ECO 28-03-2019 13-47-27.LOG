@@ -1,0 +1,215 @@
+Added Component: Designator=Alim(Connecteur Power)
+Added Component: Designator=Appareil1(Connecteur Power)
+Added Component: Designator=Appareil2(Connecteur Power)
+Added Component: Designator=Appareil3(Connecteur Power)
+Added Component: Designator=Appareil4(Connecteur Power)
+Added Component: Designator=Appareil5(Connecteur Power)
+Added Component: Designator=Appareil6(Connecteur Power)
+Added Component: Designator=Appareil7(Connecteur Power)
+Added Component: Designator=Appareil8(Connecteur Power)
+Added Component: Designator=Appareil9(Connecteur Power)
+Added Component: Designator=Battery(HDR1X2)
+Added Component: Designator=Buck 3.3(HDR1X4)
+Added Component: Designator=Buck 5(HDR1X4)
+Added Component: Designator=D?(DIODE0.5)
+Added Component: Designator=ESP32(ESP32)
+Added Component: Designator=J1(TESTPOINT2)
+Added Component: Designator=J2(TESTPOINT2)
+Added Component: Designator=J3(TESTPOINT2)
+Added Component: Designator=J4(TESTPOINT2)
+Added Component: Designator=J5(TESTPOINT2)
+Added Component: Designator=J6(TESTPOINT2)
+Added Component: Designator=J7(TESTPOINT2)
+Added Component: Designator=J8(TESTPOINT2)
+Added Component: Designator=J9(TESTPOINT2)
+Added Component: Designator=J10(TESTPOINT2)
+Added Component: Designator=J11(TESTPOINT2)
+Added Component: Designator=J12(TESTPOINT2)
+Added Component: Designator=J13(TESTPOINT2)
+Added Component: Designator=J14(TESTPOINT2)
+Added Component: Designator=J15(TESTPOINT2)
+Added Component: Designator=J16(TESTPOINT2)
+Added Component: Designator=J17(TESTPOINT2)
+Added Component: Designator=J18(TESTPOINT2)
+Added Component: Designator=LCD(HDR1X4)
+Added Component: Designator=LDalim(LED3)
+Added Component: Designator=LDstatut(LED3)
+Added Component: Designator=NRF(NRF24)
+Added Component: Designator=R1(0201)
+Added Component: Designator=R2(0201)
+Added Component: Designator=R3(0201)
+Added Component: Designator=Relays(HDR1X11)
+Added Component: Designator=Reset(KSA)
+Added Component: Designator=SW alim(HDR1X2)
+Added Pin To Net: NetName=CAMERA1 Pin=ESP32-4
+Added Pin To Net: NetName=CAMERA1 Pin=Relays-10
+Added Net: Name=CAMERA1
+Added Pin To Net: NetName=CAMERA2 Pin=ESP32-5
+Added Pin To Net: NetName=CAMERA2 Pin=Relays-9
+Added Net: Name=CAMERA2
+Added Pin To Net: NetName=CAMERA3 Pin=ESP32-6
+Added Pin To Net: NetName=CAMERA3 Pin=Relays-8
+Added Net: Name=CAMERA3
+Added Pin To Net: NetName=CAMERA4 Pin=ESP32-7
+Added Pin To Net: NetName=CAMERA4 Pin=Relays-7
+Added Net: Name=CAMERA4
+Added Pin To Net: NetName=CAMERA5 Pin=ESP32-8
+Added Pin To Net: NetName=CAMERA5 Pin=Relays-6
+Added Net: Name=CAMERA5
+Added Pin To Net: NetName=CAMERA6 Pin=ESP32-9
+Added Pin To Net: NetName=CAMERA6 Pin=Relays-5
+Added Net: Name=CAMERA6
+Added Pin To Net: NetName=CAMERA7 Pin=ESP32-10
+Added Pin To Net: NetName=CAMERA7 Pin=Relays-4
+Added Net: Name=CAMERA7
+Added Pin To Net: NetName=CAMERA8 Pin=ESP32-11
+Added Pin To Net: NetName=CAMERA8 Pin=Relays-3
+Added Net: Name=CAMERA8
+Added Pin To Net: NetName=CAMERA9 Pin=ESP32-12
+Added Pin To Net: NetName=CAMERA9 Pin=Relays-2
+Added Net: Name=CAMERA9
+Added Pin To Net: NetName=CSN Pin=ESP32-25
+Added Pin To Net: NetName=CSN Pin=NRF-6
+Added Net: Name=CSN
+Added Pin To Net: NetName=GND Pin=Alim-1
+Added Pin To Net: NetName=GND Pin=Battery-1
+Added Pin To Net: NetName=GND Pin=Buck 3.3-3
+Added Pin To Net: NetName=GND Pin=Buck 5-3
+Added Pin To Net: NetName=GND Pin=ESP32-13
+Added Pin To Net: NetName=GND Pin=ESP32-16
+Added Pin To Net: NetName=GND Pin=LCD-2
+Added Pin To Net: NetName=GND Pin=LDalim-K
+Added Pin To Net: NetName=GND Pin=LDstatut-K
+Added Pin To Net: NetName=GND Pin=NRF-1
+Added Pin To Net: NetName=GND Pin=Relays-11
+Added Pin To Net: NetName=GND Pin=Reset-3
+Added Net: Name=GND
+Added Pin To Net: NetName=IRQ Pin=ESP32-28
+Added Pin To Net: NetName=IRQ Pin=NRF-8
+Added Net: Name=IRQ
+Added Pin To Net: NetName=LED Pin=ESP32-17
+Added Pin To Net: NetName=LED Pin=R3-2
+Added Net: Name=LED
+Added Pin To Net: NetName=MISO Pin=ESP32-24
+Added Pin To Net: NetName=MISO Pin=NRF-4
+Added Net: Name=MISO
+Added Pin To Net: NetName=MOSI Pin=ESP32-29
+Added Pin To Net: NetName=MOSI Pin=NRF-7
+Added Net: Name=MOSI
+Added Pin To Net: NetName=NetAlim_0 Pin=Alim-0
+Added Pin To Net: NetName=NetAlim_0 Pin=D?-1
+Added Net: Name=NetAlim_0
+Added Pin To Net: NetName=NetBattery_2 Pin=Battery-2
+Added Pin To Net: NetName=NetBattery_2 Pin=D?-2
+Added Pin To Net: NetName=NetBattery_2 Pin=SW alim-1
+Added Net: Name=NetBattery_2
+Added Pin To Net: NetName=NetLDalim_A Pin=LDalim-A
+Added Pin To Net: NetName=NetLDalim_A Pin=R1-1
+Added Net: Name=NetLDalim_A
+Added Pin To Net: NetName=NetLDstatut_A Pin=LDstatut-A
+Added Pin To Net: NetName=NetLDstatut_A Pin=R3-1
+Added Net: Name=NetLDstatut_A
+Added Pin To Net: NetName=RESET Pin=ESP32-3
+Added Pin To Net: NetName=RESET Pin=R2-2
+Added Pin To Net: NetName=RESET Pin=Reset-1
+Added Net: Name=RESET
+Added Pin To Net: NetName=SCK Pin=ESP32-23
+Added Pin To Net: NetName=SCK Pin=NRF-3
+Added Net: Name=SCK
+Added Pin To Net: NetName=SCL Pin=LCD-4
+Added Net: Name=SCL
+Added Pin To Net: NetName=SDA Pin=LCD-3
+Added Net: Name=SDA
+Added Pin To Net: NetName=SIGNALAPAREIL1-1 Pin=Appareil1-0
+Added Pin To Net: NetName=SIGNALAPAREIL1-1 Pin=J1-1
+Added Net: Name=SIGNALAPAREIL1-1
+Added Pin To Net: NetName=SIGNALAPAREIL1-2 Pin=Appareil1-1
+Added Pin To Net: NetName=SIGNALAPAREIL1-2 Pin=J2-1
+Added Net: Name=SIGNALAPAREIL1-2
+Added Pin To Net: NetName=SIGNALAPAREIL2-1 Pin=Appareil2-0
+Added Pin To Net: NetName=SIGNALAPAREIL2-1 Pin=J3-1
+Added Net: Name=SIGNALAPAREIL2-1
+Added Pin To Net: NetName=SIGNALAPAREIL2-2 Pin=Appareil2-1
+Added Pin To Net: NetName=SIGNALAPAREIL2-2 Pin=J4-1
+Added Net: Name=SIGNALAPAREIL2-2
+Added Pin To Net: NetName=SIGNALAPAREIL3-1 Pin=Appareil3-0
+Added Pin To Net: NetName=SIGNALAPAREIL3-1 Pin=J5-1
+Added Net: Name=SIGNALAPAREIL3-1
+Added Pin To Net: NetName=SIGNALAPAREIL3-2 Pin=Appareil3-1
+Added Pin To Net: NetName=SIGNALAPAREIL3-2 Pin=J6-1
+Added Net: Name=SIGNALAPAREIL3-2
+Added Pin To Net: NetName=SIGNALAPAREIL4-1 Pin=Appareil4-0
+Added Pin To Net: NetName=SIGNALAPAREIL4-1 Pin=J7-1
+Added Net: Name=SIGNALAPAREIL4-1
+Added Pin To Net: NetName=SIGNALAPAREIL4-2 Pin=Appareil4-1
+Added Pin To Net: NetName=SIGNALAPAREIL4-2 Pin=J8-1
+Added Net: Name=SIGNALAPAREIL4-2
+Added Pin To Net: NetName=SIGNALAPAREIL5-1 Pin=Appareil5-0
+Added Pin To Net: NetName=SIGNALAPAREIL5-1 Pin=J9-1
+Added Net: Name=SIGNALAPAREIL5-1
+Added Pin To Net: NetName=SIGNALAPAREIL5-2 Pin=Appareil5-1
+Added Pin To Net: NetName=SIGNALAPAREIL5-2 Pin=J10-1
+Added Net: Name=SIGNALAPAREIL5-2
+Added Pin To Net: NetName=SIGNALAPAREIL6-1 Pin=Appareil6-0
+Added Pin To Net: NetName=SIGNALAPAREIL6-1 Pin=J11-1
+Added Net: Name=SIGNALAPAREIL6-1
+Added Pin To Net: NetName=SIGNALAPAREIL6-2 Pin=Appareil6-1
+Added Pin To Net: NetName=SIGNALAPAREIL6-2 Pin=J12-1
+Added Net: Name=SIGNALAPAREIL6-2
+Added Pin To Net: NetName=SIGNALAPAREIL7-1 Pin=Appareil7-0
+Added Pin To Net: NetName=SIGNALAPAREIL7-1 Pin=J13-1
+Added Net: Name=SIGNALAPAREIL7-1
+Added Pin To Net: NetName=SIGNALAPAREIL7-2 Pin=Appareil7-1
+Added Pin To Net: NetName=SIGNALAPAREIL7-2 Pin=J14-1
+Added Net: Name=SIGNALAPAREIL7-2
+Added Pin To Net: NetName=SIGNALAPAREIL8-1 Pin=Appareil8-0
+Added Pin To Net: NetName=SIGNALAPAREIL8-1 Pin=J15-1
+Added Net: Name=SIGNALAPAREIL8-1
+Added Pin To Net: NetName=SIGNALAPAREIL8-2 Pin=Appareil8-1
+Added Pin To Net: NetName=SIGNALAPAREIL8-2 Pin=J16-1
+Added Net: Name=SIGNALAPAREIL8-2
+Added Pin To Net: NetName=SIGNALAPAREIL9-1 Pin=Appareil9-0
+Added Pin To Net: NetName=SIGNALAPAREIL9-1 Pin=J17-1
+Added Net: Name=SIGNALAPAREIL9-1
+Added Pin To Net: NetName=SIGNALAPAREIL9-2 Pin=Appareil9-1
+Added Pin To Net: NetName=SIGNALAPAREIL9-2 Pin=J18-1
+Added Net: Name=SIGNALAPAREIL9-2
+Added Pin To Net: NetName=SS Pin=ESP32-22
+Added Pin To Net: NetName=SS Pin=NRF-2
+Added Net: Name=SS
+Added Pin To Net: NetName=TOUCH1 Pin=Appareil1-2
+Added Pin To Net: NetName=TOUCH1 Pin=ESP32-19
+Added Net: Name=TOUCH1
+Added Pin To Net: NetName=TOUCH2 Pin=Appareil2-2
+Added Pin To Net: NetName=TOUCH2 Pin=ESP32-18
+Added Net: Name=TOUCH2
+Added Pin To Net: NetName=TOUCH3 Pin=Appareil3-2
+Added Net: Name=TOUCH3
+Added Pin To Net: NetName=TOUCH4 Pin=Appareil4-2
+Added Net: Name=TOUCH4
+Added Pin To Net: NetName=TOUCH5 Pin=Appareil5-2
+Added Net: Name=TOUCH5
+Added Pin To Net: NetName=TOUCH6 Pin=Appareil6-2
+Added Net: Name=TOUCH6
+Added Pin To Net: NetName=TOUCH7 Pin=Appareil7-2
+Added Net: Name=TOUCH7
+Added Pin To Net: NetName=TOUCH8 Pin=Appareil8-2
+Added Net: Name=TOUCH8
+Added Pin To Net: NetName=TOUCH9 Pin=Appareil9-2
+Added Net: Name=TOUCH9
+Added Pin To Net: NetName=V3.3 Pin=Buck 3.3-4
+Added Pin To Net: NetName=V3.3 Pin=ESP32-14
+Added Pin To Net: NetName=V3.3 Pin=LCD-1
+Added Pin To Net: NetName=V3.3 Pin=NRF-5
+Added Pin To Net: NetName=V3.3 Pin=R1-2
+Added Pin To Net: NetName=V3.3 Pin=R2-1
+Added Net: Name=V3.3
+Added Pin To Net: NetName=V5 Pin=Buck 5-4
+Added Pin To Net: NetName=V5 Pin=Relays-1
+Added Net: Name=V5
+Added Pin To Net: NetName=VCC Pin=Buck 3.3-2
+Added Pin To Net: NetName=VCC Pin=Buck 5-2
+Added Pin To Net: NetName=VCC Pin=SW alim-2
+Added Net: Name=VCC
+Added Class: Name=boitier_commande
+Added Room: Name=boitier_commande
