@@ -7,7 +7,11 @@ void Motor::begin(){
   stepper.setMaxSpeed(400);
 }
 void Motor::rotate(int steps){
-  stepper.moveTo(steps);
+  if (direction==0){
+      stepper.moveTo(steps);
+    }else{
+      stepper.moveTo(-steps);
+    }
 }
 void Motor::setZero(){
   stepper.setCurrentPosition(0);
@@ -16,6 +20,7 @@ void Motor::setZero(){
 void Motor::setParams(int speed, int acceleration, int direction){
   stepper.setAcceleration(acceleration);
   stepper.setSpeed(speed);
+  this->direction=direction;
 }
 
 boolean Motor::isRotating(){

@@ -29,6 +29,7 @@ void loop() {
     int steps = nrf.getValue(STEPS);
     int time = nrf.getValue(TIME);
     
+    
     nrf.clear();
     
     motor.setParams(speed, acceleration, direction);

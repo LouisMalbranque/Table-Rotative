@@ -28,31 +28,32 @@
         android:id="@+id/fragment"
         android:name="com.example.louis.plateautournant.Fragment.BlankFragment"
         android:layout_width="0dp"
-        android:layout_height="262dp"
+        android:layout_height="168dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSend"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <Button
         android:id="@+id/buttonSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimary"
         android:text="Envoyer"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
-        android:layout_height="316dp"
+        android:layout_height="264dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -62,58 +63,45 @@
         app:layout_constraintTop_toBottomOf="@+id/spinnerMode">
 
         <TextView
-            android:id="@+id/stepsmotortext"
-            android:layout_width="122dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="8dp"
-            android:text="MotorSteps"
-            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:id="@+id/textView2"
+            android:layout_width="126dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="default 100"
+            android:textAlignment="center"
             android:textColor="@android:color/background_light"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/stepstabletext" />
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/numberSpeed"
+            app:layout_constraintEnd_toStartOf="@+id/numberSpeed"
+            app:layout_constraintStart_toEndOf="@+id/speedText"
+            app:layout_constraintTop_toTopOf="@+id/numberSpeed" />
 
         <TextView
             android:id="@+id/stepstabletext"
-            android:layout_width="122dp"
+            android:layout_width="103dp"
             android:layout_height="37dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:text="TableSteps"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/stepstableNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/stepstableNumber" />
 
         <EditText
             android:id="@+id/stepstableNumber"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:ems="10"
             android:inputType="number"
             android:text="0"
             android:textColor="@android:color/background_light"
-            app:layout_constraintEnd_toEndOf="@+id/stepstabletext"
-            app:layout_constraintStart_toStartOf="@+id/stepstabletext"
-            app:layout_constraintTop_toBottomOf="@+id/stepstabletext" />
-
-        <EditText
-            android:id="@+id/stepsmotorNumber"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="12dp"
-            android:ems="10"
-            android:inputType="number"
-            android:text="0"
-            android:textColor="@android:color/background_light"
-            app:layout_constraintBottom_toTopOf="@+id/accelerationText"
-            app:layout_constraintStart_toStartOf="@+id/seekbarAcceleration"
-            app:layout_constraintTop_toBottomOf="@+id/stepsmotortext"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/numberAcceleration"
@@ -122,7 +110,7 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="number"
-            android:text="0"
+            android:text="100"
             android:textColor="@android:color/background_light"
             app:layout_constraintEnd_toEndOf="@+id/stepstableNumber"
             app:layout_constraintTop_toBottomOf="@+id/stepstableNumber" />
@@ -130,7 +118,7 @@
         <TextView
             android:id="@+id/speedText"
             android:layout_width="90dp"
-            android:layout_height="42dp"
+            android:layout_height="33dp"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
             android:text="Speed"
@@ -148,6 +136,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:max="300"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -160,15 +149,15 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="number"
-            android:text="0"
+            android:text="100"
             android:textColor="@android:color/background_light"
             app:layout_constraintEnd_toEndOf="@+id/numberAcceleration"
             app:layout_constraintTop_toBottomOf="@+id/seekbarAcceleration" />
 
         <TextView
             android:id="@+id/accelerationText"
-            android:layout_width="122dp"
-            android:layout_height="37dp"
+            android:layout_width="104dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
             android:text="Acceleration"
@@ -186,6 +175,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:max="3900"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -193,19 +183,54 @@
 
         <Switch
             android:id="@+id/directionSwitch"
-            android:layout_width="139dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:switchTextAppearance="@style/TextAppearance.AppCompat"
-            android:text="Direction"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekbarSpeed" />
+
+        <TextView
+            android:id="@+id/ext"
+            android:layout_width="126dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="default 100"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_light"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/numberAcceleration"
+            app:layout_constraintEnd_toStartOf="@+id/numberAcceleration"
+            app:layout_constraintStart_toEndOf="@+id/accelerationText"
+            app:layout_constraintTop_toTopOf="@+id/numberAcceleration" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Horaire"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/directionSwitch"
+            app:layout_constraintTop_toTopOf="@+id/directionSwitch" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Anti-Horaire"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/directionSwitch"
+            app:layout_constraintTop_toTopOf="@+id/directionSwitch" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
