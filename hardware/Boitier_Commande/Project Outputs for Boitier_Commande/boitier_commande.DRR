@@ -1,0 +1,22 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: boitier_commande.PcbDoc   29/03/2019  11:17:37
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : boitier_commande.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        23.6mil (0.59944mm)      Round          18               4.60 Inch (116.84 mm)
+T2        31.5mil (0.8001mm)       Round          11               9.88 Inch (250.96 mm)
+T3        32mil (0.8128mm)         Round          4                0.60 Inch (15.24 mm)
+T4        35.4mil (0.89916mm)      Round          27               6.76 Inch (171.76 mm)
+T5        39.4mil (1.00076mm)      Round          54               8.30 Inch (210.82 mm)
+T6        40mil (1.016mm)          Round          34               8.17 Inch (207.52 mm)
+T7        56mil (1.4224mm)         Round          2                0.50 Inch (12.70 mm)
+T8        110.2mil (2.79908mm)     Round          30               10.33 Inch (262.46 mm)
+T9        126mil (3.2004mm)        Round          4                8.60 Inch (218.44 mm)
+---------------------------------------------------------------------------
+Totals                                            184              57.75 Inch (1466.74 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

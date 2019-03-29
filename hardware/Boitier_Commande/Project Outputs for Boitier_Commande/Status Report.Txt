@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Boitier_Commande.PrjPcb]
+   Generated File[boitier_commande.TXT]
+   Generated File[boitier_commande.LDP]
+   Generated File[boitier_commande.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 11:17:38 On 29/03/2019

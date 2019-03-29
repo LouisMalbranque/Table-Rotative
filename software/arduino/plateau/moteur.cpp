@@ -34,3 +34,4 @@ void Motor::run(){
 int Motor::getCurrentPosition(){
   return stepper.currentPosition();
 }
+
