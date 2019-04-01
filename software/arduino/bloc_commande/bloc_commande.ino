@@ -1,9 +1,10 @@
 #include "constantes.h"
 
-#include  "bluetooth.h"
-#include  "lcd.h"
-#include  "nrf.h"
-#include  "relays.h"
+#include "bluetooth.h"
+#include "lcd.h"
+#include "nrf.h"
+#include "relays.h"
+#include "ESP_bluetooth.h"
 
 
 Bluetooth bluetooth;
