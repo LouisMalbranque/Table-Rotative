@@ -1,11 +1,6 @@
 #include "ESP_bluetooth.h"
 
 static BLEUUID serviceUUID("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
-static BLEAdvertisedDevice* myDevice;
-
-static boolean doConnect = false;
-static boolean connected = false;
-static boolean doScan = false;
 
 static void notifyCallback(
   BLERemoteCharacteristic* pBLERemoteCharacteristic,
@@ -24,7 +19,7 @@ void MyClientCallback::onConnect(BLEClient* pclient) {
 }
 
 void MyClientCallback::onDisconnect(BLEClient* pclient) {
-  connected = false;
+  //pclient.setConnected(false);
   Serial.println("onDisconnect");
 }
 
@@ -36,9 +31,9 @@ void MyAdvertisedDeviceCallbacks::onResult(BLEAdvertisedDevice advertisedDevice)
     if (advertisedDevice.haveServiceUUID() && advertisedDevice.isAdvertisingService(serviceUUID)) {
 
       BLEDevice::getScan()->stop();
-      myDevice = new BLEAdvertisedDevice(advertisedDevice);
-      doConnect = true;
-      doScan = true;
+      BLEAdvertisedDevice myDevice = *(new BLEAdvertisedDevice(advertisedDevice));
+      //advertisedDevice.setDoConnect(true);
+      //advertisedDevice.setDoScan(true);
 
     } // Found our server
   } // onResult
@@ -68,7 +63,6 @@ void ESP_bluetooth::begin(){
 
 
 boolean ESP_bluetooth::connect(BLEUUID serviceUUID){
-    if (doConnect == false) return false;
     this->serviceUUID = serviceUUID;
     
     Serial.print("Forming a connection to ");
@@ -118,24 +112,25 @@ boolean ESP_bluetooth::connect(BLEUUID serviceUUID){
     return true;
 }
 
-String ESP_bluetooth::read(){
+boolean ESP_bluetooth::read(){
   data=pRemoteCharacteristic->readValue().c_str();
-  return data; 
+  if (data != "") return true;
+  return false; 
 }
 void ESP_bluetooth::write(String data){
   pRemoteCharacteristic->writeValue(data.c_str(), data.length());
 }
-void ESP_bluetooth::write(int* tab){
-  String data = "";
-  for (int i=0; i<4; i++){
-    data += String(tab[i]) + ",";
-  }
-  data += String(tab[4]);
-  Serial.println(data);
-  pRemoteCharacteristic->writeValue(data.c_str(), data.length());
-}
 void ESP_bluetooth::scan(){
   BLEDevice::getScan()->start(0);
+}
+void ESP_bluetooth::setConnected(boolean connected){
+  this->connected = connected;
+}
+void ESP_bluetooth::setDoScan(boolean doScan){
+  this->doScan = doScan;
+}
+void ESP_bluetooth::setDoConnect(boolean doConnect){
+  this->doConnect = doConnect;
 }
 String ESP_bluetooth::getData(){
   return data;

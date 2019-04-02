@@ -28,7 +28,7 @@ class Bluetooth
     int values[MAXIMUM_NUMBER_OF_VALUES];
   public:
     Bluetooth();
-    boolean receive();
+    void receive();
     void begin();
     int getDataLength();
     void decode();
