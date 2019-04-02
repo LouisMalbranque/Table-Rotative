@@ -1,5 +1,5 @@
+#ifdef NRF
 #include "arduino.h"
-
 #include <SPI.h>      // Pour la communication via le port SPI
 #include <Mirf.h>     // Pour la gestion de la communication
 #include <nRF24L01.h> // Pour les définitions des registres du nRF24L01
@@ -30,3 +30,4 @@ class Nrf
     void printData();
     void clear();
 };
+#endif
