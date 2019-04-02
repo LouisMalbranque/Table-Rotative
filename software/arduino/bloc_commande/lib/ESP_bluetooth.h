@@ -21,9 +21,13 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
 
 class ESP_bluetooth{
   private:
+    boolean  doConnect = false ;
+    boolean  connected = false ; 
+    boolean  doScan = false ;
     String data;
 
     BLERemoteCharacteristic* pRemoteCharacteristic;
+    BLEAdvertisedDevice* myDevice;
     BLEUUID charUUID = *(new BLEUUID("beb5483e-36e1-4688-b7f5-ea07361b26a8"));
     BLEUUID serviceUUID;
     
@@ -32,9 +36,11 @@ class ESP_bluetooth{
   void begin();
   boolean connect(BLEUUID serviceUUID);
   void receive();
-  String read();
+  boolean read();
   void write(String data);
-  void write(int* tab);
   void scan();
+  void setConnected(boolean connected);
+  void setDoConnect(boolean doConnect);
+  void setDoScan(boolean doScan);
   String getData();
 };

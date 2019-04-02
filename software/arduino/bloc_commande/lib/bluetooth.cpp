@@ -12,8 +12,7 @@ void Bluetooth::begin(){
     #endif
 }
 
-boolean Bluetooth::receive(){
-  if (bt.available() == 0) return false;
+void Bluetooth::receive(){
    while (bt.available()) {
     if (bt.available() > 0) {
       char c = bt.read();  //gets one byte from serial buffer
@@ -22,7 +21,6 @@ boolean Bluetooth::receive(){
     }
   }
   bt.flush();
-  return true;
 }
 int Bluetooth::getDataLength(){
   return (int)(data.length());
