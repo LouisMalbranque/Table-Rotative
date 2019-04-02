@@ -1,19 +1,13 @@
 #include "moteur.h"
 #include "ESP_bluetooth1.h"
 
-//Nrf nrf;
 Motor motor;
 ESP_bluetooth esp_bluetooth;
 
-
-int compteur = 0;
-String value;
 void setup() {
-  Serial.begin(115200);
-  Serial.println("setup");
-  //motor.begin();
-  // nrf.begin();
-
+  Serial.begin(9600);
+    
+  motor.begin();
   esp_bluetooth.begin();
 
 }
