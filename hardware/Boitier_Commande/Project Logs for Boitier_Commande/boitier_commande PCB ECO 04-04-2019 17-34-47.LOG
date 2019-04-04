@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=GND Pin=C?-1
+Removed Member From Class: ClassName=boitier_commande Member=C?
+Change Component Footprint: Designator=C1 Old Footprint=1206 New Footprint=1210
+Added Room: Name=boitier_commande
