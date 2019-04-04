@@ -4,3 +4,6 @@
 #define STEPS                     3
 #define TIME                      4
 #define MAXIMUM_NUMBER_OF_VALUES  5
+
+#define PIN_DIR 21
+#define PIN_STEP 19

@@ -11,7 +11,7 @@ String value;
 void setup() {
   Serial.begin(115200);
   Serial.println("setup");
-  //motor.begin();
+  motor.begin();
   // nrf.begin();
 
   esp_bluetooth.begin();

@@ -4,6 +4,8 @@ Motor::Motor(){
   
 }
 void Motor::begin(){
+  pinMode(PIN_DIR, OUTPUT);
+  pinMode(PIN_STEP, OUTPUT);
   stepper.setMaxSpeed(400);
 }
 void Motor::rotate(int steps){
@@ -34,4 +36,3 @@ void Motor::run(){
 int Motor::getCurrentPosition(){
   return stepper.currentPosition();
 }
-

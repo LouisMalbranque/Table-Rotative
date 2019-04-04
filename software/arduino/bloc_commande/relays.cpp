@@ -6,31 +6,27 @@ Relays::Relays(){
 }
 
 void Relays::begin(){
-  for (int i=0; i<CAMERA_NUMBER; i++){
+  for (int i=0; i<9; i++){
     digitalWrite(pinRelay[i], LOW);
+    pinMode(pinRelay[i],OUTPUT);
   }
-  pinMode(GREEN,OUTPUT);
-  pinMode(RED,OUTPUT);
+  
+  pinMode(LED,OUTPUT);
 }
 
 void Relays::triggerAll(){
   for (int i=0; i<relays_number; i++){
       
     digitalWrite(pinRelay[i], HIGH);
-    digitalWrite(GREEN, HIGH);
+    digitalWrite(LED, HIGH);
     
     delay(PULSE_DURATION);
     
-    digitalWrite(GREEN, LOW);
+    digitalWrite(LED, LOW);
     digitalWrite(pinRelay[i], LOW);
     
     delay(values[PAUSE_BETWEEN_CAMERA]);
   }
-    digitalWrite(RED, HIGH);
-    
-    delay(PULSE_DURATION);
-    
-    digitalWrite(RED, LOW);
 }
 
 void Relays::triggerSimultaneous(){
