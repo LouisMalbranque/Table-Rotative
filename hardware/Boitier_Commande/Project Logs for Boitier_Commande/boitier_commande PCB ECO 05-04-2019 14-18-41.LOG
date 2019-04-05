@@ -1,0 +1,6 @@
+Added Component: Designator=Appareil1(Connecteur Power)
+Added Pin To Net: NetName=SIGNALAPAREIL1-1 Pin=Appareil1-0
+Added Pin To Net: NetName=SIGNALAPAREIL1-2 Pin=Appareil1-1
+Added Pin To Net: NetName=TOUCH1 Pin=Appareil1-2
+Added Member To Class: ClassName=boitier_commande Member=Component Appareil1 Connecteur Power
+Added Room: Name=boitier_commande

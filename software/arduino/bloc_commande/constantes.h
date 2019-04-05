@@ -13,7 +13,24 @@
 
 #define OLED_RESET                4
 #define MAXIMUM_NUMBER_OF_VALUES  10
-#define NRF_DATA_LENGTH           5
 
-#define GREEN                     3
-#define RED                       2
+#define CAMERA1 35
+#define CAMERA2 32
+#define CAMERA3 33
+#define CAMERA4 25
+#define CAMERA5 26
+#define CAMERA6 27
+#define CAMERA7 14
+#define CAMERA8 12
+#define CAMERA9 13
+
+#define TOUCH7 4
+#define TOUCH8 2
+#define TOUCH9 15
+
+#define SDA 21
+#define SCL 22
+
+#define LED 5
+
+#define RESET 34

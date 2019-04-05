@@ -1,0 +1,41 @@
+Added Component: Designator=Appareil2(Connecteur Power)
+Added Component: Designator=Appareil3(Connecteur Power)
+Added Component: Designator=Appareil4(Connecteur Power)
+Added Component: Designator=Appareil5(Connecteur Power)
+Added Component: Designator=Appareil6(Connecteur Power)
+Added Component: Designator=Appareil7(Connecteur Power)
+Added Component: Designator=Appareil8(Connecteur Power)
+Added Component: Designator=Appareil9(Connecteur Power)
+Added Pin To Net: NetName=SIGNALAPAREIL2-1 Pin=Appareil2-0
+Added Pin To Net: NetName=SIGNALAPAREIL2-2 Pin=Appareil2-1
+Added Pin To Net: NetName=TOUCH2 Pin=Appareil2-2
+Added Pin To Net: NetName=SIGNALAPAREIL3-1 Pin=Appareil3-0
+Added Pin To Net: NetName=SIGNALAPAREIL3-2 Pin=Appareil3-1
+Added Pin To Net: NetName=TOUCH3 Pin=Appareil3-2
+Added Pin To Net: NetName=SIGNALAPAREIL4-1 Pin=Appareil4-0
+Added Pin To Net: NetName=SIGNALAPAREIL4-2 Pin=Appareil4-1
+Added Pin To Net: NetName=TOUCH4 Pin=Appareil4-2
+Added Pin To Net: NetName=SIGNALAPAREIL5-1 Pin=Appareil5-0
+Added Pin To Net: NetName=SIGNALAPAREIL5-2 Pin=Appareil5-1
+Added Pin To Net: NetName=TOUCH5 Pin=Appareil5-2
+Added Pin To Net: NetName=SIGNALAPAREIL6-1 Pin=Appareil6-0
+Added Pin To Net: NetName=SIGNALAPAREIL6-2 Pin=Appareil6-1
+Added Pin To Net: NetName=TOUCH6 Pin=Appareil6-2
+Added Pin To Net: NetName=SIGNALAPAREIL7-1 Pin=Appareil7-0
+Added Pin To Net: NetName=SIGNALAPAREIL7-2 Pin=Appareil7-1
+Added Pin To Net: NetName=TOUCH7 Pin=Appareil7-2
+Added Pin To Net: NetName=SIGNALAPAREIL8-1 Pin=Appareil8-0
+Added Pin To Net: NetName=SIGNALAPAREIL8-2 Pin=Appareil8-1
+Added Pin To Net: NetName=TOUCH8 Pin=Appareil8-2
+Added Pin To Net: NetName=SIGNALAPAREIL9-1 Pin=Appareil9-0
+Added Pin To Net: NetName=SIGNALAPAREIL9-2 Pin=Appareil9-1
+Added Pin To Net: NetName=TOUCH9 Pin=Appareil9-2
+Added Member To Class: ClassName=boitier_commande Member=Component Appareil2 Connecteur Power
+Added Member To Class: ClassName=boitier_commande Member=Component Appareil3 Connecteur Power
+Added Member To Class: ClassName=boitier_commande Member=Component Appareil4 Connecteur Power
+Added Member To Class: ClassName=boitier_commande Member=Component Appareil5 Connecteur Power
+Added Member To Class: ClassName=boitier_commande Member=Component Appareil6 Connecteur Power
+Added Member To Class: ClassName=boitier_commande Member=Component Appareil7 Connecteur Power
+Added Member To Class: ClassName=boitier_commande Member=Component Appareil8 Connecteur Power
+Added Member To Class: ClassName=boitier_commande Member=Component Appareil9 Connecteur Power
+Added Room: Name=boitier_commande
