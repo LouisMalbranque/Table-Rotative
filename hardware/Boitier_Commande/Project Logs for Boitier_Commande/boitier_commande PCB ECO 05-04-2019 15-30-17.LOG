@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=RESET Pin=Reset-1
+Removed Pin From Net: NetName=GND Pin=Reset-3
+Change Component DesignItemId : Designator=Reset Old DesignItemId=SW_PB New DesignItemId=Header 2
+Change Component Footprint: Designator=Reset Old Footprint=KSA New Footprint=HDR1X2
+Change Component Comment : Designator=Reset Old Comment=SW_PB New Comment=Header 2
+Added Pin To Net: NetName=RESET Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C1-2
+Added Pin To Net: NetName=GND Pin=Reset-1
+Added Pin To Net: NetName=RESET Pin=Reset-2
+Added Room: Name=boitier_commande
