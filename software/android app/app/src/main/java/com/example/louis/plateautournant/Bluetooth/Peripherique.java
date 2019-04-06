@@ -24,9 +24,7 @@ public class Peripherique {
     private InputStream receiveStream = null;
     private OutputStream sendStream = null;
     private TReception tReception;
-    public final static int CODE_CONNEXION = 0;
     public final static int CODE_RECEPTION = 1;
-    public final static int CODE_DECONNEXION = 2;
     public boolean isConnected = false;
 
 

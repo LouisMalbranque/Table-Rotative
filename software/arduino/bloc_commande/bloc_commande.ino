@@ -45,7 +45,9 @@ void setup() {
 void loop() {
 
   while(!bluetooth.receive());
+  blink();
   bluetooth.decode();
+  
 
   lcd.setValues(bluetooth.getValues());
   relays.setValues(bluetooth.getValues());

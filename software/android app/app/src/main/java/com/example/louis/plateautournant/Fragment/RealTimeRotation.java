@@ -15,10 +15,12 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.louis.plateautournant.Bluetooth.Peripherique;
 import com.example.louis.plateautournant.MinMaxFilter;
 import com.example.louis.plateautournant.R;
 
@@ -36,6 +38,10 @@ public class RealTimeRotation extends android.app.Fragment {
     private EditText numberText;
     private SeekBar seekNumber;
     private TextView text;
+    private ImageButton backward;
+    private ImageButton backward2;
+    private ImageButton forward;
+    private ImageButton forward2;
 
     private int minimumValMode=1;
 
@@ -63,6 +69,10 @@ public class RealTimeRotation extends android.app.Fragment {
         seekNumber = v.findViewById(R.id.seekBarTimeTurn);
         seekNumber.setMax(9);
         text = v.findViewById(R.id.timeTurnText);
+        backward = v.findViewById(R.id.backward);
+        backward2 = v.findViewById(R.id.backward2);
+        forward = v.findViewById(R.id.forward);
+        forward2 = v.findViewById(R.id.forward2);
 
         numberText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -134,6 +144,74 @@ public class RealTimeRotation extends android.app.Fragment {
             }
         });
 
+        forward2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String data="";
+                data +=Integer.toString(1)+",";  //mode
+                data +=Integer.toString(400)+",";  //acceleration
+                data +=Integer.toString(400)+","; //speed
+                data +=Integer.toString(0)+","; //direction
+                data +=Integer.toString(10)+","; //rotation number
+                data +=Integer.toString(-1)+","; //rotation time
+                data +=Integer.toString(-1)+","; //frame
+                data +=Integer.toString(-1)+","; //camera number
+                data +=Integer.toString(-1)+","; //pause between camera
+                data +=Integer.toString(1); //steps
+                Peripherique.peripherique.envoyer(data);
+            }
+        });
+        forward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String data="";
+                data +=Integer.toString(1)+",";  //mode
+                data +=Integer.toString(400)+",";  //acceleration
+                data +=Integer.toString(400)+","; //speed
+                data +=Integer.toString(0)+","; //direction
+                data +=Integer.toString(1)+","; //rotation number
+                data +=Integer.toString(-1)+","; //rotation time
+                data +=Integer.toString(-1)+","; //frame
+                data +=Integer.toString(-1)+","; //camera number
+                data +=Integer.toString(-1)+","; //pause between camera
+                data +=Integer.toString(1); //steps
+                Peripherique.peripherique.envoyer(data);
+            }
+        });
+        backward2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String data="";
+                data +=Integer.toString(1)+",";  //mode
+                data +=Integer.toString(400)+",";  //acceleration
+                data +=Integer.toString(400)+","; //speed
+                data +=Integer.toString(1)+","; //direction
+                data +=Integer.toString(10)+","; //rotation number
+                data +=Integer.toString(-1)+","; //rotation time
+                data +=Integer.toString(-1)+","; //frame
+                data +=Integer.toString(-1)+","; //camera number
+                data +=Integer.toString(-1)+","; //pause between camera
+                data +=Integer.toString(1); //steps
+                Peripherique.peripherique.envoyer(data);
+            }
+        });
+        backward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String data="";
+                data +=Integer.toString(1)+",";  //mode
+                data +=Integer.toString(400)+",";  //acceleration
+                data +=Integer.toString(400)+","; //speed
+                data +=Integer.toString(1)+","; //direction
+                data +=Integer.toString(1)+","; //rotation number
+                data +=Integer.toString(-1)+","; //rotation time
+                data +=Integer.toString(-1)+","; //frame
+                data +=Integer.toString(-1)+","; //camera number
+                data +=Integer.toString(-1)+","; //pause between camera
+                data +=Integer.toString(1); //steps
+                Peripherique.peripherique.envoyer(data);
+            }
+        });
         return v;
     }
 

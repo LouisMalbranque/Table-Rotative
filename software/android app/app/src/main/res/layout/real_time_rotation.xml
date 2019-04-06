@@ -59,8 +59,8 @@
         android:id="@+id/timeTurnText"
         android:layout_width="124dp"
         android:layout_height="31dp"
-        android:layout_marginStart="16dp"
-        android:text="Rotation Time"
+        android:layout_marginStart="8dp"
+        android:text="Time Mode"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/numberTurnTime"
@@ -77,6 +77,46 @@
         app:layout_constraintEnd_toEndOf="@+id/numberTurnTime"
         app:layout_constraintStart_toStartOf="@+id/timeTurnText"
         app:layout_constraintTop_toBottomOf="@+id/numberTurnTime" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarTimeTurn">
+
+        <ImageButton
+            android:id="@+id/backward2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/backward2" />
+
+        <ImageButton
+            android:id="@+id/backward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/backward" />
+
+        <ImageButton
+            android:id="@+id/forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/forward" />
+
+        <ImageButton
+            android:id="@+id/forward2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/forward2" />
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

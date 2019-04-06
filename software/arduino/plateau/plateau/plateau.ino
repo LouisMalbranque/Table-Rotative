@@ -16,7 +16,7 @@ void loop() {
 
   esp_bluetooth.writeData("0");
   esp_bluetooth.read();
-  value = esp_bluetooth.getData();
+  String value = esp_bluetooth.getData();
   while (value == "0") {
     esp_bluetooth.read();
     value = esp_bluetooth.getData();
