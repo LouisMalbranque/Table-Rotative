@@ -4,6 +4,8 @@
 Motor motor;
 ESP_bluetooth esp_bluetooth;
 
+String value;
+
 void setup() {
   Serial.begin(9600);
     
@@ -14,6 +16,13 @@ void setup() {
 
 void loop() {
 
+/*
+ * 0 : disponible
+ * 1 : en traitement
+ * 2 : fin du traitement
+ * 3 : pause
+ * 4 : stop
+ */
   esp_bluetooth.writeData("0");
   esp_bluetooth.read();
   String value = esp_bluetooth.getData();
@@ -40,6 +49,16 @@ void loop() {
     
     while (motor.isRotating()) {
       Serial.println(motor.getCurrentPosition());
+      esp_bluetooth.read();
+      value = esp_bluetooth.getData();
+      if (value=="3"){
+        while (value=="3"){
+          esp_bluetooth.read();
+          value = esp_bluetooth.getData();
+        }
+      }else if (value=="4"){
+        break;
+      }
       motor.run();
     }
   }
@@ -50,6 +69,17 @@ void loop() {
       Serial.println(millis() - initialTime);
       motor.setZero();
       motor.rotate(1);
+      
+      esp_bluetooth.read();
+      value = esp_bluetooth.getData();
+      if (value=="3"){
+        while (value=="3"){
+          esp_bluetooth.read();
+          value = esp_bluetooth.getData();
+        }
+      }else if (value=="4"){
+        break;
+      }
       motor.run();
     }
   }

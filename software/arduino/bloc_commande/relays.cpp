@@ -6,7 +6,7 @@ Relays::Relays(){
 }
 
 void Relays::begin(){
-  for (int i=0; i<9; i++){
+  for (int i=0; i<relays_number; i++){
     digitalWrite(pinRelay[i], LOW);
     pinMode(pinRelay[i],OUTPUT);
   }

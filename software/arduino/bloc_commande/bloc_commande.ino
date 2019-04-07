@@ -14,13 +14,6 @@ Lcd lcd;
 Relays relays;
 ESP_bluetooth esp_bluetooth;
 
-
-void blink(){
-  digitalWrite(LED, HIGH);
-  delay(100);
-  digitalWrite(LED, LOW);
-}
-
 void setup() {
   bluetooth.begin();
   lcd.begin();
@@ -45,7 +38,6 @@ void setup() {
 void loop() {
 
   while(!bluetooth.receive());
-  blink();
   bluetooth.decode();
   
 
@@ -56,11 +48,28 @@ void loop() {
 
   if (bluetooth.getValue(MODE) == 0) {
     int steps = (int) (bluetooth.getValue(STEPS) / bluetooth.getValue(FRAME));
+    int frame = bluetooth.getValue(FRAME);
     int datagramme[] = {bluetooth.getValue(ACCELERATION), bluetooth.getValue(SPEED), bluetooth.getValue(DIRECTION), steps , bluetooth.getValue(ROTATION_TIME)};
-    for (int i = 0; i < bluetooth.getValue(FRAME); i++) {
+    for (int i = 0; i < frame; i++) {
       esp_bluetooth.write(datagramme);
       delay(100);
-      while (esp_bluetooth.read() != "2");
+      while (esp_bluetooth.read() != "2"){
+        if (bluetooth.receive()){
+          bluetooth.decode();
+
+          //si c'est pause, on indique au plateau de faire pause
+          if (bluetooth.getValue(PAUSE)!=-1){
+            int pause[]={bluetooth.getValue(PAUSE)};
+            esp_bluetooth.write(pause);
+            // Une fois qu'on est en pause, rester ici car il ne faut pas que le boitier continue de lire son code mais qu'il attente l'instruction qu'il peut reprendre la lecture
+            // Des qu'on rappuie sur pause, retirer la data pause = 3 dans android mais garder la totalité de la data avec steps,speed...
+            while(!bluetooth.receive());
+          }else if (bluetooth.getValue(STOP)!=-1){
+            int stop[]={bluetooth.getValue(STOP)};
+            esp_bluetooth.write(stop);
+          }
+        }
+      }
       relays.triggerAll();
     }
   }
@@ -69,7 +78,19 @@ void loop() {
     int datagramme[] = {bluetooth.getValue(ACCELERATION), bluetooth.getValue(SPEED), bluetooth.getValue(DIRECTION), steps , bluetooth.getValue(ROTATION_TIME)};
     esp_bluetooth.write(datagramme);
     delay(100);
-    while (esp_bluetooth.read() != "0");
+    while (esp_bluetooth.read() != "0"){
+        if (bluetooth.receive()){
+          bluetooth.decode();
+          if (bluetooth.getValue(PAUSE)!=-1){
+            int pause[]={bluetooth.getValue(PAUSE)};
+            esp_bluetooth.write(pause);
+            while(!bluetooth.receive());
+          }else if (bluetooth.getValue(STOP)!=-1){
+            int stop[]={bluetooth.getValue(STOP)};
+            esp_bluetooth.write(stop);
+          }
+        }      
+    }
   }
 
   bluetooth.resetValues();
@@ -77,6 +98,13 @@ void loop() {
 
 }
 
+void blink(){
+  digitalWrite(LED, HIGH);
+  delay(100);
+  digitalWrite(LED, LOW);
+}
 void reset(){
   ESP.restart();
 }
+
+  blink();

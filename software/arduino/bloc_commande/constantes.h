@@ -8,11 +8,15 @@
 #define CAMERA_NUMBER             7
 #define PAUSE_BETWEEN_CAMERA      8
 #define STEPS                     9
+#define PAUSE                     10
+#define STOP                      11
 
 #define PULSE_DURATION            1500
 
 #define OLED_RESET                4
-#define MAXIMUM_NUMBER_OF_VALUES  10
+#define MAXIMUM_NUMBER_OF_VALUES  12
+
+#define RELAY_NUMBER 9
 
 #define CAMERA1 35
 #define CAMERA2 32
