@@ -1,4 +1,4 @@
-DRC Rules Export File for PCB: C:\Users\louis\Desktop\Projets\Table-Rotative\hardware\Boitier_Commande\boitier_commande.PcbDoc
+DRC Rules Export File for PCB: D:\Bureau\table-rotative\Table-Rotative\hardware\Boitier_Commande\boitier_commande.PcbDoc
 RuleKind=Width|RuleName=Width|Scope=Board|Minimum=31.50
 RuleKind=Clearance|RuleName=Clearance_top_polygon|Scope=Board|Minimum=20.00
 RuleKind=Clearance|RuleName=Clearance_bottom_polygon|Scope=Board|Minimum=20.00
