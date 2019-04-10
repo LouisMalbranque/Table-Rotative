@@ -1,0 +1,5 @@
+Change Component Designator: OldDesignator=AbaisseurTension NewDesignator=Abaisseur
+Change Component Designator: OldDesignator=Jack NewDesignator=PWR
+Change Component Designator: OldDesignator=P1 NewDesignator=SW ALIM
+Change Component Designator: OldDesignator=P? NewDesignator=SW RESET
+Change Component Designator: OldDesignator=U? NewDesignator=ESP32

@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=GND Pin=LD1-K
+Removed Pin From Net: NetName=GND Pin=U?-13
+Added Component: Designator=Jack(Connecteur Power)
+Added Pin To Net: NetName=NetJack_0 Pin=Jack-0
+Added Pin To Net: NetName=GND Pin=Jack-GND
+Added Pin To Net: NetName=NetLD1_K Pin=LD1-K
+Added Pin To Net: NetName=NetLD1_K Pin=U?-13
+Added Member To Class: ClassName=ProjetMoteur Member=Component Jack Jack-Alim

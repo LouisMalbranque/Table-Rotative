@@ -1,0 +1,6 @@
+Added Component: Designator=AbaisseurTension(AbaisseurTension)
+Added Pin To Net: NetName=NetAbaisseurTension_1 Pin=AbaisseurTension-1
+Added Pin To Net: NetName=GND Pin=AbaisseurTension-2
+Added Pin To Net: NetName=NetAbaisseurTension_3 Pin=AbaisseurTension-3
+Added Member To Class: ClassName=ProjetMoteur Member=Component AbaisseurTension Abaisseurtension
+Added Member To Class: ClassName=ProjetMoteur Member=Component DRIVER Driver
