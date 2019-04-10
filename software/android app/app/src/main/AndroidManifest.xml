@@ -22,10 +22,6 @@
         <activity
             android:name=".MainActivity">
         </activity>
-        <receiver
-            android:name=".Bluetooth.ReceiverBluetooth"
-            android:enabled="true"
-            android:exported="true"></receiver>
     </application>
 
 </manifest>

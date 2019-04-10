@@ -26,6 +26,7 @@ public class Peripherique {
     private TReception tReception;
     public final static int CODE_RECEPTION = 1;
     public boolean isConnected = false;
+    public String receiveMessage;
 
 
     public Peripherique(BluetoothDevice device, Handler handler)
@@ -202,7 +203,8 @@ public class Peripherique {
                             Message msg = Message.obtain();
                             msg.what = Peripherique.CODE_RECEPTION;
                             msg.obj = data;
-                            handlerUI.sendMessage(msg);
+                            receiveMessage=data;
+                            //handlerUI.sendMessage(msg);
                         }
                     }
                     try {
