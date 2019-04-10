@@ -20,7 +20,7 @@ class ESP_bluetooth{
   public:
     ESP_bluetooth();
     void begin();
-    void read();
+    String read();
     String getData();
     int getValue(int i);
     void writeData(String s);

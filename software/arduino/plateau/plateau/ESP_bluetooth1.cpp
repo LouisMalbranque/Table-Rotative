@@ -8,31 +8,20 @@ void ESP_bluetooth::begin() {
   BLEDevice::init("Init");
   pServer = BLEDevice::createServer();
   pService = pServer->createService(SERVICE_UUID);
-  pcharacteristic = pService->createCharacteristic(
-                      CHARACTERISTIC_UUID,
-                      BLECharacteristic::PROPERTY_READ |
-                      BLECharacteristic::PROPERTY_WRITE
-                    );
-  pcharacteristic->setValue("Attente");
+  pcharacteristic = pService->createCharacteristic(CHARACTERISTIC_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
   pService->start();
-  // BLEAdvertising *pAdvertising = pServer->getAdvertising();  // this still is working for backward compatibility
   pAdvertising = BLEDevice::getAdvertising();
   pAdvertising->addServiceUUID(SERVICE_UUID);
   pAdvertising->setScanResponse(true);
   pAdvertising->setMinPreferred(0x06);  // functions that help with iPhone connections issue
   pAdvertising->setMinPreferred(0x12);
   BLEDevice::startAdvertising();
+  
 }
 
-void ESP_bluetooth::read() {
-  data = pcharacteristic->getValue().c_str();
-}
-String ESP_bluetooth::getData() {
-  return data;
-}
-
-void ESP_bluetooth::writeData(String s) {
-      pcharacteristic->setValue(s.c_str());
+String ESP_bluetooth::read() {
+   data = pcharacteristic->getValue().c_str();
+   return data;
 }
 
 void ESP_bluetooth::decode(){
@@ -50,6 +39,14 @@ void ESP_bluetooth::decode(){
     }
     data = "";
   }
+}
+
+void ESP_bluetooth::writeData(String s) {
+      pcharacteristic->setValue(s.c_str());
+}
+
+String ESP_bluetooth::getData() {
+  return data;
 }
 
 int ESP_bluetooth::getValue(int i){

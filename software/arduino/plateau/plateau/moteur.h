@@ -16,4 +16,7 @@ class Motor
     void run();
     int getCurrentPosition();
     void setZero();
+    int timeLeft();
+    int distanceLeft();
+    void setRotationTime(int temps_restant);
 };

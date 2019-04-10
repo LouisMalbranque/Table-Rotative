@@ -36,3 +36,16 @@ void Motor::run(){
 int Motor::getCurrentPosition(){
   return stepper.currentPosition();
 }
+
+int Motor::timeLeft(){
+  
+}
+
+int Motor::distanceLeft(){
+  return stepper.currentPosition();
+}
+
+void Motor::setRotationTime(int temps_restant){
+  
+}
+
