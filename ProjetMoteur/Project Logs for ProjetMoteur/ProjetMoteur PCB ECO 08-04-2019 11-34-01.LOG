@@ -1,0 +1,6 @@
+Added Component: Designator=Jack(Connecteur Power)
+Added Pin To Net: NetName=GND Pin=Jack-GND
+Added Pin To Net: NetName=NetJack_0 Pin=Jack-0
+Added Pin To Net: NetName=NetJack_0 Pin=P1-1
+Added Net: Name=NetJack_0
+Added Member To Class: ClassName=ProjetMoteur Member=Component Jack Jack-Alim

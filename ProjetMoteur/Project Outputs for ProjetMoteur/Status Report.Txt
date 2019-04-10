@@ -1,0 +1,15 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [ProjetMoteur.PrjPcb]
+   Generated File[ProjetMoteur.GTL]
+   Generated File[ProjetMoteur.GBL]
+   Generated File[ProjetMoteur.GM1]
+   Generated File[ProjetMoteur.RUL]
+   Generated File[ProjetMoteur.EXTREP]
+   Generated File[ProjetMoteur.REP]
+
+
+Files Generated   : 6
+Documents Printed : 0
+
+Finished Output Generation At 16:17:43 On 10/04/2019

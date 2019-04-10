@@ -1,0 +1,4 @@
+Added Component: Designator=R1(AXIAL0.3)
+Added Pin To Net: NetName=NetAbaisseurTension_1 Pin=R1-1
+Added Pin To Net: NetName=NetLD1_A Pin=R1-2
+Added Member To Class: ClassName=ProjetMoteur Member=Component R1 RES

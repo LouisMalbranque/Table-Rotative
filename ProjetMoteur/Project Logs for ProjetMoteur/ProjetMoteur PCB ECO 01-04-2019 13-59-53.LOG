@@ -1,0 +1,64 @@
+Added Component: Designator=*(Connecteur Power)
+Added Component: Designator=AbaisseurTension(AbaisseurTension)
+Added Component: Designator=DRIVER(Driver)
+Added Component: Designator=LED0(3528)
+Added Component: Designator=LED1(3528)
+Added Component: Designator=Moteur(Moteur)
+Added Component: Designator=R?(0805)
+Added Component: Designator=R?(0805)
+Added Component: Designator=Reset(FSMSM)
+Added Component: Designator=U?(ESP32)
+Added Pin To Net: NetName=GND Pin=*-1
+Added Pin To Net: NetName=GND Pin=AbaisseurTension-2
+Added Pin To Net: NetName=GND Pin=DRIVER-9
+Added Pin To Net: NetName=GND Pin=DRIVER-15
+Added Pin To Net: NetName=GND Pin=LED1-K
+Added Pin To Net: NetName=GND Pin=Reset-2
+Added Pin To Net: NetName=GND Pin=U?-16
+Added Net: Name=GND
+Added Pin To Net: NetName=Net*_0 Pin=*-0
+Added Pin To Net: NetName=Net*_0 Pin=AbaisseurTension-3
+Added Pin To Net: NetName=Net*_0 Pin=DRIVER-16
+Added Net: Name=Net*_0
+Added Pin To Net: NetName=NetAbaisseurTension_1 Pin=AbaisseurTension-1
+Added Pin To Net: NetName=NetAbaisseurTension_1 Pin=DRIVER-10
+Added Pin To Net: NetName=NetAbaisseurTension_1 Pin=R?-1
+Added Pin To Net: NetName=NetAbaisseurTension_1 Pin=U?-14
+Added Net: Name=NetAbaisseurTension_1
+Added Pin To Net: NetName=NetDRIVER_5 Pin=DRIVER-5
+Added Pin To Net: NetName=NetDRIVER_5 Pin=DRIVER-6
+Added Net: Name=NetDRIVER_5
+Added Pin To Net: NetName=NetDRIVER_7 Pin=DRIVER-7
+Added Pin To Net: NetName=NetDRIVER_7 Pin=U?-8
+Added Net: Name=NetDRIVER_7
+Added Pin To Net: NetName=NetDRIVER_8 Pin=DRIVER-8
+Added Pin To Net: NetName=NetDRIVER_8 Pin=U?-7
+Added Net: Name=NetDRIVER_8
+Added Pin To Net: NetName=NetDRIVER_11 Pin=DRIVER-11
+Added Pin To Net: NetName=NetDRIVER_11 Pin=Moteur-4
+Added Net: Name=NetDRIVER_11
+Added Pin To Net: NetName=NetDRIVER_12 Pin=DRIVER-12
+Added Pin To Net: NetName=NetDRIVER_12 Pin=Moteur-3
+Added Net: Name=NetDRIVER_12
+Added Pin To Net: NetName=NetDRIVER_13 Pin=DRIVER-13
+Added Pin To Net: NetName=NetDRIVER_13 Pin=Moteur-2
+Added Net: Name=NetDRIVER_13
+Added Pin To Net: NetName=NetDRIVER_14 Pin=DRIVER-14
+Added Pin To Net: NetName=NetDRIVER_14 Pin=Moteur-1
+Added Net: Name=NetDRIVER_14
+Added Pin To Net: NetName=NetLED0_A Pin=LED0-A
+Added Pin To Net: NetName=NetLED0_A Pin=R?-2
+Added Net: Name=NetLED0_A
+Added Pin To Net: NetName=NetLED0_K Pin=LED0-K
+Added Pin To Net: NetName=NetLED0_K Pin=U?-13
+Added Net: Name=NetLED0_K
+Added Pin To Net: NetName=NetLED1_A Pin=LED1-A
+Added Pin To Net: NetName=NetLED1_A Pin=R?-2
+Added Net: Name=NetLED1_A
+Added Pin To Net: NetName=NetR?_1 Pin=R?-1
+Added Pin To Net: NetName=NetR?_1 Pin=U?-17
+Added Net: Name=NetR?_1
+Added Pin To Net: NetName=NetReset_1 Pin=Reset-1
+Added Pin To Net: NetName=NetReset_1 Pin=U?-29
+Added Net: Name=NetReset_1
+Added Class: Name=ProjetMoteur
