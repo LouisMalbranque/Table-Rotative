@@ -31,10 +31,11 @@ class Bluetooth
     boolean receive();
     void begin();
     int getDataLength();
-    void decode();
+    int* decode();
     int getValue(int i);
     int* getValues();
     void print(String data);
     boolean isFull();
     void resetValues();
+    String getData();
 };

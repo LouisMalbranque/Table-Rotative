@@ -28,7 +28,7 @@ int Bluetooth::getDataLength(){
   return (int)(data.length());
 }
 
-void Bluetooth::decode(){
+int* Bluetooth::decode(){
   char* valuesent;
   int i=0;
   if (data != "") {
@@ -43,6 +43,7 @@ void Bluetooth::decode(){
     }
     data = "";
   }
+  return values;
 }
 
 int* Bluetooth::getValues(){
@@ -68,4 +69,8 @@ void Bluetooth::resetValues(){
   for (int i=0;i<MAXIMUM_NUMBER_OF_VALUES;i++){
     values[i]=0;
   }
+}
+
+String Bluetooth::getData(){
+  return data;
 }
