@@ -1,6 +1,7 @@
 package com.example.application.Activité_n2.Fragments.Temps_réel;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
+import com.example.application.Activité_n2.Order.RealTimeMode;
 import com.example.application.R;
 
 /**
@@ -42,9 +44,10 @@ public class Temps_reel extends Fragment {
         });
 
         send.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.MaintActivity, Menu.menu).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().remove(Temps_reel.temps_reel).addToBackStack(null).commit();
             }
         });
 

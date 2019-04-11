@@ -1,6 +1,7 @@
 package com.example.application.Activité_n2.Fragments.Programmé;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -42,9 +43,10 @@ public class Programme extends Fragment {
         });
 
         send.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.MaintActivity,Menu.menu).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().remove(Programme.programme).addToBackStack(null).commit();
             }
         });
 

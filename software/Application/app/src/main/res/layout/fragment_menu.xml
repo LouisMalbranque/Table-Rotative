@@ -15,11 +15,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        app:columnCount="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:rowCount="2"
-        app:columnCount="2">
+        app:rowCount="2">
 
         <Button
             android:id="@+id/pause_main"
@@ -27,10 +27,9 @@
             android:layout_height="wrap_content"
             android:text="Pause"
             app:layout_column="1"
-            app:layout_row="0"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1"
-            />
+            app:layout_row="0"
+            app:layout_rowWeight="1" />
 
         <Button
             android:id="@+id/delete_main"
@@ -38,8 +37,8 @@
             android:layout_height="wrap_content"
             android:text="delete"
             app:layout_column="0"
-            app:layout_row="1"
             app:layout_columnWeight="1"
+            app:layout_row="1"
             app:layout_rowWeight="1" />
 
         <Button
@@ -48,44 +47,33 @@
             android:layout_height="wrap_content"
             android:text="1-1"
             app:layout_column="1"
-            app:layout_row="1"
             app:layout_columnWeight="1"
+            app:layout_row="1"
             app:layout_rowWeight="1" />
 
         <Spinner
-            android:id="@+id/new_order_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dialog"
+            android:id="@+id/spinner"
+            android:layout_width="186dp"
+            android:layout_height="48dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="9dp"
             app:layout_column="0"
-            app:layout_row="0"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1" />
+            app:layout_row="0"
+            app:layout_rowWeight="1"/>
 
     </android.support.v7.widget.GridLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/orderList"
-
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+
 
 </android.support.constraint.ConstraintLayout>
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
