@@ -8,7 +8,7 @@
     tools:context=".Activité_n2.Fragments.Programmé.Programme" >
 
     <Button
-        android:id="@+id/save"
+        android:id="@+id/save_programme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/send"
+        android:id="@+id/send_programme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"

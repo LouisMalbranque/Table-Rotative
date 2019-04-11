@@ -1,4 +1,4 @@
-package com.example.application.Activité_n2.Fragments.Programmé;
+package com.example.application.Activité_n2.Fragments.Temps_réel;
 
 
 import android.os.Bundle;
@@ -15,11 +15,11 @@ import com.example.application.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Programme extends Fragment {
+public class Temps_reel extends Fragment {
 
-    static public Programme programme = new Programme();
+    static public Temps_reel temps_reel = new Temps_reel();
 
-    public Programme() {
+    public Temps_reel() {
         // Required empty public constructor
     }
 
@@ -27,10 +27,10 @@ public class Programme extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_programme, container, false);
+        View v = inflater.inflate(R.layout.fragment_temps_reel, container, false);
 
-        Button save = v.findViewById(R.id.save_programme);
-        Button send = v.findViewById(R.id.send_programme);
+        Button save = v.findViewById(R.id.save_temps_reel);
+        Button send = v.findViewById(R.id.send_temps_reel);
 
         EditText text = v.findViewById(R.id.text);
 
@@ -44,7 +44,7 @@ public class Programme extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.MaintActivity,Menu.menu).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.MaintActivity, Menu.menu).addToBackStack(null).commit();
             }
         });
 
