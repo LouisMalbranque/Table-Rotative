@@ -2,66 +2,10 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MaintActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <android.support.v7.widget.GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:columnCount="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rowCount="2">
-
-        <Button
-            android:id="@+id/button13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0-1"
-            app:layout_column="1"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            app:layout_rowWeight="1"
-
-            />
-
-        <Button
-            android:id="@+id/button14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0-1"
-            app:layout_column="0"
-            app:layout_columnWeight="1"
-            app:layout_row="1"
-            app:layout_rowWeight="1" />
-
-        <Button
-            android:id="@+id/button15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1-1"
-            app:layout_column="1"
-            app:layout_columnWeight="1"
-            app:layout_row="1"
-            app:layout_rowWeight="1" />
-
-        <Spinner
-            android:id="@+id/spinner4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_column="0"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            app:layout_rowWeight="1" />
-
-
-    </android.support.v7.widget.GridLayout>
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    tools:context=".Activité_n2.MainActivity">
 
 </android.support.constraint.ConstraintLayout>
