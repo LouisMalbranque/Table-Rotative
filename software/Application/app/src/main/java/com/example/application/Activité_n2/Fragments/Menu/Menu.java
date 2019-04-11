@@ -27,7 +27,6 @@ public class Menu extends Fragment {
     private ArrayList<String> spinnerModeItems = new ArrayList<String>();
     private boolean spinnerFirstTime=true;
 
-
     public Menu() {
         // Required empty public constructor
     }
@@ -38,7 +37,7 @@ public class Menu extends Fragment {
                              Bundle savedInstanceState) {
 
         View v= inflater.inflate(R.layout.fragment_menu,container,false);
-        
+
         spinnerMode=v.findViewById(R.id.spinner);
 
         if (spinnerFirstTime){
@@ -57,11 +56,11 @@ public class Menu extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 1:
-                        getFragmentManager().beginTransaction().replace(R.id.MaintActivity, Programme.programme).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.MaintActivity, Programme.programme).addToBackStack(null).commit();
                         spinnerMode.setSelection(0);
                         break;
                     case 2:
-                        getFragmentManager().beginTransaction().replace(R.id.MaintActivity, Temps_reel.temps_reel).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.MaintActivity, Temps_reel.temps_reel).addToBackStack(null).commit();
                         spinnerMode.setSelection(0);
                         break;
                     default:
