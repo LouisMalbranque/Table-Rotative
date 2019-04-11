@@ -28,7 +28,7 @@ public class CommandeAdapter extends RecyclerView.Adapter<CommandeAdapter.MyView
 
         MyViewHolder(View v){
             super(v);
-            nameText = v.findViewById(R.id.textName);
+            //nameText = v.findViewById(R.id.textName);
         }
     }
 }
