@@ -8,7 +8,7 @@
     tools:context=".Activité_n2.Fragments.Programmé.Programme" >
 
     <EditText
-        android:id="@+id/Vitesse"
+        android:id="@+id/VitesseProgramme"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -17,6 +17,7 @@
         android:ems="10"
         android:hint="Vitesse"
         android:inputType="number"
+        android:text="1"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,8 +64,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/Acceleration"
-        android:layout_width="158dp"
+        android:id="@+id/AccelerationProgramme"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -72,13 +73,14 @@
         android:ems="10"
         android:hint="Acceleration"
         android:inputType="number"
+        android:text="1"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text" />
 
     <EditText
-        android:id="@+id/Steps"
+        android:id="@+id/StepsProgramme"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -87,13 +89,14 @@
         android:ems="10"
         android:hint="Steps"
         android:inputType="number"
+        android:text="1"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Direction" />
+        app:layout_constraintTop_toBottomOf="@+id/DirectionProgramme" />
 
     <EditText
-        android:id="@+id/Camera_Number"
+        android:id="@+id/Camera_Number_Programme"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -102,28 +105,28 @@
         android:ems="10"
         android:hint="Nombre de camera"
         android:inputType="number"
+        android:text="1"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Steps" />
+        app:layout_constraintTop_toBottomOf="@+id/StepsProgramme" />
 
     <EditText
-        android:id="@+id/Pause_between_camera"
+        android:id="@+id/Pause_between_camera_Programme"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="Pause entre les cameras"
         android:inputType="number"
+        android:text="1"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Steps" />
+        app:layout_constraintTop_toBottomOf="@+id/FrameProgramme" />
 
     <EditText
-        android:id="@+id/Frame"
+        android:id="@+id/FrameProgramme"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -135,10 +138,10 @@
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Direction" />
+        app:layout_constraintTop_toBottomOf="@+id/DirectionProgramme" />
 
     <Switch
-        android:id="@+id/Direction"
+        android:id="@+id/DirectionProgramme"
         android:layout_width="147dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -150,11 +153,12 @@
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Acceleration" />
+        app:layout_constraintTop_toBottomOf="@+id/AccelerationProgramme" />
 
     <Switch
-        android:id="@+id/Focus_stacking"
+        android:id="@+id/Focus_stacking_Programme"
         android:layout_width="147dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -167,7 +171,7 @@
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Pause_between_camera" />
+        app:layout_constraintTop_toBottomOf="@+id/Pause_between_camera_Programme" />
 
     <Button
         android:id="@+id/charger"

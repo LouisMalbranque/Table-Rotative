@@ -8,40 +8,35 @@
     tools:context=".Activité_n2.Fragments.Temps_réel.TempsReel">
 
     <EditText
-        android:id="@+id/Rotation_time"
+        android:id="@+id/Rotation_time_TempsReel"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="Temps rotation"
         android:inputType="number"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/steps" />
+        app:layout_constraintTop_toBottomOf="@+id/choix_rotation_TempsReel" />
 
     <EditText
-        android:id="@+id/Rotation_number"
+        android:id="@+id/Rotation_number_TempsReel"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="Nb rotation"
         android:inputType="number"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/direction" />
+        app:layout_constraintTop_toBottomOf="@+id/choix_rotation_TempsReel" />
 
     <Switch
-        android:id="@+id/direction"
+        android:id="@+id/DirectionTempsReel"
         android:layout_width="147dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
@@ -55,14 +50,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Acceleration" />
+        app:layout_constraintTop_toBottomOf="@+id/AccelerationTempsReel" />
 
-    <EditText
-        android:id="@+id/steps"
-        android:layout_width="158dp"
-        android:layout_height="wrap_content"
+    <Switch
+        android:id="@+id/choix_rotation_TempsReel"
+        android:layout_width="147dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="Choix Rotation"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StepsTempsReel" />
+
+    <EditText
+        android:id="@+id/StepsTempsReel"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Steps"
@@ -70,7 +81,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/direction" />
+        app:layout_constraintTop_toBottomOf="@+id/DirectionTempsReel" />
 
     <Button
         android:id="@+id/save_temps_reel"
@@ -127,7 +138,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/Acceleration"
+        android:id="@+id/AccelerationTempsReel"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -142,7 +153,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text" />
 
     <EditText
-        android:id="@+id/Vitesse"
+        android:id="@+id/VitesseTempsReel"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

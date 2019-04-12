@@ -39,12 +39,13 @@ public class TempsReel extends Fragment {
         Button send = v.findViewById(R.id.send_temps_reel);
         Button charger = v.findViewById(R.id.charger);
 
-        EditText acceleration = v.findViewById(R.id.Acceleration);
-        EditText vitesse = v.findViewById(R.id.Vitesse);
-        Switch direction = v.findViewById(R.id.Direction);
-        EditText steps = v.findViewById(R.id.Steps);
-        EditText rotation_number = v.findViewById(R.id.Rotation_number);
-        EditText rotation_time = v.findViewById(R.id.Rotation_time);
+        final EditText acceleration = v.findViewById(R.id.AccelerationTempsReel);
+        final EditText vitesse = v.findViewById(R.id.VitesseTempsReel);
+        final Switch direction = v.findViewById(R.id.DirectionTempsReel);
+        final EditText steps = v.findViewById(R.id.StepsTempsReel);
+        final Switch choix_rotation = v.findViewById(R.id.choix_rotation_TempsReel);
+        final EditText rotation_number = v.findViewById(R.id.Rotation_number_TempsReel);
+        final EditText rotation_time = v.findViewById(R.id.Rotation_time_TempsReel);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +58,9 @@ public class TempsReel extends Fragment {
             @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                TempsReelOrder tempsReelOrder = new TempsReelOrder(1,1,true,1,true,1, 1);
+                TempsReelOrder tempsReelOrder=new TempsReelOrder(Integer.parseInt(acceleration.getText().toString()),Integer.parseInt(vitesse.getText().toString()),
+                        direction.isChecked(),Integer.parseInt(steps.getText().toString()),choix_rotation.isChecked(),
+                        Integer.parseInt(rotation_number.getText().toString()),Integer.parseInt(rotation_time.getText().toString()));
                 ListOrder.list.add(tempsReelOrder);
                 getFragmentManager().beginTransaction().remove(TempsReel.temps_reel).addToBackStack(null).commit();
                 Menu.orderAdapter.notifyDataSetChanged();

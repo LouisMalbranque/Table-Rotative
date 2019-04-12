@@ -49,6 +49,6 @@ public class TempsReelOrder extends Order {
 
     @Override
     public String createDatagramme() {
-        return null;
+        return "";
     }
 }
