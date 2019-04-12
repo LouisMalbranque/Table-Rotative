@@ -26,16 +26,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pause"
-            app:layout_column="1"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            app:layout_rowWeight="1" />
-
-        <Button
-            android:id="@+id/delete_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="delete"
             app:layout_column="0"
             app:layout_columnWeight="1"
             app:layout_row="1"
@@ -53,14 +43,14 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="186dp"
-            android:layout_height="48dp"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="9dp"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
             app:layout_column="0"
             app:layout_columnWeight="1"
             app:layout_row="0"
-            app:layout_rowWeight="1"/>
+            app:layout_rowWeight="1"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="9dp" />
 
     </android.support.v7.widget.GridLayout>
 
@@ -73,7 +63,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
-
 
 
 </android.support.constraint.ConstraintLayout>

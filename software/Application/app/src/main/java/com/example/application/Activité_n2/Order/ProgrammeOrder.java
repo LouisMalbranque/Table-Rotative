@@ -14,6 +14,7 @@ public class ProgrammeOrder extends Order {
 
     public ProgrammeOrder(int acceleration,int vitesse, boolean direction, int nombre_de_pas_table, int nombre_de_prise, int nombre_de_camera,
                           int temps_pause_entre_photos, boolean focus_stacking) {
+        super();
         this.acceleration = acceleration;
         this.vitesse = vitesse;
         this.direction = direction;

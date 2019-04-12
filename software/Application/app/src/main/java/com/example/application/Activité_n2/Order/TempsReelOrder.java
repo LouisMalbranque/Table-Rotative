@@ -10,6 +10,7 @@ public class TempsReelOrder extends Order {
     private int rotation_time;
 
     public TempsReelOrder(int acceleration, int vitesse, boolean direction, int steps, boolean choix_rotation, int rotation_number, int rotation_time) {
+        super();
         this.acceleration = acceleration;
         this.vitesse = vitesse;
         this.direction = direction;

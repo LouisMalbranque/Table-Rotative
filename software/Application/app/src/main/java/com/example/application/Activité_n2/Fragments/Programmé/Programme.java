@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.ProgrammeOrder;
@@ -20,9 +21,19 @@ import com.example.application.R;
  */
 public class Programme extends Fragment {
 
+    private Peripherique peripherique;
+
+    String data;
+    public int accelerationInt;
+    public int vitesseInt;
+    public int directionInt;
+    public int stepsInt;
+    public int frameInt;
+    public int camera_numberInt;
+    public int pause_between_cameraInt;
+    public int focus_stackingInt;
+
     static public Programme programme = new Programme();
-    public int dir;
-    public int focus;
 
     public Programme() {
         // Required empty public constructor
@@ -40,14 +51,15 @@ public class Programme extends Fragment {
         Button send = v.findViewById(R.id.send_programme);
         Button charger = v.findViewById(R.id.charger);
 
-        final EditText acceleration = v.findViewById(R.id.AccelerationProgramme);
-        final EditText vitesse = v.findViewById(R.id.VitesseProgramme);
-        final Switch direction = v.findViewById(R.id.DirectionProgramme);
-        final EditText steps = v.findViewById(R.id.StepsProgramme);
-        final EditText frame = v.findViewById(R.id.FrameProgramme);
-        final EditText camera_number = v.findViewById(R.id.Camera_Number_Programme);
-        final EditText pause_between_camera = v.findViewById(R.id.Pause_between_camera_Programme);
-        final Switch focus_stacking = v.findViewById(R.id.Focus_stacking_Programme);
+        final EditText accelerationEditText = v.findViewById(R.id.AccelerationProgramme);
+        final EditText vitesseEditText = v.findViewById(R.id.VitesseProgramme);
+        final Switch directionSwitch = v.findViewById(R.id.DirectionProgramme);
+        final EditText stepsEditText = v.findViewById(R.id.StepsProgramme);
+        final EditText frameEditText = v.findViewById(R.id.FrameProgramme);
+        final EditText camera_numberEditText = v.findViewById(R.id.Camera_Number_Programme);
+        final EditText pause_between_cameraEditText = v.findViewById(R.id.Pause_between_camera_Programme);
+        final Switch focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
+
 
 
 
@@ -62,12 +74,38 @@ public class Programme extends Fragment {
             @Override
             public void onClick(View v) {
 
-                ProgrammeOrder programmeOrder = new ProgrammeOrder(Integer.parseInt(acceleration.getText().toString()),Integer.parseInt(vitesse.getText().toString()),
-                        direction.isChecked(),Integer.parseInt(steps.getText().toString()),Integer.parseInt(frame.getText().toString())
-                        ,Integer.parseInt(camera_number.getText().toString()),Integer.parseInt(pause_between_camera.getText().toString()),focus_stacking.isChecked());
+                accelerationInt=Integer.parseInt(accelerationEditText.getText().toString());
+                vitesseInt=Integer.parseInt(vitesseEditText.getText().toString());
+                stepsInt=Integer.parseInt(stepsEditText.getText().toString());
+                frameInt=Integer.parseInt(frameEditText.getText().toString());
+                camera_numberInt=Integer.parseInt(camera_numberEditText.getText().toString());
+                pause_between_cameraInt=Integer.parseInt(pause_between_cameraEditText.getText().toString());
+
+                ProgrammeOrder programmeOrder = new ProgrammeOrder(accelerationInt,vitesseInt,
+                        directionSwitch.isChecked(),stepsInt,frameInt,camera_numberInt,pause_between_cameraInt,focus_stackingSwitch.isChecked());
                 ListOrder.list.add(programmeOrder);
                 getFragmentManager().beginTransaction().remove(Programme.programme).addToBackStack(null).commit();
                 Menu.orderAdapter.notifyDataSetChanged();
+
+
+                data="";
+                data+="0";
+                data+=Integer.toString(accelerationInt);
+                data+=Integer.toString(vitesseInt);
+                if (directionSwitch.isChecked()){
+                    data+="1";
+                }
+                else{
+                    data+="0";
+                }
+                data+=Integer.toString(stepsInt);
+                data+=Integer.toString(frameInt);
+                data+=Integer.toString(camera_numberInt);
+                data+=Integer.toString(pause_between_cameraInt);
+
+
+
+                //peripherique.envoyer(data);
 
             }
         });
