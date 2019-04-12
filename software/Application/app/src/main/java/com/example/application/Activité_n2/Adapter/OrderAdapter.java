@@ -14,7 +14,6 @@ import com.example.application.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -101,8 +100,10 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             case 0:
                 //ProgrammedViewHolder v = (ProgrammedViewHolder) viewHolder;
                 ProgrammeOrder order = ((ProgrammeOrder)ListOrder.list.get(i));
-
-                ((ProgrammedViewHolder)viewHolder).focus_stacking.setText(Integer.toString(order.getFocus_stacking()));
+                System.out.println(order.getFocus_stacking());
+                System.out.println(order.getNombre_de_camera());
+                System.out.println(order.getNombre_de_prise());
+                //(ProgrammedViewHolder)viewHolder).focus_stacking.setText(Integer.toString(order.getFocus_stacking()));
                 ((ProgrammedViewHolder)viewHolder).nombre_de_camera.setText(Integer.toString(order.getNombre_de_camera()));
                 ((ProgrammedViewHolder)viewHolder).nombre_de_prise.setText(Integer.toString(order.getNombre_de_prise()));
 

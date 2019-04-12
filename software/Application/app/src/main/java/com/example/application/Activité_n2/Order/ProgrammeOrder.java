@@ -4,15 +4,16 @@ public class ProgrammeOrder extends Order {
 
     private int acceleration;
     private int vitesse;
-    private int direction;
+    private boolean direction;
     private int nombre_de_pas_table;
     private int nombre_de_prise;
     private int nombre_de_camera;
     private int temps_pause_entre_photos;
-    private int focus_stacking;
+    private boolean focus_stacking;
 
 
-    public ProgrammeOrder(int acceleration,int vitesse, int direction, int nombre_de_pas_table, int nombre_de_prise, int nombre_de_camera, int temps_pause_entre_photos, int focus_stacking) {
+    public ProgrammeOrder(int acceleration,int vitesse, boolean direction, int nombre_de_pas_table, int nombre_de_prise, int nombre_de_camera,
+                          int temps_pause_entre_photos, boolean focus_stacking) {
         this.acceleration = acceleration;
         this.vitesse = vitesse;
         this.direction = direction;
@@ -23,7 +24,7 @@ public class ProgrammeOrder extends Order {
         this.focus_stacking = focus_stacking;
     }
 
-    public int getFocus_stacking() {
+    public boolean getFocus_stacking() {
         return focus_stacking;
     }
 

@@ -27,6 +27,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="TextView"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mode_programme" />
 
@@ -38,6 +39,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre_de_prise" />
 
@@ -49,6 +51,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre_de_camera" />
 
