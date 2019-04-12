@@ -5,13 +5,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.Order;
+import com.example.application.Activité_n2.Order.ProgrammeOrder;
 import com.example.application.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -21,9 +24,15 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     LayoutInflater inflater;
 
     class ProgrammedViewHolder extends RecyclerView.ViewHolder{
+        public TextView nombre_de_prise;
+        public TextView nombre_de_camera;
+        public TextView focus_stacking;
 
         public ProgrammedViewHolder(View itemView) {
             super(itemView);
+            nombre_de_prise = itemView.findViewById(R.id.nombre_de_prise);
+            nombre_de_camera = itemView.findViewById(R.id.nombre_de_camera);
+            focus_stacking = itemView.findViewById(R.id.focus_stacking);
         }
     }
 
@@ -75,7 +84,6 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         System.out.println("on create view holder");
         switch(i){
             case 0:
-
                 return new ProgrammedViewHolder(LayoutInflater.from(context).inflate(R.layout.ordre_programme_liste,viewGroup,false));
             case 1:
 
@@ -89,6 +97,17 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+        switch (viewHolder.getItemViewType()){
+            case 0:
+                //ProgrammedViewHolder v = (ProgrammedViewHolder) viewHolder;
+                ProgrammeOrder order = ((ProgrammeOrder)ListOrder.list.get(i));
 
+                ((ProgrammedViewHolder)viewHolder).focus_stacking.setText(Integer.toString(order.getFocus_stacking()));
+                ((ProgrammedViewHolder)viewHolder).nombre_de_camera.setText(Integer.toString(order.getNombre_de_camera()));
+                ((ProgrammedViewHolder)viewHolder).nombre_de_prise.setText(Integer.toString(order.getNombre_de_prise()));
+
+
+
+        }
     }
 }
