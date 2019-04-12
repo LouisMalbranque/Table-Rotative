@@ -26,7 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mode_programme" />
 
@@ -38,6 +40,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre_de_prise" />
 
@@ -49,11 +52,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre_de_camera" />
 
     <Button
-        android:id="@+id/pause_continuer"
+        android:id="@+id/pause_continuer_programme"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
@@ -63,17 +67,17 @@
         app:layout_constraintTop_toBottomOf="@+id/mode_programme" />
 
     <Button
-        android:id="@+id/infos"
+        android:id="@+id/infos_programme"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pause_continuer" />
+        app:layout_constraintTop_toBottomOf="@+id/pause_continuer_programme" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/delete_programme"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintEnd_toEndOf="parent"

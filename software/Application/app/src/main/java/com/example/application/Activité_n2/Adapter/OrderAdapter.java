@@ -7,9 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.application.Activité_n2.Fragments.Temps_réel.TempsReel;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.Order;
 import com.example.application.Activité_n2.Order.ProgrammeOrder;
+import com.example.application.Activité_n2.Order.TempsReelOrder;
 import com.example.application.R;
 
 import java.util.ArrayList;
@@ -37,9 +39,15 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     class RealTimeViewHolder extends RecyclerView.ViewHolder {
+        public TextView vitesse;
+        public TextView direction;
+        public TextView temps_tour;
 
         public RealTimeViewHolder(View itemView) {
             super(itemView);
+            vitesse = itemView.findViewById(R.id.vitesse);
+            direction = itemView.findViewById(R.id.direction);
+            temps_tour = itemView.findViewById(R.id.temps_tour);
         }
     }
 
@@ -99,13 +107,33 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         switch (viewHolder.getItemViewType()){
             case 0:
-                //ProgrammedViewHolder v = (ProgrammedViewHolder) viewHolder;
-                ProgrammeOrder order = ((ProgrammeOrder)ListOrder.list.get(i));
+                ProgrammedViewHolder vProgrammed = (ProgrammedViewHolder) viewHolder;
+                ProgrammeOrder oProgrammed = ((ProgrammeOrder)ListOrder.list.get(i));
 
-                ((ProgrammedViewHolder)viewHolder).focus_stacking.setText(Integer.toString(order.getFocus_stacking()));
-                ((ProgrammedViewHolder)viewHolder).nombre_de_camera.setText(Integer.toString(order.getNombre_de_camera()));
-                ((ProgrammedViewHolder)viewHolder).nombre_de_prise.setText(Integer.toString(order.getNombre_de_prise()));
+                if (oProgrammed.getFocus_stacking() == 1){
+                    vProgrammed.focus_stacking.setText("Mode focus stacking activé");
+                }
+                else{
+                    vProgrammed.focus_stacking.setText("Mode focus stacking désactivé");
+                }
+                vProgrammed.nombre_de_camera.setText(Integer.toString(oProgrammed.getNombre_de_camera()) + " caméra(s)");
+                vProgrammed.nombre_de_prise.setText(Integer.toString(oProgrammed.getNombre_de_prise()) + " prise(s) de vue(s)");
+                break;
 
+            case 1:
+                RealTimeViewHolder vRealTime = (RealTimeViewHolder) viewHolder;
+                TempsReelOrder oRealTime = (TempsReelOrder)ListOrder.get(i);
+
+                vRealTime.vitesse.setText(Integer.toString(oRealTime.getVitesse()) + " pas/s");
+                if (oRealTime.isDirection()){
+                    vRealTime.direction.setText("Rotation en sens horaire");
+                }
+                else vRealTime.direction.setText("Rotation en sens antihoraire");
+
+                if (oRealTime.isTimeMode()){
+                    vRealTime.temps_tour.setText(Integer.toString(oRealTime.getRotation_time()) + " s");
+                }
+                else vRealTime.temps_tour.setText(Integer.toString(oRealTime.getRotation_number()) + "tour(s)");
 
 
         }

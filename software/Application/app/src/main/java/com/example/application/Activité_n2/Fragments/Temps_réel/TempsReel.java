@@ -57,7 +57,7 @@ public class TempsReel extends Fragment {
             @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                TempsReelOrder tempsReelOrder=new TempsReelOrder(1,1,1,1,1,1);
+                TempsReelOrder tempsReelOrder = new TempsReelOrder(1,1,true,1,true,1, 1);
                 ListOrder.list.add(tempsReelOrder);
                 getFragmentManager().beginTransaction().remove(TempsReel.temps_reel).addToBackStack(null).commit();
                 Menu.orderAdapter.notifyDataSetChanged();
