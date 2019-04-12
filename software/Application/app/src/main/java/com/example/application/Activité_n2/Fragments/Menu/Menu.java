@@ -101,6 +101,7 @@ public class Menu extends Fragment {
         listOrder.setLayoutManager(layoutManager);
         listOrder.setItemAnimator( new DefaultItemAnimator());
         listOrder.setAdapter(orderAdapter);
+
         System.out.println("test");
         for (int i=0;i< ListOrder.list.size();i++){
             System.out.println(ListOrder.list.get(i));

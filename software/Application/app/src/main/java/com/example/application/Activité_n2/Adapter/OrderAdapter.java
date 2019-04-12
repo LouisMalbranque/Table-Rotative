@@ -53,7 +53,8 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemViewType(int position) {
-        if (ListOrder.get(position).getType().equals("ProgrammedMode")){
+        if (position >= ListOrder.list.size()) return -1;
+        if (ListOrder.get(position).getType().equals("ProgrammeOrder")){
             return 0;
         }
         else if (ListOrder.get(position).getType().equals("TempsReelOrder")){
@@ -66,7 +67,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return orderList.size();
+        return 10;
     }
 
     @Override
