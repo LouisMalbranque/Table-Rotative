@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.application.Activité_n2.Fragments.Temps_réel.TempsReel;
@@ -25,28 +27,46 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     LayoutInflater inflater;
 
     class ProgrammedViewHolder extends RecyclerView.ViewHolder{
+        public int id;
         public TextView nombre_de_prise;
         public TextView nombre_de_camera;
         public TextView focus_stacking;
+        public ImageButton delete;
 
         public ProgrammedViewHolder(View itemView) {
             super(itemView);
             nombre_de_prise = itemView.findViewById(R.id.nombre_de_prise);
             nombre_de_camera = itemView.findViewById(R.id.nombre_de_camera);
             focus_stacking = itemView.findViewById(R.id.focus_stacking);
+            delete = itemView.findViewById(R.id.delete_programme);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ListOrder.delete(id);
+                }
+            });
         }
     }
 
     class RealTimeViewHolder extends RecyclerView.ViewHolder {
+        public int id;
         public TextView vitesse;
         public TextView direction;
         public TextView temps_tour;
+        public ImageButton delete;
 
         public RealTimeViewHolder(View itemView) {
             super(itemView);
             vitesse = itemView.findViewById(R.id.vitesse);
             direction = itemView.findViewById(R.id.direction);
             temps_tour = itemView.findViewById(R.id.temps_tour);
+            delete = itemView.findViewById(R.id.delete_temps_reel);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ListOrder.delete(id);
+                }
+            });
         }
     }
 
@@ -117,6 +137,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 }
                 vProgrammed.nombre_de_camera.setText(Integer.toString(oProgrammed.getNombre_de_camera()) + " caméra(s)");
                 vProgrammed.nombre_de_prise.setText(Integer.toString(oProgrammed.getNombre_de_prise()) + " prise(s) de vue(s)");
+                vProgrammed.id = oProgrammed.getId();
                 break;
 
             case 1:
@@ -134,6 +155,8 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 }
                 else vRealTime.temps_tour.setText(Integer.toString(oRealTime.getRotation_number()) + " tour(s)");
 
+                vRealTime.id = oRealTime.getId();
+                break;
 
         }
     }

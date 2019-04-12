@@ -5,6 +5,9 @@ public abstract class Order {
     static private int lastid=0;
     private int id;
 
+    public int getId() {
+        return id;
+    }
     Order(){
         id=++lastid;
     }
