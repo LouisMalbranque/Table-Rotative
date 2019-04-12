@@ -109,7 +109,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 ProgrammedViewHolder vProgrammed = (ProgrammedViewHolder) viewHolder;
                 ProgrammeOrder oProgrammed = ((ProgrammeOrder)ListOrder.list.get(i));
 
-                if (oProgrammed.getFocus_stacking() == 1){
+                if (oProgrammed.getFocus_stacking()){
                     vProgrammed.focus_stacking.setText("Mode focus stacking activé");
                 }
                 else{
@@ -132,7 +132,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 if (oRealTime.isTimeMode()){
                     vRealTime.temps_tour.setText(Integer.toString(oRealTime.getRotation_time()) + " s");
                 }
-                else vRealTime.temps_tour.setText(Integer.toString(oRealTime.getRotation_number()) + "tour(s)");
+                else vRealTime.temps_tour.setText(Integer.toString(oRealTime.getRotation_number()) + " tour(s)");
 
 
         }
