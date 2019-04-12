@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.Order;
@@ -45,14 +44,14 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemViewType(int position) {
-        if (ListOrder.get(position).getType().equals("ProgrammedMode")){
+        if (ListOrder.get(position).getType().equals("ProgrammeOrder")){
             return 0;
         }
-        else if (ListOrder.get(position).getType().equals("RealTimeMode")){
+        else if (ListOrder.get(position).getType().equals("TempsReelOrder")){
             return 1;
         }
         else{
-            return 0;
+            return 2;
         }
     }
 
@@ -66,7 +65,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         switch(i){
             case 0: return new ProgrammedViewHolder(LayoutInflater.from(context).inflate(R.layout.fragment_programme,viewGroup,false));
             case 1: return new RealTimeViewHolder(LayoutInflater.from(context).inflate(R.layout.fragment_temps_reel,viewGroup,false));
-            default: return new ProgrammedViewHolder(LayoutInflater.from(context).inflate(R.layout.fragment_programme,viewGroup,false));
+            default: return new ProgrammedViewHolder(LayoutInflater.from(context).inflate(R.layout.fragment_magneto,viewGroup,false));
         }
 
     }

@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
+import com.example.application.Activité_n2.Order.ListOrder;
+import com.example.application.Activité_n2.Order.ProgrammeOrder;
 import com.example.application.R;
 
 /**
@@ -46,7 +48,10 @@ public class Programme extends Fragment {
             @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().remove(Programme.programme).addToBackStack(null).commit();
+                ProgrammeOrder programmeOrder = new ProgrammeOrder(1,1,
+                        1,1,1,1,1);
+                ListOrder.list.add(programmeOrder);
+                getFragmentManager().beginTransaction().replace(R.id.fragment, Menu.menu).addToBackStack(null).commit();
             }
         });
 

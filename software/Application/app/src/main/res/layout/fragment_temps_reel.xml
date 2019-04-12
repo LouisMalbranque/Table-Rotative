@@ -41,7 +41,7 @@
         android:background="@color/colorPrimaryDark"
         android:ems="10"
         android:inputType="number"
-        android:text="nombre"
+        android:text="tempsreel"
         android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
