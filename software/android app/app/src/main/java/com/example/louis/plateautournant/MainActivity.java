@@ -19,13 +19,19 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.louis.plateautournant.BDD.valeurProgramme;
 import com.example.louis.plateautournant.Bluetooth.Peripherique;
 import com.example.louis.plateautournant.Fragment.ProgrammedRotation;
 import com.example.louis.plateautournant.Fragment.RealTimeRotation;
+import com.example.louis.plateautournant.UtilisationBDD.ajoutBDDVP;
+import com.example.louis.plateautournant.UtilisationBDD.ajoutValeur;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
+
+
+    //ajoutValeur mListener = this;
 
     private String data ="";
 
@@ -37,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar speedSeekBar;
     private Switch directionSwitch;
     private Button sendButton;
+    private Button saveButton;
 
     private ArrayList<String> spinnerModeItems = new ArrayList<String>();
 
@@ -60,11 +67,13 @@ public class MainActivity extends AppCompatActivity {
     private int maximumValSpeed=400;
     private int minimumValAcceleration=100;
     private int maximumValAcceleration=4000;
-
-
+    private static Context sContext;
+    private ajoutBDDVP majoutAsyncTask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        sContext = getApplicationContext();
         setContentView(R.layout.activity_main);
 
         peripherique = Peripherique.peripherique;
@@ -76,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         directionSwitch = findViewById(R.id.directionSwitch);
         sendButton = findViewById(R.id.buttonSend);
         stepsNumber=findViewById(R.id.stepstableNumber);
-
+        saveButton=findViewById(R.id.save);
         accelerationNumber.setFilters(new InputFilter[]{new MinMaxFilter(minimumValAcceleration-100,maximumValAcceleration)});
         accelerationNumber.addTextChangedListener(new TextWatcher() {
             @Override
@@ -287,5 +296,49 @@ public class MainActivity extends AppCompatActivity {
                 peripherique.envoyer(data);
             }
         });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                majoutAsyncTask=new ajoutBDDVP();
+
+                switch(mode){
+                    case 0:
+                        valeurProgramme nouvelEnregistrement = new valeurProgramme();
+                        nouvelEnregistrement.id="exemple1";
+                        nouvelEnregistrement.frame = programmedRotation.getFrameNumber().getText().toString();
+                        nouvelEnregistrement.camera_number = programmedRotation.getCameraNumber().getText().toString();
+                        nouvelEnregistrement.timeBetweenPhotosNumber = programmedRotation.getTimeBetweenPhotosNumber().getText().toString();
+                        nouvelEnregistrement.acceleration = accelerationNumber.getText().toString();
+                        nouvelEnregistrement.speed = speedNumber.getText().toString();
+                        if (!directionSwitch.isChecked()){
+                            nouvelEnregistrement.direction="0";
+                        }
+                        else{
+                            nouvelEnregistrement.direction="1";
+                        }
+                        majoutAsyncTask.execute(nouvelEnregistrement);
+                        break;
+                    /*case 1:
+                        if (realTimeRotation.isModeTime()){
+                            rotation_number=-1;
+                            rotation_time=Integer.parseInt(realTimeRotation.getNumberText().getText().toString());
+                        }else{
+                            rotation_number=Integer.parseInt(realTimeRotation.getNumberText().getText().toString());
+                            rotation_time=-1;
+                        }
+
+                        break;*/
+
+                }
+
+            }
+        });
     }
+
+    public static Context getContext() {
+        return sContext;
+    }
+
 }
