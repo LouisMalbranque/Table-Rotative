@@ -4,6 +4,9 @@ public abstract class Order {
     private String name;
     private int id;
 
+    public int getId() {
+        return id;
+    }
     Order(){
 
     }

@@ -76,11 +76,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pause_continuer_programme" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/delete_programme"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_delete" />
+
 </android.support.constraint.ConstraintLayout>
