@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Order.ListOrder;
@@ -18,11 +19,11 @@ import com.example.application.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Temps_reel extends Fragment {
+public class TempsReel extends Fragment {
 
-    static public Temps_reel temps_reel = new Temps_reel();
+    static public TempsReel temps_reel = new TempsReel();
 
-    public Temps_reel() {
+    public TempsReel() {
         // Required empty public constructor
     }
 
@@ -32,10 +33,18 @@ public class Temps_reel extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_temps_reel, container, false);
 
+        EditText text = v.findViewById(R.id.text);
+
         Button save = v.findViewById(R.id.save_temps_reel);
         Button send = v.findViewById(R.id.send_temps_reel);
+        Button charger = v.findViewById(R.id.charger);
 
-        EditText text = v.findViewById(R.id.text);
+        EditText acceleration = v.findViewById(R.id.Acceleration);
+        EditText vitesse = v.findViewById(R.id.Vitesse);
+        Switch direction = v.findViewById(R.id.Direction);
+        EditText steps = v.findViewById(R.id.Steps);
+        EditText rotation_number = v.findViewById(R.id.Rotation_number);
+        EditText rotation_time = v.findViewById(R.id.Rotation_time);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +57,9 @@ public class Temps_reel extends Fragment {
             @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                TempsReelOrder tempsReelOrder=new TempsReelOrder();
+                TempsReelOrder tempsReelOrder=new TempsReelOrder(1,1,1,1,1,1);
                 ListOrder.list.add(tempsReelOrder);
-                getFragmentManager().beginTransaction().remove(Temps_reel.temps_reel).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().remove(TempsReel.temps_reel).addToBackStack(null).commit();
                 Menu.orderAdapter.notifyDataSetChanged();
             }
         });

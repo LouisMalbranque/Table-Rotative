@@ -15,7 +15,7 @@ import android.widget.Spinner;
 
 import com.example.application.Activité_n2.Adapter.OrderAdapter;
 import com.example.application.Activité_n2.Fragments.Programmé.Programme;
-import com.example.application.Activité_n2.Fragments.Temps_réel.Temps_reel;
+import com.example.application.Activité_n2.Fragments.Temps_réel.TempsReel;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.R;
 
@@ -76,7 +76,7 @@ public class Menu extends Fragment {
 
                         break;
                     case 2:
-                        getFragmentManager().beginTransaction().replace(R.id.fragment, Temps_reel.temps_reel).addToBackStack(null).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment, TempsReel.temps_reel).addToBackStack(null).commit();
                         spinnerMode.setSelection(0);
                         break;
                     default:
