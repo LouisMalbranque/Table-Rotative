@@ -49,9 +49,11 @@ public class Programme extends Fragment {
             @Override
             public void onClick(View v) {
                 ProgrammeOrder programmeOrder = new ProgrammeOrder(1,1,
-                        1,1,1,1,1);
+                        1,1,1,1,1,1);
                 ListOrder.list.add(programmeOrder);
-                getFragmentManager().beginTransaction().replace(R.id.fragment, Menu.menu).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().remove(Programme.programme).addToBackStack(null).commit();
+                Menu.orderAdapter.notifyDataSetChanged();
+
             }
         });
 

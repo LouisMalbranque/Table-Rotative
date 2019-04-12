@@ -50,7 +50,8 @@ public class Temps_reel extends Fragment {
             public void onClick(View v) {
                 TempsReelOrder tempsReelOrder=new TempsReelOrder();
                 ListOrder.list.add(tempsReelOrder);
-                getFragmentManager().beginTransaction().replace(R.id.fragment, Menu.menu).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().remove(Temps_reel.temps_reel).addToBackStack(null).commit();
+                Menu.orderAdapter.notifyDataSetChanged();
             }
         });
 

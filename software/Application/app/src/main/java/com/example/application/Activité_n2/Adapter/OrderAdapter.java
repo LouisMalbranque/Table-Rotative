@@ -74,9 +74,15 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         System.out.println("on create view holder");
         switch(i){
-            case 0: return new ProgrammedViewHolder(LayoutInflater.from(context).inflate(R.layout.ordre_programme_liste,viewGroup,false));
-            case 1: return new RealTimeViewHolder(LayoutInflater.from(context).inflate(R.layout.ordre_temps_reel_liste,viewGroup,false));
-            default: return new DefaultViewHolder(LayoutInflater.from(context).inflate(R.layout.ordre_defaut_liste,viewGroup,false));
+            case 0:
+
+                return new ProgrammedViewHolder(LayoutInflater.from(context).inflate(R.layout.ordre_programme_liste,viewGroup,false));
+            case 1:
+
+                return new RealTimeViewHolder(LayoutInflater.from(context).inflate(R.layout.ordre_temps_reel_liste,viewGroup,false));
+            default:
+
+                return new DefaultViewHolder(LayoutInflater.from(context).inflate(R.layout.ordre_defaut_liste,viewGroup,false));
         }
 
     }

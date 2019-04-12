@@ -17,7 +17,6 @@ import com.example.application.Activité_n2.Adapter.OrderAdapter;
 import com.example.application.Activité_n2.Fragments.Programmé.Programme;
 import com.example.application.Activité_n2.Fragments.Temps_réel.Temps_reel;
 import com.example.application.Activité_n2.Order.ListOrder;
-import com.example.application.Activité_n2.Order.TempsReelOrder;
 import com.example.application.R;
 
 import java.util.ArrayList;
@@ -29,11 +28,11 @@ public class Menu extends Fragment {
 
     static public Menu menu = new Menu();
 
-    static private Spinner spinnerMode;
-    static private ArrayList<String> spinnerModeItems = new ArrayList<String>();
+    static public Spinner spinnerMode;
+    static public ArrayList<String> spinnerModeItems = new ArrayList<String>();
     static boolean spinnerFirstTime=true;
-    static private OrderAdapter orderAdapter;
-    static RecyclerView listOrder;
+    static public OrderAdapter orderAdapter;
+    static public RecyclerView listOrder;
 
 
     public Menu() {
@@ -58,13 +57,6 @@ public class Menu extends Fragment {
             spinnerModeItems.add("New order");
             spinnerModeItems.add("Mode Programmé");
             spinnerModeItems.add("Mode Temps Réel");
-
-            ListOrder.list.add(new TempsReelOrder());
-            ListOrder.list.add(new TempsReelOrder());
-            ListOrder.list.add(new TempsReelOrder());
-            ListOrder.list.add(new TempsReelOrder());
-            ListOrder.list.add(new TempsReelOrder());
-
 
             spinnerFirstTime=false;
         }
@@ -103,9 +95,11 @@ public class Menu extends Fragment {
         listOrder.setAdapter(orderAdapter);
 
         System.out.println("test");
+
         for (int i=0;i< ListOrder.list.size();i++){
             System.out.println(ListOrder.list.get(i));
         }
+
 
 
         return v;
