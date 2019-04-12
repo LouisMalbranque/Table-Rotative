@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Order.ListOrder;
@@ -32,10 +33,22 @@ public class Programme extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_programme, container, false);
 
+        EditText text = v.findViewById(R.id.text);
+
         Button save = v.findViewById(R.id.save_programme);
         Button send = v.findViewById(R.id.send_programme);
+        Button charger = v.findViewById(R.id.charger);
 
-        EditText text = v.findViewById(R.id.text);
+        EditText acceleration = v.findViewById(R.id.Acceleration);
+        EditText vitesse = v.findViewById(R.id.Vitesse);
+        Switch direction = v.findViewById(R.id.Direction);
+        EditText steps = v.findViewById(R.id.Steps);
+        EditText frame = v.findViewById(R.id.Frame);
+        EditText camera_number = v.findViewById(R.id.Camera_Number);
+        EditText pause_between_camera = v.findViewById(R.id.Pause_between_camera);
+        Switch focus_stacking = v.findViewById(R.id.Focus_stacking);
+
+
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
