@@ -1,4 +1,4 @@
-package com.example.application.objets;
+package com.example.louis.plateautournant.BDD;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 @Entity
-public class valeurProgramme {
+public class valeurReel {
     @PrimaryKey
     @NonNull
     public String id;
@@ -26,16 +26,11 @@ public class valeurProgramme {
     @ColumnInfo
     public String direction;
 
-    @ColumnInfo
-    public String timeBetweenPhotosNumber;
 
     @ColumnInfo
 
-    public String camera_number;
+    public String rotationNumber;
 
     @ColumnInfo
-
-    public String frame;
-
-
+    public String rotationTime;
 }

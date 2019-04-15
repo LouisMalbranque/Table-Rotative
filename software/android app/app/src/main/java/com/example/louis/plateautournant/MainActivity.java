@@ -20,10 +20,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.louis.plateautournant.BDD.valeurProgramme;
+import com.example.louis.plateautournant.BDD.valeurReel;
 import com.example.louis.plateautournant.Bluetooth.Peripherique;
 import com.example.louis.plateautournant.Fragment.ProgrammedRotation;
 import com.example.louis.plateautournant.Fragment.RealTimeRotation;
 import com.example.louis.plateautournant.UtilisationBDD.ajoutBDDVP;
+import com.example.louis.plateautournant.UtilisationBDD.ajoutBDDVR;
 import com.example.louis.plateautournant.UtilisationBDD.ajoutValeur;
 
 import java.util.ArrayList;
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity{
     private int maximumValAcceleration=4000;
     private static Context sContext;
     private ajoutBDDVP majoutAsyncTask;
+    private ajoutBDDVR majoutRAsyncTask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -302,7 +305,7 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
 
                 majoutAsyncTask=new ajoutBDDVP();
-
+                majoutRAsyncTask=new ajoutBDDVR();
                 switch(mode){
                     case 0:
                         valeurProgramme nouvelEnregistrement = new valeurProgramme();
@@ -320,16 +323,28 @@ public class MainActivity extends AppCompatActivity{
                         }
                         majoutAsyncTask.execute(nouvelEnregistrement);
                         break;
-                    /*case 1:
+                    case 1:
+                        valeurReel nouvelEnregistrementR = new valeurReel();
+                        nouvelEnregistrementR.id="exemple1";
                         if (realTimeRotation.isModeTime()){
-                            rotation_number=-1;
-                            rotation_time=Integer.parseInt(realTimeRotation.getNumberText().getText().toString());
+                            nouvelEnregistrementR.rotationNumber="-1";
+                            nouvelEnregistrementR.rotationTime=realTimeRotation.getNumberText().getText().toString();
                         }else{
-                            rotation_number=Integer.parseInt(realTimeRotation.getNumberText().getText().toString());
-                            rotation_time=-1;
+                            nouvelEnregistrementR.rotationNumber=realTimeRotation.getNumberText().getText().toString();
+                            nouvelEnregistrementR.rotationTime="-1";
+                        }
+                        nouvelEnregistrementR.acceleration = accelerationNumber.getText().toString();
+                        nouvelEnregistrementR.speed = speedNumber.getText().toString();
+                        if (!directionSwitch.isChecked()){
+                            nouvelEnregistrementR.direction="0";
+                        }
+                        else {
+                            nouvelEnregistrementR.direction = "1";
                         }
 
-                        break;*/
+                        majoutRAsyncTask.execute(nouvelEnregistrementR);
+
+                        break;
 
                 }
 
