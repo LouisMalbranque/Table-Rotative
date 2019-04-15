@@ -2,8 +2,8 @@ package com.example.application.BDD;
 
 import android.arch.persistence.room.Room;
 
+import com.example.application.Activité_n2.DAO.DAOvaleurProgramme;
 import com.example.application.Activité_n2.MainActivity;
-import com.example.application.DAO.DAOvaleurProgramme;
 
 
 public class DataBaseHelperValeurProgramme {

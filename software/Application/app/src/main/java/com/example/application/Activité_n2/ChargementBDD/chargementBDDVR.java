@@ -22,7 +22,7 @@ public class chargementBDDVR extends AsyncTask<Void,Void,List<valeurReel>> {
     @Override
     protected void onPostExecute(List<valeurReel> listeVR) {
         System.out.print(listeVR.size());
-        mListenerR.chargementBDDvaleursP(listeVR);
+        mListenerR.chargementBDDvaleursR(listeVR);
 
     }
 }
