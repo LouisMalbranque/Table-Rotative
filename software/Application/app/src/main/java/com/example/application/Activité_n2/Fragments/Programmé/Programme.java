@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
+import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddProgramme;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.ProgrammeOrder;
@@ -26,12 +27,10 @@ public class Programme extends Fragment {
     String data;
     public int accelerationInt;
     public int vitesseInt;
-    public int directionInt;
     public int stepsInt;
     public int frameInt;
     public int camera_numberInt;
     public int pause_between_cameraInt;
-    public int focus_stackingInt;
 
     static public Programme programme = new Programme();
 
@@ -61,7 +60,12 @@ public class Programme extends Fragment {
         final Switch focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
 
 
-
+        charger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment, BddProgramme.bddProgramme).addToBackStack(null).commit();
+            }
+        });
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +77,8 @@ public class Programme extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Menu.spinnerMode.setEnabled(true);
 
                 accelerationInt=Integer.parseInt(accelerationEditText.getText().toString());
                 vitesseInt=Integer.parseInt(vitesseEditText.getText().toString());
@@ -89,21 +95,34 @@ public class Programme extends Fragment {
 
 
                 data="";
-                data+="0";
-                data+=Integer.toString(accelerationInt);
-                data+=Integer.toString(vitesseInt);
+                data+=programmeOrder.getId()+",";
+                data+="0"+",";
+                data+=Integer.toString(accelerationInt)+",";
+                data+=Integer.toString(vitesseInt)+",";
+
                 if (directionSwitch.isChecked()){
+                    data+="1"+",";
+                }
+                else{
+                    data+="0"+",";
+                }
+
+                data+="-1"+","; //choix rotation
+                data+="-1"+","; //rotation number
+                data+="-1"+","; //rotation time
+
+                data+=Integer.toString(frameInt)+",";
+                data+=Integer.toString(camera_numberInt)+",";
+                data+=Integer.toString(pause_between_cameraInt)+",";
+                data+=Integer.toString(stepsInt)+",";
+
+                if (focus_stackingSwitch.isChecked()){
                     data+="1";
                 }
                 else{
                     data+="0";
                 }
-                data+=Integer.toString(stepsInt);
-                data+=Integer.toString(frameInt);
-                data+=Integer.toString(camera_numberInt);
-                data+=Integer.toString(pause_between_cameraInt);
-
-
+                System.out.println(data);
 
                 //peripherique.envoyer(data);
 

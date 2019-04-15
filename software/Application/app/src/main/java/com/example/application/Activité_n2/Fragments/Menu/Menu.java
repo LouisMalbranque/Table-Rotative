@@ -72,12 +72,14 @@ public class Menu extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 1:
-                        getFragmentManager().beginTransaction().replace(R.id.fragment, Programme.programme).addToBackStack(null).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment, Programme.programme).commit();
+                        spinnerMode.setEnabled(false);
                         spinnerMode.setSelection(0);
 
                         break;
                     case 2:
-                        getFragmentManager().beginTransaction().replace(R.id.fragment, TempsReel.temps_reel).addToBackStack(null).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment, TempsReel.temps_reel).commit();
+                        spinnerMode.setEnabled(false);
                         spinnerMode.setSelection(0);
                         break;
                     default:

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_light"
     tools:context=".Activité_n2.Fragments.Menu.Menu">
 
     <android.support.v7.widget.GridLayout
@@ -25,10 +26,11 @@
             android:id="@+id/pause_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
             android:text="Pause"
-            app:layout_column="0"
+            app:layout_column="1"
             app:layout_columnWeight="1"
-            app:layout_row="1"
+            app:layout_row="0"
             app:layout_rowWeight="1" />
 
         <Button
