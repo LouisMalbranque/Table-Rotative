@@ -3,7 +3,12 @@ package com.example.application.Activité_n1.Bluetooth;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
+import android.view.View;
+
+import com.example.application.Activité_n2.Fragments.Menu.Menu;
+import com.example.application.Activité_n2.Order.ListOrder;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -174,7 +179,7 @@ public class Peripherique {
 
 
     private class TReception extends Thread {
-        android.os.Handler handlerUI;
+        Handler handlerUI;
         private boolean fini;
 
         TReception(android.os.Handler h) {
@@ -202,11 +207,17 @@ public class Peripherique {
                             msg.what = Peripherique.CODE_RECEPTION;
                             msg.obj = data;
                             receiveMessage=data;
-                            //handlerUI.sendMessage(msg);
+                            handlerUI = new Handler(Looper.getMainLooper());
+                            handlerUI.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    decode(receiveMessage);
+                                }
+                            });
                         }
                     }
                     try {
-                        Thread.sleep(250);
+                        Thread.sleep(10);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -225,6 +236,22 @@ public class Peripherique {
                 Thread.sleep(250);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            }
+        }
+
+
+        public void decode(String data){
+            String tableauDonnees[]=data.split(",");
+            if (tableauDonnees[0].equals("fini")){
+                Menu.view.setVisibility(View.INVISIBLE);
+                Menu.deleteButton.setVisibility(View.INVISIBLE);
+                ListOrder.delete(Integer.parseInt(tableauDonnees[1]));
+            }
+            else if (tableauDonnees[0].equals("creation")){
+                System.out.println(data);
+            }
+            else if (tableauDonnees[0].equals("en cours")){
+                System.out.println(data);
             }
         }
     }

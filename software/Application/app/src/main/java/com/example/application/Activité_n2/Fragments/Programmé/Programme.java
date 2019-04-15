@@ -1,7 +1,6 @@
 package com.example.application.Activité_n2.Fragments.Programmé;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -56,6 +55,8 @@ public class Programme extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_programme, container, false);
 
+        peripherique=Peripherique.peripherique;
+
         EditText text = v.findViewById(R.id.text);
 
         Button save = v.findViewById(R.id.save_programme);
@@ -70,6 +71,7 @@ public class Programme extends Fragment {
         final EditText camera_numberEditText = v.findViewById(R.id.Camera_Number_Programme);
         final EditText pause_between_cameraEditText = v.findViewById(R.id.Pause_between_camera_Programme);
         final Switch focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
+
 
 
         charger.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +139,7 @@ public class Programme extends Fragment {
                 data+="0"+",";
                 data+=Integer.toString(accelerationInt)+",";
                 data+=Integer.toString(vitesseInt)+",";
+                data+=Integer.toString(stepsInt)+",";
 
                 if (directionSwitch.isChecked()){
                     data+="1"+",";
@@ -152,7 +155,9 @@ public class Programme extends Fragment {
                 data+=Integer.toString(frameInt)+",";
                 data+=Integer.toString(camera_numberInt)+",";
                 data+=Integer.toString(pause_between_cameraInt)+",";
-                data+=Integer.toString(stepsInt)+",";
+
+
+
 
                 if (focus_stackingSwitch.isChecked()){
                     data+="1";
@@ -162,7 +167,7 @@ public class Programme extends Fragment {
                 }
                 System.out.println(data);
 
-                //peripherique.envoyer(data);
+                peripherique.envoyer(data);
 
             }
         });
