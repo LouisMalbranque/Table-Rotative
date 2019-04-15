@@ -38,4 +38,11 @@ public class valeurProgramme {
     public String frame;
 
 
+    @ColumnInfo
+    public String focusStacking;
+
+
+    public String getId() {
+        return id;
+    }
 }

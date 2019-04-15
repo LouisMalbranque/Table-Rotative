@@ -26,6 +26,9 @@ public class valeurReel {
     @ColumnInfo
     public String direction;
 
+    @ColumnInfo
+
+    public String rotationMode;
 
     @ColumnInfo
 
@@ -33,4 +36,8 @@ public class valeurReel {
 
     @ColumnInfo
     public String rotationTime;
+
+    @ColumnInfo
+    public String focusStacking;
+
 }

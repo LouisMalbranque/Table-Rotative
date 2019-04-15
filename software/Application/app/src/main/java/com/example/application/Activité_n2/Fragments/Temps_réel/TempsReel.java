@@ -1,6 +1,7 @@
 package com.example.application.Activité_n2.Fragments.Temps_réel;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,11 +12,15 @@ import android.widget.EditText;
 import android.widget.Switch;
 
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
+import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVP;
+import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVR;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddTempsReel;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.TempsReelOrder;
 import com.example.application.R;
+import com.example.application.objets.valeurProgramme;
+import com.example.application.objets.valeurReel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +37,8 @@ public class TempsReel extends Fragment {
     public int stepsInt;
     public int rotation_timeInt;
     public int rotation_numberInt;
+
+    private ajoutBDDVR majoutAsyncTask;
 
     public TempsReel() {
         // Required empty public constructor
@@ -67,7 +74,32 @@ public class TempsReel extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //sauvegarder dans la BDD
+                majoutAsyncTask=new ajoutBDDVR();
+                valeurReel nouvelEnregistrement = new valeurReel();
+                nouvelEnregistrement.id="exemple1";
+                nouvelEnregistrement.acceleration=accelerationEditText.getText().toString();
+                if(directionSwitch.isChecked()){
+                    nouvelEnregistrement.direction="1";
+                }
+                else
+                {
+                    nouvelEnregistrement.direction="0";
+                }
+                nouvelEnregistrement.id="Exemple1";
+                nouvelEnregistrement.speed=vitesseEditText.getText().toString();
+                nouvelEnregistrement.tableSteps=stepsEditText.getText().toString();
+
+                if (directionSwitch.isChecked()){
+                    nouvelEnregistrement.rotationMode="1";
+                    nouvelEnregistrement.rotationTime=rotation_timeEditText.getText().toString();
+                    nouvelEnregistrement.rotationNumber="0";
+                }
+                else{
+                    nouvelEnregistrement.rotationMode="0";
+                    nouvelEnregistrement.rotationTime="0";
+                    nouvelEnregistrement.rotationNumber=rotation_numberEditText.getText().toString();
+                }
+                majoutAsyncTask.execute(nouvelEnregistrement);
             }
         });
 
@@ -130,5 +162,7 @@ public class TempsReel extends Fragment {
         return v;
 
     }
+
+
 
 }

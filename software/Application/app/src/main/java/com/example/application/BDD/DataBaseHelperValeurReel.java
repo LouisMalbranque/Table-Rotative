@@ -2,8 +2,10 @@ package com.example.application.BDD;
 
 import android.arch.persistence.room.Room;
 
+import com.example.application.Activité_n2.Fragments.Programmé.Programme;
+import com.example.application.Activité_n2.Fragments.Temps_réel.TempsReel;
+import com.example.application.Activité_n2.MainActivity;
 import com.example.application.DAO.DAOvaleurReel;
-import com.example.louis.plateautournant.MainActivity;
 
 public class DataBaseHelperValeurReel {
     static DataBaseHelperValeurReel instance=null;
