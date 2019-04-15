@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import com.example.application.Activité_n2.Adapter.OrderAdapter;
@@ -33,14 +34,12 @@ public class Menu extends Fragment {
     static boolean spinnerFirstTime=true;
     static public OrderAdapter orderAdapter;
     static public RecyclerView listOrder;
-
-
-
+    static public View view;
+    static public ImageButton deleteButton;
 
     public Menu() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,9 +47,11 @@ public class Menu extends Fragment {
 
         View v= inflater.inflate(R.layout.fragment_menu,container,false);
 
-
+        view = v.findViewById(R.id.infos);
+        deleteButton=v.findViewById(R.id.deleteInfos);
         spinnerMode=v.findViewById(R.id.spinner);
         listOrder = (RecyclerView) v.findViewById(R.id.orderList);
+
 
         if (orderAdapter==null){
             orderAdapter = new OrderAdapter(getContext(),ListOrder.list);
@@ -64,7 +65,6 @@ public class Menu extends Fragment {
             spinnerFirstTime=false;
         }
 
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.custom_spinner, spinnerModeItems);
         adapter.setDropDownViewResource(R.layout.custom_spinner);
         spinnerMode.setAdapter(adapter);
@@ -74,13 +74,12 @@ public class Menu extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 1:
-                        getFragmentManager().beginTransaction().replace(R.id.fragment, Programme.programme).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment, Programme.programme).addToBackStack(null).commit();
                         spinnerMode.setEnabled(false);
                         spinnerMode.setSelection(0);
-
                         break;
                     case 2:
-                        getFragmentManager().beginTransaction().replace(R.id.fragment, TempsReel.temps_reel).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment, TempsReel.temps_reel).addToBackStack(null).commit();
                         spinnerMode.setEnabled(false);
                         spinnerMode.setSelection(0);
                         break;
@@ -98,6 +97,14 @@ public class Menu extends Fragment {
         listOrder.setLayoutManager(layoutManager);
         listOrder.setItemAnimator( new DefaultItemAnimator());
         listOrder.setAdapter(orderAdapter);
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteButton.setVisibility(View.INVISIBLE);
+                view.setVisibility(View.INVISIBLE);
+            }
+        });
 
 
         return v;

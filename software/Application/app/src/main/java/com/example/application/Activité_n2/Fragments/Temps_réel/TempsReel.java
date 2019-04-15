@@ -103,10 +103,10 @@ public class TempsReel extends Fragment {
                 data+=Integer.toString(stepsInt)+",";
 
                 if (directionSwitch.isChecked()){
-                    data+="1"+",";
+                    data+="1"+","; // Time mode
                 }
                 else{
-                    data+="0"+",";
+                    data+="0"+","; // turn mode
                 }
                 if (choix_rotationSwitch.isChecked()){
                     data+="1"+",";
