@@ -36,6 +36,7 @@ public class Menu extends Fragment {
 
 
 
+
     public Menu() {
         // Required empty public constructor
     }
@@ -46,6 +47,7 @@ public class Menu extends Fragment {
                              Bundle savedInstanceState) {
 
         View v= inflater.inflate(R.layout.fragment_menu,container,false);
+
 
         spinnerMode=v.findViewById(R.id.spinner);
         listOrder = (RecyclerView) v.findViewById(R.id.orderList);

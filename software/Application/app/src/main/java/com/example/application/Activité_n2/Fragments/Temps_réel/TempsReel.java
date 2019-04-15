@@ -43,6 +43,8 @@ public class TempsReel extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_temps_reel, container, false);
 
+        peripherique=Peripherique.peripherique;
+
         EditText text = v.findViewById(R.id.text);
 
         Button save = v.findViewById(R.id.save_temps_reel);
@@ -63,6 +65,9 @@ public class TempsReel extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.fragment, BddTempsReel.bddTempsReel).addToBackStack(null).commit();
             }
         });
+
+
+
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +100,7 @@ public class TempsReel extends Fragment {
                 data+="1"+",";
                 data+=Integer.toString(accelerationInt)+",";
                 data+=Integer.toString(vitesseInt)+",";
+                data+=Integer.toString(stepsInt)+",";
 
                 if (directionSwitch.isChecked()){
                     data+="1"+",";
@@ -102,26 +108,23 @@ public class TempsReel extends Fragment {
                 else{
                     data+="0"+",";
                 }
-
                 if (choix_rotationSwitch.isChecked()){
                     data+="1"+",";
                 }
                 else{
                     data+="0"+",";
                 }
-
                 data+=Integer.toString(rotation_numberInt)+",";
                 data+=Integer.toString(rotation_timeInt)+",";
-                data+="-1"+",";
-                data+="-1"+",";
-                data+="-1"+",";
 
-                data+=Integer.toString(stepsInt)+",";
+                data+="-1"+",";
+                data+="-1"+",";
+                data+="-1"+",";
+                data+="-1";
 
-                data+="0";
                 System.out.println(data);
 
-                //peripherique.envoyer(data);
+                peripherique.envoyer(data);
 
 
             }
