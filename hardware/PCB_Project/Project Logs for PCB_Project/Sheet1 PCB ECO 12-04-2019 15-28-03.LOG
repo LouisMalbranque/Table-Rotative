@@ -1,0 +1,19 @@
+Removed Pin From Net: NetName=GND Pin=LED1-K
+Removed Member From Class: ClassName=Sheet1 Member=LED0
+Removed Member From Class: ClassName=Sheet1 Member=LED1
+Change Component Footprint: Designator=R0 Old Footprint=0805 New Footprint=AXIAL0.3
+Change Component Footprint: Designator=R1 Old Footprint=0805 New Footprint=AXIAL0.3
+Added Component: Designator=LD0(LED5)
+Added Component: Designator=LD1(LED5)
+Added Pin To Net: NetName=GND Pin=LD1-K
+Added Pin To Net: NetName=NetLD0_A Pin=LD0-A
+Added Pin To Net: NetName=NetLD0_A Pin=R0-2
+Added Net: Name=NetLD0_A
+Added Pin To Net: NetName=NetLD0_K Pin=LD0-K
+Added Pin To Net: NetName=NetLD0_K Pin=U?-13
+Added Net: Name=NetLD0_K
+Added Pin To Net: NetName=NetLD1_A Pin=LD1-A
+Added Pin To Net: NetName=NetLD1_A Pin=R1-2
+Added Net: Name=NetLD1_A
+Added Member To Class: ClassName=Sheet1 Member=Component LD0 comment
+Added Member To Class: ClassName=Sheet1 Member=Component LD1 comment
