@@ -80,8 +80,6 @@ public class TempsReel extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Menu.spinnerMode.setEnabled(true);
-
                 accelerationInt=Integer.parseInt(accelerationEditText.getText().toString());
                 vitesseInt=Integer.parseInt(vitesseEditText.getText().toString());
                 stepsInt=Integer.parseInt(stepsEditText.getText().toString());

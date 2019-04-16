@@ -4,10 +4,11 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.view.View;
 
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
+import com.example.application.Activité_n2.Instructions.InstructionCamera;
+import com.example.application.Activité_n2.Instructions.InstructionMoteur;
 import com.example.application.Activité_n2.Order.ListOrder;
 
 import java.io.IOException;
@@ -195,32 +196,23 @@ public class Peripherique {
                     if (receiveStream.available() > 0) {
                         byte buffer[] = new byte[100];
                         int k = receiveStream.read(buffer, 0, 100);
-
                         if (k > 0) {
                             byte rawdata[] = new byte[k];
                             for (int i = 0; i < k; i++)
                                 rawdata[i] = buffer[i];
 
                             String data = new String(rawdata);
+                            System.out.println(data);
 
-                            Message msg = Message.obtain();
-                            msg.what = Peripherique.CODE_RECEPTION;
-                            msg.obj = data;
-                            receiveMessage=data;
-                            handlerUI = new Handler(Looper.getMainLooper());
-                            handlerUI.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    decode(receiveMessage);
-                                }
-                            });
+                            decode(data);
                         }
+
                     }
-                    try {
-                        Thread.sleep(10);
+                   /* try {
+                        Thread.sleep(20);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
-                    }
+                    }*/
                 } catch (IOException e) {
                     //System.out.println("<Socket> error read");
                     e.printStackTrace();
@@ -233,26 +225,81 @@ public class Peripherique {
                 fini = true;
             }
             try {
-                Thread.sleep(250);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
 
-        public void decode(String data){
-            String tableauDonnees[]=data.split(",");
-            if (tableauDonnees[0].equals("fini")){
-                Menu.view.setVisibility(View.INVISIBLE);
-                Menu.deleteButton.setVisibility(View.INVISIBLE);
+        public void decode(String data) {
+
+            String tableauDonnees[] = data.split(",");
+
+            System.out.println(data);
+            if (tableauDonnees.length == 0) return;
+
+            if (tableauDonnees[0].equals("fini")) {
+
+                Menu.instructionAdapter.instructionList = null;
+
                 ListOrder.delete(Integer.parseInt(tableauDonnees[1]));
+
+                handlerUI = new Handler(Looper.getMainLooper());
+                handlerUI.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Menu.view.setVisibility(View.INVISIBLE);
+                        Menu.listInfos.setVisibility(View.INVISIBLE);
+                        Menu.deleteButton.setVisibility(View.INVISIBLE);
+                    }
+                });
+            } else if (tableauDonnees[0].equals("creation")) {
+                int idCommande = Integer.parseInt(tableauDonnees[1]);
+                int idInstruction = Integer.parseInt(tableauDonnees[2]);
+
+                if (tableauDonnees[3].equals("moteur")) {
+                    int acceleration = Integer.parseInt(tableauDonnees[4]);
+                    int vitesse = Integer.parseInt(tableauDonnees[5]);
+                    int direction = Integer.parseInt(tableauDonnees[6]);
+                    int choixRotation = Integer.parseInt(tableauDonnees[7]);
+                    int stepsTime = Integer.parseInt(tableauDonnees[8]);
+
+                    InstructionMoteur instructionMoteur = new InstructionMoteur(idCommande, idInstruction, acceleration,
+                            vitesse, direction, choixRotation, stepsTime);
+                    System.out.println("ajout instruction moteur");
+                    ListOrder.getById(idCommande).listInstruction.add(instructionMoteur);
+
+                } else if (tableauDonnees[3].equals("camera")) {
+
+                    int frame = Integer.parseInt(tableauDonnees[4]);
+                    int pause = Integer.parseInt(tableauDonnees[5]);
+
+                    InstructionCamera instructionCamera = new InstructionCamera(idCommande, idInstruction, frame, pause);
+                    System.out.println("ajout instruction camera");
+                    ListOrder.getById(idCommande).listInstruction.add(instructionCamera);
+
+                }
+
+
+            } else if (tableauDonnees[0].equals("en cours")) {
+                int idCommande = Integer.parseInt(tableauDonnees[1]);
+                int idInstruction = Integer.parseInt(tableauDonnees[2]);
+
+                System.out.println(idInstruction);
+                if (idInstruction > 1) {
+                    ListOrder.getById(idCommande).listInstruction.get(idInstruction - 2).termine = true;
+                }
+
+
             }
-            else if (tableauDonnees[0].equals("creation")){
-                System.out.println(data);
-            }
-            else if (tableauDonnees[0].equals("en cours")){
-                System.out.println(data);
-            }
+            handlerUI = new Handler(Looper.getMainLooper());
+            handlerUI.post(new Runnable() {
+                @Override
+                public void run() {
+                    Menu.instructionAdapter.notifyDataSetChanged();
+                }
+            });
         }
     }
 }

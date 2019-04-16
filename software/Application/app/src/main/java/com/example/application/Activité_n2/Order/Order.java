@@ -1,9 +1,13 @@
 package com.example.application.Activité_n2.Order;
 
+import com.example.application.Activité_n2.Instructions.Instruction;
+
+import java.util.ArrayList;
+
 public abstract class Order {
-    private String name;
     static private int lastid=0;
     private int id;
+    public ArrayList<Instruction> listInstruction = new ArrayList<>();
 
     Order(){
         id=++lastid;

@@ -61,8 +61,6 @@ public class Programme extends Fragment {
         final EditText pause_between_cameraEditText = v.findViewById(R.id.Pause_between_camera_Programme);
         final Switch focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
 
-
-
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,8 +78,6 @@ public class Programme extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Menu.spinnerMode.setEnabled(true);
 
                 accelerationInt=Integer.parseInt(accelerationEditText.getText().toString());
                 vitesseInt=Integer.parseInt(vitesseEditText.getText().toString());
@@ -130,7 +126,7 @@ public class Programme extends Fragment {
                 }
                 System.out.println(data);
 
-                peripherique.envoyer(data);
+                //peripherique.envoyer(data);
 
             }
         });

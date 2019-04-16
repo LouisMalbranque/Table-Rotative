@@ -19,4 +19,11 @@ public class ListOrder {
         if (targetOrder != null) list.remove(targetOrder);
         Menu.orderAdapter.notifyDataSetChanged();
     }
+    static public Order getById(int id){
+        Order targetOrder = null;
+        for (Order o: list){
+            if (o.getId() == id) targetOrder = o;
+        }
+        return targetOrder;
+    }
 }
