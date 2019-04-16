@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.application.Activité_n2.Fragments.Temps_réel.TempsReel;
+import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.Order;
 import com.example.application.Activité_n2.Order.ProgrammeOrder;
@@ -32,19 +32,30 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public TextView nombre_de_camera;
         public TextView focus_stacking;
         public ImageButton delete;
+        public Button infosProgramme;
 
-        public ProgrammedViewHolder(View itemView) {
-            super(itemView);
-            nombre_de_prise = itemView.findViewById(R.id.nombre_de_prise);
-            nombre_de_camera = itemView.findViewById(R.id.nombre_de_camera);
-            focus_stacking = itemView.findViewById(R.id.focus_stacking);
-            delete = itemView.findViewById(R.id.delete_programme);
+        public ProgrammedViewHolder(View v) {
+            super(v);
+            nombre_de_prise = v.findViewById(R.id.nombre_de_prise);
+            nombre_de_camera = v.findViewById(R.id.nombre_de_camera);
+            focus_stacking = v.findViewById(R.id.focus_stacking);
+            delete = v.findViewById(R.id.delete_programme);
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ListOrder.delete(id);
                 }
             });
+            infosProgramme = v.findViewById(R.id.infos_programme);
+            infosProgramme.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Menu.deleteButton.setVisibility(View.VISIBLE);
+                    Menu.view.setVisibility(View.VISIBLE);
+
+                }
+            });
+
         }
     }
 
@@ -54,19 +65,30 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public TextView direction;
         public TextView temps_tour;
         public ImageButton delete;
+        public Button infosTempsReel;
 
-        public RealTimeViewHolder(View itemView) {
-            super(itemView);
-            vitesse = itemView.findViewById(R.id.vitesse);
-            direction = itemView.findViewById(R.id.direction);
-            temps_tour = itemView.findViewById(R.id.temps_tour);
-            delete = itemView.findViewById(R.id.delete_temps_reel);
+        public RealTimeViewHolder(View v) {
+            super(v);
+            vitesse = v.findViewById(R.id.vitesse);
+            direction = v.findViewById(R.id.direction);
+            temps_tour = v.findViewById(R.id.temps_tour);
+            delete = v.findViewById(R.id.delete_temps_reel);
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ListOrder.delete(id);
                 }
             });
+            infosTempsReel = v.findViewById(R.id.infos_temps_reel);
+            infosTempsReel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Menu.deleteButton.setVisibility(View.VISIBLE);
+                    Menu.view.setVisibility(View.VISIBLE);
+
+                }
+            });
+
         }
     }
 

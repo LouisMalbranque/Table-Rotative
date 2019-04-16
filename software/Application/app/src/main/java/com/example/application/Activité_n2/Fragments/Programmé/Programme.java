@@ -2,6 +2,7 @@ package com.example.application.Activité_n2.Fragments.Programmé;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +12,16 @@ import android.widget.EditText;
 import android.widget.Switch;
 
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
+import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVP;
+import com.example.application.Activité_n2.ChargementBDD.chargementBDDVP;
+import com.example.application.Activité_n2.ChargementBDD.chargmentVP;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddProgramme;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.ProgrammeOrder;
 import com.example.application.R;
+import com.example.application.objets.valeurProgramme;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +38,10 @@ public class Programme extends Fragment {
     public int camera_numberInt;
     public int pause_between_cameraInt;
 
+
+
+    private ajoutBDDVP majoutAsyncTask;
+
     static public Programme programme = new Programme();
 
     public Programme() {
@@ -39,10 +49,13 @@ public class Programme extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_programme, container, false);
+
+        peripherique=Peripherique.peripherique;
 
         EditText text = v.findViewById(R.id.text);
 
@@ -60,9 +73,11 @@ public class Programme extends Fragment {
         final Switch focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
 
 
+
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 getFragmentManager().beginTransaction().replace(R.id.fragment, BddProgramme.bddProgramme).addToBackStack(null).commit();
             }
         });
@@ -70,8 +85,33 @@ public class Programme extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //sauvegarder dans la BDD
+                majoutAsyncTask=new ajoutBDDVP();
+                valeurProgramme nouvelEnregistrement = new valeurProgramme();
+                nouvelEnregistrement.id="exemple1";
+                nouvelEnregistrement.acceleration=accelerationEditText.getText().toString();
+                nouvelEnregistrement.camera_number=camera_numberEditText.getText().toString();
+                if(directionSwitch.isChecked()){
+                nouvelEnregistrement.direction="1";
             }
+            else
+                {
+                    nouvelEnregistrement.direction="0";
+                }
+                nouvelEnregistrement.frame=frameEditText.getText().toString();
+                nouvelEnregistrement.id="Exemple1";
+                nouvelEnregistrement.speed=vitesseEditText.getText().toString();
+                nouvelEnregistrement.tableSteps=stepsEditText.getText().toString();
+                nouvelEnregistrement.timeBetweenPhotosNumber=pause_between_cameraEditText.getText().toString();
+                if(focus_stackingSwitch.isChecked()){
+                    nouvelEnregistrement.focusStacking="1";
+                }
+                else
+                {
+                    nouvelEnregistrement.focusStacking="0";
+                }
+                majoutAsyncTask.execute(nouvelEnregistrement);
+            }
+
         });
 
         send.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +139,7 @@ public class Programme extends Fragment {
                 data+="0"+",";
                 data+=Integer.toString(accelerationInt)+",";
                 data+=Integer.toString(vitesseInt)+",";
+                data+=Integer.toString(stepsInt)+",";
 
                 if (directionSwitch.isChecked()){
                     data+="1"+",";
@@ -114,7 +155,9 @@ public class Programme extends Fragment {
                 data+=Integer.toString(frameInt)+",";
                 data+=Integer.toString(camera_numberInt)+",";
                 data+=Integer.toString(pause_between_cameraInt)+",";
-                data+=Integer.toString(stepsInt)+",";
+
+
+
 
                 if (focus_stackingSwitch.isChecked()){
                     data+="1";
@@ -124,7 +167,7 @@ public class Programme extends Fragment {
                 }
                 System.out.println(data);
 
-                //peripherique.envoyer(data);
+                peripherique.envoyer(data);
 
             }
         });
