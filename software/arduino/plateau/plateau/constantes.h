@@ -1,8 +1,11 @@
 #define ACCELERATION              0
-#define SPEED                     1
+#define VITESSE                   1
 #define DIRECTION                 2
-#define STEPS                     3
-#define TIME                      4
+#define CHOIX_ROTATION            3
+#define NOMBRE_DE_TOUR            4
+#define TEMPS_DE_ROTATION         4
+
+
 #define MAXIMUM_NUMBER_OF_VALUES  5
 
 #define PIN_DIR 25

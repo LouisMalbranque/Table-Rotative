@@ -81,10 +81,20 @@ void loop() {
     esp_bluetooth.decode();
 
     acceleration = esp_bluetooth.getValue(ACCELERATION);
-    speed = esp_bluetooth.getValue(SPEED);
+    speed = esp_bluetooth.getValue(VITESSE);
     direction = esp_bluetooth.getValue(DIRECTION);
-    steps = esp_bluetooth.getValue(STEPS);
-    timetable = esp_bluetooth.getValue(TIME);
+    switch (esp_bluetooth.getValue(CHOIX_ROTATION)){
+      case 0: 
+        steps = esp_bluetooth.getValue(NOMBRE_DE_TOUR);
+        timetable = -1;
+        break;
+      case 1:
+        timetable = esp_bluetooth.getValue(TEMPS_DE_ROTATION);
+        steps = -1;
+        break; 
+    }
+
+   
 
     initialTime = millis();
 
