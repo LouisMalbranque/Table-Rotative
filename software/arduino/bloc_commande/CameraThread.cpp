@@ -1,8 +1,8 @@
 #include "CameraThread.h"
 
 String data="0";
-unsigned int pinRelay[9] = {CAMERA1,CAMERA2,CAMERA3,CAMERA4,CAMERA5,CAMERA6,CAMERA7,CAMERA8,CAMERA9};
-int relays_number=9;
+int pinCamera[9];
+int relays_number=7;
 int values_camera[3];
 
 
@@ -40,12 +40,14 @@ void* run(void* argument) {
       Serial.print(nb_appareils);
       Serial.println(" photos");
       
-      for (int i = 0; i < nb_appareils; i++) {        
-        digitalWrite(pinRelay[i], HIGH);
+      for (int i = 0; i < nb_appareils; i++) {
+        Serial.print("Photo avec l'appareil ");
+        Serial.println(pinCamera[i]);         
+        digitalWrite(pinCamera[i], HIGH);
         digitalWrite(LED, HIGH);
         delay(1500);
         digitalWrite(LED, LOW);
-        digitalWrite(pinRelay[i], LOW);
+        digitalWrite(pinCamera[i], LOW);
 
         delay(temps_pause);
       }
@@ -77,12 +79,6 @@ void* run(void* argument) {
   }
 }
 void CameraThread::begin() {
-  pinMode(LED, OUTPUT);
-  for (int i = 0; i < relays_number; i++) {
-    digitalWrite(pinRelay[i], LOW);
-    pinMode(pinRelay[i], OUTPUT);
-  }
-
   int argument = 0;
   pthread_create(&thread, NULL, run, (void*) argument);
 }
@@ -96,6 +92,17 @@ String CameraThread::read() {
 }
 
 String CameraThread::createDatagramme(int* values) {
-  String datagramme = String(0) + "," + String(values[PAUSE_BETWEEN_CAMERA]) + "," + String(values[CAMERA_NUMBER]);
+  String datagramme = String(0) + "," + String(values[PAUSE_ENTRE_CAMERAS]*1000) + "," + String(values[NOMBRE_DE_CAMERAS]);
   return datagramme;
+}
+
+void CameraThread::setCameras(int nb_camera, int* cameras) {
+    for (int i=0; i<nb_camera; i++){
+    pinCamera[i] = cameras[i];
+  }
+  
+  for (int i = 0; i < nb_camera; i++) {
+    pinMode(pinCamera[i], OUTPUT);
+    digitalWrite(pinCamera[i], LOW);
+  }
 }
