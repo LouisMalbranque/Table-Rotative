@@ -51,7 +51,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@android:color/holo_red_dark"
-        android:text="MAGNETO"
+        android:text="PERIPHERIQUES"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"

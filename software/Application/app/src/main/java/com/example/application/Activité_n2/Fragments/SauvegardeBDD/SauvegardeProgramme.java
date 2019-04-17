@@ -46,7 +46,7 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
         getView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().remove(SauvegardeProgramme.this).commit();
+                getFragmentManager().beginTransaction().remove(SauvegardeProgramme.this).addToBackStack(null).commit();
             }
         });
 

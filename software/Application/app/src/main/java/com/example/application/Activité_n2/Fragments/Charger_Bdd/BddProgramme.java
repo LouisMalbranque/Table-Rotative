@@ -4,6 +4,7 @@ package com.example.application.Activité_n2.Fragments.Charger_Bdd;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.example.application.Activité_n2.ChargementBDD.chargementBDDVP;
 import com.example.application.Activité_n2.ChargementBDD.chargmentVP;
 import com.example.application.Activité_n2.Fragments.Programmé.Programme;
 import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
+import com.example.application.Activité_n2.Interface.SelectionProgramme;
 import com.example.application.R;
 import com.example.application.objets.valeurProgramme;
 
@@ -31,7 +33,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 
-public class BddProgramme extends Fragment implements chargmentVP, AdapterView.OnItemClickListener {
+public class BddProgramme extends Fragment implements chargmentVP, SelectionProgramme {
 
     public static BddProgramme bddProgramme = new BddProgramme();
 
@@ -51,9 +53,6 @@ public class BddProgramme extends Fragment implements chargmentVP, AdapterView.O
         // Inflate the layout for this fragment
         final View view= inflater.inflate(R.layout.fragment_bdd_programme, container, false);
         mListView = view.findViewById(R.id.ListeViewProgramme);
-
-
-
         return view;
     }
 
@@ -70,6 +69,8 @@ public class BddProgramme extends Fragment implements chargmentVP, AdapterView.O
         //progression.setVisibility(View.GONE);
         final ValeurProgrammeAdapter adapter=new ValeurProgrammeAdapter(listeVP);
         mListView.setAdapter(adapter);
+
+        adapter.setmListener(this);
 
         mListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -90,10 +91,7 @@ public class BddProgramme extends Fragment implements chargmentVP, AdapterView.O
             }
         });
 
-        for (valeurProgramme valeurProgramme:listeVP) {
-            //System.out.println(tweet.text);
-            Log.d("result",valeurProgramme.id);
-        }
+
     }
     @Override
     public Context getContext() {
@@ -101,11 +99,21 @@ public class BddProgramme extends Fragment implements chargmentVP, AdapterView.O
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-        position =(Integer) view.getTag();
-        final valeurProgramme valeurChoisie=(valeurProgramme) adapter.getItemAtPosition(position);
-        TextView accel = (TextView) getActivity().findViewById(R.id.AccelerationProgramme);
-        getFragmentManager().beginTransaction().remove(BddProgramme.this).commit();
+    public void onSelection(valeurProgramme valeurP) {
+        final FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        final Programme fragment = new Programme();
+        final Bundle bundle = new Bundle();
+        bundle.putString("vitesse", valeurP.speed);
+        bundle.putString("acceleration", valeurP.acceleration);
+        bundle.putString("tempsEntrePhotos", valeurP.timeBetweenPhotosNumber);
+        bundle.putString("frame", valeurP.frame);
+        bundle.putString("camera", valeurP.camera_number);
+        bundle.putString("direction", valeurP.direction);
+        bundle.putString("tableSteps", valeurP.tableSteps);
+        fragment.setArguments(bundle);
+
+        transaction.replace(R.id.fragment,fragment).addToBackStack(null).commit();
+
     }
 
 

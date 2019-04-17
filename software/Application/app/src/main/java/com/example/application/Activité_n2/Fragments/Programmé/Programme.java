@@ -24,7 +24,7 @@ import com.example.application.objets.valeurProgramme;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Programme extends Fragment implements SelectionProgramme {
+public class Programme extends Fragment  {
 
     private Peripherique peripherique;
 
@@ -68,6 +68,21 @@ public class Programme extends Fragment implements SelectionProgramme {
         final EditText camera_numberEditText = v.findViewById(R.id.Camera_Number_Programme);
         final EditText pause_between_cameraEditText = v.findViewById(R.id.Pause_between_camera_Programme);
         final Switch focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
+
+        if(getArguments()!=null){
+        final String speed = getArguments().getString("vitesse");
+        vitesseEditText.setText(speed);
+            final String acceleration = getArguments().getString("acceleration");
+            accelerationEditText.setText(acceleration);
+            final String steps = getArguments().getString("tableSteps");
+            stepsEditText.setText(steps);
+            final String tempsPhotos = getArguments().getString("tempsEntrePhotos");
+            pause_between_cameraEditText.setText(tempsPhotos);
+            final String frame = getArguments().getString("frame");
+            frameEditText.setText(frame);
+            final String camera = getArguments().getString("camera");
+            camera_numberEditText.setText(tempsPhotos);
+        }
 
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,8 +156,5 @@ public class Programme extends Fragment implements SelectionProgramme {
 
     }
 
-    @Override
-    public void onSelection(valeurProgramme valeurP) {
 
-    }
 }

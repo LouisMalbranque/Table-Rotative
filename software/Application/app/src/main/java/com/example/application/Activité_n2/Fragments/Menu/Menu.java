@@ -3,7 +3,6 @@ package com.example.application.Activité_n2.Fragments.Menu;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -91,12 +90,10 @@ public class Menu extends Fragment {
                 switch (position){
                     case 1:
                         getFragmentManager().beginTransaction().replace(R.id.fragment, Programme.programme).addToBackStack(null).commit();
-
                         spinnerMode.setSelection(0);
                         break;
                     case 2:
                         getFragmentManager().beginTransaction().replace(R.id.fragment, TempsReel.temps_reel).addToBackStack(null).commit();
-
                         spinnerMode.setSelection(0);
                         break;
                     default:
@@ -106,33 +103,6 @@ public class Menu extends Fragment {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        getFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-
-            @Override
-            public void onBackStackChanged() {
-                if (spinnerMode.isEnabled()){
-                    spinnerMode.setEnabled(false);
-                }
-                else{
-                    spinnerMode.setEnabled(true);
-                }
-                if (pauseButton.isEnabled()){
-                    pauseButton.setEnabled(false);
-                }
-                else{
-                    pauseButton.setEnabled(true);
-                }
-                if (moduleButton.isEnabled()){
-                    moduleButton.setEnabled(false);
-                }
-                else{
-                    moduleButton.setEnabled(true);
-                }
-
-
             }
         });
 
