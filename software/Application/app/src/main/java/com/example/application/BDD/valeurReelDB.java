@@ -7,7 +7,7 @@ import android.arch.persistence.room.RoomDatabase;
 import com.example.application.Activité_n2.DAO.DAOvaleurReel;
 import com.example.application.objets.valeurReel;
 
-@Database(entities = {valeurReel.class}, version=2)
+@Database(entities = {valeurReel.class}, version=3)
 public abstract class valeurReelDB extends RoomDatabase {
     public abstract DAOvaleurReel valeurReelDAO();
 }

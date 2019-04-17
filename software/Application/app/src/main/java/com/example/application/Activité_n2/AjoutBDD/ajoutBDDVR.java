@@ -9,7 +9,11 @@ import com.example.application.objets.valeurReel;
 import java.util.List;
 
 public class ajoutBDDVR extends AsyncTask<valeurReel,Void, Void> {
+    private ajoutVR mListener;
 
+    public ajoutBDDVR(ajoutVR mListener){
+        this.mListener=mListener;
+    }
     @Override
     protected Void doInBackground(valeurReel... strings) {
 
@@ -17,6 +21,12 @@ public class ajoutBDDVR extends AsyncTask<valeurReel,Void, Void> {
         valeurs.add(strings[0]);
         DataBaseHelperValeurReel.getInstance().getValeurReelDAO().insertAll(valeurs);
         return null;
+
+    }
+
+    @Override
+    protected void onPostExecute(Void voi) {
+        mListener.ajoutBDDvaleursR();
 
     }
 }

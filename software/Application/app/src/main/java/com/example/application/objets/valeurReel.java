@@ -34,8 +34,6 @@ public class valeurReel {
 
     public String rotationNumber;
 
-    @ColumnInfo
-    public String rotationTime;
 
     @ColumnInfo
     public String focusStacking;

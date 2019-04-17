@@ -16,7 +16,6 @@ import com.example.application.objets.valeurProgramme;
 
 public class SauvegardeProgramme extends Fragment implements ajoutVP{
     private ajoutBDDVP majoutAsyncTask;
-    private ajoutVP mListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

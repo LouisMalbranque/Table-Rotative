@@ -15,6 +15,8 @@ import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVR;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddTempsReel;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
+import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
+import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeReel;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.TempsReelOrder;
 import com.example.application.R;
@@ -34,8 +36,8 @@ public class TempsReel extends Fragment {
     public int vitesseInt;
     public int stepsInt;
     public int rotation_numberInt;
+    SauvegardeReel Sauv_frag = new SauvegardeReel();
 
-    private ajoutBDDVR majoutAsyncTask;
 
     public TempsReel() {
         // Required empty public constructor
@@ -48,6 +50,8 @@ public class TempsReel extends Fragment {
         View v = inflater.inflate(R.layout.fragment_temps_reel, container, false);
 
         peripherique=Peripherique.peripherique;
+
+
 
         EditText text = v.findViewById(R.id.text);
 
@@ -62,6 +66,18 @@ public class TempsReel extends Fragment {
         final Switch choix_rotationSwitch = v.findViewById(R.id.choix_rotation_TempsReel);
         final EditText rotation_numberEditText = v.findViewById(R.id.Rotation_number_TempsReel);
         final TextView rotationText=v.findViewById(R.id.Choix_RotationText);
+
+        if(getArguments()!=null){
+            final String speed = getArguments().getString("vitesse");
+            vitesseEditText.setText(speed);
+            final String acceleration = getArguments().getString("acceleration");
+            accelerationEditText.setText(acceleration);
+            final String steps = getArguments().getString("tableSteps");
+            stepsEditText.setText(steps);
+            final String tempsrotat = getArguments().getString("rotationNumber");
+            rotation_numberEditText.setText(tempsrotat);
+
+        }
 
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,32 +104,7 @@ public class TempsReel extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                majoutAsyncTask=new ajoutBDDVR();
-                valeurReel nouvelEnregistrement = new valeurReel();
-                nouvelEnregistrement.id="exemple1";
-                nouvelEnregistrement.acceleration=accelerationEditText.getText().toString();
-                if(directionSwitch.isChecked()){
-                    nouvelEnregistrement.direction="1";
-                }
-                else
-                {
-                    nouvelEnregistrement.direction="0";
-                }
-                nouvelEnregistrement.id="Exemple1";
-                nouvelEnregistrement.speed=vitesseEditText.getText().toString();
-                nouvelEnregistrement.tableSteps=stepsEditText.getText().toString();
-
-                if (choix_rotationSwitch.isChecked()){
-                    nouvelEnregistrement.rotationMode="1";
-                    nouvelEnregistrement.rotationTime=rotation_numberEditText.getText().toString();
-                    nouvelEnregistrement.rotationNumber="0";
-                }
-                else{
-                    nouvelEnregistrement.rotationMode="0";
-                    nouvelEnregistrement.rotationTime="0";
-                    nouvelEnregistrement.rotationNumber=rotation_numberEditText.getText().toString();
-                }
-                majoutAsyncTask.execute(nouvelEnregistrement);
+                getFragmentManager().beginTransaction().add(R.id.container2, Sauv_frag).addToBackStack(null).commit();
             }
         });
 
