@@ -8,7 +8,7 @@
     tools:context=".Activité_n2.MainActivity">
 
     <LinearLayout
-        android:layout_width="395dp"
+        android:layout_width="403dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -21,59 +21,71 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/id"
-            android:layout_width="wrap_content"
+            android:id="@+id/idProgramme"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textColor="@android:color/background_light" />
 
         <TextView
-            android:id="@+id/acceleration"
-            android:layout_width="wrap_content"
+            android:id="@+id/accelerationProgramme"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
-            android:id="@+id/speed"
-            android:layout_width="wrap_content"
+            android:id="@+id/speedProgramme"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
-            android:id="@+id/frame"
-            android:layout_width="wrap_content"
+            android:id="@+id/frameProgramme"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
-            android:id="@+id/timeBetweenphotos"
-            android:layout_width="wrap_content"
+            android:id="@+id/timeBetweenphotosProgramme"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
-            android:id="@+id/camera"
-            android:layout_width="wrap_content"
+            android:id="@+id/cameraProgramme"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <Switch
-            android:id="@+id/direction"
-            android:layout_width="wrap_content"
+            android:id="@+id/directionProgramme"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Switch" />
 
         <TextView
-            android:id="@+id/steps"
-            android:layout_width="wrap_content"
+            android:id="@+id/stepsProgramme"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@color/colorPrimaryDark" />
+
+        <Button
+            android:id="@+id/okProgramme"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/deleteProgramme"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:text="Button" />
 
     </LinearLayout>
 </RelativeLayout>
