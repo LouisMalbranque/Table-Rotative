@@ -26,6 +26,13 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     Context context;
     LayoutInflater inflater;
 
+    public OrderAdapter(Context c, List<Order> orderList) {
+        context=c;
+        this.orderList = orderList;
+        inflater = LayoutInflater.from(context);
+        this.orderArray.addAll(orderList);
+    }
+
     class ProgrammedViewHolder extends RecyclerView.ViewHolder{
         public int id;
         public TextView nombre_de_prise;
@@ -50,8 +57,14 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             infosProgramme.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Menu.deleteButton.setVisibility(View.VISIBLE);
                     Menu.view.setVisibility(View.VISIBLE);
+                    Menu.listInfos.setVisibility(View.VISIBLE);
+                    System.out.println("id :"+Integer.toString(id));
+                    System.out.println(ListOrder.getById(id).listInstruction);
+                    Menu.instructionAdapter.instructionList = ListOrder.getById(id).listInstruction;
+                    Menu.deleteButton.setVisibility(View.VISIBLE);
+
+                    Menu.instructionAdapter.notifyDataSetChanged();
 
                 }
             });
@@ -73,18 +86,26 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             direction = v.findViewById(R.id.direction);
             temps_tour = v.findViewById(R.id.temps_tour);
             delete = v.findViewById(R.id.delete_temps_reel);
+            infosTempsReel = v.findViewById(R.id.infos_temps_reel);
+
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ListOrder.delete(id);
                 }
             });
-            infosTempsReel = v.findViewById(R.id.infos_temps_reel);
+
             infosTempsReel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Menu.deleteButton.setVisibility(View.VISIBLE);
                     Menu.view.setVisibility(View.VISIBLE);
+                    Menu.listInfos.setVisibility(View.VISIBLE);
+                    System.out.println("id :"+Integer.toString(id));
+                    System.out.println(ListOrder.getById(id).listInstruction);
+                    Menu.instructionAdapter.instructionList = ListOrder.getById(id).listInstruction;
+                    Menu.deleteButton.setVisibility(View.VISIBLE);
+
+                    Menu.instructionAdapter.notifyDataSetChanged();
 
                 }
             });
@@ -98,16 +119,6 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             super(itemView);
         }
     }
-
-
-
-    public OrderAdapter(Context c, List<Order> orderList) {
-        context=c;
-        this.orderList = orderList;
-        inflater = LayoutInflater.from(context);
-        this.orderArray.addAll(orderList);
-    }
-
 
     @Override
     public int getItemViewType(int position) {
@@ -130,15 +141,12 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        System.out.println("on create view holder");
         switch(i){
             case 0:
                 return new ProgrammedViewHolder(LayoutInflater.from(context).inflate(R.layout.ordre_programme_liste,viewGroup,false));
             case 1:
-
                 return new RealTimeViewHolder(LayoutInflater.from(context).inflate(R.layout.ordre_temps_reel_liste,viewGroup,false));
             default:
-
                 return new DefaultViewHolder(LayoutInflater.from(context).inflate(R.layout.ordre_defaut_liste,viewGroup,false));
         }
 

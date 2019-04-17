@@ -2,7 +2,6 @@ package com.example.application.Activité_n2.Fragments.Programmé;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +11,12 @@ import android.widget.EditText;
 import android.widget.Switch;
 
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
-import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVP;
-import com.example.application.Activité_n2.ChargementBDD.chargementBDDVP;
-import com.example.application.Activité_n2.ChargementBDD.chargmentVP;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddProgramme;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
+import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.ProgrammeOrder;
 import com.example.application.R;
-import com.example.application.objets.valeurProgramme;
 
 
 /**
@@ -38,9 +34,8 @@ public class Programme extends Fragment {
     public int camera_numberInt;
     public int pause_between_cameraInt;
 
+    SauvegardeProgramme Sauv_frag = new SauvegardeProgramme();
 
-
-    private ajoutBDDVP majoutAsyncTask;
 
     static public Programme programme = new Programme();
 
@@ -72,8 +67,6 @@ public class Programme extends Fragment {
         final EditText pause_between_cameraEditText = v.findViewById(R.id.Pause_between_camera_Programme);
         final Switch focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
 
-
-
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,31 +78,7 @@ public class Programme extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                majoutAsyncTask=new ajoutBDDVP();
-                valeurProgramme nouvelEnregistrement = new valeurProgramme();
-                nouvelEnregistrement.id="exemple1";
-                nouvelEnregistrement.acceleration=accelerationEditText.getText().toString();
-                nouvelEnregistrement.camera_number=camera_numberEditText.getText().toString();
-                if(directionSwitch.isChecked()){
-                nouvelEnregistrement.direction="1";
-            }
-            else
-                {
-                    nouvelEnregistrement.direction="0";
-                }
-                nouvelEnregistrement.frame=frameEditText.getText().toString();
-                nouvelEnregistrement.id="Exemple1";
-                nouvelEnregistrement.speed=vitesseEditText.getText().toString();
-                nouvelEnregistrement.tableSteps=stepsEditText.getText().toString();
-                nouvelEnregistrement.timeBetweenPhotosNumber=pause_between_cameraEditText.getText().toString();
-                if(focus_stackingSwitch.isChecked()){
-                    nouvelEnregistrement.focusStacking="1";
-                }
-                else
-                {
-                    nouvelEnregistrement.focusStacking="0";
-                }
-                majoutAsyncTask.execute(nouvelEnregistrement);
+                getFragmentManager().beginTransaction().replace(R.id.container, Sauv_frag ).addToBackStack(null).commit();
             }
 
         });
@@ -117,8 +86,6 @@ public class Programme extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Menu.spinnerMode.setEnabled(true);
 
                 accelerationInt=Integer.parseInt(accelerationEditText.getText().toString());
                 vitesseInt=Integer.parseInt(vitesseEditText.getText().toString());

@@ -2,9 +2,7 @@ package com.example.application.Activité_n2.ChargementBDD;
 
 import android.os.AsyncTask;
 
-import com.example.application.BDD.DataBaseHelperValeurProgramme;
 import com.example.application.BDD.DataBaseHelperValeurReel;
-import com.example.application.objets.valeurProgramme;
 import com.example.application.objets.valeurReel;
 
 import java.util.List;

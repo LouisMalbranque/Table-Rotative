@@ -1,7 +1,6 @@
 package com.example.application.Activité_n2.Fragments.Temps_réel;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,14 +11,12 @@ import android.widget.EditText;
 import android.widget.Switch;
 
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
-import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVP;
 import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVR;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddTempsReel;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.TempsReelOrder;
 import com.example.application.R;
-import com.example.application.objets.valeurProgramme;
 import com.example.application.objets.valeurReel;
 
 /**
@@ -111,8 +108,6 @@ public class TempsReel extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Menu.spinnerMode.setEnabled(true);
 
                 accelerationInt=Integer.parseInt(accelerationEditText.getText().toString());
                 vitesseInt=Integer.parseInt(vitesseEditText.getText().toString());

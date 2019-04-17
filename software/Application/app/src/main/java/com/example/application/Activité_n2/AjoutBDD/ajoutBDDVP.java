@@ -9,11 +9,11 @@ import com.example.application.objets.valeurProgramme;
 import java.util.List;
 
 public class ajoutBDDVP extends AsyncTask<valeurProgramme,Void, Void> {
-    //private ajoutValeur mListener;
+    private ajoutVP mListener;
 
-    /*public ajoutBDDVP(ajoutValeur mListener){
+    public ajoutBDDVP(ajoutVP mListener){
         this.mListener=mListener;
-    }*/
+    }
 
     @Override
     protected Void doInBackground(valeurProgramme... strings) {
@@ -22,6 +22,11 @@ public class ajoutBDDVP extends AsyncTask<valeurProgramme,Void, Void> {
         valeurs.add(strings[0]);
         DataBaseHelperValeurProgramme.getInstance().getValeurProgrammeDAO().insertAll(valeurs);
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void voi) {
+        mListener.ajoutBDDvaleursP();
 
     }
 }
