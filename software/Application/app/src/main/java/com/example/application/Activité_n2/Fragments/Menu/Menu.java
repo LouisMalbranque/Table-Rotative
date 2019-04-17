@@ -1,7 +1,10 @@
 package com.example.application.Activité_n2.Fragments.Menu;
 
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
@@ -41,10 +45,15 @@ public class Menu extends Fragment {
     static public ImageButton deleteButton;
     static public RecyclerView listInfos;
 
+    static public Button pauseButton;
+    static public Button moduleButton;
+
     public Menu() {
         // Required empty public constructor
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT_WATCH)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT_WATCH)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,6 +65,8 @@ public class Menu extends Fragment {
         spinnerMode=v.findViewById(R.id.spinner);
         listOrder = (RecyclerView) v.findViewById(R.id.orderList);
         listInfos = (RecyclerView) v.findViewById(R.id.infosInstructions);
+        pauseButton = v.findViewById(R.id.pause_menu);
+        moduleButton = v.findViewById(R.id.modules_menu);
 
 
         if (orderAdapter==null){
@@ -68,7 +79,7 @@ public class Menu extends Fragment {
 
 
         if (spinnerFirstTime){
-            spinnerModeItems.add("New order");
+            spinnerModeItems.add("Nouveau");
             spinnerModeItems.add("Mode Programmé");
             spinnerModeItems.add("Mode Temps Réel");
 
@@ -113,11 +124,25 @@ public class Menu extends Fragment {
                 else{
                     spinnerMode.setEnabled(true);
                 }
+                if (pauseButton.isEnabled()){
+                    pauseButton.setEnabled(false);
+                }
+                else{
+                    pauseButton.setEnabled(true);
+                }
+                if (moduleButton.isEnabled()){
+                    moduleButton.setEnabled(false);
+                }
+                else{
+                    moduleButton.setEnabled(true);
+                }
+
 
             }
         });
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
 
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         listOrder.setLayoutManager(layoutManager);
         listOrder.setItemAnimator( new DefaultItemAnimator());
         listOrder.setAdapter(orderAdapter);

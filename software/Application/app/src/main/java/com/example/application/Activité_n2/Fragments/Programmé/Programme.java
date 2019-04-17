@@ -2,7 +2,6 @@ package com.example.application.Activité_n2.Fragments.Programmé;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +11,6 @@ import android.widget.EditText;
 import android.widget.Switch;
 
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
-import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVP;
-import com.example.application.Activité_n2.ChargementBDD.chargementBDDVP;
-import com.example.application.Activité_n2.ChargementBDD.chargmentVP;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddProgramme;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
@@ -22,7 +18,6 @@ import com.example.application.Activité_n2.Interface.SelectionProgramme;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.ProgrammeOrder;
 import com.example.application.R;
-import com.example.application.objets.valeurProgramme;
 
 
 /**
@@ -140,7 +135,7 @@ public class Programme extends Fragment implements SelectionProgramme {
                 }
                 System.out.println(data);
 
-                //peripherique.envoyer(data);
+                peripherique.envoyer(data);
 
             }
         });

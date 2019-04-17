@@ -7,9 +7,8 @@ public class TempsReelOrder extends Order {
     private int steps;
     private boolean choix_rotation;
     private int rotation_number;
-    private int rotation_time;
 
-    public TempsReelOrder(int acceleration, int vitesse, boolean direction, int steps, boolean choix_rotation, int rotation_number, int rotation_time) {
+    public TempsReelOrder(int acceleration, int vitesse, boolean direction, int steps, boolean choix_rotation, int rotation_number) {
         super();
         this.acceleration = acceleration;
         this.vitesse = vitesse;
@@ -17,7 +16,6 @@ public class TempsReelOrder extends Order {
         this.steps = steps;
         this.choix_rotation = choix_rotation;
         this.rotation_number = rotation_number;
-        this.rotation_time = rotation_time;
     }
 
     public int getAcceleration() {
@@ -44,9 +42,6 @@ public class TempsReelOrder extends Order {
         return rotation_number;
     }
 
-    public int getRotation_time() {
-        return rotation_time;
-    }
 
     @Override
     public String createDatagramme() {

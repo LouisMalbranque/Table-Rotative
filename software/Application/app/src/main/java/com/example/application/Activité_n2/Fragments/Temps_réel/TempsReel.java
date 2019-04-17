@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVR;
@@ -32,7 +33,6 @@ public class TempsReel extends Fragment {
     public int accelerationInt;
     public int vitesseInt;
     public int stepsInt;
-    public int rotation_timeInt;
     public int rotation_numberInt;
 
     private ajoutBDDVR majoutAsyncTask;
@@ -61,7 +61,7 @@ public class TempsReel extends Fragment {
         final EditText stepsEditText = v.findViewById(R.id.StepsTempsReel);
         final Switch choix_rotationSwitch = v.findViewById(R.id.choix_rotation_TempsReel);
         final EditText rotation_numberEditText = v.findViewById(R.id.Rotation_number_TempsReel);
-        final EditText rotation_timeEditText = v.findViewById(R.id.Rotation_time_TempsReel);
+        final TextView rotationText=v.findViewById(R.id.Choix_RotationText);
 
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +71,18 @@ public class TempsReel extends Fragment {
         });
 
 
+        choix_rotationSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (choix_rotationSwitch.isChecked()){
+                    rotationText.setText("Temps de rotation (s)");
+                }
+                else{
+                    rotationText.setText("Nombre de tours");
+                }
+
+            }
+        });
 
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +105,7 @@ public class TempsReel extends Fragment {
 
                 if (directionSwitch.isChecked()){
                     nouvelEnregistrement.rotationMode="1";
-                    nouvelEnregistrement.rotationTime=rotation_timeEditText.getText().toString();
+                    nouvelEnregistrement.rotationTime=rotation_numberEditText.getText().toString();
                     nouvelEnregistrement.rotationNumber="0";
                 }
                 else{
@@ -113,10 +125,9 @@ public class TempsReel extends Fragment {
                 vitesseInt=Integer.parseInt(vitesseEditText.getText().toString());
                 stepsInt=Integer.parseInt(stepsEditText.getText().toString());
                 rotation_numberInt=Integer.parseInt(rotation_numberEditText.getText().toString());
-                rotation_timeInt=Integer.parseInt(rotation_timeEditText.getText().toString());
 
                 TempsReelOrder tempsReelOrder=new TempsReelOrder(accelerationInt,vitesseInt,
-                        directionSwitch.isChecked(),stepsInt,choix_rotationSwitch.isChecked(),rotation_numberInt ,rotation_timeInt);
+                        directionSwitch.isChecked(),stepsInt,choix_rotationSwitch.isChecked(),rotation_numberInt);
 
                 ListOrder.list.add(tempsReelOrder);
                 getFragmentManager().beginTransaction().remove(TempsReel.temps_reel).addToBackStack(null).commit();
@@ -142,7 +153,6 @@ public class TempsReel extends Fragment {
                     data+="0"+",";
                 }
                 data+=Integer.toString(rotation_numberInt)+",";
-                data+=Integer.toString(rotation_timeInt)+",";
 
                 data+="-1"+",";
                 data+="-1"+",";

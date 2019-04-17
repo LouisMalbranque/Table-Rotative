@@ -3,7 +3,6 @@ package com.example.application.Activité_n2.Fragments.Charger_Bdd;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,6 +40,7 @@ public class BddProgramme extends Fragment implements chargmentVP, AdapterView.O
     private ListView mListView;
 
     chargmentVP mListener2=this;
+
     public BddProgramme() {
         // Required empty public constructor
     }
@@ -51,6 +51,9 @@ public class BddProgramme extends Fragment implements chargmentVP, AdapterView.O
         // Inflate the layout for this fragment
         final View view= inflater.inflate(R.layout.fragment_bdd_programme, container, false);
         mListView = view.findViewById(R.id.ListeViewProgramme);
+
+
+
         return view;
     }
 
@@ -67,6 +70,25 @@ public class BddProgramme extends Fragment implements chargmentVP, AdapterView.O
         //progression.setVisibility(View.GONE);
         final ValeurProgrammeAdapter adapter=new ValeurProgrammeAdapter(listeVP);
         mListView.setAdapter(adapter);
+
+        mListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("test1");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                System.out.println("nothing");
+            }
+        });
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getContext(), position, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         for (valeurProgramme valeurProgramme:listeVP) {
             //System.out.println(tweet.text);

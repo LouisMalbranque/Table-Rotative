@@ -181,7 +181,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 else vRealTime.direction.setText("Rotation en sens antihoraire");
 
                 if (oRealTime.isTimeMode()){
-                    vRealTime.temps_tour.setText(Integer.toString(oRealTime.getRotation_time()) + " s");
+                    vRealTime.temps_tour.setText(Integer.toString(oRealTime.getRotation_number()) + " s");
                 }
                 else vRealTime.temps_tour.setText(Integer.toString(oRealTime.getRotation_number()) + " tour(s)");
 
