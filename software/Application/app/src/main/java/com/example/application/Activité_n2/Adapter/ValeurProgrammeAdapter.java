@@ -10,10 +10,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.application.Activité_n2.ChargementBDD.chargementBDDVP;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddProgramme;
 import com.example.application.Activité_n2.Fragments.Programmé.Programme;
 import com.example.application.Activité_n2.Interface.SelectionProgramme;
 import com.example.application.Activité_n2.MainActivity;
+import com.example.application.Activité_n2.SupppressionBDD.SuppressionBDDP;
 import com.example.application.R;
 import com.example.application.objets.valeurProgramme;
 
@@ -23,6 +25,7 @@ public class ValeurProgrammeAdapter extends BaseAdapter implements View.OnClickL
     List<valeurProgramme> mListeVP;
     private LayoutInflater mInflater;
     private SelectionProgramme mListener;
+    private SuppressionBDDP mBDDAsyncTask;
 
     public void setmListener(SelectionProgramme mListener) {
         this.mListener = mListener;
@@ -31,6 +34,7 @@ public class ValeurProgrammeAdapter extends BaseAdapter implements View.OnClickL
     public ValeurProgrammeAdapter(List<valeurProgramme> ListeVP) {
         this.mListeVP=ListeVP;
         mInflater= LayoutInflater.from(BddProgramme.bddProgramme.getContext());
+        mBDDAsyncTask=new SuppressionBDDP();
 
     }
 
@@ -132,6 +136,10 @@ public class ValeurProgrammeAdapter extends BaseAdapter implements View.OnClickL
         switch (v.getId()){
             case R.id.deleteProgramme :
                 Toast.makeText(MainActivity.getContext(), "Suppression", Toast.LENGTH_LONG).show();
+                if(null!=mListener){
+                    mBDDAsyncTask.execute(valeurP);
+                    mListener.onDelete();
+                }
                 break;
             case R.id.okProgramme:
                 Toast.makeText(MainActivity.getContext(), "Selection", Toast.LENGTH_LONG).show();

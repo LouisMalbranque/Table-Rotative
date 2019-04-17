@@ -14,6 +14,7 @@ public class chargementBDDVP extends AsyncTask<Void,Void,List<valeurProgramme>> 
     @Override
     protected List<valeurProgramme> doInBackground(Void... voids) {
         List<valeurProgramme> valeurVP= DataBaseHelperValeurProgramme.getInstance().getValeurProgrammeDAO().getAll();
+
         return valeurVP;
     }
 
