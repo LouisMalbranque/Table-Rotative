@@ -62,6 +62,7 @@ public class ValeurProgrammeAdapter extends BaseAdapter {
         else{
             direction.setChecked(false);
         }
+
         return view;
     }
 }

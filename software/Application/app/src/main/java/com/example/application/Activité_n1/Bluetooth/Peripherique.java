@@ -234,7 +234,7 @@ public class Peripherique {
 
         public void decode(String data) {
 
-            String tableauDonnees[] = data.split(",");
+            final String tableauDonnees[] = data.split(",");
 
             System.out.println(data);
             if (tableauDonnees.length == 0) return;
@@ -243,12 +243,11 @@ public class Peripherique {
 
                 Menu.instructionAdapter.instructionList = null;
 
-                ListOrder.delete(Integer.parseInt(tableauDonnees[1]));
-
                 handlerUI = new Handler(Looper.getMainLooper());
                 handlerUI.post(new Runnable() {
                     @Override
                     public void run() {
+                        ListOrder.delete(Integer.parseInt(tableauDonnees[1]));
                         Menu.view.setVisibility(View.INVISIBLE);
                         Menu.listInfos.setVisibility(View.INVISIBLE);
                         Menu.deleteButton.setVisibility(View.INVISIBLE);

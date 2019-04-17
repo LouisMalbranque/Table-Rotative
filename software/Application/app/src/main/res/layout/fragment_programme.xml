@@ -29,7 +29,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="?attr/actionModeSplitBackground"
         android:text="Save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/charger" />
@@ -63,7 +63,7 @@
 
     <EditText
         android:id="@+id/StepsProgramme"
-        android:layout_width="158dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -79,7 +79,7 @@
 
     <EditText
         android:id="@+id/Camera_Number_Programme"
-        android:layout_width="158dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -95,7 +95,7 @@
 
     <EditText
         android:id="@+id/Pause_between_camera_Programme"
-        android:layout_width="211dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -103,7 +103,7 @@
         android:ems="10"
         android:hint="Pause entre les cameras"
         android:inputType="number"
-        android:text="1000"
+        android:text="1"
         android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,8 +111,10 @@
 
     <EditText
         android:id="@+id/FrameProgramme"
-        android:layout_width="158dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
@@ -123,6 +125,7 @@
         android:textColor="@android:color/background_light"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/CameraNumberText"
         app:layout_constraintTop_toBottomOf="@+id/FrameText" />
 
     <Switch
