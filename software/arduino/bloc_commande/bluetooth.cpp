@@ -55,7 +55,12 @@ int Bluetooth::getValue(int i){
 }
 
 void Bluetooth::print(String data){
+  data+=",";
+  delay(50);
   bt.println(data);
+  delay(50);
+  Serial.println("au telephone: "+data);
+
 }
 
 boolean Bluetooth::isFull(){

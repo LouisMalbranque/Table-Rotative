@@ -17,4 +17,5 @@ class CameraThread: public Peripherique
     void write(String d);
 
     String createDatagramme(int* values);
+    void setCameras(int nb_camera, int* cameras);
 };

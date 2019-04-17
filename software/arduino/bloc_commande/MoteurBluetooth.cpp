@@ -6,16 +6,36 @@ String MoteurBluetooth::createDatagramme(int* values)
   int steps;
   
   switch(values[MODE]){
-    case 0:
-      steps = (int) (values[STEPS] / values[FRAME]);
-      datagramme =  String(values[ACCELERATION]) + "," + String(values[SPEED]) + "," + String(values[DIRECTION]) + "," + steps + "," + String(values[ROTATION_TIME]); 
+    case 0: // rotation programmée, 1 tour divisé en n parties
+      steps = (int) (values[NOMBRE_DE_PAS_TABLE] / values[NOMBRE_DE_PHOTOS]);
+      datagramme =  String(values[ACCELERATION]) + "," + String(values[VITESSE]) + "," + String(values[DIRECTION]) + ",0," + String(steps); 
       break;
-    case 1:
-      steps = values[STEPS]*values[ROTATION_NUMBER];
-      datagramme = String(values[ACCELERATION]) + "," + String(values[SPEED]) + "," + String(values[DIRECTION]) + "," + steps + "," + String(values[ROTATION_TIME]); 
-      break;       
+
+      
+    case 1: // rotation temps réel, 2 cas possible, en temps ou en tour
+
+      datagramme = String(values[ACCELERATION]) + "," + String(values[VITESSE]) + "," + String(values[DIRECTION]) + "," + String(values[CHOIX_ROTATION]) + ",";
+      
+      switch(values[CHOIX_ROTATION]){
+        case 0:
+          datagramme += String(values[NOMBRE_DE_TOUR] * values[NOMBRE_DE_PAS_TABLE]);
+          break;
+        case 1: // en temps
+          datagramme += String(values[TEMPS_DE_ROTATION] * 1000);
+          break;
+        default:
+          Serial.println("Choix de rotation invalide");
+          return "";
+      }
+      break;    
+
+         
     default:
+      Serial.println("Mode invalide pour la création du datagramme moteur");
+      return "";
       break; 
   }
+
+  
   return datagramme;
 }

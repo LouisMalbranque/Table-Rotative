@@ -116,5 +116,8 @@ public class BddProgramme extends Fragment implements chargmentVP, SelectionProg
 
     }
 
-
+    @Override
+    public void onDelete() {
+        getFragmentManager().beginTransaction().replace(R.id.fragment, Programme.programme).addToBackStack(null).commit();
+    }
 }
