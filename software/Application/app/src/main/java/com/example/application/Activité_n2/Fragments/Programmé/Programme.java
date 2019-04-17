@@ -18,6 +18,7 @@ import com.example.application.Activité_n2.ChargementBDD.chargmentVP;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddProgramme;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
+import com.example.application.Activité_n2.Interface.SelectionProgramme;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.ProgrammeOrder;
 import com.example.application.R;
@@ -27,7 +28,7 @@ import com.example.application.objets.valeurProgramme;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Programme extends Fragment {
+public class Programme extends Fragment implements SelectionProgramme {
 
     private Peripherique peripherique;
 
@@ -148,4 +149,8 @@ public class Programme extends Fragment {
 
     }
 
+    @Override
+    public void onSelection(valeurProgramme valeurP) {
+
+    }
 }

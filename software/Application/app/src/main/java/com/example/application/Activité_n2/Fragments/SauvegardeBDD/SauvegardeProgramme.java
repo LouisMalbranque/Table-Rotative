@@ -40,6 +40,7 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
         final Switch focus_stackingSwitch = getActivity().findViewById(R.id.Focus_stacking_Programme);
         final Button oKButton = getView().findViewById(R.id.sauver);
         final EditText idRentre=getActivity().findViewById(R.id.IDrentre);
+
         majoutAsyncTask=new ajoutBDDVP(this);
 
         getView().setOnClickListener(new View.OnClickListener() {

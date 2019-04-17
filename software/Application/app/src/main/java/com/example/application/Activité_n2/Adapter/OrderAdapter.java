@@ -83,7 +83,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public RealTimeViewHolder(View v) {
             super(v);
             vitesse = v.findViewById(R.id.vitesse);
-            direction = v.findViewById(R.id.direction);
+            direction = v.findViewById(R.id.directionProgramme);
             temps_tour = v.findViewById(R.id.temps_tour);
             delete = v.findViewById(R.id.delete_temps_reel);
             infosTempsReel = v.findViewById(R.id.infos_temps_reel);

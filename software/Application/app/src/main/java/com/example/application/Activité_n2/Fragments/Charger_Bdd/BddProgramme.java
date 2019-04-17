@@ -9,15 +9,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.application.Activité_n2.Adapter.ValeurProgrammeAdapter;
 import com.example.application.Activité_n2.ChargementBDD.chargementBDDVP;
 import com.example.application.Activité_n2.ChargementBDD.chargmentVP;
+import com.example.application.Activité_n2.Fragments.Programmé.Programme;
+import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
 import com.example.application.R;
 import com.example.application.objets.valeurProgramme;
 
@@ -27,10 +32,9 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 
-public class BddProgramme extends Fragment implements chargmentVP {
+public class BddProgramme extends Fragment implements chargmentVP, AdapterView.OnItemClickListener {
 
     public static BddProgramme bddProgramme = new BddProgramme();
-
 
 
     private chargementBDDVP mBDDAsyncTask;
@@ -73,5 +77,14 @@ public class BddProgramme extends Fragment implements chargmentVP {
     public Context getContext() {
         return super.getContext();
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+        position =(Integer) view.getTag();
+        final valeurProgramme valeurChoisie=(valeurProgramme) adapter.getItemAtPosition(position);
+        TextView accel = (TextView) getActivity().findViewById(R.id.AccelerationProgramme);
+        getFragmentManager().beginTransaction().remove(BddProgramme.this).commit();
+    }
+
 
 }
