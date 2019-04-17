@@ -103,7 +103,7 @@ public class TempsReel extends Fragment {
                 nouvelEnregistrement.speed=vitesseEditText.getText().toString();
                 nouvelEnregistrement.tableSteps=stepsEditText.getText().toString();
 
-                if (directionSwitch.isChecked()){
+                if (choix_rotationSwitch.isChecked()){
                     nouvelEnregistrement.rotationMode="1";
                     nouvelEnregistrement.rotationTime=rotation_numberEditText.getText().toString();
                     nouvelEnregistrement.rotationNumber="0";
@@ -161,7 +161,7 @@ public class TempsReel extends Fragment {
 
                 System.out.println(data);
 
-                peripherique.envoyer(data);
+                //peripherique.envoyer(data);
 
 
             }

@@ -1,10 +1,7 @@
 package com.example.application.Activité_n2.Fragments.Menu;
 
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -52,10 +49,8 @@ public class Menu extends Fragment {
         // Required empty public constructor
     }
 
-    @TargetApi(Build.VERSION_CODES.KITKAT_WATCH)
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT_WATCH)
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v= inflater.inflate(R.layout.fragment_menu,container,false);

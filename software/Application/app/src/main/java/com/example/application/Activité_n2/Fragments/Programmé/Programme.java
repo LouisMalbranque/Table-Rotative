@@ -70,7 +70,6 @@ public class Programme extends Fragment {
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 getFragmentManager().beginTransaction().replace(R.id.fragment, BddProgramme.bddProgramme).addToBackStack(null).commit();
             }
         });
@@ -78,7 +77,7 @@ public class Programme extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.container, Sauv_frag ).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().add(R.id.container, Sauv_frag ).addToBackStack(null).commit();
             }
 
         });
@@ -123,9 +122,6 @@ public class Programme extends Fragment {
                 data+=Integer.toString(camera_numberInt)+",";
                 data+=Integer.toString(pause_between_cameraInt)+",";
 
-
-
-
                 if (focus_stackingSwitch.isChecked()){
                     data+="1";
                 }
@@ -134,7 +130,7 @@ public class Programme extends Fragment {
                 }
                 System.out.println(data);
 
-                peripherique.envoyer(data);
+                //peripherique.envoyer(data);
 
             }
         });
