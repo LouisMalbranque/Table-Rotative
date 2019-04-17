@@ -15,8 +15,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.Activité_n2.Adapter.InstructionAdapter;
 import com.example.application.Activité_n2.Adapter.OrderAdapter;
+import com.example.application.Activité_n2.Fragments.Peripheriques.PeripheriqueSelection;
 import com.example.application.Activité_n2.Fragments.Programmé.Programme;
 import com.example.application.Activité_n2.Fragments.Temps_réel.TempsReel;
 import com.example.application.Activité_n2.Order.ListOrder;
@@ -30,6 +32,7 @@ import java.util.ArrayList;
 public class Menu extends Fragment {
 
     static public Menu menu = new Menu();
+    private Peripherique peripherique;
 
     static public Spinner spinnerMode;
     static public ArrayList<String> spinnerModeItems = new ArrayList<String>();
@@ -43,6 +46,8 @@ public class Menu extends Fragment {
 
     static public Button pauseButton;
     static public Button moduleButton;
+
+    static public Button peripheriqueButton;
 
     public Menu() {
         // Required empty public constructor
@@ -61,7 +66,23 @@ public class Menu extends Fragment {
         listInfos = (RecyclerView) v.findViewById(R.id.infosInstructions);
         pauseButton = v.findViewById(R.id.pause_menu);
         moduleButton = v.findViewById(R.id.modules_menu);
+        peripheriqueButton = v.findViewById(R.id.modules_menu);
+        peripherique= Peripherique.peripherique;
 
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String data="";
+                data+="3";
+                peripherique.envoyer(data);
+            }
+        });
+        peripheriqueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment, PeripheriqueSelection.peripheriqueSelection).commit();
+            }
+        });
 
         if (orderAdapter==null){
             orderAdapter = new OrderAdapter(getContext(),ListOrder.list);
@@ -73,7 +94,7 @@ public class Menu extends Fragment {
 
 
         if (spinnerFirstTime){
-            spinnerModeItems.add("Nouveau");
+            spinnerModeItems.add("Nouvelle Commande");
             spinnerModeItems.add("Mode Programmé");
             spinnerModeItems.add("Mode Temps Réel");
 

@@ -14,11 +14,9 @@ import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddProgramme;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
-import com.example.application.Activité_n2.Interface.SelectionProgramme;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.ProgrammeOrder;
 import com.example.application.R;
-import com.example.application.objets.valeurProgramme;
 
 
 /**
@@ -113,7 +111,7 @@ public class Programme extends Fragment  {
                 ProgrammeOrder programmeOrder = new ProgrammeOrder(accelerationInt,vitesseInt,
                         directionSwitch.isChecked(),stepsInt,frameInt,camera_numberInt,pause_between_cameraInt,focus_stackingSwitch.isChecked());
                 ListOrder.list.add(programmeOrder);
-                getFragmentManager().beginTransaction().remove(Programme.programme).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment,Menu.menu).addToBackStack(null).commit();
                 Menu.orderAdapter.notifyDataSetChanged();
 
 
@@ -133,7 +131,6 @@ public class Programme extends Fragment  {
 
                 data+="-1"+","; //choix rotation
                 data+="-1"+","; //rotation number
-                data+="-1"+","; //rotation time
 
                 data+=Integer.toString(frameInt)+",";
                 data+=Integer.toString(camera_numberInt)+",";
@@ -147,7 +144,7 @@ public class Programme extends Fragment  {
                 }
                 System.out.println(data);
 
-                //peripherique.envoyer(data);
+                peripherique.envoyer(data);
 
             }
         });

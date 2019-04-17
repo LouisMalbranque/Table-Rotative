@@ -19,9 +19,13 @@ import java.util.ArrayList;
 
 public class PeripheriqueSelection extends Fragment {
 
-    public static RecyclerView peripheriquesRecycler;
-    public static PeripheriqueSelectionAdapter peripheriqueAdapter;
+    public static PeripheriqueSelection peripheriqueSelection = new PeripheriqueSelection();
+
+    static public  RecyclerView peripheriquesRecycler;
+    static public  PeripheriqueSelectionAdapter peripheriqueAdapter;
     public static Button envoyer;
+    public static ArrayList<Peripherique> listPeripheriques = new ArrayList<>();
+
 
     public PeripheriqueSelection() {
 
@@ -33,22 +37,29 @@ public class PeripheriqueSelection extends Fragment {
         View v = inflater.inflate(R.layout.fragment_peripherique_selection, container, false);
         peripheriquesRecycler = v.findViewById(R.id.peripherique_selection);
 
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
 
-        final ArrayList<Peripherique> listPeripheriques = new ArrayList<>();
-        listPeripheriques.add(new Peripherique("Moteur", false));
-        for (int i = 0; i<9; i++){
-            listPeripheriques.add(new Peripherique("Camera "+Integer.toString(i), false));
+
+        System.out.println("peripherique");
+        if (listPeripheriques.size()==0){
+            System.out.println("test");
+            listPeripheriques.add(new Peripherique("Moteur", false));
+            for (int i = 0; i<9; i++){
+                listPeripheriques.add(new Peripherique("Camera "+Integer.toString(i), false));
+            }
         }
 
-        peripheriqueAdapter = new PeripheriqueSelectionAdapter(getContext(), listPeripheriques);
+
+
+        if (peripheriqueAdapter == null){
+            peripheriqueAdapter = new PeripheriqueSelectionAdapter(getContext(), listPeripheriques);
+        }
+
         peripheriquesRecycler.setLayoutManager(layoutManager);
         peripheriquesRecycler.setItemAnimator( new DefaultItemAnimator());
         peripheriquesRecycler.setAdapter(peripheriqueAdapter);
         envoyer = v.findViewById(R.id.envoyer_peripherique_selection);
-
-
-
 
         envoyer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,15 +70,12 @@ public class PeripheriqueSelection extends Fragment {
                     else data+=",0";
                 }
                 envoyer.setEnabled(false);
-                //com.example.application.Activité_n1.Bluetooth.Peripherique.peripherique.envoyer(data);
-                System.out.println(data);
-
+                com.example.application.Activité_n1.Bluetooth.Peripherique.peripherique.envoyer(data);
 
                 getFragmentManager().beginTransaction().replace(R.id.fragment, Menu.menu).commit();
 
             }
         });
-
 
 
         return v;

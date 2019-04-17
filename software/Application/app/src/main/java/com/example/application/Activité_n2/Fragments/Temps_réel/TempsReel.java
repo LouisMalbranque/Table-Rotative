@@ -130,7 +130,7 @@ public class TempsReel extends Fragment {
                         directionSwitch.isChecked(),stepsInt,choix_rotationSwitch.isChecked(),rotation_numberInt);
 
                 ListOrder.list.add(tempsReelOrder);
-                getFragmentManager().beginTransaction().remove(TempsReel.temps_reel).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment,Menu.menu).addToBackStack(null).commit();
                 Menu.orderAdapter.notifyDataSetChanged();
 
                 data="";
@@ -161,7 +161,7 @@ public class TempsReel extends Fragment {
 
                 System.out.println(data);
 
-                //peripherique.envoyer(data);
+                peripherique.envoyer(data);
 
 
             }
