@@ -1,4 +1,3 @@
-#pragma once
 #include "arduino.h"
 #include "PeripheriqueBluetooth.h"
 #include "constantes.h"
