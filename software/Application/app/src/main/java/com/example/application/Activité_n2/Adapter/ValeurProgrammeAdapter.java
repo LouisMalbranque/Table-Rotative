@@ -31,6 +31,7 @@ public class ValeurProgrammeAdapter extends BaseAdapter implements View.OnClickL
     public ValeurProgrammeAdapter(List<valeurProgramme> ListeVP) {
         this.mListeVP=ListeVP;
         mInflater= LayoutInflater.from(BddProgramme.bddProgramme.getContext());
+
     }
 
     @Override
@@ -134,7 +135,8 @@ public class ValeurProgrammeAdapter extends BaseAdapter implements View.OnClickL
                 break;
             case R.id.okProgramme:
                 Toast.makeText(MainActivity.getContext(), "Selection", Toast.LENGTH_LONG).show();
-                mListener.onSelection(valeurP);
+                if(null!=mListener){
+                mListener.onSelection(valeurP);}
                 break;
         }
 
