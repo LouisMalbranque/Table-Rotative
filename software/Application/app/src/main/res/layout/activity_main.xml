@@ -11,7 +11,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.example.application.Activité_n2.Fragments.Menu.Menu"
+        android:name="com.example.application.Activité_n2.Fragments.Peripheriques.PeripheriqueSelection"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
