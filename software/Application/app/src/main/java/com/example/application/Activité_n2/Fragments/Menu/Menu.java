@@ -149,7 +149,6 @@ public class Menu extends Fragment {
             public void onClick(View v) {
 
                 Menu.instructionAdapter.instructionList = null;
-
                 deleteButton.setVisibility(View.INVISIBLE);
                 view.setVisibility(View.INVISIBLE);
                 listInfos.setVisibility(View.INVISIBLE);

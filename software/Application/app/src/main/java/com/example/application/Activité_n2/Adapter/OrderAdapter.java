@@ -117,8 +117,11 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     class DefaultViewHolder extends RecyclerView.ViewHolder {
 
-        public DefaultViewHolder(View itemView) {
-            super(itemView);
+        public TextView textView;
+        public DefaultViewHolder(View v) {
+            super(v);
+            textView = v.findViewById(R.id.commandeText);
+            textView.setText("Commande n°" + (ListOrder.list.size()+1));
         }
     }
 
@@ -132,13 +135,14 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             return 1;
         }
         else{
+
             return 2;
         }
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return (ListOrder.list.size()+1);
     }
 
     @Override
