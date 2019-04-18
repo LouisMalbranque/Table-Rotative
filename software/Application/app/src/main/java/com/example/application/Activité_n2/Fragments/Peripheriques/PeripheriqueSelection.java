@@ -40,8 +40,6 @@ public class PeripheriqueSelection extends Fragment {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
 
-
-        System.out.println("peripherique");
         if (listPeripheriques.size()==0){
             System.out.println("test");
             listPeripheriques.add(new Peripherique("Moteur", false));
@@ -49,8 +47,6 @@ public class PeripheriqueSelection extends Fragment {
                 listPeripheriques.add(new Peripherique("Camera "+Integer.toString(i), false));
             }
         }
-
-
 
         if (peripheriqueAdapter == null){
             peripheriqueAdapter = new PeripheriqueSelectionAdapter(getContext(), listPeripheriques);
@@ -70,7 +66,7 @@ public class PeripheriqueSelection extends Fragment {
                     else data+=",0";
                 }
                 envoyer.setEnabled(false);
-                com.example.application.Activité_n1.Bluetooth.Peripherique.peripherique.envoyer(data);
+                //com.example.application.Activité_n1.Bluetooth.Peripherique.peripherique.envoyer(data);
 
                 getFragmentManager().beginTransaction().replace(R.id.fragment, Menu.menu).commit();
 

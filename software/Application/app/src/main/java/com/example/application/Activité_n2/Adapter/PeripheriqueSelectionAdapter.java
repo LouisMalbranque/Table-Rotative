@@ -52,6 +52,7 @@ public class PeripheriqueSelectionAdapter extends RecyclerView.Adapter<Peripheri
 
     @Override
     public void onBindViewHolder(PeripheriqueHolder v, int i) {
+        System.out.println("bind");
             v.indice = i;
             v.textPeripherique.setText(listPeripheriques.get(i).getNom());
 
