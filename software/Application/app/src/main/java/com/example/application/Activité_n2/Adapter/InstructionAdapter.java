@@ -92,10 +92,12 @@ public class InstructionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 data+=Integer.toString(instructionMoteur.getChoixRotation())+"||";
                 data+=Integer.toString(instructionMoteur.getStepsTime());
 
-                if (instructionMoteur.termine){
+                if (instructionMoteur.termine==2){
                     data+=" : terminée";
-                }else{
+                }else if(instructionMoteur.termine==1){
                     data+=" : en cours";
+                }else if (instructionMoteur.termine==0){
+                    data+=" : pas commencé";
                 }
 
                 instructionMoteurHolder.instructionMoteur.setText(data);
@@ -112,10 +114,12 @@ public class InstructionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 data+=Integer.toString(instructionCamera.getFrame())+"||";
                 data+=Integer.toString(instructionCamera.getPause());
 
-                if (instructionCamera.termine){
+                if (instructionCamera.termine==2){
                     data+=" : terminée";
-                }else{
+                }else if(instructionCamera.termine==1){
                     data+=" : en cours";
+                }else if (instructionCamera.termine==0){
+                    data+=" : pas commencé";
                 }
 
                 instructionCameraHolder.instructionCamera.setText(data);

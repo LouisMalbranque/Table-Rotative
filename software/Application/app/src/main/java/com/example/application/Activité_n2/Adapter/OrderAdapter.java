@@ -51,6 +51,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     ListOrder.delete(id);
+                    Menu.pauseButton.setText("PAUSE");
                 }
             });
             infosProgramme = v.findViewById(R.id.infos_programme);
@@ -92,6 +93,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     ListOrder.delete(id);
+                    Menu.pauseButton.setText("PAUSE");
                 }
             });
 

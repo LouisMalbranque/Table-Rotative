@@ -12,6 +12,7 @@ import android.widget.Switch;
 
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddProgramme;
+import com.example.application.Activité_n2.Fragments.Focus.FocusParametre;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
 import com.example.application.Activité_n2.Order.ListOrder;
@@ -33,6 +34,8 @@ public class Programme extends Fragment  {
     public int frameInt;
     public int camera_numberInt;
     public int pause_between_cameraInt;
+    static public Button parametrage;
+    static public Switch focus_stackingSwitch;
 
     SauvegardeProgramme Sauv_frag = new SauvegardeProgramme();
 
@@ -65,7 +68,32 @@ public class Programme extends Fragment  {
         final EditText frameEditText = v.findViewById(R.id.FrameProgramme);
         final EditText camera_numberEditText = v.findViewById(R.id.Camera_Number_Programme);
         final EditText pause_between_cameraEditText = v.findViewById(R.id.Pause_between_camera_Programme);
-        final Switch focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
+
+
+        focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
+        parametrage = v.findViewById(R.id.parametrage);
+
+        parametrage.setVisibility(View.INVISIBLE);
+
+        focus_stackingSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (focus_stackingSwitch.isChecked()){
+                    parametrage.setVisibility(View.VISIBLE);
+                }else{
+                    parametrage.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        parametrage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                focus_stackingSwitch.setChecked(false);
+                getFragmentManager().beginTransaction().replace(R.id.fragment, FocusParametre.focusParametre).addToBackStack(null).commit();
+            }
+        });
+
 
         if(getArguments()!=null){
         final String speed = getArguments().getString("vitesse");
@@ -144,7 +172,7 @@ public class Programme extends Fragment  {
                 }
                 System.out.println(data);
 
-                peripherique.envoyer(data);
+                //peripherique.envoyer(data);
 
             }
         });

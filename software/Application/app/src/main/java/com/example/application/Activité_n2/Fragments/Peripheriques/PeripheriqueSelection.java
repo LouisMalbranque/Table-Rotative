@@ -44,7 +44,10 @@ public class PeripheriqueSelection extends Fragment {
             System.out.println("test");
             listPeripheriques.add(new Peripherique("Moteur", false));
             for (int i = 0; i<9; i++){
-                listPeripheriques.add(new Peripherique("Camera "+Integer.toString(i), false));
+                listPeripheriques.add(new Peripherique("Camera "+Integer.toString(i+1), false));
+            }
+            for (int i=0;i<9;i++){
+                listPeripheriques.add(new Peripherique("Camera Focus "+Integer.toString(i+1),false));
             }
         }
 
