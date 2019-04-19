@@ -29,6 +29,7 @@ void* run(void* argument) {
 
   int temps_pause;
   int nb_appareils;
+  bool pause = false;
 
   while (true) {
     String d = data;
