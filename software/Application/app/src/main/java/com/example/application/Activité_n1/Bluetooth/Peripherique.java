@@ -202,7 +202,6 @@ public class Peripherique {
                                 rawdata[i] = buffer[i];
 
                             String data = new String(rawdata);
-                            System.out.println(data);
 
                             decode(data);
                         }
@@ -241,6 +240,14 @@ public class Peripherique {
 
             if (tableauDonnees[0].equals("fini")) {
 
+                handlerUI = new Handler(Looper.getMainLooper());
+                handlerUI.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Menu.pauseButton.setText("PAUSE");
+                    }
+                });
+
                 Menu.instructionAdapter.instructionList = null;
 
                 handlerUI = new Handler(Looper.getMainLooper());
@@ -266,7 +273,6 @@ public class Peripherique {
 
                     InstructionMoteur instructionMoteur = new InstructionMoteur(idCommande, idInstruction, acceleration,
                             vitesse, direction, choixRotation, stepsTime);
-                    System.out.println("ajout instruction moteur");
                     ListOrder.getById(idCommande).listInstruction.add(instructionMoteur);
 
                 } else if (tableauDonnees[3].equals("camera")) {
@@ -275,19 +281,28 @@ public class Peripherique {
                     int pause = Integer.parseInt(tableauDonnees[5]);
 
                     InstructionCamera instructionCamera = new InstructionCamera(idCommande, idInstruction, frame, pause);
-                    System.out.println("ajout instruction camera");
                     ListOrder.getById(idCommande).listInstruction.add(instructionCamera);
 
                 }
 
 
             } else if (tableauDonnees[0].equals("en cours")) {
+
+                handlerUI = new Handler(Looper.getMainLooper());
+                handlerUI.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Menu.pauseButton.setText("PAUSE");
+                    }
+                });
+
                 int idCommande = Integer.parseInt(tableauDonnees[1]);
                 int idInstruction = Integer.parseInt(tableauDonnees[2]);
 
                 System.out.println(idInstruction);
                 if (idInstruction > 1) {
-                    ListOrder.getById(idCommande).listInstruction.get(idInstruction - 2).termine = true;
+                    ListOrder.getById(idCommande).listInstruction.get(idInstruction - 2).termine = 2;
+                    ListOrder.getById(idCommande).listInstruction.get(idInstruction - 1).termine = 1;
                 }
 
 

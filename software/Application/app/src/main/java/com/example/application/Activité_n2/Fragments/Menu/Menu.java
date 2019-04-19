@@ -47,6 +47,7 @@ public class Menu extends Fragment {
     static public Button pauseButton;
     static public Button moduleButton;
 
+
     static public Button peripheriqueButton;
 
     public Menu() {
@@ -61,6 +62,7 @@ public class Menu extends Fragment {
 
         view = v.findViewById(R.id.infos);
         deleteButton=v.findViewById(R.id.deleteInfos);
+
         spinnerMode=v.findViewById(R.id.spinner);
         listOrder = (RecyclerView) v.findViewById(R.id.orderList);
         listInfos = (RecyclerView) v.findViewById(R.id.infosInstructions);
@@ -72,9 +74,18 @@ public class Menu extends Fragment {
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String data="";
-                data+="3";
-                peripherique.envoyer(data);
+                if (ListOrder.list.size()!=0){
+                    String data="";
+                    data+="-1"+",";//id commande pas utile mais necessaire
+                    data+="3";
+                    if (pauseButton.getText().equals("PAUSE")){
+                        pauseButton.setText("START");
+                    }else{
+                        pauseButton.setText("PAUSE");
+                    }
+                    peripherique.envoyer(data);
+                }
+
             }
         });
         peripheriqueButton.setOnClickListener(new View.OnClickListener() {
@@ -110,11 +121,11 @@ public class Menu extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 1:
-                        getFragmentManager().beginTransaction().replace(R.id.fragment, Programme.programme).addToBackStack(null).commit();
+                        getFragmentManager().beginTransaction().add(R.id.fragment,Programme.programme).addToBackStack(null).commit();
                         spinnerMode.setSelection(0);
                         break;
                     case 2:
-                        getFragmentManager().beginTransaction().replace(R.id.fragment, TempsReel.temps_reel).addToBackStack(null).commit();
+                        getFragmentManager().beginTransaction().add(R.id.fragment, TempsReel.temps_reel).addToBackStack(null).commit();
                         spinnerMode.setSelection(0);
                         break;
                     default:
@@ -138,7 +149,6 @@ public class Menu extends Fragment {
             public void onClick(View v) {
 
                 Menu.instructionAdapter.instructionList = null;
-
                 deleteButton.setVisibility(View.INVISIBLE);
                 view.setVisibility(View.INVISIBLE);
                 listInfos.setVisibility(View.INVISIBLE);

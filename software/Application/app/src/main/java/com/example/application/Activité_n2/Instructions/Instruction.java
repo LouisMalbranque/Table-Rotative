@@ -4,7 +4,7 @@ public abstract class Instruction {
     static private int lastid=0;
     protected int idCommande;
     protected int idInstruction;
-    public boolean termine = false;
+    public int termine = 0;
 
     Instruction(){
     }

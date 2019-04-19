@@ -51,6 +51,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     ListOrder.delete(id);
+                    Menu.pauseButton.setText("PAUSE");
                 }
             });
             infosProgramme = v.findViewById(R.id.infos_programme);
@@ -92,6 +93,8 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     ListOrder.delete(id);
+                    Menu.pauseButton.setText("PAUSE");
+
                 }
             });
 
@@ -115,8 +118,12 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     class DefaultViewHolder extends RecyclerView.ViewHolder {
 
-        public DefaultViewHolder(View itemView) {
-            super(itemView);
+        public TextView textView;
+        public DefaultViewHolder(View v) {
+            super(v);
+
+            textView = v.findViewById(R.id.commandeTextCamera);
+            textView.setText("Commande suivante");
         }
     }
 
@@ -130,13 +137,14 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             return 1;
         }
         else{
+
             return 2;
         }
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return (ListOrder.list.size()+1);
     }
 
     @Override

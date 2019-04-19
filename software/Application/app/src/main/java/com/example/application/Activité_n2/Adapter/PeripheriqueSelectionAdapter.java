@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -26,13 +27,14 @@ public class PeripheriqueSelectionAdapter extends RecyclerView.Adapter<Peripheri
     }
 
     public class PeripheriqueHolder extends RecyclerView.ViewHolder{
+        public ImageView imageView;
         public TextView textPeripherique;
         public Switch switchPeripherique;
         public int indice;
 
         public PeripheriqueHolder(View v) {
             super(v);
-
+            imageView = v.findViewById(R.id.imageView);
             textPeripherique = v.findViewById(R.id.textPeripheriqueListe);
             switchPeripherique = v.findViewById(R.id.switchPeripheriqueListe);
             switchPeripherique.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -52,9 +54,15 @@ public class PeripheriqueSelectionAdapter extends RecyclerView.Adapter<Peripheri
 
     @Override
     public void onBindViewHolder(PeripheriqueHolder v, int i) {
+
             v.indice = i;
             v.textPeripherique.setText(listPeripheriques.get(i).getNom());
-
+        System.out.println(listPeripheriques.get(i).getNom());
+            if (listPeripheriques.get(i).getNom().contains("Moteur")){
+                v.imageView.setImageResource(R.drawable.moteur);
+            }else if (listPeripheriques.get(i).getNom().contains("Camera")){
+                v.imageView.setImageResource(R.drawable.camera);
+            }
 
     }
 

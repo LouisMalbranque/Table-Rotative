@@ -12,6 +12,7 @@ import android.widget.Switch;
 
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddProgramme;
+import com.example.application.Activité_n2.Fragments.Focus.FocusParametre;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
 import com.example.application.Activité_n2.Order.ListOrder;
@@ -33,6 +34,8 @@ public class Programme extends Fragment  {
     public int frameInt;
     public int camera_numberInt;
     public int pause_between_cameraInt;
+    static public Button parametrage;
+    static public Switch focus_stackingSwitch;
 
     SauvegardeProgramme Sauv_frag = new SauvegardeProgramme();
 
@@ -42,6 +45,7 @@ public class Programme extends Fragment  {
     public Programme() {
         // Required empty public constructor
     }
+
 
 
 
@@ -65,7 +69,39 @@ public class Programme extends Fragment  {
         final EditText frameEditText = v.findViewById(R.id.FrameProgramme);
         final EditText camera_numberEditText = v.findViewById(R.id.Camera_Number_Programme);
         final EditText pause_between_cameraEditText = v.findViewById(R.id.Pause_between_camera_Programme);
-        final Switch focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
+
+
+        focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
+        parametrage = v.findViewById(R.id.parametrage);
+
+        System.out.println(focus_stackingSwitch.isChecked());
+
+        if (focus_stackingSwitch.isChecked()){
+            parametrage.setVisibility(View.VISIBLE);
+        }else{
+            parametrage.setVisibility(View.INVISIBLE);
+        }
+
+
+        focus_stackingSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (focus_stackingSwitch.isChecked()){
+                    parametrage.setVisibility(View.VISIBLE);
+                }else{
+                    parametrage.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        parametrage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parametrage.setVisibility(View.VISIBLE);
+                getFragmentManager().beginTransaction().add(R.id.fragment, FocusParametre.focusParametre).addToBackStack(null).commit();
+            }
+        });
+
 
         if(getArguments()!=null){
         final String speed = getArguments().getString("vitesse");
@@ -81,6 +117,8 @@ public class Programme extends Fragment  {
             final String camera = getArguments().getString("camera");
             camera_numberEditText.setText(tempsPhotos);
         }
+
+
 
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +149,7 @@ public class Programme extends Fragment  {
                 ProgrammeOrder programmeOrder = new ProgrammeOrder(accelerationInt,vitesseInt,
                         directionSwitch.isChecked(),stepsInt,frameInt,camera_numberInt,pause_between_cameraInt,focus_stackingSwitch.isChecked());
                 ListOrder.list.add(programmeOrder);
-                getFragmentManager().beginTransaction().replace(R.id.fragment,Menu.menu).addToBackStack(null).commit();
+
                 Menu.orderAdapter.notifyDataSetChanged();
 
 
@@ -135,7 +173,7 @@ public class Programme extends Fragment  {
                 data+=Integer.toString(frameInt)+",";
                 data+=Integer.toString(camera_numberInt)+",";
                 data+=Integer.toString(pause_between_cameraInt)+",";
-
+                System.out.println(focus_stackingSwitch.isChecked());
                 if (focus_stackingSwitch.isChecked()){
                     data+="1";
                 }
@@ -144,7 +182,11 @@ public class Programme extends Fragment  {
                 }
                 System.out.println(data);
 
+
+
                 peripherique.envoyer(data);
+                getFragmentManager().beginTransaction().remove(Programme.programme).addToBackStack(null).commit();
+                focus_stackingSwitch.setChecked(false);
 
             }
         });

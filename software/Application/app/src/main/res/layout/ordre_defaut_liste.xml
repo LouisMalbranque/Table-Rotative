@@ -6,7 +6,7 @@
     android:layout_height="130dp">
 
     <TextView
-        android:id="@+id/ordre_numerp"
+        android:id="@+id/commandeTextCamera"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
