@@ -31,31 +31,38 @@ public class InstructionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     class InstructionMoteurHolder extends RecyclerView.ViewHolder{
         public int id;
-        public TextView instructionMoteur;
+        public TextView commandeTextMoteur;
+        public TextView instructionTextMoteur;
+        public TextView vitesseTextMoteur;
+        public TextView stepsTextMoteur;
+        public Button etatMoteur;
 
         public InstructionMoteurHolder(View v) {
             super(v);
-            instructionMoteur = v.findViewById(R.id.instructionMoteur);
-
+            commandeTextMoteur = v.findViewById(R.id.commandeTextMoteur);
+            instructionTextMoteur = v.findViewById(R.id.InstructionTextMoteur);
+            vitesseTextMoteur = v.findViewById(R.id.VitesseTextMoteur);
+            stepsTextMoteur = v.findViewById(R.id.StepsTextMoteur);
+            etatMoteur = v.findViewById(R.id.etatButton);
         }
     }
 
     class InstructionCameraHolder extends RecyclerView.ViewHolder{
 
         public int id;
-        public TextView commandeText;
-        public TextView instructionText;
-        public TextView numberPhotoText;
-        public TextView pauseText;
-        public Button etatInstruction;
+        public TextView commandeTextCamera;
+        public TextView instructionTextCamera;
+        public TextView numberPhotoTextCamera;
+        public TextView pauseTextCamera;
+        public Button etatInstructionCamera;
 
         public InstructionCameraHolder(View v) {
             super(v);
-            commandeText = v.findViewById(R.id.commandeText);
-            instructionText = v.findViewById(R.id.instructionText);
-            numberPhotoText = v.findViewById(R.id.numberPhotoText);
-            pauseText = v.findViewById(R.id.PauseText);
-            etatInstruction = v.findViewById(R.id.Etat_Instruction);
+            commandeTextCamera = v.findViewById(R.id.commandeTextCamera);
+            instructionTextCamera = v.findViewById(R.id.instructionTextCamera);
+            numberPhotoTextCamera = v.findViewById(R.id.numberPhotoTextCamera);
+            pauseTextCamera = v.findViewById(R.id.PauseTextCamera);
+            etatInstructionCamera = v.findViewById(R.id.Etat_InstructionCamera);
         }
     }
 
@@ -89,48 +96,38 @@ public class InstructionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         switch (viewHolder.getItemViewType()) {
             case 0:
-
                 InstructionMoteurHolder instructionMoteurHolder = (InstructionMoteurHolder) viewHolder;
                 InstructionMoteur instructionMoteur = (InstructionMoteur)( instructionList.get(i));
 
-                String data="";
-                data+=Integer.toString(instructionMoteur.getIdCommande())+"||";
-                data+=Integer.toString(instructionMoteur.getIdInstruction())+"||";
-                data+=Integer.toString(instructionMoteur.getAcceleration())+"||";
-                data+=Integer.toString(instructionMoteur.getVitesse())+"||";
-                data+=Integer.toString(instructionMoteur.getDirection())+"||";
-                data+=Integer.toString(instructionMoteur.getChoixRotation())+"||";
-                data+=Integer.toString(instructionMoteur.getStepsTime());
+                instructionMoteurHolder.commandeTextMoteur.setText("Commande n° "+Integer.toString(instructionMoteur.getIdCommande()));
+                instructionMoteurHolder.instructionTextMoteur.setText("Instruction n° "+Integer.toString(instructionMoteur.getIdInstruction()));
+                instructionMoteurHolder.vitesseTextMoteur.setText("Vitesse : "+Integer.toString(instructionMoteur.getVitesse())+"pas/s");
+                instructionMoteurHolder.stepsTextMoteur.setText("Nombre de pas : "+Integer.toString(instructionMoteur.getStepsTime()));
 
                 if (instructionMoteur.termine==2){
-                    data+=" : terminée";
+                    instructionMoteurHolder.etatMoteur.setBackgroundColor(Color.GREEN);
                 }else if(instructionMoteur.termine==1){
-                    data+=" : en cours";
+                    instructionMoteurHolder.etatMoteur.setBackgroundColor(Color.rgb(255,128,0));
                 }else if (instructionMoteur.termine==0){
-                    data+=" : pas commencé";
+                    instructionMoteurHolder.etatMoteur.setBackgroundColor(Color.RED);
                 }
-
-                instructionMoteurHolder.instructionMoteur.setText(data);
-
                 break;
             case 1:
-
                 InstructionCameraHolder instructionCameraHolder = (InstructionCameraHolder) viewHolder;
                 InstructionCamera instructionCamera = (InstructionCamera) ( instructionList.get(i));
 
-                instructionCameraHolder.commandeText.setText("Commande n° "+Integer.toString(instructionCamera.getIdCommande()));
-                instructionCameraHolder.instructionText.setText("Instruction n° "+Integer.toString(instructionCamera.getIdInstruction()));
-                instructionCameraHolder.numberPhotoText.setText("Photo n° "+Integer.toString(instructionCamera.getFrame()));
-                instructionCameraHolder.pauseText.setText("Pause : "+Integer.toString(instructionCamera.getPause()));
+                instructionCameraHolder.commandeTextCamera.setText("Commande n° "+Integer.toString(instructionCamera.getIdCommande()));
+                instructionCameraHolder.instructionTextCamera.setText("Instruction n° "+Integer.toString(instructionCamera.getIdInstruction()));
+                instructionCameraHolder.numberPhotoTextCamera.setText("Photo n° "+Integer.toString(instructionCamera.getFrame()));
+                instructionCameraHolder.pauseTextCamera.setText("Pause : "+Integer.toString(instructionCamera.getPause()));
 
                 if (instructionCamera.termine==2){
-                    instructionCameraHolder.etatInstruction.setBackgroundColor(Color.GREEN);
+                    instructionCameraHolder.etatInstructionCamera.setBackgroundColor(Color.GREEN);
                 }else if(instructionCamera.termine==1){
-                    instructionCameraHolder.etatInstruction.setBackgroundColor(Color.rgb(255,128,0));
+                    instructionCameraHolder.etatInstructionCamera.setBackgroundColor(Color.rgb(255,128,0));
                 }else if (instructionCamera.termine==0){
-                    instructionCameraHolder.etatInstruction.setBackgroundColor(Color.RED);
+                    instructionCameraHolder.etatInstructionCamera.setBackgroundColor(Color.RED);
                 }
-
                 break;
         }
     }

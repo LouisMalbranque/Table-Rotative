@@ -81,7 +81,7 @@
         android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StepsText" />
+        app:layout_constraintTop_toBottomOf="@+id/StepsTextMoteur" />
 
     <EditText
         android:id="@+id/Rotation_number_TempsReel"
@@ -185,7 +185,7 @@
         app:layout_constraintTop_toBottomOf="@+id/AccelerationTempsReel" />
 
     <TextView
-        android:id="@+id/StepsText"
+        android:id="@+id/StepsTextMoteur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

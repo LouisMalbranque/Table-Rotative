@@ -48,6 +48,7 @@ public class Programme extends Fragment  {
 
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -73,7 +74,14 @@ public class Programme extends Fragment  {
         focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
         parametrage = v.findViewById(R.id.parametrage);
 
-        parametrage.setVisibility(View.INVISIBLE);
+        System.out.println(focus_stackingSwitch.isChecked());
+
+        if (focus_stackingSwitch.isChecked()){
+            parametrage.setVisibility(View.VISIBLE);
+        }else{
+            parametrage.setVisibility(View.INVISIBLE);
+        }
+
 
         focus_stackingSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,8 +97,8 @@ public class Programme extends Fragment  {
         parametrage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                focus_stackingSwitch.setChecked(false);
-                getFragmentManager().beginTransaction().replace(R.id.fragment, FocusParametre.focusParametre).addToBackStack(null).commit();
+                parametrage.setVisibility(View.VISIBLE);
+                getFragmentManager().beginTransaction().add(R.id.fragment, FocusParametre.focusParametre).addToBackStack(null).commit();
             }
         });
 
@@ -109,6 +117,8 @@ public class Programme extends Fragment  {
             final String camera = getArguments().getString("camera");
             camera_numberEditText.setText(tempsPhotos);
         }
+
+
 
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +149,7 @@ public class Programme extends Fragment  {
                 ProgrammeOrder programmeOrder = new ProgrammeOrder(accelerationInt,vitesseInt,
                         directionSwitch.isChecked(),stepsInt,frameInt,camera_numberInt,pause_between_cameraInt,focus_stackingSwitch.isChecked());
                 ListOrder.list.add(programmeOrder);
-                getFragmentManager().beginTransaction().replace(R.id.fragment,Menu.menu).addToBackStack(null).commit();
+
                 Menu.orderAdapter.notifyDataSetChanged();
 
 
@@ -163,7 +173,7 @@ public class Programme extends Fragment  {
                 data+=Integer.toString(frameInt)+",";
                 data+=Integer.toString(camera_numberInt)+",";
                 data+=Integer.toString(pause_between_cameraInt)+",";
-
+                System.out.println(focus_stackingSwitch.isChecked());
                 if (focus_stackingSwitch.isChecked()){
                     data+="1";
                 }
@@ -172,7 +182,11 @@ public class Programme extends Fragment  {
                 }
                 System.out.println(data);
 
-                //peripherique.envoyer(data);
+
+
+                peripherique.envoyer(data);
+                getFragmentManager().beginTransaction().remove(Programme.programme).addToBackStack(null).commit();
+                focus_stackingSwitch.setChecked(false);
 
             }
         });
