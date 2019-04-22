@@ -74,30 +74,48 @@ public class FocusParametre extends Fragment {
                 switch (position){
                     case 1:
                         numeroCamera = 1;
+                        compteurPas=0;
+                        compteur.setText(Integer.toString(compteurPas));
                         break;
                     case 2:
-                        numeroCamera =2;
+                        numeroCamera = 2;
+                        compteurPas=0;
+                        compteur.setText(Integer.toString(compteurPas));
                         break;
                     case 3:
                         numeroCamera = 3;
+                        compteurPas=0;
+                        compteur.setText(Integer.toString(compteurPas));
                         break;
                     case 4:
                         numeroCamera = 4;
+                        compteurPas=0;
+                        compteur.setText(Integer.toString(compteurPas));
                         break;
                     case 5:
                         numeroCamera = 5;
+                        compteurPas=0;
+                        compteur.setText(Integer.toString(compteurPas));
                         break;
                     case 6:
                         numeroCamera = 6;
+                        compteurPas=0;
+                        compteur.setText(Integer.toString(compteurPas));
                         break;
                     case 7:
                         numeroCamera = 7;
+                        compteurPas=0;
+                        compteur.setText(Integer.toString(compteurPas));
                         break;
                     case 8:
                         numeroCamera = 8;
+                        compteurPas=0;
+                        compteur.setText(Integer.toString(compteurPas));
                         break;
                     case 9:
                         numeroCamera = 9;
+                        compteurPas=0;
+                        compteur.setText(Integer.toString(compteurPas));
                         break;
                     default:
                         break;
@@ -109,7 +127,7 @@ public class FocusParametre extends Fragment {
             }
         });
 
-        
+
         sendFocus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,7 +138,7 @@ public class FocusParametre extends Fragment {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                compteurPas=0;
+                compteurPas = 0;
                 compteur.setText(Integer.toString(compteurPas));
 
             }

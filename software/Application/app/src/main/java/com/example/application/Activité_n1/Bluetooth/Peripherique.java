@@ -207,8 +207,8 @@ public class Peripherique {
                         }
 
                     }
-                   /* try {
-                        Thread.sleep(20);
+                    /*try {
+                        Thread.sleep(5);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }*/
@@ -284,36 +284,41 @@ public class Peripherique {
                     ListOrder.getById(idCommande).listInstruction.add(instructionCamera);
 
                 }
+                handlerUI = new Handler(Looper.getMainLooper());
+                handlerUI.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Menu.instructionAdapter.notifyDataSetChanged();
+                    }
+                });
 
 
             } else if (tableauDonnees[0].equals("en cours")) {
+
+
+
+                int idCommande = Integer.parseInt(tableauDonnees[1]);
+                int idInstruction = Integer.parseInt(tableauDonnees[2]);
+
+                if (ListOrder.getById(idCommande).listInstruction.size()==1){
+                    ListOrder.getById(idCommande).listInstruction.get(idInstruction-1).termine = 1;
+                }
+                else if (idInstruction > 1) {
+                    ListOrder.getById(idCommande).listInstruction.get(idInstruction - 2).termine = 2;
+                    ListOrder.getById(idCommande).listInstruction.get(idInstruction - 1).termine = 1;
+                }
 
                 handlerUI = new Handler(Looper.getMainLooper());
                 handlerUI.post(new Runnable() {
                     @Override
                     public void run() {
                         Menu.pauseButton.setText("PAUSE");
+                        Menu.instructionAdapter.notifyDataSetChanged();
                     }
                 });
 
-                int idCommande = Integer.parseInt(tableauDonnees[1]);
-                int idInstruction = Integer.parseInt(tableauDonnees[2]);
-
-                System.out.println(idInstruction);
-                if (idInstruction > 1) {
-                    ListOrder.getById(idCommande).listInstruction.get(idInstruction - 2).termine = 2;
-                    ListOrder.getById(idCommande).listInstruction.get(idInstruction - 1).termine = 1;
-                }
-
-
             }
-            handlerUI = new Handler(Looper.getMainLooper());
-            handlerUI.post(new Runnable() {
-                @Override
-                public void run() {
-                    Menu.instructionAdapter.notifyDataSetChanged();
-                }
-            });
+
         }
     }
 }
