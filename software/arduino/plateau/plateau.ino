@@ -1,8 +1,8 @@
 #include "moteur.h"
-#include "ESP_bluetooth1.h"
+#include "ESP_server.h"
 
 Motor motor;
-ESP_bluetooth esp_bluetooth;
+ESP_server esp_bluetooth;
 
 String value;
 boolean Pause = false;
@@ -69,7 +69,8 @@ void loop() {
       }
       else if (steps >= 0) {
         motor.setZero();
-        motor.rotate(distance_restante);
+        steps = distance_restante;
+        motor.rotate(steps);
       }
     }
   }
