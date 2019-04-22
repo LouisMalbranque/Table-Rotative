@@ -57,7 +57,7 @@ public class CameraAdapter extends RecyclerView.Adapter<CameraAdapter.CameraHold
     @Override
     public void onBindViewHolder(final CameraHolder cameraHolder, int i) {
         cameraHolder.position=i;
-        cameraHolder.nombreDePasText.setText("Nombre de pas entre la photo "+Integer.toString(i+1)+" et "+Integer.toString(i+2) + " de la camera " + Integer.toString(numeroCamera));
+        cameraHolder.nombreDePasText.setText("Nombre de pas entre la photo "+Integer.toString(i+1)+" et "+Integer.toString(i+2));
         System.out.println(Integer.toString(nombreDePas.get(i)));
         cameraHolder.nombreDePasEditText.setText(Integer.toString(FocusParametre.cameraList.get(numeroCamera).param[i] ));
         cameraHolder.nombreDePasEditText.addTextChangedListener(new TextWatcher() {

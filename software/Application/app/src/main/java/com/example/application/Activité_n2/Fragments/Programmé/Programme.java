@@ -175,11 +175,12 @@ public class Programme extends Fragment  {
                 data+=Integer.toString(pause_between_cameraInt)+",";
                 System.out.println(focus_stackingSwitch.isChecked());
                 if (focus_stackingSwitch.isChecked()){
-                    data+="1";
+                    data+=Integer.toString(FocusParametre.cameraAdapter.nombrePhotoFocus);
                 }
                 else{
                     data+="0";
                 }
+
                 System.out.println(data);
 
 

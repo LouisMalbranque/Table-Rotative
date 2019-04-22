@@ -45,6 +45,8 @@ public class FocusParametre extends Fragment {
     static public ImageButton ajoutPhotoFocus;
     static public ImageButton deletePhotoFocus;
 
+    static public Button sendPhotoFocus;
+
     static public List<Camera> cameraList = new ArrayList<>();
 
 
@@ -66,6 +68,7 @@ public class FocusParametre extends Fragment {
         listCamera = v.findViewById(R.id.listCamera);
         ajoutPhotoFocus = v.findViewById(R.id.AjoutePhotoFocus);
         deletePhotoFocus=v.findViewById(R.id.DeletePhotoFocus);
+        sendPhotoFocus = v.findViewById(R.id.sendPhotoFocus);
 
         if (spinnerFirstTime){
             spinnerCameraItems.add("Camera 1");
@@ -89,8 +92,9 @@ public class FocusParametre extends Fragment {
         ajoutPhotoFocus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (cameraAdapter.nombrePhotoFocus<9){
+                if (cameraAdapter.nombrePhotoFocus<8){
                     cameraAdapter.nombrePhotoFocus++;
+                    cameraAdapter.notifyDataSetChanged();
                 }
             }
         });
@@ -99,6 +103,7 @@ public class FocusParametre extends Fragment {
             public void onClick(View v) {
                 if (cameraAdapter.nombrePhotoFocus>1){
                     cameraAdapter.nombrePhotoFocus--;
+                    cameraAdapter.notifyDataSetChanged();
                 }
             }
         });
@@ -142,6 +147,13 @@ public class FocusParametre extends Fragment {
             }
         });
 
+
+        sendPhotoFocus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //envoie tram bloc commande
+            }
+        });
 
         sendFocus.setOnClickListener(new View.OnClickListener() {
             @Override
