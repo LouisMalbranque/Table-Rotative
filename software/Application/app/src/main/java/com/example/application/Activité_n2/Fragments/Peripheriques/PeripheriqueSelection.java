@@ -76,7 +76,6 @@ public class PeripheriqueSelection extends Fragment {
             }
         });
 
-
         return v;
     }
 

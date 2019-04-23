@@ -16,12 +16,14 @@
 #define PAUSE_ENTRE_CAMERAS      10
 #define FOCUS_STACKING           11
 
+#define NUMERO_CAMERA            2
+  
 //id commande, mode, acceleration, vitesse, nombre de pas de la table, direction, choix rotation, nombre de tour, temps de rotation, nombre de photos, nombre de caméras, pause entre caméras, focus stacking activé. 
 
 #define PULSE_DURATION            1500
 
 #define OLED_RESET                4
-#define MAXIMUM_NUMBER_OF_VALUES  10
+#define MAXIMUM_NUMBER_OF_VALUES  50
 
 #define CAMERA1 35
 #define CAMERA2 32

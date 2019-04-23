@@ -54,23 +54,6 @@ GenerateClassCluster=0
 DocumentUniqueId=YJGDHNWR
 
 [Document2]
-DocumentPath=librairie\Jack Alim.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=OXXHUCJJ
-
-[Document3]
 DocumentPath=librairie\Jack Alim.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -87,7 +70,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XMSOXSUL
 
-[Document4]
+[Document3]
 DocumentPath=librairie\NRF24.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -104,7 +87,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=GECGVKJC
 
-[Document5]
+[Document4]
 DocumentPath=librairie\NRF24.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -120,6 +103,23 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=KRFGHNAK
+
+[Document5]
+DocumentPath=librairie\Jack Alim.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=OXXHUCJJ
 
 [Document6]
 DocumentPath=librairie\ESP32.pcblib

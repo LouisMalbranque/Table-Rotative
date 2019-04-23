@@ -94,6 +94,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 public void onClick(View v) {
                     ListOrder.delete(id);
                     Menu.pauseButton.setText("PAUSE");
+
                 }
             });
 
@@ -120,8 +121,9 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public TextView textView;
         public DefaultViewHolder(View v) {
             super(v);
-            textView = v.findViewById(R.id.commandeText);
-            textView.setText("Commande n°" + (ListOrder.list.size()+1));
+
+            textView = v.findViewById(R.id.commandeTextCamera);
+            textView.setText("Commande suivante");
         }
     }
 
