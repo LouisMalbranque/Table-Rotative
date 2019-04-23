@@ -93,11 +93,16 @@ String CameraThread::read() {
 }
 
 String CameraThread::createDatagramme(int* values) {
-  String datagramme = String(0) + "," + String(values[PAUSE_ENTRE_CAMERAS]*1000) + "," + String(values[NOMBRE_DE_CAMERAS]);
+  String datagramme = String(0) + "," + String(values[PAUSE_ENTRE_CAMERAS]) + ",";
+  if (values[NOMBRE_DE_CAMERAS] > nb_camera){
+    datagramme += String(nb_camera);
+  }
+  else datagramme += String(values[NOMBRE_DE_CAMERAS]);
   return datagramme;
 }
 
 void CameraThread::setCameras(int nb_camera, int* cameras) {
+    this->nb_camera = nb_camera;
     for (int i=0; i<nb_camera; i++){
     pinCamera[i] = cameras[i];
   }

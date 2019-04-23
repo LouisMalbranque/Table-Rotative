@@ -4,8 +4,8 @@
 #include <BLEServer.h>
 #include "constantes.h"
 
-#define SERVICE_UUID        "1540c1dc-b7a8-484d-bfb6-6c5897339ab3"
-#define CHARACTERISTIC_UUID "54b2a4c4-c9ce-41bb-9441-705981242337"
+#define SERVICE_UUID        "1c1e2ea0-7c18-4c35-b38d-04aa84086d66"
+#define CHARACTERISTIC_UUID "238df85b-af2f-4817-841f-7ce4330ad0a8"
 
 
 

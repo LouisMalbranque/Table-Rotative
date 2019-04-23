@@ -31,8 +31,11 @@ void loop() {
 
   }
   else if (value == "1") {
+    Serial.println("Receive Value");
     if (steps >= 0) {
+     Serial.println("Rotation nombre de tours");
       if (!motor.isRotating()) {
+        Serial.println("fin rotation nombre de tours");
         esp_bluetooth.writeData("2");
       }
     }
@@ -86,7 +89,7 @@ void loop() {
     direction = esp_bluetooth.getValue(DIRECTION);
     switch (esp_bluetooth.getValue(CHOIX_ROTATION)){
       case 0: 
-        steps = esp_bluetooth.getValue(NOMBRE_DE_TOUR);
+        steps = esp_bluetooth.getValue(NOMBRE_DE_PAS);
         timetable = -1;
         break;
       case 1:

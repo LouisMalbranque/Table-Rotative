@@ -8,9 +8,12 @@ class CameraThread: public Peripherique
   private:
 
     pthread_t thread;
-
+    
 
   public:
+    int nb_camera;
+
+  
     using Peripherique::Peripherique;
     void begin();
     String read();

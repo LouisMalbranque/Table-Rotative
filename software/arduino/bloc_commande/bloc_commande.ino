@@ -13,13 +13,15 @@ CameraThread camera;
 CameraBluetooth* camerabt[] = {new CameraBluetooth("1c1e2ea0-7c18-4c35-b38d-04aa84086d66","238df85b-af2f-4817-841f-7ce4330ad0a8"),
                                new CameraBluetooth("1540c1dc-b7a8-484d-bfb6-6c5897339ab3","54b2a4c4-c9ce-41bb-9441-705981242337")};
 
+Peripherique* camerasConnectees[10]; 
+
 ESP_bluetooth esp;
 Bluetooth telephone;
 Lcd lcd;
 
 QueueList<Instruction> instructions;
 Instruction instructionEnCours;
-Instruction newInstr;
+
 
 int* values;
 String datagramme;
@@ -39,6 +41,16 @@ void setup() {
 }
 
 void loop() {
+
+//*************************************************************************************//
+//*************************************************************************************//
+//*************************************************************************************//
+//*********************   RECEPTION DES DONNEES TELEPHONE    **************************//
+//*************************************************************************************//
+//*************************************************************************************//
+//*************************************************************************************//
+//*************************************************************************************//
+  
     if (telephone.receive()){
       Serial.print("Data received : ");
       Serial.println(telephone.getData());
@@ -47,23 +59,33 @@ void loop() {
       lcd.setValues(values);
 
       int mode = values[MODE];
-      
-
-      
+     
 
       // mode programmé
       if (mode == 0){         
         Serial.println(" Mode programmé");
+        
         for (int i=0; i<values[NOMBRE_DE_PHOTOS]; i++){
+          
+          // creation instruction moteur
            datagramme = "creation,"+String(values[ID_COMMANDE])+","+String(2*i+1)+",moteur,"+moteur.createDatagramme(values);
            telephone.print(datagramme);
            Instruction newInstr1 = {values[ID_COMMANDE], 2*i+1, &moteur, moteur.createDatagramme(values)};
            instructions.push(newInstr1);
-           
-           for (int j=0; j<values[NOMBRE_DE_CAMERAS]; j++){
-             datagramme = "creation,"+String(values[ID_COMMANDE])+","+String(2*i+2)+",camera,"+camerabt[0]->createDatagramme(values);
+
+           int premiereCameraBluetooth = 0;
+           if (camera.nb_camera > 0){
+              datagramme = "creation,"+String(values[ID_COMMANDE])+","+String(2*i+2)+",camera thread,"+camera.createDatagramme(values);
+              telephone.print(datagramme);
+              Instruction newInstr2 = {values[ID_COMMANDE], 2*i+2, &camera, camera.createDatagramme(values)};
+              instructions.push(newInstr2);
+              premiereCameraBluetooth = 1;
+           }
+          // creation instruction camera
+           for (int j = premiereCameraBluetooth; j<values[NOMBRE_DE_CAMERAS] + premiereCameraBluetooth - camera.nb_camera; j++){
+             datagramme = "creation,"+String(values[ID_COMMANDE])+","+String(2*i+2)+",camera " + String(j) + ","+camerasConnectees[j]->createDatagramme(values);
              telephone.print(datagramme);
-             Instruction newInstr2 = {values[ID_COMMANDE], 2*i+2, camerabt[j], camerabt[j]->createDatagramme(values)};
+             Instruction newInstr2 = {values[ID_COMMANDE], 2*i+2, camerasConnectees[j], camerasConnectees[j]->createDatagramme(values)};
              instructions.push(newInstr2);
            }
 
@@ -76,10 +98,7 @@ void loop() {
         Serial.println(" Mode temps réel");
         datagramme = "creation,"+String(values[ID_COMMANDE])+","+String(1)+",moteur,"+moteur.createDatagramme(values);
         telephone.print(datagramme);
-        newInstr.id_commande = values[ID_COMMANDE];
-        newInstr.id_instruction = 1;
-        newInstr.target = &moteur;
-        newInstr.data = moteur.createDatagramme(values);
+        Instruction newInstr = {values[ID_COMMANDE], 1, &moteur, moteur.createDatagramme(values)};
         instructions.push(newInstr);
       }
 
@@ -93,9 +112,15 @@ void loop() {
         instructionEnCours.target->write("2");
       }
 
+      // magneto focus stacking
+      else if (mode == 5){
+        Instruction newInstr = {values[ID_COMMANDE], 1, camerabt[ values[NUMERO_CAMERA] ], camerabt[ values[NUMERO_CAMERA] ] -> createDatagramme(values)};
+        instructions.push(newInstr);
+      }
+
       // connexion aux périphériques
       else if (mode == 7){
-        
+
         int tmp[9];
         int nombre_de_camera = 0;
         for (int i=0; i<9; i++){
@@ -107,20 +132,29 @@ void loop() {
             nombre_de_camera++;
           }
         }
-        for (int i=0; i<9; i++){
-          if (values[i+12]){
-            Serial.print("Connexion à la caméra ");
-            Serial.println(i);
-            esp.connect(camerabt[i]);
-          }
-        }
-        /*
         int cameras[nombre_de_camera];
         for (int i=0; i<nombre_de_camera; i++){
           cameras[i] = tmp[i];
         }
         camera.setCameras(nombre_de_camera, cameras);
-        */
+        
+        int indiceCameraBluetooth = 0;
+        if (nombre_de_camera > 0){
+          camerasConnectees[0] = &camera;
+          indiceCameraBluetooth = 1;
+        }
+        
+        for (int i=0; i<9; i++){
+          if (values[i+12]){
+            Serial.print("Connexion à la caméra ");
+            Serial.println(i);
+            esp.connect(camerabt[i]);
+            camerasConnectees[indiceCameraBluetooth] = camerabt[i];
+            indiceCameraBluetooth++;
+          }
+        }
+        
+   
         
         if (values[2]){
           Serial.println("Connexion au moteur");
@@ -130,7 +164,11 @@ void loop() {
 
       // paramétrage focus stacking
       else if (mode == 8){
-        //camerabt.setParams(values); 
+        int params[8];
+        for (int i=0; i<8; i++){
+          params[i] = values[i+3]; 
+        }
+        camerabt[values[2]]->setParams(params);
       }
     }
 
