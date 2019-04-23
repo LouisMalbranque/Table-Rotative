@@ -117,7 +117,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:text="Button"
+            android:background="@color/colorPrimary"
+            android:text="Sélectionner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/directionProgramme" />
 
@@ -125,7 +126,8 @@
             android:id="@+id/deleteProgramme"
             android:layout_width="173dp"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:background="@color/colorAccent"
+            android:text="Supprimer"
             app:layout_constraintStart_toEndOf="@+id/okProgramme"
             app:layout_constraintTop_toTopOf="@+id/okProgramme" />
 
@@ -135,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="8dp"
             android:text="ID :"
             android:textColor="@color/colorAccent"
             android:textStyle="bold"
@@ -148,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:text="Acceleration :"
+            android:text="Accélération :"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nomIdProgramme" />
 
