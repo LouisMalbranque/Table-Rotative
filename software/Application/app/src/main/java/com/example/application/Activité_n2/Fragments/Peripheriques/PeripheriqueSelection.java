@@ -52,12 +52,16 @@ public class PeripheriqueSelection extends Fragment {
         }
 
         if (peripheriqueAdapter == null){
+
             peripheriqueAdapter = new PeripheriqueSelectionAdapter(getContext(), listPeripheriques);
         }
 
         peripheriquesRecycler.setLayoutManager(layoutManager);
         peripheriquesRecycler.setItemAnimator( new DefaultItemAnimator());
         peripheriquesRecycler.setAdapter(peripheriqueAdapter);
+
+
+
         envoyer = v.findViewById(R.id.envoyer_peripherique_selection);
 
         envoyer.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +73,7 @@ public class PeripheriqueSelection extends Fragment {
                     else data+=",0";
                 }
                 envoyer.setEnabled(false);
-                //com.example.application.Activité_n1.Bluetooth.Peripherique.peripherique.envoyer(data);
+                com.example.application.Activité_n1.Bluetooth.Peripherique.peripherique.envoyer(data);
 
                 getFragmentManager().beginTransaction().replace(R.id.fragment, Menu.menu).commit();
 

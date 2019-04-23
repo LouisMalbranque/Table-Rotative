@@ -3,18 +3,26 @@ package com.example.application.Activité_n2.Fragments.Focus;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.application.Activité_n2.Adapter.CameraAdapter;
+import com.example.application.Activité_n2.Camera.Camera;
+import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +40,15 @@ public class FocusParametre extends Fragment {
     static boolean spinnerFirstTime=true;
     static public ArrayList<String> spinnerCameraItems = new ArrayList<String>();
     static public int numeroCamera;
+    static public CameraAdapter cameraAdapter;
+    static public RecyclerView listCamera;
+
+    static public ImageButton ajoutPhotoFocus;
+    static public ImageButton deletePhotoFocus;
+
+    static public Button sendPhotoFocus;
+
+    static public List<Camera> cameraList = new ArrayList<>();
 
     public FocusParametre() {
         // Required empty public constructor
@@ -47,8 +64,11 @@ public class FocusParametre extends Fragment {
         reset = v.findViewById(R.id.reset);
         compteur = v.findViewById(R.id.compteur);
         compteur.setEnabled(false);
-
         spinnerCamera=v.findViewById(R.id.spinnerFocus);
+        listCamera = v.findViewById(R.id.listCamera);
+        ajoutPhotoFocus = v.findViewById(R.id.AjoutePhotoFocus);
+        deletePhotoFocus=v.findViewById(R.id.DeletePhotoFocus);
+        sendPhotoFocus = v.findViewById(R.id.sendPhotoFocus);
 
         if (spinnerFirstTime){
             spinnerCameraItems.add("Camera 1");
@@ -61,8 +81,43 @@ public class FocusParametre extends Fragment {
             spinnerCameraItems.add("Camera 8");
             spinnerCameraItems.add("Camera 9");
 
+            for (int i = 0; i<9;i++){
+                cameraList.add(new Camera());
+            }
+
+
             spinnerFirstTime=false;
         }
+
+        ajoutPhotoFocus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cameraAdapter.nombrePhotoFocus<8){
+                    cameraAdapter.nombrePhotoFocus++;
+                    cameraAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+        deletePhotoFocus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cameraAdapter.nombrePhotoFocus>1){
+                    cameraAdapter.nombrePhotoFocus--;
+                    cameraAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+
+        if (cameraAdapter==null){
+            cameraAdapter = new CameraAdapter(getContext(),cameraList.get(0).param);
+            cameraAdapter.nombrePhotoFocus=1;
+        }
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        listCamera.setLayoutManager(layoutManager);
+        listCamera.setItemAnimator( new DefaultItemAnimator());
+        listCamera.setAdapter(cameraAdapter);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.custom_spinner, spinnerCameraItems);
         adapter.setDropDownViewResource(R.layout.custom_spinner);
@@ -71,45 +126,42 @@ public class FocusParametre extends Fragment {
         spinnerCamera.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
-                    case 1:
-                        numeroCamera = 1;
-                        break;
-                    case 2:
-                        numeroCamera =2;
-                        break;
-                    case 3:
-                        numeroCamera = 3;
-                        break;
-                    case 4:
-                        numeroCamera = 4;
-                        break;
-                    case 5:
-                        numeroCamera = 5;
-                        break;
-                    case 6:
-                        numeroCamera = 6;
-                        break;
-                    case 7:
-                        numeroCamera = 7;
-                        break;
-                    case 8:
-                        numeroCamera = 8;
-                        break;
-                    case 9:
-                        numeroCamera = 9;
-                        break;
-                    default:
-                        break;
-
+                for (int i=0; i<9; i++){
+                    cameraAdapter.nombreDePas.set(i,0);
                 }
+                for (int i=0; i<9; i++){
+                    cameraAdapter.nombreDePas.set(i, cameraList.get(position).param[i]);
+                    System.out.println(cameraAdapter.nombreDePas.get(i));
+                }
+                cameraAdapter.numeroCamera = position;
+                cameraAdapter.notifyDataSetChanged();
+                numeroCamera = position;
+                compteurPas=0;
+                compteur.setText(Integer.toString(compteurPas));
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        
+
+        sendPhotoFocus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //envoie tram bloc commande
+                String data = "";
+                data+="-1"+",";
+                data+="8"+",";
+                data+=Integer.toString(numeroCamera+1);
+                for (int i=0;i<8;i++){
+                    data+=",";
+                    data+=cameraList.get(numeroCamera).param[i];
+                }
+                Peripherique.peripherique.envoyer(data);
+            }
+        });
+
         sendFocus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,7 +172,7 @@ public class FocusParametre extends Fragment {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                compteurPas=0;
+                compteurPas = 0;
                 compteur.setText(Integer.toString(compteurPas));
 
             }
