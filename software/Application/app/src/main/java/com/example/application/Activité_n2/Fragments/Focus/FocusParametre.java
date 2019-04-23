@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.application.Activité_n2.Adapter.CameraAdapter;
 import com.example.application.Activité_n2.Camera.Camera;
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
+import com.example.application.Activité_n2.Fragments.Peripheriques.PeripheriqueSelection;
 import com.example.application.R;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class FocusParametre extends Fragment {
     static boolean spinnerFirstTime=true;
     static public ArrayList<String> spinnerCameraItems = new ArrayList<String>();
     static public int numeroCamera;
+    static public List<Integer> indiceCamera = new ArrayList<>();
     static public CameraAdapter cameraAdapter;
     static public RecyclerView listCamera;
 
@@ -71,7 +73,13 @@ public class FocusParametre extends Fragment {
         sendPhotoFocus = v.findViewById(R.id.sendPhotoFocus);
 
         if (spinnerFirstTime){
-            spinnerCameraItems.add("Camera 1");
+            for (int i=0;i<9;i++){
+                if (PeripheriqueSelection.listPeripheriques.get(i+10).isConnecte()){
+                    spinnerCameraItems.add("Camera "+(i+1));
+                    indiceCamera.add(i);
+                }
+            }
+            /*
             spinnerCameraItems.add("Camera 2");
             spinnerCameraItems.add("Camera 3");
             spinnerCameraItems.add("Camera 4");
@@ -80,6 +88,7 @@ public class FocusParametre extends Fragment {
             spinnerCameraItems.add("Camera 7");
             spinnerCameraItems.add("Camera 8");
             spinnerCameraItems.add("Camera 9");
+            */
 
             for (int i = 0; i<9;i++){
                 cameraList.add(new Camera());
@@ -130,12 +139,11 @@ public class FocusParametre extends Fragment {
                     cameraAdapter.nombreDePas.set(i,0);
                 }
                 for (int i=0; i<9; i++){
-                    cameraAdapter.nombreDePas.set(i, cameraList.get(position).param[i]);
-                    System.out.println(cameraAdapter.nombreDePas.get(i));
+                    cameraAdapter.nombreDePas.set(i, cameraList.get(indiceCamera.get(position)).param[i]);
                 }
-                cameraAdapter.numeroCamera = position;
+                cameraAdapter.numeroCamera = indiceCamera.get(position);
                 cameraAdapter.notifyDataSetChanged();
-                numeroCamera = position;
+                numeroCamera = indiceCamera.get(position);
                 compteurPas=0;
                 compteur.setText(Integer.toString(compteurPas));
 
@@ -149,11 +157,10 @@ public class FocusParametre extends Fragment {
         sendPhotoFocus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //envoie tram bloc commande
                 String data = "";
                 data+="-1"+",";
                 data+="8"+",";
-                data+=Integer.toString(numeroCamera+1);
+                data+=Integer.toString(numeroCamera);
                 for (int i=0;i<8;i++){
                     data+=",";
                     data+=cameraList.get(numeroCamera).param[i];

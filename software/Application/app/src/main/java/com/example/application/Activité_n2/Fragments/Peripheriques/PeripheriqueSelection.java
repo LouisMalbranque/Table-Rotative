@@ -69,7 +69,9 @@ public class PeripheriqueSelection extends Fragment {
             public void onClick(View v) {
                 String data = "0,7";
                 for (Peripherique p: listPeripheriques){
-                    if (p.isConnecte()) data+=",1";
+                    if (p.isConnecte()) {
+                        data+=",1";
+                    }
                     else data+=",0";
                 }
                 envoyer.setEnabled(false);
