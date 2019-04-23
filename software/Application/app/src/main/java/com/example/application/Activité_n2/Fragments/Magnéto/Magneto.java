@@ -17,7 +17,6 @@ import com.example.application.R;
  */
 public class Magneto extends Fragment {
 
-    Peripherique peripherique;
     private ImageButton backward;
     private ImageButton backward2;
     private ImageButton forward;
@@ -60,7 +59,7 @@ public class Magneto extends Fragment {
 
                 FocusParametre.compteurPas+=10;
                 FocusParametre.compteur.setText(Integer.toString(FocusParametre.compteurPas));
-                //peripherique.envoyer(data);
+                Peripherique.peripherique.envoyer(data);
             }
         });
         forward.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +81,7 @@ public class Magneto extends Fragment {
                 data+=Integer.toString(FocusParametre.numeroCamera);//numero Camera
                 FocusParametre.compteurPas+=1;
                 FocusParametre.compteur.setText(Integer.toString(FocusParametre.compteurPas));
-                //peripherique.envoyer(data);
+                Peripherique.peripherique.envoyer(data);
             }
         });
         backward2.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +103,7 @@ public class Magneto extends Fragment {
                 data+=Integer.toString(FocusParametre.numeroCamera);//numero Camera
                 FocusParametre.compteurPas-=10;
                 FocusParametre.compteur.setText(Integer.toString(FocusParametre.compteurPas));
-                //peripherique.envoyer(data);
+                Peripherique.peripherique.envoyer(data);
             }
         });
         backward.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +116,7 @@ public class Magneto extends Fragment {
                 data +=Integer.toString(400)+","; //speed
                 data +=Integer.toString(1)+","; //steps
                 data +=Integer.toString(1)+","; //direction
-                data+="0"+",";
+                data+="0"+","; // choix rotation
                 data +=Integer.toString(1)+","; //rotation number
                 data +=Integer.toString(-1)+","; //Frame
                 data +=Integer.toString(-1)+","; //camera number
@@ -126,7 +125,7 @@ public class Magneto extends Fragment {
                 data+=Integer.toString(FocusParametre.numeroCamera);//numero Camera
                 FocusParametre.compteurPas-=1;
                 FocusParametre.compteur.setText(Integer.toString(FocusParametre.compteurPas));
-                //peripherique.envoyer(data);
+                Peripherique.peripherique.envoyer(data);
             }
         });
 

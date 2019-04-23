@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.application.Activité_n2.Adapter.CameraAdapter;
 import com.example.application.Activité_n2.Camera.Camera;
+import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.R;
 
 import java.util.ArrayList;
@@ -48,7 +49,6 @@ public class FocusParametre extends Fragment {
     static public Button sendPhotoFocus;
 
     static public List<Camera> cameraList = new ArrayList<>();
-
 
     public FocusParametre() {
         // Required empty public constructor
@@ -134,9 +134,7 @@ public class FocusParametre extends Fragment {
                     System.out.println(cameraAdapter.nombreDePas.get(i));
                 }
                 cameraAdapter.numeroCamera = position;
-
                 cameraAdapter.notifyDataSetChanged();
-
                 numeroCamera = position;
                 compteurPas=0;
                 compteur.setText(Integer.toString(compteurPas));
@@ -152,6 +150,15 @@ public class FocusParametre extends Fragment {
             @Override
             public void onClick(View v) {
                 //envoie tram bloc commande
+                String data = "";
+                data+="-1"+",";
+                data+="8"+",";
+                data+=Integer.toString(numeroCamera+1);
+                for (int i=0;i<8;i++){
+                    data+=",";
+                    data+=cameraList.get(numeroCamera).param[i];
+                }
+                Peripherique.peripherique.envoyer(data);
             }
         });
 
