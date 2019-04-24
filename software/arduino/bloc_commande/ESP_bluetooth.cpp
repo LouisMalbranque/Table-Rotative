@@ -43,13 +43,21 @@ void ESP_bluetooth::scan(){
 
 boolean ESP_bluetooth::connect(PeripheriqueBluetooth *periph){
   BLEClient* pClient  = BLEDevice::createClient();
+  Serial.print("scan Count");
+  Serial.println(scanResults.getCount());
   Serial.print("Starting new connection to ");
   Serial.println(periph->getServiceUUID().toString().c_str());
   for (int i=0; i<scanResults.getCount(); i++){
-    BLEAdvertisedDevice advertisedDevice = scanResults.getDevice(i);
     
-    if (advertisedDevice.haveServiceUUID() && advertisedDevice.isAdvertisingService(periph->getServiceUUID())){
+    BLEAdvertisedDevice advertisedDevice = scanResults.getDevice(i);
 
+    Serial.print("haveServiceUUID ");
+    Serial.println(advertisedDevice.haveServiceUUID());
+
+    Serial.print("isAdvertisingService ");
+    Serial.println(advertisedDevice.isAdvertisingService(periph->getServiceUUID()));
+    if (advertisedDevice.haveServiceUUID() && advertisedDevice.isAdvertisingService(periph->getServiceUUID())){
+        Serial.println("before connect");
         pClient->connect(&advertisedDevice);  // if you pass BLEAdvertisedDevice instead of address, it will be recognized type of peer device address (public or private)
         Serial.println(" - Connected to server");
     
@@ -63,7 +71,7 @@ boolean ESP_bluetooth::connect(PeripheriqueBluetooth *periph){
         }
         Serial.println(" - Found our service");
     
-    
+     
         // Obtain a reference to the characteristic in the service of the remote BLE server.
         BLERemoteCharacteristic* characteristics = pRemoteService->getCharacteristic(periph->getCharUUID());
         if (characteristics == NULL) {

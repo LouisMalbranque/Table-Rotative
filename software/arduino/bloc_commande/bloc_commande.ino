@@ -36,6 +36,7 @@ void setup() {
   camera.begin();
   esp.begin();
 
+  delay(1000);
   esp.scan();
   
 }
