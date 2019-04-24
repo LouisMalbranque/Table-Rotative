@@ -105,8 +105,8 @@ public class BddTempsReel extends Fragment implements chargmentVR, SelectionReel
         bundle.putString("vitesse", valeurR.speed);
         bundle.putString("acceleration", valeurR.acceleration);
         bundle.putString("rotationNumber", valeurR.rotationNumber);
-        bundle.putString("rotationMode", valeurR.rotationMode);
-        bundle.putString("direction", valeurR.direction);
+        bundle.putBoolean("rotationMode", valeurR.rotationMode);
+        bundle.putBoolean("direction", valeurR.direction);
         bundle.putString("tableSteps", valeurR.tableSteps);
         fragment.setArguments(bundle);
 

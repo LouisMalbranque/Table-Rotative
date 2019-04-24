@@ -21,6 +21,7 @@ public class ViewHolderProgramme {
     final Switch direction;
     final Button selection;
     final Button suppression;
+    final Switch focus;
 
         public ViewHolderProgramme(View view) {
             id = view.findViewById(R.id.idProgramme);
@@ -33,6 +34,7 @@ public class ViewHolderProgramme {
             direction = view.findViewById(R.id.directionProgramme);
             selection = view.findViewById(R.id.okProgramme);
             suppression= view.findViewById(R.id.deleteProgramme);
+            focus = view.findViewById(R.id.focusStackingChoix);
         }
 
 
