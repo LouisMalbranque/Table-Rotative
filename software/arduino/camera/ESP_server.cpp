@@ -1,5 +1,16 @@
 #include "ESP_server.h"
 
+class DisconnectCallbacks: public BLEServerCallbacks{
+  public:
+    void onConnect(BLEServer* pServer);
+    void onConnect(BLEServer* pServer, esp_ble_gatts_cb_param_t *param);
+    void onDisconnect(BLEServer* pServer);
+};
+
+void DisconnectCallbacks::onConnect(BLEServer* pServer) { Serial.println( "Client connecté" ); }
+void DisconnectCallbacks::onConnect(BLEServer* pServer, esp_ble_gatts_cb_param_t *param) {}
+void DisconnectCallbacks::onDisconnect(BLEServer* pServer) { ESP.restart(); }
+
 ESP_server::ESP_server() {
 
 }
@@ -16,6 +27,8 @@ void ESP_server::begin() {
   pAdvertising->setMinPreferred(0x06);  // functions that help with iPhone connections issue
   pAdvertising->setMinPreferred(0x12);
   BLEDevice::startAdvertising();
+
+  pServer->setCallbacks(new DisconnectCallbacks());
   
 }
 
