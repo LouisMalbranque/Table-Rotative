@@ -1,6 +1,7 @@
 package com.example.application.Activité_n2.Adapter;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import com.example.application.R;
 import com.example.application.objets.valeurProgramme;
 
 import java.util.List;
+
+import static com.example.application.Activité_n2.MainActivity.getContext;
 
 public class ValeurProgrammeAdapter extends BaseAdapter implements View.OnClickListener{
     List<valeurProgramme> mListeVP;
@@ -73,18 +76,12 @@ public class ValeurProgrammeAdapter extends BaseAdapter implements View.OnClickL
         final TextView timeBetweenPhotos = view.findViewById(R.id.timeBetweenphotosProgramme);
         timeBetweenPhotos.setText(valeurP.timeBetweenPhotosNumber);
         final Switch direction = view.findViewById(R.id.directionProgramme);
-        if(valeurP.direction=="1"){
-            direction.setChecked(true);
-            direction.setClickable(false);
-        }
-        else{
-            direction.setChecked(false);
-            direction.setClickable(false);
-        }
+        final Switch focus = view.findViewById(R.id.focusStackingChoix);
+        direction.setChecked(valeurP.direction);
+        direction.setClickable(false);
         final Button selection = view.findViewById(R.id.okProgramme);
         final Button deleteButton = view.findViewById(R.id.deleteProgramme);
         return view;
-
     }
 
     @Override
@@ -111,14 +108,11 @@ public class ValeurProgrammeAdapter extends BaseAdapter implements View.OnClickL
         holder.speed.setText(valeurP.speed);
         holder.steps.setText(valeurP.tableSteps);
         holder.timeBetweenPhotos.setText(valeurP.timeBetweenPhotosNumber);
-        if(valeurP.direction=="1"){
-            holder.direction.setChecked(true);
+            holder.direction.setChecked(valeurP.direction);
             holder.direction.setClickable(false);
-        }
-        else{
-            holder.direction.setChecked(false);
-            holder.direction.setClickable(false);
-        }
+        holder.focus.setChecked(valeurP.direction);
+        holder.focus.setChecked(valeurP.focusStacking);
+        holder.direction.setClickable(false);
         holder.selection.setTag(position);
         holder.selection.setOnClickListener(this);
         holder.suppression.setTag(position);
@@ -135,14 +129,14 @@ public class ValeurProgrammeAdapter extends BaseAdapter implements View.OnClickL
         String idAPasser=null;
         switch (v.getId()){
             case R.id.deleteProgramme :
-                Toast.makeText(MainActivity.getContext(), "Suppression", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Suppression", Toast.LENGTH_LONG).show();
                 if(null!=mListener){
                     mBDDAsyncTask.execute(valeurP);
                     mListener.onDelete();
                 }
                 break;
             case R.id.okProgramme:
-                Toast.makeText(MainActivity.getContext(), "Selection", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Selection", Toast.LENGTH_LONG).show();
                 if(null!=mListener){
                 mListener.onSelection(valeurP);}
                 break;

@@ -24,18 +24,16 @@ public class valeurReel {
     public String speed;
 
     @ColumnInfo
-    public String direction;
+    public Boolean direction;
 
     @ColumnInfo
 
-    public String rotationMode;
+    public Boolean rotationMode;
 
     @ColumnInfo
 
     public String rotationNumber;
 
 
-    @ColumnInfo
-    public String focusStacking;
 
 }

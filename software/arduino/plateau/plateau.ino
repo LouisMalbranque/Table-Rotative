@@ -16,7 +16,7 @@ int distance_restante = 0;
 int temps_restant = 0;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   motor.begin();
   esp_bluetooth.begin();

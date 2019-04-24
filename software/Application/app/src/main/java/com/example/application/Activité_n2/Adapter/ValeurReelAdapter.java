@@ -71,24 +71,16 @@ public class ValeurReelAdapter extends BaseAdapter implements View.OnClickListen
         steps.setText(valeurR.tableSteps);
 
         final Switch direction = view.findViewById(R.id.directionReel);
-        if(valeurR.direction=="1"){
-            direction.setChecked(true);
+
+            direction.setChecked(valeurR.direction);
             direction.setClickable(false);
-        }
-        else{
-            direction.setChecked(false);
-            direction.setClickable(false);
-        }
+
 
         final Switch choixRotation = view.findViewById(R.id.choixRotationReel);
-        if(valeurR.rotationMode=="1"){
-            direction.setChecked(true);
+
+            direction.setChecked(valeurR.rotationMode);
             direction.setClickable(false);
-        }
-        else{
-            direction.setChecked(false);
-            direction.setClickable(false);
-        }
+
         final Button selection = view.findViewById(R.id.okReel);
         final Button deleteButton = view.findViewById(R.id.deleteReel);
         return view;
@@ -117,22 +109,14 @@ public class ValeurReelAdapter extends BaseAdapter implements View.OnClickListen
         holder.nbRotation.setText(valeurR.rotationNumber);
         holder.speed.setText(valeurR.speed);
         holder.steps.setText(valeurR.tableSteps);
-        if(valeurR.direction=="1"){
-            holder.direction.setChecked(true);
+
+            holder.direction.setChecked(valeurR.direction);
             holder.direction.setClickable(false);
-        }
-        else{
-            holder.direction.setChecked(false);
-            holder.direction.setClickable(false);
-        }
-        if(valeurR.rotationMode=="1"){
-            holder.rotationMode.setChecked(true);
+
+
+            holder.rotationMode.setChecked(valeurR.rotationMode);
             holder.rotationMode.setClickable(false);
-        }
-        else{
-            holder.rotationMode.setChecked(false);
-            holder.rotationMode.setClickable(false);
-        }
+
         holder.selection.setTag(position);
         holder.selection.setOnClickListener(this);
         holder.suppression.setTag(position);

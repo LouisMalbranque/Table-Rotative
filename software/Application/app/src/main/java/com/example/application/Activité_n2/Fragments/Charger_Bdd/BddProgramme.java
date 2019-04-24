@@ -108,7 +108,8 @@ public class BddProgramme extends Fragment implements chargmentVP, SelectionProg
         bundle.putString("tempsEntrePhotos", valeurP.timeBetweenPhotosNumber);
         bundle.putString("frame", valeurP.frame);
         bundle.putString("camera", valeurP.camera_number);
-        bundle.putString("direction", valeurP.direction);
+        bundle.putBoolean("direction", valeurP.direction);
+        bundle.putBoolean("focus", valeurP.focusStacking);
         bundle.putString("tableSteps", valeurP.tableSteps);
         fragment.setArguments(bundle);
 

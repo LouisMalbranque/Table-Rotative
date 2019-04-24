@@ -75,7 +75,7 @@ public class PeripheriqueSelection extends Fragment {
                     else data+=",0";
                 }
                 envoyer.setEnabled(false);
-                com.example.application.Activité_n1.Bluetooth.Peripherique.peripherique.envoyer(data);
+                //com.example.application.Activité_n1.Bluetooth.Peripherique.peripherique.envoyer(data);
 
                 getFragmentManager().beginTransaction().replace(R.id.fragment, Menu.menu).commit();
 
