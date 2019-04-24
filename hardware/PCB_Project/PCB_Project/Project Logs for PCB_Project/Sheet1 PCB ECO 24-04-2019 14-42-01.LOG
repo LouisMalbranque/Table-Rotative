@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=NetDRIVER_16 Pin=R0-1
+Added Pin To Net: NetName=NetDRIVER_10 Pin=R0-1
+Added Room: Name=Sheet1
