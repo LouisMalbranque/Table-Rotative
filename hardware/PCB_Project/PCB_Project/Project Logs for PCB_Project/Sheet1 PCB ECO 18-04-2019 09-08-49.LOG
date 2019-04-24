@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=GND Pin=U?-13
+Added Component: Designator=Ropt(AXIAL0.4)
+Added Pin To Net: NetName=NetLD0_K Pin=U?-13
+Added Pin To Net: NetName=NetOp1_1 Pin=Ropt-1
+Added Net: Name=NetOp1_1
+Added Pin To Net: NetName=NetRopt_2 Pin=Ropt-2
+Added Pin To Net: NetName=NetRopt_2 Pin=U?-5
+Added Net: Name=NetRopt_2
+Added Member To Class: ClassName=Sheet1 Member=Component Ropt RES

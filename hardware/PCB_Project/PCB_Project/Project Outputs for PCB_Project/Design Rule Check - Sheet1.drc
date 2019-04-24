@@ -1,0 +1,50 @@
+Protel Design System Design Rule Check
+PCB File : D:\Documents\LibraryAltium\PCB_Project\Sheet1.PCBDOC
+Date     : 19/04/2019
+Time     : 11:51:01
+
+Processing Rule : Clearance Constraint (Gap=0mil) (OnLayer('Bottom Layer') Or OnLayer('Multi-Layer') Or InPoly),(OnLayer('Keepout'))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=10mil) (OnLayer('Multi-Layer')),(OnLayer('Multi-Layer'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=32mil) (Max=10000mil) (Preferred=32mil) (OnLayer('Bottom Layer') or OnLayer('Top Layer'))
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=8mil) (OnLayer('Bottom Layer') Or OnLayer('Multi-Layer')),(OnLayer('Bottom Layer')  And Not InPoly)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=8mil) (OnLayer('Top Layer')  Or OnLayer('Multi-Layer')),(OnLayer('Top Layer') And Not InPoly)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=10mil) (PadXSize_AllLayers = PadYSize_AllLayers)
+Rule Violations :0
+
+Processing Rule : SMD To Plane Constraint (Distance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=16mil) (Max=1000mil) (All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=20mil) (OnLayer('Bottom Layer') Or OnLayer('Multi-Layer')),(OnLayer('Bottom Layer')  And  InPoly)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=20mil) (OnLayer('Top Layer')  Or OnLayer('Multi-Layer')),(OnLayer('Top Layer') And InPoly)
+Rule Violations :0
+
+
+Violations Detected : 0
+Time Elapsed        : 00:00:00
