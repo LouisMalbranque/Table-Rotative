@@ -1,7 +1,5 @@
 package com.example.application.Activité_n2.Adapter;
 
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +9,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.application.Activité_n2.ChargementBDD.chargementBDDVP;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddProgramme;
-import com.example.application.Activité_n2.Fragments.Programmé.Programme;
 import com.example.application.Activité_n2.Interface.SelectionProgramme;
-import com.example.application.Activité_n2.MainActivity;
 import com.example.application.Activité_n2.SupppressionBDD.SuppressionBDDP;
 import com.example.application.R;
 import com.example.application.objets.valeurProgramme;
@@ -108,11 +103,10 @@ public class ValeurProgrammeAdapter extends BaseAdapter implements View.OnClickL
         holder.speed.setText(valeurP.speed);
         holder.steps.setText(valeurP.tableSteps);
         holder.timeBetweenPhotos.setText(valeurP.timeBetweenPhotosNumber);
-            holder.direction.setChecked(valeurP.direction);
-            holder.direction.setClickable(false);
-        holder.focus.setChecked(valeurP.direction);
-        holder.focus.setChecked(valeurP.focusStacking);
+        holder.direction.setChecked(valeurP.direction);
         holder.direction.setClickable(false);
+        holder.focus.setChecked(valeurP.focusStacking);
+        holder.focus.setClickable(false);
         holder.selection.setTag(position);
         holder.selection.setOnClickListener(this);
         holder.suppression.setTag(position);

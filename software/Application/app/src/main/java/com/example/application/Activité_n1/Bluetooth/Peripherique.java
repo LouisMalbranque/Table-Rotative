@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Instructions.InstructionCamera;
@@ -276,12 +277,12 @@ public class Peripherique {
                             vitesse, direction, choixRotation, stepsTime);
                     ListOrder.getById(idCommande).listInstruction.add(instructionMoteur);
 
-                } else if (tableauDonnees[3].equals("camera")) {
+                } else if (tableauDonnees[3].contains("camera")) {
 
-                    int frame = Integer.parseInt(tableauDonnees[4]);
                     int pause = Integer.parseInt(tableauDonnees[5]);
+                    int nombre_de_photos = Integer.parseInt(tableauDonnees[6]);
 
-                    InstructionCamera instructionCamera = new InstructionCamera(idCommande, idInstruction, frame, pause);
+                    InstructionCamera instructionCamera = new InstructionCamera(idCommande, idInstruction, nombre_de_photos, pause);
                     ListOrder.getById(idCommande).listInstruction.add(instructionCamera);
 
                 }
@@ -324,6 +325,16 @@ public class Peripherique {
                     public void run() {
                         Menu.pauseButton.setText("PAUSE");
                         Menu.instructionAdapter.notifyDataSetChanged();
+                    }
+                });
+
+            } else if (tableauDonnees[0].equals("connexion")){
+                handlerUI = new Handler(Looper.getMainLooper());
+                handlerUI.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(Menu.menu.getContext(),"CONNEXION DES PERIPHERIQUES : SUCCESS",Toast.LENGTH_LONG).show();
+
                     }
                 });
 

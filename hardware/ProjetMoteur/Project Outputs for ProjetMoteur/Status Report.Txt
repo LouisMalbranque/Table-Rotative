@@ -1,15 +1,12 @@
-Output: Gerber Files
-Type  : Gerber
-From  : Variant [[No Variations]] of Project [ProjetMoteur.PrjPcb]
-   Generated File[ProjetMoteur.GTL]
-   Generated File[ProjetMoteur.GBL]
-   Generated File[ProjetMoteur.GM1]
-   Generated File[ProjetMoteur.RUL]
-   Generated File[ProjetMoteur.EXTREP]
-   Generated File[ProjetMoteur.REP]
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [ProjetMoteur.PrjPcb]
+   Generated File[ProjetMoteur.TXT]
+   Generated File[ProjetMoteur.LDP]
+   Generated File[ProjetMoteur.DRR]
 
 
-Files Generated   : 6
+Files Generated   : 3
 Documents Printed : 0
 
-Finished Output Generation At 16:17:43 On 10/04/2019
+Finished Output Generation At 14:14:32 On 25/04/2019

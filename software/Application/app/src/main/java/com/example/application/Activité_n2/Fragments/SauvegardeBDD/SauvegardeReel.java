@@ -7,23 +7,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.Toast;
-
 
 import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVR;
 import com.example.application.Activité_n2.AjoutBDD.ajoutVR;
+import com.example.application.Activité_n2.Fragments.Temps_réel.TempsReel;
 import com.example.application.R;
 import com.example.application.objets.valeurReel;
 
 public class SauvegardeReel extends Fragment implements ajoutVR{
+
     private ajoutBDDVR majoutAsyncTask;
+
+    String accelerationEditText;
+    String vitesseEditText;
+    Boolean directionSwitch;
+    String stepsEditText;
+    String rotation_numberEditText;
+    Boolean choix_rotationSwitch;
+
+    Button oKButton;
+    EditText idRentre;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.fragment_sauvegarde_reel,container,false);
+        View view = inflater.inflate(R.layout.fragment_sauvegarde_reel,container,false);
 
+        accelerationEditText = getArguments().getString("AccelerationSaveTempsReel");
+        vitesseEditText = getArguments().getString("VitesseSaveTempsReel");
+        directionSwitch = getArguments().getBoolean("DirectionSaveTempsReel");
+        stepsEditText = getArguments().getString("TableStepsSaveTempsReel");
+        rotation_numberEditText = getArguments().getString("RotationNumberSaveTempsReel");
+        choix_rotationSwitch = getArguments().getBoolean("RotationModeSaveTempsReel");
+
+        oKButton = view.findViewById(R.id.sauverReel);
+        idRentre=view.findViewById(R.id.IDrentreReel);
 
         return view;
 
@@ -32,29 +51,9 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
     @Override
     public void onStart() {
         super.onStart();
-        final Button save = getActivity().findViewById(R.id.save_temps_reel);
-        final Button send = getActivity().findViewById(R.id.send_temps_reel);
-        final Button charger = getActivity().findViewById(R.id.charger);
-        final EditText accelerationEditText = getActivity().findViewById(R.id.AccelerationTempsReel);
-        final EditText vitesseEditText = getActivity().findViewById(R.id.VitesseTempsReel);
-        final Switch directionSwitch = getActivity().findViewById(R.id.DirectionTempsReel);
-        final EditText stepsEditText = getActivity().findViewById(R.id.StepsTempsReel);
-        final EditText rotation_numberEditText = getActivity().findViewById(R.id.Rotation_number_TempsReel);
-        final Switch choix_rotationSwitch = getActivity().findViewById(R.id.choix_rotation_TempsReel);
-        final Button oKButton = getView().findViewById(R.id.sauverReel);
-        final EditText idRentre=getActivity().findViewById(R.id.IDrentreReel);
+
 
         majoutAsyncTask=new ajoutBDDVR(this);
-
-        getView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                save.setClickable(true);
-                charger.setClickable(true);
-                send.setClickable(true);
-                getFragmentManager().beginTransaction().remove(SauvegardeReel.this).addToBackStack(null).commit();
-            }
-        });
 
         oKButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,15 +61,16 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
 
                 valeurReel nouvelEnregistrement = new valeurReel();
                 nouvelEnregistrement.id=idRentre.getText().toString();
-                nouvelEnregistrement.acceleration=accelerationEditText.getText().toString();
+                nouvelEnregistrement.acceleration=accelerationEditText;
 
-                    nouvelEnregistrement.direction=directionSwitch.isChecked();
 
-                nouvelEnregistrement.speed=vitesseEditText.getText().toString();
-                nouvelEnregistrement.tableSteps=stepsEditText.getText().toString();
-                nouvelEnregistrement.rotationNumber=rotation_numberEditText.getText().toString();
+                    nouvelEnregistrement.direction=directionSwitch;
 
-                    nouvelEnregistrement.rotationMode=choix_rotationSwitch.isChecked();
+                nouvelEnregistrement.speed=vitesseEditText;
+                nouvelEnregistrement.tableSteps=stepsEditText;
+                nouvelEnregistrement.rotationNumber=rotation_numberEditText;
+
+                    nouvelEnregistrement.rotationMode=choix_rotationSwitch;
 
                 majoutAsyncTask.execute(nouvelEnregistrement);
 
@@ -79,18 +79,14 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
     }
 
     @Override
-    public void ajoutBDDvaleursR(Boolean bool) {
+    public void ajoutBDDvaleursR(Integer bool) {
 
-        final Button save = getActivity().findViewById(R.id.save_temps_reel);
-        final Button send = getActivity().findViewById(R.id.send_temps_reel);
-        final Button charger = getActivity().findViewById(R.id.charger);
-        save.setClickable(true);
-        charger.setClickable(true);
-        send.setClickable(true);
-        if(bool.equals(false)){
+        if(bool.equals(1)){
             Toast.makeText(getContext(),"Impossible d'ajouter, supprimez un élément", Toast.LENGTH_LONG).show();
+        }else if (bool.equals(2)){
+            Toast.makeText(getContext(),"Cet élément a écrasé l'élément de même nom", Toast.LENGTH_LONG).show();
         }
-        getFragmentManager().beginTransaction().remove(SauvegardeReel.this).commit();
+        getFragmentManager().beginTransaction().replace(R.id.fragment, TempsReel.temps_reel).addToBackStack(null).commit();
     }
 
 }

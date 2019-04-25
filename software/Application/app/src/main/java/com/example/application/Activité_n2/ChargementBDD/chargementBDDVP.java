@@ -20,7 +20,7 @@ public class chargementBDDVP extends AsyncTask<Void,Void,List<valeurProgramme>> 
 
     @Override
     protected void onPostExecute(List<valeurProgramme> listeVP) {
-        System.out.print(listeVP.size());
+
         mListenerR.chargementBDDvaleursP(listeVP);
 
     }

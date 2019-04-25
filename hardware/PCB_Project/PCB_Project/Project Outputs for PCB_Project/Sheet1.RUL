@@ -1,4 +1,4 @@
-DRC Rules Export File for PCB: D:\Bureau\PCB_Project\Sheet1.PCBDOC
+DRC Rules Export File for PCB: D:\Bureau\table-rotative\Table-Rotative\hardware\PCB_Project\PCB_Project\Sheet1.PCBDOC
 RuleKind=Clearance|RuleName=Clearance_top_polygon|Scope=Board|Minimum=20.00
 RuleKind=Clearance|RuleName=Clearance_bottom_polygon|Scope=Board|Minimum=20.00
 RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0

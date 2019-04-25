@@ -5,24 +5,17 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.application.Activité_n2.Adapter.ValeurProgrammeAdapter;
 import com.example.application.Activité_n2.ChargementBDD.chargementBDDVP;
 import com.example.application.Activité_n2.ChargementBDD.chargmentVP;
 import com.example.application.Activité_n2.Fragments.Programmé.Programme;
-import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
 import com.example.application.Activité_n2.Interface.SelectionProgramme;
 import com.example.application.R;
 import com.example.application.objets.valeurProgramme;
@@ -65,31 +58,36 @@ public class BddProgramme extends Fragment implements chargmentVP, SelectionProg
 
     @Override
     public void chargementBDDvaleursP(List<valeurProgramme> listeVP) {
-        //ProgressBar progression = (ProgressBar) getView().findViewById(R.id.progressBar);
-        //progression.setVisibility(View.GONE);
-        final ValeurProgrammeAdapter adapter=new ValeurProgrammeAdapter(listeVP);
-        mListView.setAdapter(adapter);
+        if(listeVP.size()==0){
+            Toast.makeText(getContext(),"La BDD est vide",Toast.LENGTH_LONG).show();
+            final FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            final Programme fragment = new Programme();
+            transaction.replace(R.id.fragment,fragment).addToBackStack(null).commit();
+        }
 
-        adapter.setmListener(this);
+            final ValeurProgrammeAdapter adapter = new ValeurProgrammeAdapter(listeVP);
+            mListView.setAdapter(adapter);
 
-        mListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            adapter.setmListener(this);
 
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("test1");
-            }
+            mListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                System.out.println("nothing");
-            }
-        });
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), position, Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    System.out.println("test1");
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    System.out.println("nothing");
+                }
+            });
+            mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(getContext(), position, Toast.LENGTH_SHORT).show();
+                }
+            });
 
 
     }

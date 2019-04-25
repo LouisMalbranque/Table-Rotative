@@ -61,7 +61,7 @@
 
     <TextView
         android:id="@+id/VitesseTextMoteur"
-        android:layout_width="80dp"
+        android:layout_width="106dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -73,12 +73,14 @@
 
     <TextView
         android:id="@+id/StepsTextMoteur"
-        android:layout_width="0dp"
+        android:layout_width="146dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="Nombre de pas"
         android:textColor="@android:color/background_light"
-        app:layout_constraintStart_toStartOf="@+id/InstructionTextMoteur"
+        app:layout_constraintStart_toEndOf="@+id/VitesseTextMoteur"
         app:layout_constraintTop_toBottomOf="@+id/InstructionTextMoteur" />
 
 </android.support.constraint.ConstraintLayout>

@@ -12,15 +12,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
-import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVR;
 import com.example.application.Activité_n2.Fragments.Charger_Bdd.BddTempsReel;
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
-import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeProgramme;
 import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeReel;
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.TempsReelOrder;
 import com.example.application.R;
-import com.example.application.objets.valeurReel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +33,7 @@ public class TempsReel extends Fragment {
     public int vitesseInt;
     public int stepsInt;
     public int rotation_numberInt;
+
     SauvegardeReel Sauv_frag = new SauvegardeReel();
 
 
@@ -106,10 +104,17 @@ public class TempsReel extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                save.setClickable(false);
-                charger.setClickable(false);
-                send.setClickable(false);
-                getFragmentManager().beginTransaction().add(R.id.container2, Sauv_frag).addToBackStack(null).commit();
+
+                final Bundle bundle = new Bundle();
+                bundle.putString("AccelerationSaveTempsReel", accelerationEditText.getText().toString());
+                bundle.putString("VitesseSaveTempsReel", vitesseEditText.getText().toString());
+                bundle.putBoolean("DirectionSaveTempsReel", directionSwitch.isChecked());
+                bundle.putString("TableStepsSaveTempsReel", stepsEditText.getText().toString());
+                bundle.putString("RotationNumberSaveTempsReel", rotation_numberEditText.getText().toString());
+                bundle.putBoolean("RotationModeSaveTempsReel", choix_rotationSwitch.isChecked());
+                Sauv_frag.setArguments(bundle);
+
+                getFragmentManager().beginTransaction().replace(R.id.fragment, Sauv_frag).addToBackStack(null).commit();
             }
         });
 
