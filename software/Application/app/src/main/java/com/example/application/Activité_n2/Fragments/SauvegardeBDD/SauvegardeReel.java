@@ -89,8 +89,10 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
     @Override
     public void ajoutBDDvaleursR(Integer bool) {
 
-        if(bool.equals(false)){
+        if(bool.equals(1)){
             Toast.makeText(getContext(),"Impossible d'ajouter, supprimez un élément", Toast.LENGTH_LONG).show();
+        }else if (bool.equals(2)){
+            Toast.makeText(getContext(),"Cet élément a écrasé l'élément de même nom", Toast.LENGTH_LONG).show();
         }
         getFragmentManager().beginTransaction().replace(R.id.fragment, TempsReel.temps_reel).addToBackStack(null).commit();
     }

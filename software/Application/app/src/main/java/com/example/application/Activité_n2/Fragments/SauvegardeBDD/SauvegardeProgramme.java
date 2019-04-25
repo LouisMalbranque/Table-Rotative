@@ -89,9 +89,11 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
     }
 
     @Override
-    public void ajoutBDDvaleursP(Boolean bool) {
-        if(bool.equals(false)){
+    public void ajoutBDDvaleursP(Integer bool) {
+        if(bool.equals(1)){
             Toast.makeText(getContext(),"Impossible d'ajouter, supprimez un élément", Toast.LENGTH_LONG).show();
+        }else if (bool.equals(2)){
+            Toast.makeText(getContext(),"Cet élément a écrasé l'élément de même nom", Toast.LENGTH_LONG).show();
         }
         getFragmentManager().beginTransaction().replace(R.id.fragment, Programme.programme).addToBackStack(null).commit();
     }
