@@ -1,6 +1,6 @@
 package com.example.application.Activité_n2.AjoutBDD;
 
 public interface ajoutVR {
-    public void ajoutBDDvaleursR();
+    public void ajoutBDDvaleursR(Boolean bool);
 }
 

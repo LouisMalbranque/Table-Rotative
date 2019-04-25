@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 
 import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVR;
@@ -31,6 +32,9 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
     @Override
     public void onStart() {
         super.onStart();
+        final Button save = getActivity().findViewById(R.id.save_temps_reel);
+        final Button send = getActivity().findViewById(R.id.send_temps_reel);
+        final Button charger = getActivity().findViewById(R.id.charger);
         final EditText accelerationEditText = getActivity().findViewById(R.id.AccelerationTempsReel);
         final EditText vitesseEditText = getActivity().findViewById(R.id.VitesseTempsReel);
         final Switch directionSwitch = getActivity().findViewById(R.id.DirectionTempsReel);
@@ -45,6 +49,9 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
         getView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                save.setClickable(true);
+                charger.setClickable(true);
+                send.setClickable(true);
                 getFragmentManager().beginTransaction().remove(SauvegardeReel.this).addToBackStack(null).commit();
             }
         });
@@ -72,7 +79,7 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
     }
 
     @Override
-    public void ajoutBDDvaleursR() {
+    public void ajoutBDDvaleursR(Boolean bool) {
 
         final Button save = getActivity().findViewById(R.id.save_temps_reel);
         final Button send = getActivity().findViewById(R.id.send_temps_reel);
@@ -80,6 +87,9 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
         save.setClickable(true);
         charger.setClickable(true);
         send.setClickable(true);
+        if(bool.equals(false)){
+            Toast.makeText(getContext(),"Impossible d'ajouter, supprimez un élément", Toast.LENGTH_LONG).show();
+        }
         getFragmentManager().beginTransaction().remove(SauvegardeReel.this).commit();
     }
 

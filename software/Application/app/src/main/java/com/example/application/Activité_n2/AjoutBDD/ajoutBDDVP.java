@@ -8,7 +8,7 @@ import com.example.application.objets.valeurProgramme;
 
 import java.util.List;
 
-public class ajoutBDDVP extends AsyncTask<valeurProgramme,Void, Void> {
+public class ajoutBDDVP extends AsyncTask<valeurProgramme,Void, Boolean> {
     private ajoutVP mListener;
 
     public ajoutBDDVP(ajoutVP mListener){
@@ -16,17 +16,22 @@ public class ajoutBDDVP extends AsyncTask<valeurProgramme,Void, Void> {
     }
 
     @Override
-    protected Void doInBackground(valeurProgramme... strings) {
+    protected Boolean doInBackground(valeurProgramme... strings) {
 
         List<valeurProgramme> valeurs = DataBaseHelperValeurProgramme.getInstance().getValeurProgrammeDAO().getAll();
+        if(valeurs.size()<10){
         valeurs.add(strings[0]);
         DataBaseHelperValeurProgramme.getInstance().getValeurProgrammeDAO().insertAll(valeurs);
-        return null;
+        return true;}
+        else{
+            DataBaseHelperValeurProgramme.getInstance().getValeurProgrammeDAO().insertAll(valeurs);
+            return false;
+        }
     }
 
     @Override
-    protected void onPostExecute(Void voi) {
-        mListener.ajoutBDDvaleursP();
+    protected void onPostExecute(Boolean bool) {
+        mListener.ajoutBDDvaleursP(bool);
 
     }
 }

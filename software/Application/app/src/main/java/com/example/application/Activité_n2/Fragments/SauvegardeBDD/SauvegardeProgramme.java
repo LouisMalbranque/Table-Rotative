@@ -30,6 +30,10 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
     @Override
     public void onStart() {
         super.onStart();
+        final Button save = getActivity().findViewById(R.id.save_programme);
+        final Button send = getActivity().findViewById(R.id.send_programme);
+        final Button charger = getActivity().findViewById(R.id.charger);
+        final Button parametrage=getActivity().findViewById(R.id.parametrage);
         final EditText accelerationEditText = getActivity().findViewById(R.id.AccelerationProgramme);
         final EditText vitesseEditText = getActivity().findViewById(R.id.VitesseProgramme);
         final Switch directionSwitch = getActivity().findViewById(R.id.DirectionProgramme);
@@ -46,6 +50,11 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
         getView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                save.setClickable(true);
+                charger.setClickable(true);
+                send.setClickable(true);
+
+                parametrage.setClickable(true);
                 getFragmentManager().beginTransaction().remove(SauvegardeProgramme.this).addToBackStack(null).commit();
             }
         });
@@ -73,7 +82,7 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
     }
 
     @Override
-    public void ajoutBDDvaleursP() {
+    public void ajoutBDDvaleursP(Boolean bool) {
         Button save = getActivity().findViewById(R.id.save_programme);
         Button send = getActivity().findViewById(R.id.send_programme);
         Button charger = getActivity().findViewById(R.id.charger);
@@ -83,6 +92,9 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
         send.setClickable(true);
 
         parametrage.setClickable(true);
+        if(bool.equals(false)){
+            Toast.makeText(getContext(),"Impossible d'ajouter, supprimez un élément", Toast.LENGTH_LONG).show();
+        }
         getFragmentManager().beginTransaction().remove(SauvegardeProgramme.this).commit();
     }
 }
