@@ -141,7 +141,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:background="@color/colorPrimaryDark"
-            android:text="TempsReel"
+            android:text="Mode Temps Réel"
             android:textColor="@color/colorAccent"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -168,7 +168,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
-            android:text="Nombre de Pas de la Table"
+            android:text="Nombre de pas de la table"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -189,40 +189,40 @@
 
         <Button
             android:id="@+id/save_temps_reel"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:background="@android:color/holo_green_dark"
-            android:text="Save"
+            android:text="Sauvegarder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/charger" />
 
         <Button
             android:id="@+id/charger"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:background="@android:color/holo_blue_dark"
             android:text="Charger"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/send_temps_reel"
-            app:layout_constraintStart_toEndOf="@+id/save_temps_reel" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/send_temps_reel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:background="@android:color/holo_red_dark"
-            android:text="SEND"
+            android:text="Envoyer"
             android:textColor="@android:color/background_light"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/charger"
+            app:layout_constraintStart_toEndOf="@+id/save_temps_reel"
             app:layout_constraintTop_toTopOf="@+id/charger" />
 
         <Space

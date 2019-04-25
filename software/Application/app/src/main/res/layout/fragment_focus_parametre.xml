@@ -68,49 +68,53 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/listCamera"
-            android:layout_width="395dp"
-            android:layout_height="276dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/sendPhotoFocus"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerFocus" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerFocus"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/compteur"
-            android:layout_width="73dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="130dp"
-            android:layout_marginRight="130dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:background="@android:color/holo_orange_dark"
             android:gravity="center"
             android:text="0"
             android:textColor="@android:color/background_light"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/reset"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/reset"
             app:layout_constraintVertical_bias="0.655" />
 
         <Button
             android:id="@+id/reset"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginLeft="130dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:background="@android:color/holo_blue_dark"
-            android:text="RESET"
+            android:text="Réintialiser"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/sendPhotoFocus" />
 
         <Button
@@ -119,14 +123,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:background="@android:color/holo_red_dark"
-            android:text="SEND"
+            android:text="Envoyer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listCamera" />
+            tools:layout_editor_absoluteY="217dp" />
 
         <ImageButton
             android:id="@+id/AjoutePhotoFocus"
@@ -170,6 +173,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment2" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="192dp" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
