@@ -34,10 +34,7 @@ void setup() {
   lcd.begin();
 
   camera.begin();
-  esp.begin();
-
-  delay(1000);
-  esp.scan();
+  esp.begin();  
   
 }
 
@@ -121,7 +118,7 @@ void loop() {
 
       // connexion aux périphériques
       else if (mode == 7){
-
+        esp.scan();
         int tmp[9];
         int nombre_de_camera = 0;
         for (int i=0; i<9; i++){
@@ -154,13 +151,12 @@ void loop() {
             indiceCameraBluetooth++;
           }
         }
-        
-   
-        
+
         if (values[2]){
           Serial.println("Connexion au moteur");
           esp.connect(&moteur);
         }
+        digitalWrite(LED,HIGH);
       }
 
       // paramétrage focus stacking
@@ -211,8 +207,5 @@ void loop() {
         else if (instructions.peek().id_commande != instructionEnCours.id_commande) telephone.print("fini,"+String(instructionEnCours.id_commande));
       }
     }
-
     lcd.display();
-    
-    
 }

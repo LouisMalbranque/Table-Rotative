@@ -26,11 +26,13 @@ ESP_bluetooth::ESP_bluetooth(){
 
 void ESP_bluetooth::begin(){
   BLEDevice::init("");
+  
   pBLEScan = BLEDevice::getScan(); //create new scan
   pBLEScan->setAdvertisedDeviceCallbacks(new MyAdvertisedDeviceCallbacks());
   pBLEScan->setActiveScan(true); //active scan uses more power, but get results faster
   pBLEScan->setInterval(100);
   pBLEScan->setWindow(99);  // less or equal setInterval value
+  
 }
 
 
@@ -43,22 +45,28 @@ void ESP_bluetooth::scan(){
 
 boolean ESP_bluetooth::connect(PeripheriqueBluetooth *periph){
   BLEClient* pClient  = BLEDevice::createClient();
-  Serial.print("scan Count");
-  Serial.println(scanResults.getCount());
   Serial.print("Starting new connection to ");
   Serial.println(periph->getServiceUUID().toString().c_str());
   for (int i=0; i<scanResults.getCount(); i++){
     
     BLEAdvertisedDevice advertisedDevice = scanResults.getDevice(i);
-
+    
+    
+    
     Serial.print("haveServiceUUID ");
     Serial.println(advertisedDevice.haveServiceUUID());
 
     Serial.print("isAdvertisingService ");
     Serial.println(advertisedDevice.isAdvertisingService(periph->getServiceUUID()));
     if (advertisedDevice.haveServiceUUID() && advertisedDevice.isAdvertisingService(periph->getServiceUUID())){
+      
+        BLEAddress *pServerAddress;
+        pServerAddress = new BLEAddress(advertisedDevice.getAddress());
+        
         Serial.println("before connect");
-        pClient->connect(&advertisedDevice);  // if you pass BLEAdvertisedDevice instead of address, it will be recognized type of peer device address (public or private)
+        pClient->disconnect();
+        pClient->connect(*pServerAddress);// if you pass BLEAdvertisedDevice instead of address, it will be recognized type of peer device address (public or private)
+        delay(1000);
         Serial.println(" - Connected to server");
     
         // Obtain a reference to the service we are after in the remote BLE server.
@@ -99,3 +107,5 @@ boolean ESP_bluetooth::connect(PeripheriqueBluetooth *periph){
   }
   return false;  
 }
+
+  BLEClient* pClient  = BLEDevice::createClient();
