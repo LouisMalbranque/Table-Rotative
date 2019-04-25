@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="28dp"
             android:background="@color/colorPrimary"
             android:text="Sélectionner"
             app:layout_constraintStart_toStartOf="parent"
@@ -215,6 +215,28 @@
             android:text="Nombre de pas :"
             app:layout_constraintStart_toEndOf="@+id/directionProgramme"
             app:layout_constraintTop_toBottomOf="@+id/cameraProgramme" />
+
+        <TextView
+            android:id="@+id/FocusStacking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="2dp"
+            android:text="FocusStacking : "
+            app:layout_constraintStart_toStartOf="@+id/nomDirection"
+            app:layout_constraintTop_toBottomOf="@+id/directionProgramme" />
+
+        <Switch
+            android:id="@+id/focusStackingChoix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="128dp"
+            android:text="Switch"
+
+            app:layout_constraintStart_toEndOf="@+id/nomDirection"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

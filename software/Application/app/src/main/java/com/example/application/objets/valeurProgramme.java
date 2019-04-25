@@ -24,7 +24,7 @@ public class valeurProgramme {
     public String speed;
 
     @ColumnInfo
-    public String direction;
+    public Boolean direction;
 
     @ColumnInfo
     public String timeBetweenPhotosNumber;
@@ -39,7 +39,7 @@ public class valeurProgramme {
 
 
     @ColumnInfo
-    public String focusStacking;
+    public Boolean focusStacking;
 
 
     public String getId() {

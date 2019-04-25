@@ -58,9 +58,9 @@ public class Programme extends Fragment  {
 
         EditText text = v.findViewById(R.id.text);
 
-        Button save = v.findViewById(R.id.save_programme);
-        Button send = v.findViewById(R.id.send_programme);
-        Button charger = v.findViewById(R.id.charger);
+        final Button save = v.findViewById(R.id.save_programme);
+        final Button send = v.findViewById(R.id.send_programme);
+        final Button charger = v.findViewById(R.id.charger);
 
         final EditText accelerationEditText = v.findViewById(R.id.AccelerationProgramme);
         final EditText vitesseEditText = v.findViewById(R.id.VitesseProgramme);
@@ -73,6 +73,23 @@ public class Programme extends Fragment  {
 
         focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
         parametrage = v.findViewById(R.id.parametrage);
+
+        if(getArguments()!=null){
+            final String speed = getArguments().getString("vitesse");
+            vitesseEditText.setText(speed);
+            final String acceleration = getArguments().getString("acceleration");
+            accelerationEditText.setText(acceleration);
+            final String steps = getArguments().getString("tableSteps");
+            stepsEditText.setText(steps);
+            final String tempsPhotos = getArguments().getString("tempsEntrePhotos");
+            pause_between_cameraEditText.setText(tempsPhotos);
+            final String frame = getArguments().getString("frame");
+            frameEditText.setText(frame);
+            final String camera = getArguments().getString("camera");
+            camera_numberEditText.setText(camera);
+            directionSwitch.setChecked(getArguments().getBoolean("direction"));
+            focus_stackingSwitch.setChecked(getArguments().getBoolean("focus"));
+        }
 
         System.out.println(focus_stackingSwitch.isChecked());
 
@@ -103,20 +120,7 @@ public class Programme extends Fragment  {
         });
 
 
-        if(getArguments()!=null){
-        final String speed = getArguments().getString("vitesse");
-        vitesseEditText.setText(speed);
-            final String acceleration = getArguments().getString("acceleration");
-            accelerationEditText.setText(acceleration);
-            final String steps = getArguments().getString("tableSteps");
-            stepsEditText.setText(steps);
-            final String tempsPhotos = getArguments().getString("tempsEntrePhotos");
-            pause_between_cameraEditText.setText(tempsPhotos);
-            final String frame = getArguments().getString("frame");
-            frameEditText.setText(frame);
-            final String camera = getArguments().getString("camera");
-            camera_numberEditText.setText(tempsPhotos);
-        }
+
 
 
 
@@ -130,6 +134,11 @@ public class Programme extends Fragment  {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                save.setClickable(false);
+                charger.setClickable(false);
+                send.setClickable(false);
+
+                parametrage.setClickable(false);
                 getFragmentManager().beginTransaction().add(R.id.container, Sauv_frag ).addToBackStack(null).commit();
             }
 

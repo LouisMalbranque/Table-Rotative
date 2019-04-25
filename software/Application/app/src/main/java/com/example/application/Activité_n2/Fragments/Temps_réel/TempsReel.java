@@ -55,9 +55,9 @@ public class TempsReel extends Fragment {
 
         EditText text = v.findViewById(R.id.text);
 
-        Button save = v.findViewById(R.id.save_temps_reel);
-        Button send = v.findViewById(R.id.send_temps_reel);
-        Button charger = v.findViewById(R.id.charger);
+        final Button save = v.findViewById(R.id.save_temps_reel);
+        final Button send = v.findViewById(R.id.send_temps_reel);
+        final Button charger = v.findViewById(R.id.charger);
 
         final EditText accelerationEditText = v.findViewById(R.id.AccelerationTempsReel);
         final EditText vitesseEditText = v.findViewById(R.id.VitesseTempsReel);
@@ -76,6 +76,8 @@ public class TempsReel extends Fragment {
             stepsEditText.setText(steps);
             final String tempsrotat = getArguments().getString("rotationNumber");
             rotation_numberEditText.setText(tempsrotat);
+            directionSwitch.setChecked(getArguments().getBoolean("direction"));
+            choix_rotationSwitch.setChecked(getArguments().getBoolean("rotationMode"));
 
         }
 
@@ -104,6 +106,9 @@ public class TempsReel extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                save.setClickable(false);
+                charger.setClickable(false);
+                send.setClickable(false);
                 getFragmentManager().beginTransaction().add(R.id.container2, Sauv_frag).addToBackStack(null).commit();
             }
         });

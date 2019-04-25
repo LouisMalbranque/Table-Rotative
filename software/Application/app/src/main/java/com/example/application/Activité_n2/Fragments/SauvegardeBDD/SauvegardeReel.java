@@ -56,22 +56,15 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
                 valeurReel nouvelEnregistrement = new valeurReel();
                 nouvelEnregistrement.id=idRentre.getText().toString();
                 nouvelEnregistrement.acceleration=accelerationEditText.getText().toString();
-                if(directionSwitch.isChecked()){
-                    nouvelEnregistrement.direction="1";
-                }
-                else
-                {
-                    nouvelEnregistrement.direction="0";
-                }
+
+                    nouvelEnregistrement.direction=directionSwitch.isChecked();
+
                 nouvelEnregistrement.speed=vitesseEditText.getText().toString();
                 nouvelEnregistrement.tableSteps=stepsEditText.getText().toString();
                 nouvelEnregistrement.rotationNumber=rotation_numberEditText.getText().toString();
-                if (choix_rotationSwitch.isChecked()){
-                    nouvelEnregistrement.rotationMode="1";
-                }
-                else{
-                    nouvelEnregistrement.rotationMode="0";
-                }
+
+                    nouvelEnregistrement.rotationMode=choix_rotationSwitch.isChecked();
+
                 majoutAsyncTask.execute(nouvelEnregistrement);
 
             }
@@ -80,6 +73,13 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
 
     @Override
     public void ajoutBDDvaleursR() {
+
+        final Button save = getActivity().findViewById(R.id.save_temps_reel);
+        final Button send = getActivity().findViewById(R.id.send_temps_reel);
+        final Button charger = getActivity().findViewById(R.id.charger);
+        save.setClickable(true);
+        charger.setClickable(true);
+        send.setClickable(true);
         getFragmentManager().beginTransaction().remove(SauvegardeReel.this).commit();
     }
 
