@@ -3,6 +3,7 @@
 #include "BLEDevice.h"
 #include "PeripheriqueBluetooth.h"
 
+
 #define MAX_NUMBER_BLUETOOTH_SCAN 15
 
 static void notifyCallback(

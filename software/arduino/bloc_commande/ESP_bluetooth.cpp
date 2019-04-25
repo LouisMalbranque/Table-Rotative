@@ -25,6 +25,7 @@ ESP_bluetooth::ESP_bluetooth(){
 }
 
 void ESP_bluetooth::begin(){
+  
   pinMode(LED,OUTPUT);
   digitalWrite(LED,LOW);
   
@@ -46,9 +47,10 @@ void ESP_bluetooth::scan(){
     
 }
 
+
 boolean ESP_bluetooth::connect(PeripheriqueBluetooth *periph){
- 
   pClient  = BLEDevice::createClient();
+  
   
   Serial.print("scan Count");
   Serial.println(scanResults.getCount());
