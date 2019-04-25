@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.application.Activité_n2.Adapter.CameraAdapter;
 import com.example.application.Activité_n2.Camera.Camera;
@@ -166,6 +167,7 @@ public class FocusParametre extends Fragment {
                     data+=cameraList.get(numeroCamera).param[i];
                 }
                 Peripherique.peripherique.envoyer(data);
+                Toast.makeText(getContext(),"MESSAGE ENVOYE",Toast.LENGTH_LONG).show();
             }
         });
 
