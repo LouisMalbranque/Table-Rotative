@@ -64,8 +64,12 @@ public class BddTempsReel extends Fragment implements chargmentVR, SelectionReel
 
     @Override
     public void chargementBDDvaleursR(List<valeurReel> listeVR) {
-        //ProgressBar progression = (ProgressBar) getView().findViewById(R.id.progressBar);
-        //progression.setVisibility(View.GONE);
+        if(listeVR.size()==0){
+            Toast.makeText(getContext(),"La BDD est vide",Toast.LENGTH_LONG).show();
+            final FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            final TempsReel fragment = new TempsReel();
+            transaction.replace(R.id.fragment,fragment).addToBackStack(null).commit();
+        }
         final ValeurReelAdapter adapter=new ValeurReelAdapter(listeVR);
         mListView.setAdapter(adapter);
 
