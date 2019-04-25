@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.application.Activité_n2.Fragments.Menu.Menu;
 import com.example.application.Activité_n2.Instructions.InstructionCamera;
@@ -324,6 +325,16 @@ public class Peripherique {
                     public void run() {
                         Menu.pauseButton.setText("PAUSE");
                         Menu.instructionAdapter.notifyDataSetChanged();
+                    }
+                });
+
+            } else if (tableauDonnees[0].equals("connexion")){
+                handlerUI = new Handler(Looper.getMainLooper());
+                handlerUI.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(Menu.menu.getContext(),"CONNEXION DES PERIPHERIQUES : SUCCESS",Toast.LENGTH_LONG).show();
+
                     }
                 });
 
