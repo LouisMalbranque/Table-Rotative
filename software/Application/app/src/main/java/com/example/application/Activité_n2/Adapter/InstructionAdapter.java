@@ -118,7 +118,7 @@ public class InstructionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                 instructionCameraHolder.commandeTextCamera.setText("Commande n° "+Integer.toString(instructionCamera.getIdCommande()));
                 instructionCameraHolder.instructionTextCamera.setText("Instruction n° "+Integer.toString(instructionCamera.getIdInstruction()));
-                instructionCameraHolder.numberPhotoTextCamera.setText("Photo n° "+Integer.toString(instructionCamera.getFrame()));
+                instructionCameraHolder.numberPhotoTextCamera.setText("Nombre de photos  "+Integer.toString(instructionCamera.getFrame()));
                 instructionCameraHolder.pauseTextCamera.setText("Pause : "+Integer.toString(instructionCamera.getPause()));
 
                 if (instructionCamera.termine==2){

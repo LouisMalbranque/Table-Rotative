@@ -277,12 +277,12 @@ public class Peripherique {
                             vitesse, direction, choixRotation, stepsTime);
                     ListOrder.getById(idCommande).listInstruction.add(instructionMoteur);
 
-                } else if (tableauDonnees[3].equals("camera")) {
+                } else if (tableauDonnees[3].contains("camera")) {
 
-                    int frame = Integer.parseInt(tableauDonnees[4]);
                     int pause = Integer.parseInt(tableauDonnees[5]);
+                    int nombre_de_photos = Integer.parseInt(tableauDonnees[6]);
 
-                    InstructionCamera instructionCamera = new InstructionCamera(idCommande, idInstruction, frame, pause);
+                    InstructionCamera instructionCamera = new InstructionCamera(idCommande, idInstruction, nombre_de_photos, pause);
                     ListOrder.getById(idCommande).listInstruction.add(instructionCamera);
 
                 }

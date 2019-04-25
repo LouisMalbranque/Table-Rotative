@@ -91,7 +91,7 @@ void loop() {
 
     // mode magneto
     else if (mode == 1){
-      if (esp_server.getValue(DIRECTION)) nombre_de_pas = esp_server.getValue(NOMBRE_DE_PAS);
+      if (!esp_server.getValue(DIRECTION)) nombre_de_pas = esp_server.getValue(NOMBRE_DE_PAS);
       else nombre_de_pas = -esp_server.getValue(NOMBRE_DE_PAS);
     }
     

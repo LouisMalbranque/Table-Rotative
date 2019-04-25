@@ -24,11 +24,7 @@ ESP_bluetooth::ESP_bluetooth(){
   
 }
 
-void ESP_bluetooth::begin(){
-  
-  pinMode(LED,OUTPUT);
-  digitalWrite(LED,LOW);
-  
+void ESP_bluetooth::begin(){  
   BLEDevice::init("");
   
   pBLEScan = BLEDevice::getScan(); //create new scan
