@@ -1,5 +1,5 @@
 package com.example.application.Activité_n2.AjoutBDD;
 
 public interface ajoutVP {
-    public void ajoutBDDvaleursP(Boolean bool);
+    public void ajoutBDDvaleursP(Integer bool);
 }

@@ -87,7 +87,7 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
     }
 
     @Override
-    public void ajoutBDDvaleursR(Boolean bool) {
+    public void ajoutBDDvaleursR(Integer bool) {
 
         if(bool.equals(false)){
             Toast.makeText(getContext(),"Impossible d'ajouter, supprimez un élément", Toast.LENGTH_LONG).show();
