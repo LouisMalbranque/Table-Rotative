@@ -21,12 +21,12 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
 
     String accelerationEditText;
     String vitesseEditText;
-    String directionSwitch;
+    Boolean directionSwitch;
     String stepsEditText;
     String frameEditText;
     String camera_numberEditText;
     String pause_between_cameraEditText;
-    String focus_stackingSwitch;
+    Boolean focus_stackingSwitch;
 
     Button oKButton;
     EditText idRentre;
@@ -38,12 +38,12 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
 
         accelerationEditText = getArguments().getString("AccelerationSaveProgramme");
         vitesseEditText = getArguments().getString("VitesseSaveProgramme");
-        directionSwitch = getArguments().getString("DirectionSaveProgramme");
+        directionSwitch = getArguments().getBoolean("DirectionSaveProgramme");
         stepsEditText = getArguments().getString("TableStepsSaveProgramme");
         frameEditText = getArguments().getString("FrameSaveProgramme");
         camera_numberEditText = getArguments().getString("CameraSaveProgramme");
         pause_between_cameraEditText = getArguments().getString("TempsEntrePhotosSaveProgramme");
-        focus_stackingSwitch = getArguments().getString("FocusSaveProgramme");
+        focus_stackingSwitch = getArguments().getBoolean("FocusSaveProgramme");
 
         oKButton = view.findViewById(R.id.sauver);
         idRentre=view.findViewById(R.id.IDrentre);
@@ -65,22 +65,18 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
                 nouvelEnregistrement.acceleration = accelerationEditText;
                 System.out.println("nouvelle enregistrement : "+nouvelEnregistrement.acceleration);
                 nouvelEnregistrement.camera_number=camera_numberEditText;
-                if (directionSwitch=="1"){
-                    nouvelEnregistrement.direction=true;
-                }else{
-                    nouvelEnregistrement.direction=false;
-                }
+
+                    nouvelEnregistrement.direction=directionSwitch;
+
                 nouvelEnregistrement.frame=frameEditText;
                 nouvelEnregistrement.id=idRentre.getText().toString();
                 nouvelEnregistrement.speed= vitesseEditText;
                 nouvelEnregistrement.tableSteps=stepsEditText;
                 nouvelEnregistrement.timeBetweenPhotosNumber=pause_between_cameraEditText;
 
-                if (focus_stackingSwitch=="1"){
-                    nouvelEnregistrement.focusStacking=true;
-                }else{
-                    nouvelEnregistrement.focusStacking=false;
-                }
+
+                    nouvelEnregistrement.focusStacking=focus_stackingSwitch;
+
 
                 majoutAsyncTask.execute(nouvelEnregistrement);
 

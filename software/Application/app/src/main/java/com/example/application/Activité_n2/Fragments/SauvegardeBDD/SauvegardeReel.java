@@ -21,10 +21,10 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
 
     String accelerationEditText;
     String vitesseEditText;
-    String directionSwitch;
+    Boolean directionSwitch;
     String stepsEditText;
     String rotation_numberEditText;
-    String choix_rotationSwitch;
+    Boolean choix_rotationSwitch;
 
     Button oKButton;
     EditText idRentre;
@@ -36,10 +36,10 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
 
         accelerationEditText = getArguments().getString("AccelerationSaveTempsReel");
         vitesseEditText = getArguments().getString("VitesseSaveTempsReel");
-        directionSwitch = getArguments().getString("DirectionSaveTempsReel");
+        directionSwitch = getArguments().getBoolean("DirectionSaveTempsReel");
         stepsEditText = getArguments().getString("TableStepsSaveTempsReel");
         rotation_numberEditText = getArguments().getString("RotationNumberSaveTempsReel");
-        choix_rotationSwitch = getArguments().getString("RotationModeSaveTempsReel");
+        choix_rotationSwitch = getArguments().getBoolean("RotationModeSaveTempsReel");
 
         oKButton = view.findViewById(R.id.sauverReel);
         idRentre=view.findViewById(R.id.IDrentreReel);
@@ -63,22 +63,14 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
                 nouvelEnregistrement.id=idRentre.getText().toString();
                 nouvelEnregistrement.acceleration=accelerationEditText;
 
-                if (directionSwitch=="1"){
-                    nouvelEnregistrement.direction=true;
-                }else{
-                    nouvelEnregistrement.direction=false;
-                }
+
+                    nouvelEnregistrement.direction=directionSwitch;
 
                 nouvelEnregistrement.speed=vitesseEditText;
                 nouvelEnregistrement.tableSteps=stepsEditText;
                 nouvelEnregistrement.rotationNumber=rotation_numberEditText;
 
-                if (choix_rotationSwitch=="1"){
-                    nouvelEnregistrement.rotationMode=true;
-                }else{
-                    nouvelEnregistrement.rotationMode=false;
-                }
-
+                    nouvelEnregistrement.rotationMode=choix_rotationSwitch;
 
                 majoutAsyncTask.execute(nouvelEnregistrement);
 
