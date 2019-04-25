@@ -25,6 +25,9 @@ ESP_bluetooth::ESP_bluetooth(){
 }
 
 void ESP_bluetooth::begin(){
+  pinMode(LED,OUTPUT);
+  digitalWrite(LED,LOW);
+  
   BLEDevice::init("");
   
   pBLEScan = BLEDevice::getScan(); //create new scan
@@ -44,15 +47,16 @@ void ESP_bluetooth::scan(){
 }
 
 boolean ESP_bluetooth::connect(PeripheriqueBluetooth *periph){
-  BLEClient* pClient  = BLEDevice::createClient();
+ 
+  pClient  = BLEDevice::createClient();
+  
+  Serial.print("scan Count");
+  Serial.println(scanResults.getCount());
   Serial.print("Starting new connection to ");
   Serial.println(periph->getServiceUUID().toString().c_str());
   for (int i=0; i<scanResults.getCount(); i++){
     
     BLEAdvertisedDevice advertisedDevice = scanResults.getDevice(i);
-    
-    
-    
     Serial.print("haveServiceUUID ");
     Serial.println(advertisedDevice.haveServiceUUID());
 
@@ -107,5 +111,3 @@ boolean ESP_bluetooth::connect(PeripheriqueBluetooth *periph){
   }
   return false;  
 }
-
-  BLEClient* pClient  = BLEDevice::createClient();

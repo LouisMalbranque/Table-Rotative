@@ -300,19 +300,24 @@ public class Peripherique {
 
                 int idCommande = Integer.parseInt(tableauDonnees[1]);
                 int idInstruction = Integer.parseInt(tableauDonnees[2]);
+                if (idCommande==-1){
 
-                if (idInstruction<ListOrder.getById(idCommande).listInstruction.size()){
-                    if (idCommande>=1){
-                        if (ListOrder.getById(idCommande).listInstruction.size()==1){
-                            ListOrder.getById(idCommande).listInstruction.get(idInstruction-1).termine = 1;
-                        }
-                        else if (idInstruction > 1) {
-                            ListOrder.getById(idCommande).listInstruction.get(idInstruction - 2).termine = 2;
-                            ListOrder.getById(idCommande).listInstruction.get(idInstruction - 1).termine = 1;
+                }
+                else{
+                    if (idInstruction<ListOrder.getById(idCommande).listInstruction.size()){
+                        if (idCommande>=1){
+                            if (ListOrder.getById(idCommande).listInstruction.size()==1){
+                                ListOrder.getById(idCommande).listInstruction.get(idInstruction-1).termine = 1;
+                            }
+                            else if (idInstruction > 1) {
+                                ListOrder.getById(idCommande).listInstruction.get(idInstruction - 2).termine = 2;
+                                ListOrder.getById(idCommande).listInstruction.get(idInstruction - 1).termine = 1;
+                            }
                         }
                     }
                 }
-                
+
+
                 handlerUI = new Handler(Looper.getMainLooper());
                 handlerUI.post(new Runnable() {
                     @Override
