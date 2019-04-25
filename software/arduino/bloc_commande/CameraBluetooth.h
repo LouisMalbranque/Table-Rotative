@@ -5,6 +5,7 @@ class CameraBluetooth: public PeripheriqueBluetooth
 {
   public:
     int params[9];
+    int somme_des_pas = 0;
 
     using PeripheriqueBluetooth::PeripheriqueBluetooth;
 

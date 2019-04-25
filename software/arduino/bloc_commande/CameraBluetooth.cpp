@@ -10,14 +10,12 @@ String CameraBluetooth::createDatagramme(int* values){
     data += String(values[PAUSE_ENTRE_CAMERAS])+",";
     data += String(values[FOCUS_STACKING]);
     
-    int somme_de_pas = 0;
     if (values[FOCUS_STACKING] > 1){
       for (int i=0; i<values[FOCUS_STACKING]-1; i++){
         data+= "," + String(params[i]);
-        somme_de_pas += params[i];
       }
     }
-    data += "," + String(-somme_de_pas);
+    data += "," + String(-somme_des_pas);
   }
 
   
@@ -27,11 +25,19 @@ String CameraBluetooth::createDatagramme(int* values){
     data += String(values[DIRECTION])+",";
     data += String(values[NOMBRE_DE_PAS_TABLE] * values[NOMBRE_DE_TOUR]);
   }
+  else if (values[MODE] == 8){
+    data += "1,"; // mode magneto
+    data += String(1)+",";
+    data += String(somme_des_pas);
+  }
   return data;
 }
 
 void CameraBluetooth::setParams(int* params){
+  somme_des_pas = 0;
   for (int i=0; i<8; i++){
     this->params[i] = params[i];
+    somme_des_pas+=params[i];
   }
+  
 }
