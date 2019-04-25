@@ -82,7 +82,7 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
     }
 
     @Override
-    public void ajoutBDDvaleursP(Boolean bool) {
+    public void ajoutBDDvaleursP(Integer bool) {
         Button save = getActivity().findViewById(R.id.save_programme);
         Button send = getActivity().findViewById(R.id.send_programme);
         Button charger = getActivity().findViewById(R.id.charger);
@@ -92,8 +92,11 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
         send.setClickable(true);
 
         parametrage.setClickable(true);
-        if(bool.equals(false)){
+        if(bool.equals(1)){
             Toast.makeText(getContext(),"Impossible d'ajouter, supprimez un élément", Toast.LENGTH_LONG).show();
+        }
+        else if (bool.equals(2)){
+            Toast.makeText(getContext(),"Cet élément a écrasé l'élément de même nom", Toast.LENGTH_LONG).show();
         }
         getFragmentManager().beginTransaction().remove(SauvegardeProgramme.this).commit();
     }

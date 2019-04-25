@@ -79,7 +79,7 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
     }
 
     @Override
-    public void ajoutBDDvaleursR(Boolean bool) {
+    public void ajoutBDDvaleursR(Integer bool) {
 
         final Button save = getActivity().findViewById(R.id.save_temps_reel);
         final Button send = getActivity().findViewById(R.id.send_temps_reel);
@@ -87,8 +87,11 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
         save.setClickable(true);
         charger.setClickable(true);
         send.setClickable(true);
-        if(bool.equals(false)){
+        if(bool.equals(1)){
             Toast.makeText(getContext(),"Impossible d'ajouter, supprimez un élément", Toast.LENGTH_LONG).show();
+        }
+        else if (bool.equals(2)){
+            Toast.makeText(getContext(),"Cet élément a écrasé l'élément de même nom", Toast.LENGTH_LONG).show();
         }
         getFragmentManager().beginTransaction().remove(SauvegardeReel.this).commit();
     }
