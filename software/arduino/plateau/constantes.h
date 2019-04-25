@@ -10,3 +10,5 @@
 
 #define PIN_DIR                   25
 #define PIN_STEP                  26
+
+#define LED                       15

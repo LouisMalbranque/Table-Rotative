@@ -7,7 +7,7 @@ class DisconnectCallbacks: public BLEServerCallbacks{
     void onDisconnect(BLEServer* pServer);
 };
 
-void DisconnectCallbacks::onConnect(BLEServer* pServer) { Serial.println( "Client connecté" ); }
+void DisconnectCallbacks::onConnect(BLEServer* pServer) { digitalWrite(LED,HIGH); }
 void DisconnectCallbacks::onConnect(BLEServer* pServer, esp_ble_gatts_cb_param_t *param) {}
 void DisconnectCallbacks::onDisconnect(BLEServer* pServer) { ESP.restart(); }
 
@@ -16,6 +16,9 @@ ESP_server::ESP_server() {
 }
 
 void ESP_server::begin() {
+  pinMode(LED,OUTPUT);
+  digitalWrite(LED,LOW);
+  
   BLEDevice::init("Init");
   pServer = BLEDevice::createServer();
   pService = pServer->createService(SERVICE_UUID);

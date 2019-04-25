@@ -11,3 +11,5 @@
 #define PIN_STEP                  26
 
 #define PIN_APPAREIL              15
+
+#define LED                       15   

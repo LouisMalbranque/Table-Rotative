@@ -18,10 +18,8 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
 class ESP_bluetooth{
   private:
     BLEScan* pBLEScan;
-    
-
     BLEScanResults scanResults;
-    
+    BLEClient* pClient;
   public:
   ESP_bluetooth();
   void begin();
