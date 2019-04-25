@@ -7,22 +7,46 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.application.Activité_n2.AjoutBDD.ajoutBDDVP;
 import com.example.application.Activité_n2.AjoutBDD.ajoutVP;
+import com.example.application.Activité_n2.Fragments.Programmé.Programme;
 import com.example.application.R;
 import com.example.application.objets.valeurProgramme;
 
 public class SauvegardeProgramme extends Fragment implements ajoutVP{
+
     private ajoutBDDVP majoutAsyncTask;
+
+    String accelerationEditText;
+    String vitesseEditText;
+    String directionSwitch;
+    String stepsEditText;
+    String frameEditText;
+    String camera_numberEditText;
+    String pause_between_cameraEditText;
+    String focus_stackingSwitch;
+
+    Button oKButton;
+    EditText idRentre;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.fragment_sauvegarde_programme,container,false);
+        View view = inflater.inflate(R.layout.fragment_sauvegarde_programme,container,false);
 
+        accelerationEditText = getArguments().getString("AccelerationSaveProgramme");
+        vitesseEditText = getArguments().getString("VitesseSaveProgramme");
+        directionSwitch = getArguments().getString("DirectionSaveProgramme");
+        stepsEditText = getArguments().getString("TableStepsSaveProgramme");
+        frameEditText = getArguments().getString("FrameSaveProgramme");
+        camera_numberEditText = getArguments().getString("CameraSaveProgramme");
+        pause_between_cameraEditText = getArguments().getString("TempsEntrePhotosSaveProgramme");
+        focus_stackingSwitch = getArguments().getString("FocusSaveProgramme");
+
+        oKButton = view.findViewById(R.id.sauver);
+        idRentre=view.findViewById(R.id.IDrentre);
 
         return view;
 
@@ -30,50 +54,33 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
     @Override
     public void onStart() {
         super.onStart();
-        final Button save = getActivity().findViewById(R.id.save_programme);
-        final Button send = getActivity().findViewById(R.id.send_programme);
-        final Button charger = getActivity().findViewById(R.id.charger);
-        final Button parametrage=getActivity().findViewById(R.id.parametrage);
-        final EditText accelerationEditText = getActivity().findViewById(R.id.AccelerationProgramme);
-        final EditText vitesseEditText = getActivity().findViewById(R.id.VitesseProgramme);
-        final Switch directionSwitch = getActivity().findViewById(R.id.DirectionProgramme);
-        final EditText stepsEditText = getActivity().findViewById(R.id.StepsProgramme);
-        final EditText frameEditText = getActivity().findViewById(R.id.FrameProgramme);
-        final EditText camera_numberEditText = getActivity().findViewById(R.id.Camera_Number_Programme);
-        final EditText pause_between_cameraEditText = getActivity().findViewById(R.id.Pause_between_camera_Programme);
-        final Switch focus_stackingSwitch = getActivity().findViewById(R.id.Focus_stacking_Programme);
-        final Button oKButton = getView().findViewById(R.id.sauver);
-        final EditText idRentre=getActivity().findViewById(R.id.IDrentre);
 
         majoutAsyncTask=new ajoutBDDVP(this);
-
-        getView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                save.setClickable(true);
-                charger.setClickable(true);
-                send.setClickable(true);
-
-                parametrage.setClickable(true);
-                getFragmentManager().beginTransaction().remove(SauvegardeProgramme.this).addToBackStack(null).commit();
-            }
-        });
 
         oKButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 valeurProgramme nouvelEnregistrement = new valeurProgramme();
-                nouvelEnregistrement.acceleration=accelerationEditText.getText().toString();
-                nouvelEnregistrement.camera_number=camera_numberEditText.getText().toString();
-                    nouvelEnregistrement.direction=directionSwitch.isChecked();
-                nouvelEnregistrement.frame=frameEditText.getText().toString();
+                nouvelEnregistrement.acceleration = accelerationEditText;
+                System.out.println("nouvelle enregistrement : "+nouvelEnregistrement.acceleration);
+                nouvelEnregistrement.camera_number=camera_numberEditText;
+                if (directionSwitch=="1"){
+                    nouvelEnregistrement.direction=true;
+                }else{
+                    nouvelEnregistrement.direction=false;
+                }
+                nouvelEnregistrement.frame=frameEditText;
                 nouvelEnregistrement.id=idRentre.getText().toString();
-                nouvelEnregistrement.speed= vitesseEditText.getText().toString();
-                nouvelEnregistrement.tableSteps=stepsEditText.getText().toString();
-                nouvelEnregistrement.timeBetweenPhotosNumber=pause_between_cameraEditText.getText().toString();
+                nouvelEnregistrement.speed= vitesseEditText;
+                nouvelEnregistrement.tableSteps=stepsEditText;
+                nouvelEnregistrement.timeBetweenPhotosNumber=pause_between_cameraEditText;
 
-                nouvelEnregistrement.focusStacking=focus_stackingSwitch.isChecked();
+                if (focus_stackingSwitch=="1"){
+                    nouvelEnregistrement.focusStacking=true;
+                }else{
+                    nouvelEnregistrement.focusStacking=false;
+                }
 
                 majoutAsyncTask.execute(nouvelEnregistrement);
 
@@ -83,18 +90,9 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
 
     @Override
     public void ajoutBDDvaleursP(Boolean bool) {
-        Button save = getActivity().findViewById(R.id.save_programme);
-        Button send = getActivity().findViewById(R.id.send_programme);
-        Button charger = getActivity().findViewById(R.id.charger);
-        Button parametrage=getActivity().findViewById(R.id.parametrage);
-        save.setClickable(true);
-        charger.setClickable(true);
-        send.setClickable(true);
-
-        parametrage.setClickable(true);
         if(bool.equals(false)){
             Toast.makeText(getContext(),"Impossible d'ajouter, supprimez un élément", Toast.LENGTH_LONG).show();
         }
-        getFragmentManager().beginTransaction().remove(SauvegardeProgramme.this).commit();
+        getFragmentManager().beginTransaction().replace(R.id.fragment, Programme.programme).addToBackStack(null).commit();
     }
 }

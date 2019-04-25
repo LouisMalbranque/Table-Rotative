@@ -25,7 +25,7 @@ public class ViewHolderReel {
         acceleration = view.findViewById(R.id.accelerationReel);
         nbRotation = view.findViewById(R.id.rotationReel);
         steps = view.findViewById(R.id.stepsReel);
-       rotationMode = view.findViewById(R.id.choixRotationReel);
+        rotationMode = view.findViewById(R.id.choixRotationReel);
         direction = view.findViewById(R.id.directionReel);
         selection = view.findViewById(R.id.okReel);
         suppression= view.findViewById(R.id.deleteReel);

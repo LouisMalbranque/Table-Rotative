@@ -91,14 +91,11 @@ public class Programme extends Fragment  {
             focus_stackingSwitch.setChecked(getArguments().getBoolean("focus"));
         }
 
-        System.out.println(focus_stackingSwitch.isChecked());
-
         if (focus_stackingSwitch.isChecked()){
             parametrage.setVisibility(View.VISIBLE);
         }else{
             parametrage.setVisibility(View.INVISIBLE);
         }
-
 
         focus_stackingSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,10 +117,6 @@ public class Programme extends Fragment  {
         });
 
 
-
-
-
-
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,12 +127,19 @@ public class Programme extends Fragment  {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                save.setClickable(false);
-                charger.setClickable(false);
-                send.setClickable(false);
 
-                parametrage.setClickable(false);
-                getFragmentManager().beginTransaction().add(R.id.container, Sauv_frag ).addToBackStack(null).commit();
+                final Bundle bundle = new Bundle();
+                bundle.putString("AccelerationSaveProgramme", accelerationEditText.getText().toString());
+                bundle.putString("VitesseSaveProgramme", vitesseEditText.getText().toString());
+                bundle.putBoolean("DirectionSaveProgramme", directionSwitch.isChecked());
+                bundle.putString("TableStepsSaveProgramme", stepsEditText.getText().toString());
+                bundle.putString("FrameSaveProgramme", frameEditText.getText().toString());
+                bundle.putString("CameraSaveProgramme", camera_numberEditText.getText().toString());
+                bundle.putString("TempsEntrePhotosSaveProgramme", pause_between_cameraEditText.getText().toString());
+                bundle.putBoolean("FocusSaveProgramme", focus_stackingSwitch.isChecked());
+                Sauv_frag.setArguments(bundle);
+
+                getFragmentManager().beginTransaction().replace(R.id.fragment, Sauv_frag ).addToBackStack(null).commit();
             }
 
         });
@@ -192,8 +192,6 @@ public class Programme extends Fragment  {
                 }
 
                 System.out.println(data);
-
-
 
                 peripherique.envoyer(data);
                 getFragmentManager().beginTransaction().remove(Programme.programme).addToBackStack(null).commit();

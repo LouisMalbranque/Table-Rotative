@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    tools:context=".Activité_n2.MainActivity">
+    android:background="@color/colorPrimaryDark">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -230,13 +231,10 @@
             android:id="@+id/focusStackingChoix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="128dp"
-            android:text="Switch"
 
-            app:layout_constraintStart_toEndOf="@+id/nomDirection"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Switch"
+            app:layout_constraintStart_toEndOf="@+id/FocusStacking"
+            app:layout_constraintTop_toBottomOf="@+id/directionProgramme" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
