@@ -32,7 +32,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:text="Boitier Commande"
+        android:text="Appareil à connecter"
         android:textAlignment="center"
         android:textColor="@android:drawable/screen_background_light"
         android:textSize="24sp"

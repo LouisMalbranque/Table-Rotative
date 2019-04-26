@@ -216,14 +216,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
             android:background="@android:color/holo_red_dark"
             android:text="Envoyer"
             android:textColor="@android:color/background_light"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/charger"
             app:layout_constraintEnd_toStartOf="@+id/charger"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/save_temps_reel"
@@ -232,7 +230,7 @@
         <Space
             android:id="@+id/space2"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="116dp"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/Rotation_number_TempsReel" />
 
