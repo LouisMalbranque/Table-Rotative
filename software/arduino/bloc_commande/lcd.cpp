@@ -3,17 +3,23 @@
 Lcd::Lcd() {
 
 }
+
+// initialise le lcd
 void Lcd::begin() {
   screen.begin( SSD1306_SWITCHCAPVCC, 0x3C );
   screen.clearDisplay();
   //resetValues();
   //display();
 }
+
+// réinitualise les valeurs du lcd
 void Lcd::resetValues(){
   for (int i=0;i<MAXIMUM_NUMBER_OF_VALUES;i++){
     values[i]=0;
   }
 }
+
+// dessine un symbole bluetootj
 void Lcd::symboleBluetooth() {
   screen.drawLine( 117, 4, 117, 12, WHITE );
   screen.drawLine( 117, 8 , 115, 10, WHITE );
@@ -24,18 +30,21 @@ void Lcd::symboleBluetooth() {
   screen.drawLine( 118, 12 , 120, 10, WHITE );
 }
 
+// affiche la fleche droite aux abcisses et ordonnées données
 void Lcd::flecheDroite(int absG, int ordB, int absD, int ordH) {
   screen.drawLine( absG, ordB, absD, ordH, WHITE );
   screen.drawLine( absD, ordB, absD - 4, ordB + 2, WHITE);
   screen.drawLine( absD, ordB, absD - 4, ordB - 2, WHITE);
 }
 
+// affiche la fleche gauche aux abcisses et ordonnées données
 void Lcd::flecheGauche(int absG, int ordB, int absD, int ordH) {
   screen.drawLine( absG, ordB, absD, ordH, WHITE );
   screen.drawLine( absG, ordB, absD - 8, ordH + 2, WHITE);
   screen.drawLine( absG, ordB, absD - 8, ordH - 2, WHITE);
 }
 
+// affiche les données
 void Lcd::display() {
 
   screen.setTextSize(2);
@@ -114,6 +123,7 @@ void Lcd::display() {
   screen.display();
 }
 
+// donne ses valeurs au LCD pour l'affichage
 void Lcd::setValues(int *values) {
   for (int i = 0; i < MAXIMUM_NUMBER_OF_VALUES; i++) {
     this->values[i] = values[i];

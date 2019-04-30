@@ -1,6 +1,6 @@
-#include "ESP_bluetooth.h"
+#include "BLE_client.h"
 
-
+// callback qui écrit les propriétés d'un périqphérique BLE quand il est notifié
 static void notifyCallback(
   BLERemoteCharacteristic* pBLERemoteCharacteristic,
   uint8_t* pData,
@@ -14,17 +14,19 @@ static void notifyCallback(
     Serial.println((char*)pData);
 }
 
+// callback qui écrit les propriété d'un service détecté
 void MyAdvertisedDeviceCallbacks::onResult(BLEAdvertisedDevice advertisedDevice) {
     Serial.print("BLE Advertised Device found: ");
     Serial.println(advertisedDevice.toString().c_str());
 
   } // onResult
 
-ESP_bluetooth::ESP_bluetooth(){
-  
+BLE_client::BLE_client(){
+  // constructeur par défaut
 }
 
-void ESP_bluetooth::begin(){  
+// initie le client BLE
+void BLE_client::begin(){  
   BLEDevice::init("");
   
   pBLEScan = BLEDevice::getScan(); //create new scan
@@ -36,36 +38,28 @@ void ESP_bluetooth::begin(){
 }
 
 
-void ESP_bluetooth::scan(){
+// scan les service BLE disponibles pendant 5 secondes
+void BLE_client::scan(){
     Serial.println("Starting scan");
     scanResults = pBLEScan->start(5, false);
     Serial.println("Scan finished");
-    
 }
 
-
-boolean ESP_bluetooth::connect(PeripheriqueBluetooth *periph){
+// connecte le client ) un périphérique bluetooth periph donné par référence
+boolean BLE_client::connect(PeripheriqueBluetooth *periph){
   pClient  = BLEDevice::createClient();
   
-  
-  Serial.print("scan Count");
-  Serial.println(scanResults.getCount());
   Serial.print("Starting new connection to ");
   Serial.println(periph->getServiceUUID().toString().c_str());
   for (int i=0; i<scanResults.getCount(); i++){
     
-    BLEAdvertisedDevice advertisedDevice = scanResults.getDevice(i);
-    Serial.print("haveServiceUUID ");
-    Serial.println(advertisedDevice.haveServiceUUID());
+    BLEAdvertisedDevice advertisedDevice = scanResults.getDevice(i); // parcourt la liste des périphériques détectés
 
-    Serial.print("isAdvertisingService ");
-    Serial.println(advertisedDevice.isAdvertisingService(periph->getServiceUUID()));
     if (advertisedDevice.haveServiceUUID() && advertisedDevice.isAdvertisingService(periph->getServiceUUID())){
-      
+        // si le bon périphérique est trouvé, on s'y connecte
         BLEAddress *pServerAddress;
         pServerAddress = new BLEAddress(advertisedDevice.getAddress());
         
-        Serial.println("before connect");
         pClient->disconnect();
         pClient->connect(*pServerAddress);// if you pass BLEAdvertisedDevice instead of address, it will be recognized type of peer device address (public or private)
         delay(1000);
@@ -102,6 +96,7 @@ boolean ESP_bluetooth::connect(PeripheriqueBluetooth *periph){
         if(characteristics->canNotify())
           characteristics->registerForNotify(notifyCallback);
 
+        // donne au périphérique les characteristiques
         periph->setCharacteristics(characteristics); 
         periph->connected = true;
         return true;

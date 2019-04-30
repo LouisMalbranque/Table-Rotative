@@ -10,8 +10,8 @@ public:
 	~Peripherique();
 
 
-	virtual void write(String data) = 0;
-	virtual String read() = 0;
-	virtual String createDatagramme(int* data) = 0;
+	virtual void write(String data) = 0; // méthode abstraite pour l'écriture de données dans le périphérque 
+	virtual String read() = 0; // méthode abstrataite pour la lecture depuis le périphérique
+	virtual String createDatagramme(int* data) = 0; // méthode abstraite de création de datagramme spécifique pour le périphérique en fonctions des valeurs reçues
 
 };

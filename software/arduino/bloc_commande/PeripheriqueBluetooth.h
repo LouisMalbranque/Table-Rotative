@@ -7,25 +7,24 @@
 class PeripheriqueBluetooth: public Peripherique
 {
 private:
-	BLEUUID serviceUUID;
-  BLEUUID charUUID;
+	BLEUUID serviceUUID; // UUID de service
+  BLEUUID charUUID; // UUID de charactéristique
 public:
   BLERemoteCharacteristic *characteristics;
   bool connected;
-  PeripheriqueBluetooth();
-	PeripheriqueBluetooth(const char* serviceUUID, const char* charUUID);
-	~PeripheriqueBluetooth();
 
-	void begin(); 
-  void write(String data);
-  String read();  
-	String createDatagramme(int* values);
+  PeripheriqueBluetooth(); // constructeur par défaut
+	PeripheriqueBluetooth(const char* serviceUUID, const char* charUUID); // conctructeur qui donne ses UUID au périphérique
+	~PeripheriqueBluetooth(); // destructeur par défaut
+
+  void write(String data); // écrit dans les charactéristiques du périphérique
+  String read(); // lis depuis les charactéristiques du préiphérque
+	String createDatagramme(int* values); // crée le datagramme à partir des valeurs reçues (renvoie un string vide par défaut)
 
 
 
-  void setCharacteristics(BLERemoteCharacteristic *characteristics);
-  String getData();
-  BLEUUID getServiceUUID();
-  BLEUUID getCharUUID();
+  void setCharacteristics(BLERemoteCharacteristic *characteristics); // donnes ses charactéristiques
+  BLEUUID getServiceUUID(); // renvoie l'UUID de service
+  BLEUUID getCharUUID(); // renvoie l'UUID de charactéristiques
 
 };
