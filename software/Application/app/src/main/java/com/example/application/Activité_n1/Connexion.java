@@ -25,6 +25,12 @@ import com.example.application.R;
 import java.util.ArrayList;
 import java.util.Set;
 
+/*
+Activité 1 ayant pour but de choisir le bon périphérique parmi une liste de périphériques connus appareillé en bluetooth
+Lorsque l'on click sur le bon périphérique, il s'affiche au dessus du bouton 'connecter' et on peut appuyer ainsi sur ce bouton pour
+aller à l'activité suivante
+
+ */
 
 public class Connexion extends AppCompatActivity {
     private final static int REQUEST_CODE_ENABLE_BLUETOOTH = 0;
@@ -122,6 +128,10 @@ public class Connexion extends AppCompatActivity {
             }
         }
     }
+
+    /*
+    Cette fonction permet d'afficher une notification lorsque le bluetooth du téléphone est activé ou non
+     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)

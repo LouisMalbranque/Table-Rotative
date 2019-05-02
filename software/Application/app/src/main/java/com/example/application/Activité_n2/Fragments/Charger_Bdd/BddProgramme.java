@@ -23,17 +23,14 @@ import com.example.application.objets.valeurProgramme;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
+ Permet de charger des informations gardées en mémoire lors d'une ancienne sauvegarde
  */
 
 public class BddProgramme extends Fragment implements chargmentVP, SelectionProgramme {
 
     public static BddProgramme bddProgramme = new BddProgramme();
-
-
     private chargementBDDVP mBDDAsyncTask;
     private ListView mListView;
-
     chargmentVP mListener2=this;
 
     public BddProgramme() {
@@ -65,29 +62,30 @@ public class BddProgramme extends Fragment implements chargmentVP, SelectionProg
             transaction.replace(R.id.fragment,fragment).addToBackStack(null).commit();
         }
 
-            final ValeurProgrammeAdapter adapter = new ValeurProgrammeAdapter(listeVP);
-            mListView.setAdapter(adapter);
+        final ValeurProgrammeAdapter adapter = new ValeurProgrammeAdapter(listeVP);
+        mListView.setAdapter(adapter);
 
-            adapter.setmListener(this);
+        adapter.setmListener(this);
 
-            mListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    System.out.println("test1");
-                }
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("test1");
+            }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    System.out.println("nothing");
-                }
-            });
-            mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(getContext(), position, Toast.LENGTH_SHORT).show();
-                }
-            });
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                System.out.println("nothing");
+            }
+        });
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getContext(), position, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
@@ -96,6 +94,9 @@ public class BddProgramme extends Fragment implements chargmentVP, SelectionProg
         return super.getContext();
     }
 
+    /*
+    Permet de selectionner les informations concernant le mode Programmé pour les réutiliser lors du mode programmé
+     */
     @Override
     public void onSelection(valeurProgramme valeurP) {
         final FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -115,6 +116,9 @@ public class BddProgramme extends Fragment implements chargmentVP, SelectionProg
 
     }
 
+    /*
+    Est appelé lors du click sur le bouton delete present sur le fragment et permet ainsi de revenir sur le mode programmé
+     */
     @Override
     public void onDelete() {
         getFragmentManager().beginTransaction().replace(R.id.fragment, Programme.programme).addToBackStack(null).commit();

@@ -19,10 +19,10 @@ import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.ProgrammeOrder;
 import com.example.application.R;
 
-
 /**
- * A simple {@link Fragment} subclass.
+Fragment utilisé pour le mode programmé
  */
+
 public class Programme extends Fragment  {
 
     private Peripherique peripherique;
@@ -46,9 +46,6 @@ public class Programme extends Fragment  {
         // Required empty public constructor
     }
 
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -56,12 +53,9 @@ public class Programme extends Fragment  {
 
         peripherique=Peripherique.peripherique;
 
-        EditText text = v.findViewById(R.id.text);
-
         final Button save = v.findViewById(R.id.save_programme);
         final Button send = v.findViewById(R.id.send_programme);
         final Button charger = v.findViewById(R.id.charger);
-
         final EditText accelerationEditText = v.findViewById(R.id.AccelerationProgramme);
         final EditText vitesseEditText = v.findViewById(R.id.VitesseProgramme);
         final Switch directionSwitch = v.findViewById(R.id.DirectionProgramme);
@@ -74,6 +68,9 @@ public class Programme extends Fragment  {
         focus_stackingSwitch = v.findViewById(R.id.Focus_stacking_Programme);
         parametrage = v.findViewById(R.id.parametrage);
 
+        /*
+        Permet de recuperer les infos de la bdd présent dans le fragment charger_Bdd
+         */
         if(getArguments()!=null){
             final String speed = getArguments().getString("vitesse");
             vitesseEditText.setText(speed);
@@ -97,6 +94,9 @@ public class Programme extends Fragment  {
             parametrage.setVisibility(View.INVISIBLE);
         }
 
+        /*
+        switch du focus stacking
+         */
         focus_stackingSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +108,9 @@ public class Programme extends Fragment  {
             }
         });
 
+        /*
+        parametre utilisé pour le focus stacking et ouvre sur un nouveau fragment
+         */
         parametrage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +120,9 @@ public class Programme extends Fragment  {
         });
 
 
+        /*
+        Permet de lancer le fragment charger et de récuperer des informations présent dans la bdd
+         */
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,10 +130,12 @@ public class Programme extends Fragment  {
             }
         });
 
+        /*
+        Permet de le fragment 'sauvegarder' les informations du mode Programmé
+         */
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 final Bundle bundle = new Bundle();
                 bundle.putString("AccelerationSaveProgramme", accelerationEditText.getText().toString());
                 bundle.putString("VitesseSaveProgramme", vitesseEditText.getText().toString());
@@ -144,6 +152,9 @@ public class Programme extends Fragment  {
 
         });
 
+        /*
+        Envoie les informations du mode programmé au boitier de commande
+         */
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,7 +171,6 @@ public class Programme extends Fragment  {
                 ListOrder.list.add(programmeOrder);
 
                 Menu.orderAdapter.notifyDataSetChanged();
-
 
                 data="";
                 data+=programmeOrder.getId()+",";

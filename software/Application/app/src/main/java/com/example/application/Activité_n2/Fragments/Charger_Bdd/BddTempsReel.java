@@ -10,27 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.application.Activité_n2.Adapter.ValeurProgrammeAdapter;
 import com.example.application.Activité_n2.Adapter.ValeurReelAdapter;
-import com.example.application.Activité_n2.ChargementBDD.chargementBDDVP;
 import com.example.application.Activité_n2.ChargementBDD.chargementBDDVR;
-import com.example.application.Activité_n2.ChargementBDD.chargmentVP;
 import com.example.application.Activité_n2.ChargementBDD.chargmentVR;
-import com.example.application.Activité_n2.Fragments.Programmé.Programme;
 import com.example.application.Activité_n2.Fragments.Temps_réel.TempsReel;
-import com.example.application.Activité_n2.Interface.SelectionProgramme;
 import com.example.application.Activité_n2.Interface.SelectionReel;
 import com.example.application.R;
-import com.example.application.objets.valeurProgramme;
 import com.example.application.objets.valeurReel;
 
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
+ Permet de charger des informations gardées en mémoire lors d'une ancienne sauvegarde
  */
 public class BddTempsReel extends Fragment implements chargmentVR, SelectionReel {
 
@@ -101,6 +94,9 @@ public class BddTempsReel extends Fragment implements chargmentVR, SelectionReel
         return super.getContext();
     }
 
+    /*
+    Permet de selectionner les informations concernant le mode Temps réel pour les réutiliser lors du mode Temps réel
+     */
     @Override
     public void onSelection(valeurReel valeurR) {
         final FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -118,6 +114,9 @@ public class BddTempsReel extends Fragment implements chargmentVR, SelectionReel
 
     }
 
+    /*
+    Est appelé lors du click sur le bouton delete present sur le fragment et permet ainsi de revenir sur le mode temps réel
+     */
     @Override
     public void onDelete() {
         getFragmentManager().beginTransaction().replace(R.id.fragment, TempsReel.temps_reel).addToBackStack(null).commit();

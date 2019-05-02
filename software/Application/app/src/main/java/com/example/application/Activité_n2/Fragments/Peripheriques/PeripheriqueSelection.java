@@ -17,6 +17,17 @@ import com.example.application.R;
 
 import java.util.ArrayList;
 
+/*
+Ce fragment est appelé en 1er et sert à choisir quel(s) caméra(s) ou focus l'utilisateur compte utiliser
+les class utilisés sont :
+'Périphérique' pour avoir le nom et l'état des camera(s)
+'PeripheriqueSelectionAdapter' pour avoir l'affichage souhaité des différents périphériques
+
+Une fois que les périphériques ont été choisis, on appuie sur le bouton connecter qui envoie une trame au boiter commande grace
+à la fonction envoyer dans la class Péripherique de l'activité 1.
+la class suivante est donc le menu
+ */
+
 public class PeripheriqueSelection extends Fragment {
 
     public static PeripheriqueSelection peripheriqueSelection = new PeripheriqueSelection();
