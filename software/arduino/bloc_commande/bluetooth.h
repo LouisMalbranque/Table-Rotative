@@ -1,12 +1,9 @@
 #include "arduino.h"
 #include "constantes.h"
 
-#ifdef HC05
-#include <SoftwareSerial.h>
-#else
 #include "BluetoothSerial.h"
-#endif
 
+/*
 
 #define ACCELERATION 0
 #define SPEED 1
@@ -15,27 +12,28 @@
 #define DEGRES 4
 #define PAUSE 5
 
+*/
+
+/*
+
+classe de gestion de la communication bluetooth avec le téléphone
+
+*/
 
 class Bluetooth
 {
   private:
-    #ifdef HC05
-    SoftwareSerial bt = *(new SoftwareSerial(A2,A3));
-    #else
     BluetoothSerial bt;
-    #endif
     String data;
     int values[MAXIMUM_NUMBER_OF_VALUES];
   public:
     Bluetooth();
-    boolean receive();
-    void begin();
-    int getDataLength();
-    int* decode();
-    int getValue(int i);
-    int* getValues();
-    void print(String data);
-    boolean isFull();
-    void resetValues();
-    String getData();
+    boolean receive();          // reception des données, renvoie true si une data était dispoblible et a été reçue
+    void begin();               // création des objets
+    int getDataLength();        // renvoie la longueur de la chaine reçue
+    int* decode();              // décode le message reçu (string) en tableau d'int et renvoie le tableau
+    int getValue(int i);        // renvoie la valeur à la position i dans le tableau décodé
+    int* getValues();           // renvoie le tableau d'int décodé
+    void print(String data);    // écrit sur le téléphone
+    String getData();           // renvoie la data reçue
 };

@@ -5,6 +5,6 @@
 class MoteurBluetooth : public PeripheriqueBluetooth
 {
 public:
-  using PeripheriqueBluetooth::PeripheriqueBluetooth;  
-  String createDatagramme(int* values);
+  using PeripheriqueBluetooth::PeripheriqueBluetooth;  // utilise les contructeurs de PeripheriqueBluetooth
+  String createDatagramme(int* values); // crée le datagramme avec les valeurs reçues
 };
