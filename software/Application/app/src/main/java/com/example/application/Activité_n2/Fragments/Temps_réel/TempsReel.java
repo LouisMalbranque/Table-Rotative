@@ -83,7 +83,7 @@ public class TempsReel extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.fragment, BddTempsReel.bddTempsReel).addToBackStack(null).commit();
             }
         });
-
+        
 
         /*
         Permet de choisir si l'on veut envoyer un nombre de tours de table ou un temps de fonctionnement du moteur
