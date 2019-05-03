@@ -6,6 +6,11 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+/*
+Class appelée pour que l'on puisse cliquer sur un périphérique lorsque l'on se trouve sur la page de connexion
+Elle permet d'identifier le bon périphérique cliqué par l'utilisateur
+ */
+
 public class RecyclerTouch implements RecyclerView.OnItemTouchListener {
 
     private GestureDetector gestureDetector;
@@ -38,13 +43,13 @@ public class RecyclerTouch implements RecyclerView.OnItemTouchListener {
         }
         return false;
     }
-
     @Override
     public void onTouchEvent(RecyclerView rv, MotionEvent e) {
     }
     @Override
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
     }
+
     public interface ClickListener {
         void onClick(View view, int position);
 

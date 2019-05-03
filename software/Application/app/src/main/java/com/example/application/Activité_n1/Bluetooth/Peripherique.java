@@ -17,21 +17,29 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
+/*
+la class périphérique sert de communication entre le téléphone et le boitier de commande
+Plusieurs fonctions sont présentes comme :
+'envoyer' qui permet d'envoyer des informations du téléphone vers le boitier de commande
+'decode' qui permet de decoder les informations reçues du boitier et un possible affichage sur le téléphone
+connecter et decconecter sont appeler lors de la connexion au boitier de commande :
+    avant chaque connexion, une deconnexion de sécurité est appelé puis la connexion avec le boitier de commande se fait
+ */
+
 
 public class Peripherique {
     public static Peripherique peripherique;
 
+
     private String nom;
     private String adresse;
-    private Handler handler = new Handler();
-    private BluetoothDevice device = null;
-    private BluetoothSocket socket = null;
+    private Handler handler;
+    private BluetoothDevice device;
+    private BluetoothSocket socket;
     private InputStream receiveStream = null;
     private OutputStream sendStream = null;
     private TReception tReception;
-    public final static int CODE_RECEPTION = 1;
     public boolean isConnected = false;
-    public String receiveMessage;
 
 
     public Peripherique(BluetoothDevice device, Handler handler)
@@ -70,23 +78,6 @@ public class Peripherique {
     public String getNom()
     {
         return nom;
-    }
-
-    public String getAdresse()
-    {
-        return adresse;
-    }
-
-    public boolean estConnecte()
-    {
-        // TODO
-
-        return false;
-    }
-
-    public void setNom(String nom)
-    {
-        this.nom = nom;
     }
 
     public String toString()

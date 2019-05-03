@@ -7,13 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.Activité_n2.Fragments.Focus.FocusParametre;
 import com.example.application.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ Est appelé sur le fragment focus stacking et permet de faire rotater le moteur en fonction de la bonne caméra indiqué par le spinner
+ sur le mode focus stacking
  */
 public class Magneto extends Fragment {
 
@@ -39,6 +39,9 @@ public class Magneto extends Fragment {
         forward2 = v.findViewById(R.id.forward2);
 
 
+        /*
+        fleche pour avancer de 10 pas dans le sens horaire
+         */
         forward2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +65,9 @@ public class Magneto extends Fragment {
                 Peripherique.peripherique.envoyer(data);
             }
         });
+        /*
+        fleche pour avancer de 1 pas dans le sens horaire
+         */
         forward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +90,9 @@ public class Magneto extends Fragment {
                 Peripherique.peripherique.envoyer(data);
             }
         });
+        /*
+        fleche pour avancer de 10 pas dans le sens anti-horaire
+         */
         backward2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +115,9 @@ public class Magneto extends Fragment {
                 Peripherique.peripherique.envoyer(data);
             }
         });
+        /*
+        fleche pour avancer de 1 pas dans le sens anti-horaire
+         */
         backward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

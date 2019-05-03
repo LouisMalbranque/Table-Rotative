@@ -27,8 +27,12 @@ import com.example.application.R;
 import java.util.ArrayList;
 
 /**
- * A simple {@link Fragment} subclass.
+Dans ce fragment, divers boutons, spinners et recyclerView sont présents :
+    - le spinners sert à choisir parmi les 2 modes programmés ou tems réel
+    - les boutons sont la pour 'charger', 'sauvegarder' et 'envoyer'
+    - le recyclerView est la pour l'affichage des différents modes une fois les paramétres (présent dans un autre fragment) ont été choisis
  */
+
 public class Menu extends Fragment {
 
     static public Menu menu = new Menu();
@@ -37,17 +41,17 @@ public class Menu extends Fragment {
     static public Spinner spinnerMode;
     static public ArrayList<String> spinnerModeItems = new ArrayList<String>();
     static boolean spinnerFirstTime=true;
+
     static public OrderAdapter orderAdapter;
-    static public InstructionAdapter instructionAdapter;
     static public RecyclerView listOrder;
-    static public View view;
-    static public ImageButton deleteButton;
+
+    static public InstructionAdapter instructionAdapter;
     static public RecyclerView listInfos;
 
+    static public View view;
+    static public ImageButton deleteButton;
     static public Button pauseButton;
     static public Button moduleButton;
-
-
     static public Button peripheriqueButton;
 
     public Menu() {
@@ -71,6 +75,8 @@ public class Menu extends Fragment {
         peripheriqueButton = v.findViewById(R.id.modules_menu);
         peripherique= Peripherique.peripherique;
 
+
+        //Permet de gerer la pause et d'envoyer l'information au boitier
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +94,8 @@ public class Menu extends Fragment {
 
             }
         });
+
+        //Permet de gerer le changement de fragment entre le menu et les périphériques
         peripheriqueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +103,9 @@ public class Menu extends Fragment {
             }
         });
 
+        /*
+        initialise les adapteur présent dans le menu
+         */
         if (orderAdapter==null){
             orderAdapter = new OrderAdapter(getContext(),ListOrder.list);
         }
@@ -102,7 +113,6 @@ public class Menu extends Fragment {
         if (instructionAdapter==null){
             instructionAdapter = new InstructionAdapter(getContext(),null);
         }
-
 
         if (spinnerFirstTime){
             spinnerModeItems.add("Nouvelle Commande");
@@ -112,6 +122,9 @@ public class Menu extends Fragment {
             spinnerFirstTime=false;
         }
 
+        /*
+        spinner custom pour les différents menu et permet de changer de fragments en fonction du bon spinner
+         */
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.custom_spinner, spinnerModeItems);
         adapter.setDropDownViewResource(R.layout.custom_spinner);
         spinnerMode.setAdapter(adapter);
@@ -138,16 +151,21 @@ public class Menu extends Fragment {
             }
         });
 
-
+        /*
+        adapter de la liste des commandes en fonctions des 2 menu
+         */
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         listOrder.setLayoutManager(layoutManager);
         listOrder.setItemAnimator( new DefaultItemAnimator());
         listOrder.setAdapter(orderAdapter);
 
+
+        /*
+        Permet de quitter le container contenant les différents infos
+         */
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Menu.instructionAdapter.instructionList = null;
                 deleteButton.setVisibility(View.INVISIBLE);
                 view.setVisibility(View.INVISIBLE);
@@ -155,8 +173,10 @@ public class Menu extends Fragment {
             }
         });
 
+        /*
+        adapter de la liste des différentes infos recu du boitier de commande dans la fonction 'decode' de l'activité 1
+         */
         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(getContext());
-
         listInfos.setLayoutManager(layoutManager1);
         listInfos.setItemAnimator( new DefaultItemAnimator());
         listInfos.setAdapter(instructionAdapter);

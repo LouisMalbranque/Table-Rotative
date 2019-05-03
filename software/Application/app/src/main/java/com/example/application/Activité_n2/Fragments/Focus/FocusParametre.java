@@ -16,41 +16,40 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.application.Activité_n2.Adapter.CameraAdapter;
 import com.example.application.Activité_n2.Camera.Camera;
 import com.example.application.Activité_n1.Bluetooth.Peripherique;
 import com.example.application.Activité_n2.Fragments.Peripheriques.PeripheriqueSelection;
 import com.example.application.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
+ Est appelé une fois qu'on se trouve sur le Mode programmé et qu'on selectionne le bouton paramètre
+ Permet de programmer le focus stacking des différents caméra connectés au préalable
  */
+
 public class FocusParametre extends Fragment {
 
-
-
     static public FocusParametre focusParametre = new FocusParametre();
-    static public Button sendFocus;
-    static public Button reset;
     static public int compteurPas;
     static public TextView compteur;
     static public Spinner spinnerCamera;
     static boolean spinnerFirstTime=true;
-    static public ArrayList<String> spinnerCameraItems = new ArrayList<String>();
     static public int numeroCamera;
-    static public List<Integer> indiceCamera = new ArrayList<>();
+
     static public CameraAdapter cameraAdapter;
     static public RecyclerView listCamera;
 
     static public ImageButton ajoutPhotoFocus;
     static public ImageButton deletePhotoFocus;
 
+    static public Button valider;
+    static public Button reset;
     static public Button sendPhotoFocus;
 
+    static public ArrayList<String> spinnerCameraItems = new ArrayList<String>();
+    static public List<Integer> indiceCamera = new ArrayList<>();
     static public List<Camera> cameraList = new ArrayList<>();
 
     public FocusParametre() {
@@ -63,7 +62,9 @@ public class FocusParametre extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_focus_parametre, container, false);
-        sendFocus = v.findViewById(R.id.sendFocus);
+
+
+        valider = v.findViewById(R.id.sendFocus);
         reset = v.findViewById(R.id.reset);
         compteur = v.findViewById(R.id.compteur);
         compteur.setEnabled(false);
@@ -73,6 +74,9 @@ public class FocusParametre extends Fragment {
         deletePhotoFocus=v.findViewById(R.id.DeletePhotoFocus);
         sendPhotoFocus = v.findViewById(R.id.sendPhotoFocus);
 
+        /*
+        initialisation du spinner permettant de choisir la caméra ayant le focus stacking
+         */
         if (spinnerFirstTime){
             for (int i=0;i<9;i++){
                 if (PeripheriqueSelection.listPeripheriques.get(i+10).isConnecte()){
@@ -80,16 +84,6 @@ public class FocusParametre extends Fragment {
                     indiceCamera.add(i);
                 }
             }
-            /*
-            spinnerCameraItems.add("Camera 2");
-            spinnerCameraItems.add("Camera 3");
-            spinnerCameraItems.add("Camera 4");
-            spinnerCameraItems.add("Camera 5");
-            spinnerCameraItems.add("Camera 6");
-            spinnerCameraItems.add("Camera 7");
-            spinnerCameraItems.add("Camera 8");
-            spinnerCameraItems.add("Camera 9");
-            */
 
             for (int i = 0; i<9;i++){
                 cameraList.add(new Camera());
@@ -99,6 +93,9 @@ public class FocusParametre extends Fragment {
             spinnerFirstTime=false;
         }
 
+        /*
+        ajouter une rotation avec un maximum de 8 rotation car il y a 9 photo focus possible
+         */
         ajoutPhotoFocus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +105,9 @@ public class FocusParametre extends Fragment {
                 }
             }
         });
+        /*
+        supprimer une rotation avec un minimum de 1 rotation possible
+         */
         deletePhotoFocus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,6 +119,9 @@ public class FocusParametre extends Fragment {
         });
 
 
+        /*
+        initialiser la liste d'affichage des rotations de caméra
+         */
         if (cameraAdapter==null){
             cameraAdapter = new CameraAdapter(getContext(),cameraList.get(0).param);
             cameraAdapter.nombrePhotoFocus=1;
@@ -128,6 +131,7 @@ public class FocusParametre extends Fragment {
         listCamera.setLayoutManager(layoutManager);
         listCamera.setItemAnimator( new DefaultItemAnimator());
         listCamera.setAdapter(cameraAdapter);
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.custom_spinner, spinnerCameraItems);
         adapter.setDropDownViewResource(R.layout.custom_spinner);
@@ -155,6 +159,9 @@ public class FocusParametre extends Fragment {
         });
 
 
+        /*
+        envoie les paramètres de rotation au boitier de commande qui les envera à la caméra sélectionner par le spinner
+         */
         sendPhotoFocus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,13 +178,19 @@ public class FocusParametre extends Fragment {
             }
         });
 
-        sendFocus.setOnClickListener(new View.OnClickListener() {
+        /*
+        Sert à retourner sur le fragment mode Programmé une fois que les paramètres du focus stacking ont été choisis
+         */
+        valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().remove(FocusParametre.focusParametre).addToBackStack(null).commit();
             }
         });
 
+        /*
+        Permet de réinitialiser les pas lorsque l'on a appuyé sur des touches du magnéto
+         */
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

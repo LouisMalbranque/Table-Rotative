@@ -15,6 +15,9 @@ import com.example.application.Activité_n2.Fragments.Programmé.Programme;
 import com.example.application.R;
 import com.example.application.objets.valeurProgramme;
 
+/**
+ * Permet de sauvegarder les information du Mode Prorgrammé en ajoutant un texte et en valider grace au bouton ok
+ */
 public class SauvegardeProgramme extends Fragment implements ajoutVP{
 
     private ajoutBDDVP majoutAsyncTask;
@@ -27,7 +30,6 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
     String camera_numberEditText;
     String pause_between_cameraEditText;
     Boolean focus_stackingSwitch;
-
     Button oKButton;
     EditText idRentre;
 
@@ -44,13 +46,15 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
         camera_numberEditText = getArguments().getString("CameraSaveProgramme");
         pause_between_cameraEditText = getArguments().getString("TempsEntrePhotosSaveProgramme");
         focus_stackingSwitch = getArguments().getBoolean("FocusSaveProgramme");
-
         oKButton = view.findViewById(R.id.sauver);
         idRentre=view.findViewById(R.id.IDrentre);
 
         return view;
 
     }
+    /*
+    lors de l'appuie sur le bouton ok, on enregistre les paramètres du mode programmé
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -65,17 +69,13 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
                 nouvelEnregistrement.acceleration = accelerationEditText;
                 System.out.println("nouvelle enregistrement : "+nouvelEnregistrement.acceleration);
                 nouvelEnregistrement.camera_number=camera_numberEditText;
-
-                    nouvelEnregistrement.direction=directionSwitch;
-
+                nouvelEnregistrement.direction=directionSwitch;
                 nouvelEnregistrement.frame=frameEditText;
                 nouvelEnregistrement.id=idRentre.getText().toString();
                 nouvelEnregistrement.speed= vitesseEditText;
                 nouvelEnregistrement.tableSteps=stepsEditText;
                 nouvelEnregistrement.timeBetweenPhotosNumber=pause_between_cameraEditText;
-
-
-                    nouvelEnregistrement.focusStacking=focus_stackingSwitch;
+                nouvelEnregistrement.focusStacking=focus_stackingSwitch;
 
 
                 majoutAsyncTask.execute(nouvelEnregistrement);
@@ -84,6 +84,9 @@ public class SauvegardeProgramme extends Fragment implements ajoutVP{
         });
     }
 
+    /*
+    Check si la bdd est pleine ou si l'élément existait déja
+     */
     @Override
     public void ajoutBDDvaleursP(Integer bool) {
         if(bool.equals(1)){

@@ -1,6 +1,5 @@
 package com.example.application.Activité_n2.Fragments.Temps_réel;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,16 +17,14 @@ import com.example.application.Activité_n2.Fragments.SauvegardeBDD.SauvegardeRe
 import com.example.application.Activité_n2.Order.ListOrder;
 import com.example.application.Activité_n2.Order.TempsReelOrder;
 import com.example.application.R;
-
 /**
- * A simple {@link Fragment} subclass.
+ Fragment utilisé pour le mode temps réel
  */
+
 public class TempsReel extends Fragment {
 
     static public TempsReel temps_reel = new TempsReel();
-
     Peripherique peripherique;
-
     String data;
     public int accelerationInt;
     public int vitesseInt;
@@ -36,11 +33,9 @@ public class TempsReel extends Fragment {
 
     SauvegardeReel Sauv_frag = new SauvegardeReel();
 
-
     public TempsReel() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,10 +43,6 @@ public class TempsReel extends Fragment {
         View v = inflater.inflate(R.layout.fragment_temps_reel, container, false);
 
         peripherique=Peripherique.peripherique;
-
-
-
-        EditText text = v.findViewById(R.id.text);
 
         final Button save = v.findViewById(R.id.save_temps_reel);
         final Button send = v.findViewById(R.id.send_temps_reel);
@@ -65,6 +56,10 @@ public class TempsReel extends Fragment {
         final EditText rotation_numberEditText = v.findViewById(R.id.Rotation_number_TempsReel);
         final TextView rotationText=v.findViewById(R.id.Choix_RotationText);
 
+
+        /*
+        Permet de recuperer les infos de la bdd présent dans le fragment charger_Bdd
+         */
         if(getArguments()!=null){
             final String speed = getArguments().getString("vitesse");
             vitesseEditText.setText(speed);
@@ -79,6 +74,9 @@ public class TempsReel extends Fragment {
 
         }
 
+        /*
+        Permet de lancer le fragment charger et de récuperer des informations présent dans la bdd
+         */
         charger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +98,9 @@ public class TempsReel extends Fragment {
             }
         });
 
-
+        /*
+        Permet de le fragment 'sauvegarder' les informations du mode temps Réel
+         */
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +118,9 @@ public class TempsReel extends Fragment {
             }
         });
 
+        /*
+        Envoie les informations du mode temps réel au boitier de commande
+         */
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

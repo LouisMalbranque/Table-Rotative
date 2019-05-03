@@ -12,6 +12,11 @@ import com.example.application.R;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/*
+Il s'agit d'un 'adapter' pour avoir l'affichage souhaité des différents périphériques appairés au téléphone
+ */
+
 public class PeripheriqueAdapter extends RecyclerView.Adapter<PeripheriqueAdapter.MyViewHolder> {
 
     List<Peripherique> peripheriquesList;

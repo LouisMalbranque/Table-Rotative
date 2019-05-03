@@ -14,6 +14,9 @@ import com.example.application.Activité_n2.AjoutBDD.ajoutVR;
 import com.example.application.Activité_n2.Fragments.Temps_réel.TempsReel;
 import com.example.application.R;
 import com.example.application.objets.valeurReel;
+/**
+ * Permet de sauvegarder les information du Mode Temps réel en ajoutant un texte et en valider grace au bouton ok
+ */
 
 public class SauvegardeReel extends Fragment implements ajoutVR{
 
@@ -48,6 +51,9 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
 
     }
 
+    /*
+    lors de l'appuie sur le bouton ok, on enregistre les paramètres du mode Temps réel
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -78,6 +84,9 @@ public class SauvegardeReel extends Fragment implements ajoutVR{
         });
     }
 
+    /*
+    Check si la bdd est pleine ou si l'élément existait déja
+     */
     @Override
     public void ajoutBDDvaleursR(Integer bool) {
 
