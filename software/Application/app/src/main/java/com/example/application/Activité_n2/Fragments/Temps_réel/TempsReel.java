@@ -85,11 +85,14 @@ public class TempsReel extends Fragment {
         });
 
 
+        /*
+        Permet de choisir si l'on veut envoyer un nombre de tours de table ou un temps de fonctionnement du moteur
+         */
         choix_rotationSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (choix_rotationSwitch.isChecked()){
-                    rotationText.setText("Temps de rotation (s)");
+                    rotationText.setText("Temps de rotation (ms)");
                 }
                 else{
                     rotationText.setText("Nombre de tours");
