@@ -23,7 +23,9 @@ MoteurBluetooth moteur("4fafc201-1fb5-459e-8fcc-c5c9c331914b", "beb5483e-36e1-46
 CameraThread camera; // caméras connectées directement au bloc de commande (compte pour une seule caméra même si plusieurs appareils y sont connectés
 
 CameraBluetooth* camerabt[] = {new CameraBluetooth("1c1e2ea0-7c18-4c35-b38d-04aa84086d66","238df85b-af2f-4817-841f-7ce4330ad0a8"), // liste des caméras focus stacking créées
-                               new CameraBluetooth("1540c1dc-b7a8-484d-bfb6-6c5897339ab3","54b2a4c4-c9ce-41bb-9441-705981242337")};
+                               new CameraBluetooth("1540c1dc-b7a8-484d-bfb6-6c5897339ab3","54b2a4c4-c9ce-41bb-9441-705981242337")
+                               // new CameraBluetooth("ServiceUUID", "CharacteristicsUUID") pour créer une nouvelle caméra bluetooth
+                              };
 
 Peripherique* camerasConnectees[10]; // liste des caméras connectées, elle est remplie lors de la reception des périphériques à connecter 
 
