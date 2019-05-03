@@ -1,3 +1,0 @@
-Removed Pin From Net: NetName=CAMERA1 Pin=ESP32-4
-Added Pin To Net: NetName=CAMERA1 Pin=ESP32-24
-Added Room: Name=boitier_commande
