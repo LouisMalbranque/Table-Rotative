@@ -1,9 +1,0 @@
-Removed Pin From Net: NetName=GND Pin=Alim-1
-Removed Member From Class: ClassName=boitier_commande Member=Alim
-Added Component: Designator=PWR(Connecteur Power)
-Added Pin To Net: NetName=GND Pin=PWR-1
-Added Pin To Net: NetName=NetD1_1 Pin=D1-1
-Added Pin To Net: NetName=NetD1_1 Pin=PWR-0
-Added Net: Name=NetD1_1
-Added Member To Class: ClassName=boitier_commande Member=Component PWR Connecteur Power
-Added Room: Name=boitier_commande
