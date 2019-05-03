@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Focus_stacking.PrjPcb]
+   Generated File[focus_stacking.TXT]
+   Generated File[focus_stacking.LDP]
+   Generated File[focus_stacking.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 19:54:12 On 03/05/2019

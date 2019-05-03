@@ -1,0 +1,63 @@
+Added Pin To Net: NetName=GND Pin=Abaisseur-2
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Pin To Net: NetName=GND Pin=DRIVER-9
+Added Pin To Net: NetName=GND Pin=DRIVER-15
+Added Pin To Net: NetName=GND Pin=ESP32-13
+Added Pin To Net: NetName=GND Pin=ESP32-16
+Added Pin To Net: NetName=GND Pin=LD1-K
+Added Pin To Net: NetName=GND Pin=LD2-K
+Added Pin To Net: NetName=GND Pin=PWR-GND
+Added Pin To Net: NetName=GND Pin=SW RESET-2
+Added Net: Name=GND
+Added Pin To Net: NetName=NetAbaisseur_1 Pin=Abaisseur-1
+Added Pin To Net: NetName=NetAbaisseur_1 Pin=ESP32-14
+Added Net: Name=NetAbaisseur_1
+Added Pin To Net: NetName=NetAbaisseur_3 Pin=Abaisseur-3
+Added Pin To Net: NetName=NetAbaisseur_3 Pin=DRIVER-16
+Added Pin To Net: NetName=NetAbaisseur_3 Pin=SW ALIM-2
+Added Net: Name=NetAbaisseur_3
+Added Pin To Net: NetName=NetC3_1 Pin=C3-1
+Added Pin To Net: NetName=NetC3_1 Pin=ESP32-29
+Added Pin To Net: NetName=NetC3_1 Pin=R3-1
+Added Pin To Net: NetName=NetC3_1 Pin=SW RESET-1
+Added Net: Name=NetC3_1
+Added Pin To Net: NetName=NetDRIVER_5 Pin=DRIVER-5
+Added Pin To Net: NetName=NetDRIVER_5 Pin=DRIVER-6
+Added Net: Name=NetDRIVER_5
+Added Pin To Net: NetName=NetDRIVER_7 Pin=DRIVER-7
+Added Pin To Net: NetName=NetDRIVER_7 Pin=ESP32-8
+Added Net: Name=NetDRIVER_7
+Added Pin To Net: NetName=NetDRIVER_8 Pin=DRIVER-8
+Added Pin To Net: NetName=NetDRIVER_8 Pin=ESP32-7
+Added Net: Name=NetDRIVER_8
+Added Pin To Net: NetName=NetDRIVER_10 Pin=DRIVER-10
+Added Pin To Net: NetName=NetDRIVER_10 Pin=ESP32-15
+Added Pin To Net: NetName=NetDRIVER_10 Pin=R1-1
+Added Pin To Net: NetName=NetDRIVER_10 Pin=R3-2
+Added Net: Name=NetDRIVER_10
+Added Pin To Net: NetName=NetDRIVER_11 Pin=DRIVER-11
+Added Pin To Net: NetName=NetDRIVER_11 Pin=Moteur-4
+Added Net: Name=NetDRIVER_11
+Added Pin To Net: NetName=NetDRIVER_12 Pin=DRIVER-12
+Added Pin To Net: NetName=NetDRIVER_12 Pin=Moteur-3
+Added Net: Name=NetDRIVER_12
+Added Pin To Net: NetName=NetDRIVER_13 Pin=DRIVER-13
+Added Pin To Net: NetName=NetDRIVER_13 Pin=Moteur-2
+Added Net: Name=NetDRIVER_13
+Added Pin To Net: NetName=NetDRIVER_14 Pin=DRIVER-14
+Added Pin To Net: NetName=NetDRIVER_14 Pin=Moteur-1
+Added Net: Name=NetDRIVER_14
+Added Pin To Net: NetName=NetESP32_17 Pin=ESP32-17
+Added Pin To Net: NetName=NetESP32_17 Pin=R2-1
+Added Net: Name=NetESP32_17
+Added Pin To Net: NetName=NetLD1_A Pin=LD1-A
+Added Pin To Net: NetName=NetLD1_A Pin=R1-2
+Added Net: Name=NetLD1_A
+Added Pin To Net: NetName=NetLD2_A Pin=LD2-A
+Added Pin To Net: NetName=NetLD2_A Pin=R2-2
+Added Net: Name=NetLD2_A
+Added Pin To Net: NetName=NetPWR_0 Pin=PWR-0
+Added Pin To Net: NetName=NetPWR_0 Pin=SW ALIM-1
+Added Net: Name=NetPWR_0
+Added Class: Name=moteur
+Added Room: Name=moteur

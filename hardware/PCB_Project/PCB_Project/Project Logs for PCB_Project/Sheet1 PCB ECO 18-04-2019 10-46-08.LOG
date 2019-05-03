@@ -1,6 +1,0 @@
-Added Component: Designator=Appareil9(Connecteur Power)
-Added Pin To Net: NetName=NetAppareil9_0 Pin=Appareil9-0
-Added Pin To Net: NetName=NetAppareil9_0 Pin=Op1-5
-Added Pin To Net: NetName=NetAppareil9_0 Pin=SW ALIM-2
-Added Net: Name=NetAppareil9_0
-Added Member To Class: ClassName=Sheet1 Member=Component Appareil9 Connecteur Power

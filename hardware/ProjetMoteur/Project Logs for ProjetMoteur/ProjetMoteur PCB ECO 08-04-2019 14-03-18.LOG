@@ -1,9 +1,0 @@
-Added Component: Designator=U?(ESP32)
-Added Pin To Net: NetName=NetDRIVER_8 Pin=U?-7
-Added Pin To Net: NetName=NetDRIVER_7 Pin=U?-8
-Added Pin To Net: NetName=NetLD1_K Pin=U?-13
-Added Pin To Net: NetName=NetAbaisseurTension_1 Pin=U?-14
-Added Pin To Net: NetName=GND Pin=U?-16
-Added Pin To Net: NetName=NetR2_1 Pin=U?-17
-Added Pin To Net: NetName=NetC3_1 Pin=U?-29
-Added Member To Class: ClassName=ProjetMoteur Member=Component U? ESP32devKit

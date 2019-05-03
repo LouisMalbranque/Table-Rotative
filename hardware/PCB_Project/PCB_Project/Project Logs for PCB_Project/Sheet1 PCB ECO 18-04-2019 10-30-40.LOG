@@ -1,6 +1,0 @@
-Added Component: Designator=Op1(4N26)
-Added Pin To Net: NetName=NetOp1_1 Pin=Op1-1
-Added Pin To Net: NetName=GND Pin=Op1-2
-Added Pin To Net: NetName=GND Pin=Op1-4
-Added Pin To Net: NetName=Net*_0 Pin=Op1-5
-Added Member To Class: ClassName=Sheet1 Member=Component Op1 Optocoupler
