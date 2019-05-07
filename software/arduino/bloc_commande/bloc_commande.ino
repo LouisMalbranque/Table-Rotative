@@ -29,7 +29,7 @@ CameraBluetooth* camerabt[] = {new CameraBluetooth("1c1e2ea0-7c18-4c35-b38d-04aa
 
 Peripherique* camerasConnectees[10]; // liste des caméras connectées, elle est remplie lors de la reception des périphériques à connecter 
 
-ESP_bluetooth esp;      // client BLE 
+BLE_client    esp;      // client BLE 
 Bluetooth telephone;    // gestion du bluetooth série avec le téléphone
 Lcd lcd;                // ecran LCD controllé par i2c
 
@@ -84,7 +84,7 @@ void loop() {
   
     if (telephone.receive()){
       Serial.print("Data received : ");
-      Serial.println(telephone.getData());
+      //Serial.println(telephone.getData());
       // le message reçu est décodée et renvoie un tableau d'entier
       values = telephone.decode();
 

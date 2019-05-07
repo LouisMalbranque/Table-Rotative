@@ -17,13 +17,13 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
 }; 
 
 
-class ESP_bluetooth{
+class BLE_client{
   private:
     BLEScan* pBLEScan;  // scanner ble
     BLEScanResults scanResults; // resultats du scan
     BLEClient* pClient; // client ble
   public:
-  ESP_bluetooth(); // constructeur ble
+  BLE_client(); // constructeur ble
   void begin(); // initialisation du client ble
   boolean connect(PeripheriqueBluetooth *periph); // connecte au périphérique donné par référence
   void scan(); // scan les périphériques ble environant
