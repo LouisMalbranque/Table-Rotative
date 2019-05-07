@@ -48,7 +48,7 @@ int commandeEnCours;
 
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   // configuration de la led de statut
   pinMode(LED,OUTPUT);
