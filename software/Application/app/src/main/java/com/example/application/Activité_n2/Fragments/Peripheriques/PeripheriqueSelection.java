@@ -17,6 +17,8 @@ import com.example.application.R;
 
 import java.util.ArrayList;
 
+import static com.example.application.Activité_n2.MainActivity.getContext;
+
 /*
 Ce fragment est appelé en 1er et sert à choisir quel(s) caméra(s) ou focus l'utilisateur compte utiliser
 les class utilisés sont :

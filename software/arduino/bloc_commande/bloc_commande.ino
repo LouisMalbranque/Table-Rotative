@@ -43,12 +43,15 @@ int* values;
 String datagramme;
 int commandeEnCours;
 
-
+// routine d'interruption attachée sur le bouton de reset
+void interrupt(){
+  ESP.restart();
+}
 
 
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   // configuration de la led de statut
   pinMode(LED,OUTPUT);
@@ -84,7 +87,7 @@ void loop() {
   
     if (telephone.receive()){
       Serial.print("Data received : ");
-      //Serial.println(telephone.getData());
+      Serial.println(telephone.getData());
       // le message reçu est décodée et renvoie un tableau d'entier
       values = telephone.decode();
 
@@ -293,10 +296,4 @@ void loop() {
 
     // actualisation de l'affichage LCD
     lcd.display();
-}
-
-
-// routine d'interruption attachée sur le bouton de reset
-void interrupt(){
-  ESP.restart();
 }

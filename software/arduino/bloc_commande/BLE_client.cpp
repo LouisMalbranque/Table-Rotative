@@ -27,7 +27,7 @@ BLE_client::BLE_client(){
 
 // initie le client BLE
 void BLE_client::begin(){  
-  BLEDevice::init("");
+  BLEDevice::init("BLE Boitier");
   
   pBLEScan = BLEDevice::getScan(); //create new scan
   pBLEScan->setAdvertisedDeviceCallbacks(new MyAdvertisedDeviceCallbacks());
